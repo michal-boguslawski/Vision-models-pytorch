@@ -23,6 +23,13 @@ def res_net_block():
 
 
 class SimpleGenerator(nn.Module):
+    '''
+    dla 64x64
+    gen_dims = [latent_dim, 256, 128, 64, 32]
+    gen_kernel_sizes = [4, 4, 4, 8]
+    gen_strides = [2, 2, 2, 4]
+    gen_paddings = [0, 1, 1, 2]
+    '''
     def __init__(self, latent_dim, dims, kernel_sizes, strides, paddings, new_size, device='cpu'):
         super(SimpleGenerator, self).__init__()
         self.latent_dim = latent_dim
@@ -54,6 +61,14 @@ class SimpleGenerator(nn.Module):
 
 
 class SimpleDiscriminator(nn.Module):
+    '''
+    dla 64x64
+    disc_dims = [3, 64, 128, 256]
+    disc_kernel_sizes = [4, 4, 4, 4]
+    disc_strides = [2, 2, 2, 4]
+    disc_paddings = [1, 1, 1, 1]
+    disc_if_pools = [True, False, True, False]
+    '''
     def __init__(self, dims, kernel_sizes, strides, paddings, if_pools, device='cpu'):
         super(SimpleDiscriminator, self).__init__()
         self.input_norm = nn.InstanceNorm2d(3, device=device)
