@@ -31,11 +31,15 @@ def show_step_function(epoch, latent_dim, step, show_step, generator, disc_loss_
     torch.Tensor(disc_loss_list),
     label="Critic Loss"
   )
-  quantile1 = np.quantile(gen_loss_list, 0.95)
-  quantile2 = np.quantile(disc_loss_list, 0.95)
+  # quantile1 = np.quantile(gen_loss_list, 0.95)
+  quantile1 = np.max(gen_loss_list)
+  # quantile2 = np.quantile(disc_loss_list, 0.95)
+  quantile2 = np.max(disc_loss_list)
   max_max = np.max([quantile1, quantile2])
-  quantile1 = np.quantile(gen_loss_list, 0.05)
-  quantile2 = np.quantile(disc_loss_list, 0.05)
+  # quantile1 = np.quantile(gen_loss_list, 0.05)
+  quantile1 = np.min(gen_loss_list)
+  # quantile2 = np.quantile(disc_loss_list, 0.05)
+  quantile2 = np.min(disc_loss_list)
   min_min = np.min([quantile1, quantile2])
   plt.ylim((min_min - np.abs(min_min) * 0.05),
            (max_max + np.abs(max_max)*0.05))
