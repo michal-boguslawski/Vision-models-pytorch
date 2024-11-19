@@ -66,7 +66,8 @@ class SimpleDiscriminator(nn.Module):
                                      kernel_size=kernel_sizes[i],
                                      stride=strides[i],
                                      padding=paddings[i],
-                                     if_pool=if_pools[i]))
+                                     if_pool=if_pools[i],
+                                     device=device))
         self.block = nn.Sequential(*blocks)
         self.out_conv = nn.Conv2d(dims[-1], 1,
                                   kernel_size=kernel_sizes[-1],
