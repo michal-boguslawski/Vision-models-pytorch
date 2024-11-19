@@ -14,7 +14,7 @@ def show_image(img, num=4, rescale=None):
     plt.show()
 
 
-def show_step_function(epoch, step, show_step, generator, disc_loss_list, gen_loss_list):
+def show_step_function(epoch, latent_dim, step, show_step, generator, disc_loss_list, gen_loss_list, device='cpu'):
   print(f'Epoch: {epoch}, Step: {step}, Discriminator loss last {show_step}: {np.mean(disc_loss_list[-show_step:])}, \
   Generator loss last {show_step}: {np.mean(gen_loss_list[-show_step:])}')
   noise = torch.randn(16, latent_dim, device=device)
@@ -38,7 +38,7 @@ def show_step_function(epoch, step, show_step, generator, disc_loss_list, gen_lo
   plt.legend()
   plt.show()
 
-def training_step_discriminator(true_image, generator, discriminator, loss_fn):
+def training_step_discriminator(true_image, generator, discriminator, loss_fn, latent_dim, device='cpu'):
   noise = torch.randn(true_image.shape[0], latent_dim, device=device)
   fake_image = generator(noise)
   fake_output = discriminator(fake_image.detach())
@@ -52,11 +52,12 @@ def training_step_discriminator(true_image, generator, discriminator, loss_fn):
               'discriminator': discriminator,
               'if_disc': True,
               'ones': ones,
-              'zeros': zeros}
+              'zeros': zeros,
+              'device': device}
   loss = loss_fn(**arguments)
   return loss
 
-def training_step_generator(batch_size, generator, discriminator, loss_fn):
+def training_step_generator(batch_size, generator, discriminator, loss_fn, latent_dim, device='cpu'):
   noise = torch.randn(batch_size, latent_dim, device=device)
   fake_image = generator(noise)
   fake_output = discriminator(fake_image)
@@ -65,7 +66,8 @@ def training_step_generator(batch_size, generator, discriminator, loss_fn):
               'fake_output': fake_output,
               'discriminator': discriminator,
               'if_disc': False,
-              'ones': ones}
+              'ones': ones,
+              'device': device}
   loss = loss_fn(**arguments)
   return loss
 
@@ -87,7 +89,7 @@ def get_gp(real, fake, crit, alpha, gamma=10):
 
   return gp
 
-def WGANLoss(fake_image, fake_output, true_image=None, true_output=None, discriminator=None, if_disc=True, **kwargs):
+def WGANLoss(fake_image, fake_output, true_image=None, true_output=None, discriminator=None, if_disc=True, device='cpu', **kwargs):
   if if_disc:
     alpha=torch.rand(len(true_image),1,1,1,device=device, requires_grad=True) # 128 x 1 x 1 x 1
     gp = get_gp(true_image, fake_image.detach(), discriminator, alpha)
