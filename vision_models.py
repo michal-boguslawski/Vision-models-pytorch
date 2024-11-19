@@ -38,6 +38,7 @@ class SimpleGenerator(nn.Module):
             new_size = (new_size, new_size)
         self.new_size = new_size
         self.n_times = len(kernel_sizes)
+        dims = [latent_dim, ] + dims
         blocks = []
         for i in range(self.n_times):
             blocks.append(conv_block(dims[i],
@@ -63,7 +64,7 @@ class SimpleGenerator(nn.Module):
 class SimpleDiscriminator(nn.Module):
     '''
     dla 64x64
-    disc_dims = [3, 64, 128, 256]
+    disc_dims = [64, 128, 256]
     disc_kernel_sizes = [4, 4, 4, 4]
     disc_strides = [2, 2, 2, 4]
     disc_paddings = [1, 1, 1, 1]
@@ -75,6 +76,7 @@ class SimpleDiscriminator(nn.Module):
         self.device = device
         self.n_times = len(kernel_sizes)
         blocks = []
+        dims = [3, ] + dims
         for i in range(self.n_times-1):
             blocks.append(conv_block(dims[i],
                                      dims[i+1],

@@ -38,6 +38,7 @@ def show_step_function(epoch, latent_dim, step, show_step, generator, disc_loss_
   plt.legend()
   plt.show()
 
+
 def training_step_discriminator(true_image, generator, discriminator, loss_fn, latent_dim, device='cpu'):
   noise = torch.randn(true_image.shape[0], latent_dim, device=device)
   fake_image = generator(noise)
@@ -56,6 +57,7 @@ def training_step_discriminator(true_image, generator, discriminator, loss_fn, l
               'device': device}
   loss = loss_fn(**arguments)
   return loss
+
 
 def training_step_generator(batch_size, generator, discriminator, loss_fn, latent_dim, device='cpu'):
   noise = torch.randn(batch_size, latent_dim, device=device)
