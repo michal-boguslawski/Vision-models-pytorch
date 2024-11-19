@@ -60,7 +60,7 @@ class SimpleDiscriminator(nn.Module):
         self.device = device
         self.n_times = len(kernel_sizes)
         blocks = []
-        for i in range(self.n_times):
+        for i in range(self.n_times-1):
             blocks.append(conv_block(dims[i],
                                      dims[i+1],
                                      kernel_size=kernel_sizes[i],
@@ -68,9 +68,17 @@ class SimpleDiscriminator(nn.Module):
                                      padding=paddings[i],
                                      if_pool=if_pools[i]))
         self.block = nn.Sequential(*blocks)
+        self.out_conv = nn.Conv2d(dims[-1], 1,
+                                  kernel_size=kernel_sizes[-1],
+                                  stride=strides[-1],
+                                  padding=paddings[-1],
+                                  device=device)
+        self.flatten = nn.Flatten()
+        #self.dense = nn.Linear() ## tu dodawać
 
     def forward(self, x):
         x = self.input_norm(x)
         x = self.block(x)
+        x = self.out_conv(x)
         x = x.view(-1, 1)
         return x.to(self.device)
