@@ -1,11 +1,10 @@
-import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torchvision.transforms import v2
 
 
 def conv_block(in_channels, out_channels, kernel_size=3, stride=1, padding=1, if_transpose=False, if_pool=False,
-               device='cuda'):
+               device='cpu'):
     if if_transpose:
         block = [nn.ConvTranspose2d(in_channels, out_channels, kernel_size=kernel_size, stride=stride, padding=padding,
                                     device=device)]
@@ -19,43 +18,59 @@ def conv_block(in_channels, out_channels, kernel_size=3, stride=1, padding=1, if
     return nn.Sequential(*block)
 
 
+def res_net_block():
+    None
+
+
 class SimpleGenerator(nn.Module):
-    def __init__(self, latent_dim, dim, n_times, device='cuda'):
+    def __init__(self, latent_dim, dims, kernel_sizes, strides, paddings, new_size, device='cpu'):
         super(SimpleGenerator, self).__init__()
         self.latent_dim = latent_dim
         self.device = device
-        self.input_norm = nn.LayerNorm(latent_dim, device=device)
-        self.n_times = n_times
-        blocks = [conv_block(latent_dim, dim, kernel_size=4, stride=2, padding=0, if_transpose=True)]
-        for i in range(n_times):
-            blocks.append(
-                conv_block(dim // 2 ** i, dim // 2 ** (i + 1), kernel_size=4, stride=2, padding=1, if_transpose=True))
+        if len(new_size) < 2:
+            new_size = (new_size, new_size)
+        self.new_size = new_size
+        self.n_times = len(kernel_sizes)
+        blocks = []
+        for i in range(self.n_times):
+            blocks.append(conv_block(dims[i],
+                                     dims[i+1],
+                                     kernel_size=kernel_sizes[i],
+                                     stride=strides[i],
+                                     padding=paddings[i],
+                                     if_transpose=True,
+                                     device=device))
         self.blocks = nn.Sequential(*blocks)
-        self.out_conv = nn.Conv2d(dim // 2 ** n_times, 3, kernel_size=3, stride=1, padding=1, device=device)
+        self.out_conv = nn.Conv2d(dims[-1], 3, kernel_size=3, stride=1, padding=1, device=device)
 
     def forward(self, x):
         x = x.view(-1, self.latent_dim, 1, 1)
         x = self.blocks(x)
         x = self.out_conv(x)
-        return F.tanh(x).to(self.device)
+        x = F.tanh(x)
+        x = v2.Resize(self.new_size)(x)
+
+        return x.to(self.device)
 
 
 class SimpleDiscriminator(nn.Module):
-    def __init__(self, dim, n_times, device='cuda'):
+    def __init__(self, dims, kernel_sizes, strides, paddings, if_pools, device='cpu'):
         super(SimpleDiscriminator, self).__init__()
         self.input_norm = nn.InstanceNorm2d(3, device=device)
         self.device = device
-        self.n_times = n_times
-        block = conv_block(3, dim, kernel_size=4, stride=2, padding=1, if_pool=False)
-        for i in range(n_times):
-            block.append(
-                conv_block(dim * 2 ** i, dim * 2 ** (i + 1), kernel_size=4, stride=2, padding=1, if_pool=False))
-        self.block = nn.Sequential(*block)
-        self.out_conv = nn.Conv2d(dim * 2 ** n_times, 1, kernel_size=4, stride=1, padding=0, device=device)
+        self.n_times = len(kernel_sizes)
+        blocks = []
+        for i in range(self.n_times):
+            blocks.append(conv_block(dims[i],
+                                     dims[i+1],
+                                     kernel_size=kernel_sizes[i],
+                                     stride=strides[i],
+                                     padding=paddings[i],
+                                     if_pool=if_pools[i]))
+        self.block = nn.Sequential(*blocks)
 
     def forward(self, x):
         x = self.input_norm(x)
         x = self.block(x)
-        x = self.out_conv(x)
         x = x.view(-1, 1)
         return x.to(self.device)
