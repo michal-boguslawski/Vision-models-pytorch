@@ -119,6 +119,6 @@ def WGANLoss(fake_image, fake_output, true_image=None, true_output=None, discrim
     if if_disc:
         alpha = torch.rand(len(true_image), 1, 1, 1, device=device, requires_grad=True)  # 128 x 1 x 1 x 1
         gp = get_gp(true_image, fake_image.detach(), discriminator, alpha)
-        return fake_output.mean() - true_output.mean() + gp, (fake_output.mean(), true_output.mean(), gp)
+        return fake_output.mean() - true_output.mean() + gp, (fake_output.mean().item(), true_output.mean().item(), gp.item())
     else:
         return -fake_output.mean()
