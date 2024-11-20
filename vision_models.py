@@ -1,3 +1,4 @@
+import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torchvision.transforms import v2
@@ -18,8 +19,30 @@ def conv_block(in_channels, out_channels, kernel_size=3, stride=1, padding=1, if
     return nn.Sequential(*block)
 
 
-def res_net_block():
-    None
+class Residual2DBlock(nn.Module):
+    def __init__(self, in_channel, times_channel=4, kernel_size=3, stride=1, padding=1, device='cpu'):
+        super(Residual2DBlock, self).__init__()
+        self.in_channel = in_channel
+        self.times_channel = times_channel
+        self.kernel_size = kernel_size
+        self.stride = stride
+        self.padding = padding
+        self.conv_layer0 = nn.Conv2d(in_channel, in_channel*times_channel, kernel_size, stride, padding, device=device)
+        self.norm0 = nn.InstanceNorm2d(in_channel * times_channel)
+        self.conv_layer1 = nn.Conv2d(in_channel * times_channel, in_channel, kernel_size, stride, padding, device=device)
+        self.norm1 = nn.InstanceNorm2d(in_channel)
+
+    def forward(self, x):
+        res = self.conv_layer0(x)
+        res = self.norm0(res)
+        res = F.gelu(res)
+
+        res = self.conv_layer1(res)
+        res = self.norm1(res)
+
+        x = torch.add(x, res)
+        x = F.gelu(x)
+        return x
 
 
 class SimpleGenerator(nn.Module):
@@ -30,7 +53,7 @@ class SimpleGenerator(nn.Module):
     gen_strides = [2, 2, 2, 4]
     gen_paddings = [0, 1, 1, 2]
     '''
-    def __init__(self, latent_dim, dims, kernel_sizes, strides, paddings, new_size, device='cpu'):
+    def __init__(self, latent_dim, dims, kernel_sizes, strides, paddings, new_size, if_res=True, device='cpu'):
         super(SimpleGenerator, self).__init__()
         self.latent_dim = latent_dim
         self.device = device
@@ -38,7 +61,9 @@ class SimpleGenerator(nn.Module):
             new_size = (new_size, new_size)
         self.new_size = new_size
         self.n_times = len(kernel_sizes)
-        self.dense_init = nn.Linear(latent_dim, dims[0])
+        self.dense_init = nn.Linear(latent_dim, dims[0], device=device)
+        if if_res:
+            if_res = [True for _ in range(self.n_times)]
         blocks = []
         for i in range(self.n_times):
             blocks.append(conv_block(dims[i],
@@ -48,13 +73,16 @@ class SimpleGenerator(nn.Module):
                                      padding=paddings[i],
                                      if_transpose=True,
                                      device=device))
+            if if_res[i]:
+                blocks.append(Residual2DBlock(dims[i+1], device=device))
+
         self.blocks = nn.Sequential(*blocks)
         self.out_conv = nn.Conv2d(dims[-1], 3, kernel_size=3, stride=1, padding=1, device=device)
 
     def forward(self, x):
         x = self.dense_init(x)
         x = F.gelu(x)
-        x = x.view(-1, self.latent_dim, 1, 1)
+        x = x.view(len(x), -1, 1, 1)
         x = self.blocks(x)
         x = self.out_conv(x)
         x = F.tanh(x)
