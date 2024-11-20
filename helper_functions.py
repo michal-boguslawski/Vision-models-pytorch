@@ -37,7 +37,7 @@ def show_step_function(epoch, latent_dim, step, show_step, generator, disc_loss_
 
     x = calc_mov_average(gen_loss_list)
     plt.plot(
-        range(len(gen_loss_list)),
+        range(len(x)),
         x,
         label="Generator Loss Moving Average"
     )
@@ -50,7 +50,7 @@ def show_step_function(epoch, latent_dim, step, show_step, generator, disc_loss_
 
     x = calc_mov_average(disc_loss_list)
     plt.plot(
-        range(len(disc_loss_list)),
+        range(len(x)),
         x,
         label="Critic Loss Moving Average"
     )
