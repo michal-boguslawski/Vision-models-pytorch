@@ -14,7 +14,7 @@ def show_image(img, num=4, rescale=None):
     plt.show()
 
 
-def calc_mov_average(arr, window_len):
+def calc_mov_average(arr, window_len=300):
     # Handle edge case where window_len is greater than the length of the array
     if window_len <= 1:
         return arr  # No moving average needed if window length is 1 or less
