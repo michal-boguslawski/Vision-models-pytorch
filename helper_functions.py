@@ -76,8 +76,8 @@ def training_step_discriminator(true_image, generator, discriminator, loss_fn, l
                  'ones': ones,
                  'zeros': zeros,
                  'device': device}
-    loss = loss_fn(**arguments)
-    return loss
+    loss, args = loss_fn(**arguments)
+    return loss, args
 
 
 def training_step_generator(batch_size, generator, discriminator, loss_fn, latent_dim, device='cpu'):
@@ -119,6 +119,6 @@ def WGANLoss(fake_image, fake_output, true_image=None, true_output=None, discrim
     if if_disc:
         alpha = torch.rand(len(true_image), 1, 1, 1, device=device, requires_grad=True)  # 128 x 1 x 1 x 1
         gp = get_gp(true_image, fake_image.detach(), discriminator, alpha)
-        return fake_output.mean() - true_output.mean() + gp
+        return fake_output.mean() - true_output.mean() + gp, (fake_output.mean(), true_output.mean(), gp)
     else:
         return -fake_output.mean()
