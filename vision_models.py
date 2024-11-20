@@ -25,7 +25,7 @@ def res_net_block():
 class SimpleGenerator(nn.Module):
     '''
     dla 64x64
-    gen_dims = [latent_dim, 256, 128, 64, 32]
+    gen_dims = [256, 128, 64, 32]
     gen_kernel_sizes = [4, 4, 4, 8]
     gen_strides = [2, 2, 2, 4]
     gen_paddings = [0, 1, 1, 2]
@@ -38,7 +38,7 @@ class SimpleGenerator(nn.Module):
             new_size = (new_size, new_size)
         self.new_size = new_size
         self.n_times = len(kernel_sizes)
-        dims = [latent_dim, ] + dims
+        self.dense_init = nn.Linear(latent_dim, dims[0])
         blocks = []
         for i in range(self.n_times):
             blocks.append(conv_block(dims[i],
@@ -52,6 +52,8 @@ class SimpleGenerator(nn.Module):
         self.out_conv = nn.Conv2d(dims[-1], 3, kernel_size=3, stride=1, padding=1, device=device)
 
     def forward(self, x):
+        x = self.dense_init(x)
+        x = F.gelu(x)
         x = x.view(-1, self.latent_dim, 1, 1)
         x = self.blocks(x)
         x = self.out_conv(x)
