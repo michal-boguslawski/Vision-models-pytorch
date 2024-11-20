@@ -14,11 +14,24 @@ def show_image(img, num=4, rescale=None):
     plt.show()
 
 
-def calc_mov_average(x, window_size=300):
-    x = np.asarray(x)
-    weights = np.ones(window_size) / window_size
-    moving_avg = np.convolve(x, weights, mode='valid')
-    return moving_avg
+def calc_mov_average(arr, window_len):
+    # Handle edge case where window_len is greater than the length of the array
+    if window_len <= 1:
+        return arr  # No moving average needed if window length is 1 or less
+
+    # Array to store the moving averages
+    result = np.zeros_like(arr)
+
+    # Loop over the array and compute the moving average
+    for i in range(len(arr)):
+        # Define the window start and end indices
+        start = max(0, i - window_len + 1)
+        end = i + 1
+
+        # Compute the mean for the window, handles fewer elements than window_len
+        result[i] = np.mean(arr[start:end])
+
+    return result
 
 
 def show_step_function(epoch, latent_dim, step, show_step, generator, disc_loss_list, gen_loss_list, if_quantile=True,
