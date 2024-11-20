@@ -14,6 +14,13 @@ def show_image(img, num=4, rescale=None):
     plt.show()
 
 
+def calc_mov_average(x, window_size=300):
+    x = np.asarray(x)
+    weights = np.ones(window_size) / window_size
+    moving_avg = np.convolve(x, weights, mode='valid')
+    return moving_avg
+
+
 def show_step_function(epoch, latent_dim, step, show_step, generator, disc_loss_list, gen_loss_list, if_quantile=True,
                        default_max=None, default_min=None,
                        device='cpu'):
@@ -28,11 +35,26 @@ def show_step_function(epoch, latent_dim, step, show_step, generator, disc_loss_
         label="Generator Loss"
     )
 
+    x = calc_mov_average(gen_loss_list)
+    plt.plot(
+        range(len(gen_loss_list)),
+        x,
+        label="Generator Loss Moving Average"
+    )
+
     plt.plot(
         range(len(disc_loss_list)),
         torch.Tensor(disc_loss_list),
         label="Critic Loss"
     )
+
+    x = calc_mov_average(disc_loss_list)
+    plt.plot(
+        range(len(disc_loss_list)),
+        x,
+        label="Critic Loss Moving Average"
+    )
+
     if default_max:
         max_max = default_max
     elif if_quantile:
@@ -119,6 +141,7 @@ def WGANLoss(fake_image, fake_output, true_image=None, true_output=None, discrim
     if if_disc:
         alpha = torch.rand(len(true_image), 1, 1, 1, device=device, requires_grad=True)  # 128 x 1 x 1 x 1
         gp = get_gp(true_image, fake_image.detach(), discriminator, alpha)
-        return fake_output.mean() - true_output.mean() + gp, (fake_output.mean().item(), true_output.mean().item(), gp.item())
+        return fake_output.mean() - true_output.mean() + gp, (
+        fake_output.mean().item(), true_output.mean().item(), gp.item())
     else:
         return -fake_output.mean()
