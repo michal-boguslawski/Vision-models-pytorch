@@ -113,7 +113,8 @@ class ImageDataset(Dataset):
                  selected_output: list = ['bbox', ],
                  new_size: tuple = (512, 512),
                  patch_size: int = 16,
-                 transform=None
+                 transform=None,
+                 dataset_size=None
                  ) -> dict:
         super(ImageDataset, self).__init__()
         self.data_type = data_type
@@ -122,6 +123,7 @@ class ImageDataset(Dataset):
         self.new_size = new_size
         self.patch_size = patch_size
         self.transform = transform
+        self.dataset_size = dataset_size
 
         image_links = ImageIdList(data_type,
                                   selected_categories,
@@ -134,7 +136,10 @@ class ImageDataset(Dataset):
         self.cat_dict = cat_dict
 
     def __len__(self):
-        return len(self.image_links.images_links.keys())
+        if self.dataset_size:
+            return min(self.dataset_size, len(self.image_links.images_links.keys()))
+        else:
+            return len(self.image_links.images_links.keys())
 
     def __getitem__(self, idx):
         output_dict = {}
@@ -183,15 +188,16 @@ class ImageDataset(Dataset):
 
 
 def create_dataloader(
-        data_type: str = 'train',
-        selected_categories: list = None,
-        selected_output: list = ['bbox', ],
-        new_size: tuple = (512, 512),
-        patch_size: int = 16,
-        transform=None,
-        batch_size=8,
-        num_workers=12,
-        shuffle=True
+    data_type: str = 'train',
+    selected_categories: list = None,
+    selected_output: list = ['bbox', ],
+    new_size: tuple = (512, 512),
+    patch_size: int = 16,
+    transform=None,
+    batch_size=8,
+    num_workers=12,
+    shuffle=True,
+    dataset_size=None
 ):
     dataset = ImageDataset(
         data_type=data_type,
@@ -199,7 +205,8 @@ def create_dataloader(
         selected_output=selected_output,
         new_size=new_size,
         patch_size=patch_size,
-        transform=transform
+        transform=transform,
+        dataset_size=dataset_size
     )
 
     dataloader = DataLoader(dataset,
