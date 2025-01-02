@@ -8,7 +8,6 @@ from torch.utils.data import Dataset, DataLoader
 def coco_collate_fn(batch):
     try:
         images = []
-        output_to_rpns = []
         bboxs = []
         category_ids = []
         center_widths = []
@@ -17,7 +16,6 @@ def coco_collate_fn(batch):
         i = 0
         for sample in batch:
             images.append(sample['image'])
-            output_to_rpns.append(sample['output_to_rpn'])
             for ann in sample['annotations']:
                 bboxs.append(ann['bbox'])
                 img_ids.append(i)
@@ -27,7 +25,6 @@ def coco_collate_fn(batch):
             i += 1
 
         images = torch.stack(images, dim=0)
-        output_to_rpns = torch.stack(output_to_rpns, dim=0)
         bboxs = torch.stack(bboxs, dim=0)
         category_ids = torch.tensor(category_ids)
         center_widths = torch.tensor(center_widths)
@@ -35,7 +32,6 @@ def coco_collate_fn(batch):
         img_ids = torch.tensor(img_ids)
         out_dict = {
             'images': images,
-            'output_to_rpns': output_to_rpns,
             'bboxs': bboxs,
             'category_ids': category_ids,
             'center_widths': center_widths,
@@ -154,9 +150,6 @@ class ImageDataset(Dataset):
         height_scale = self.new_size[0] / im_anns['height']
         width_scale = self.new_size[1] / im_anns['width']
 
-        output_to_rpn = torch.zeros((self.new_size[0] // self.patch_size,
-                                     self.new_size[1] // self.patch_size,
-                                     len(self.image_links.selected_categories_dict)))
         annotations = []
         for ann in im_anns['annotations']:
             temp_ann = {}
@@ -177,9 +170,6 @@ class ImageDataset(Dataset):
 
             annotations.append(temp_ann)
 
-            output_to_rpn[center_width, center_height, self.cat_dict[cat_id]] = 1
-
-        output_dict['output_to_rpn'] = output_to_rpn
         output_dict['width'] = im_anns['width']
         output_dict['height'] = im_anns['height']
         output_dict['annotations'] = annotations
