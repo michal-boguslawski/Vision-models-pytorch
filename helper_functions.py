@@ -352,6 +352,7 @@ def print_log(data, model, losses, epoch, step, possible_anchors, device):
         if max_i > 100:
             break
     plt.savefig(f'training_images/Image_step_{step}.jpg')
+    plt.close()
 
 
 def calc_mov_average(arr, window_len=300):

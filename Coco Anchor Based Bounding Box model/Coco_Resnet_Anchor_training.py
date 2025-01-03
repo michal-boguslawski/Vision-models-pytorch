@@ -131,7 +131,11 @@ for epoch in range(epochs):
         scheduler.step()
         losses.append(loss.item())
         if step % step_show == 0:
-            val_data = next(val_iter)
+            try:
+                val_data = next(val_iter)
+            except StopIteration:
+                val_iter = iter(val_dataloader)
+                val_data = next(val_iter)
             with torch.no_grad():
                 print_log(val_data, model, losses, epoch, step, possible_anchors, device)
             torch.save(model.state_dict(), "model_weights.pth")
