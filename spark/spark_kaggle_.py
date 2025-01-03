@@ -1,38 +1,37 @@
 from pyspark.sql import SparkSession
-from pyspark.ml.feature import VectorAssembler, StringIndexer
+from pyspark.ml.feature import VectorAssembler, StringIndexer, StandardScaler, RobustScaler
 from pyspark.ml import Pipeline
-from pyspark.ml.regression import GeneralizedLinearRegression
+from pyspark.ml.regression import GeneralizedLinearRegression, GBTRegressor, RandomForestRegressor
+from pyspark.sql import functions as F
+from pyspark.ml.evaluation import RegressionEvaluator
 
 # Initialize SparkSession
 spark = SparkSession.builder.appName("LoadDataFrameExample").getOrCreate()
+spark.sparkContext.setLogLevel("WARN")
 
 file_path = "train.csv"
 
-indexers = []
-
-df = spark.read.csv(file_path, header=True, inferSchema=True)
+df = spark.read.csv(
+    file_path,
+    header=True,
+    inferSchema=True,
+    # samplingRatio=0.01
+)
+#df = df.sample(fraction=0.1)
+df.show()
 
 all_column_names = df.columns
 output_column = "Premium Amount"
 feature_columns = all_column_names[1:-1]
-string_columns = []
-string_columns_index = []
-feature_columns.remove("Policy Start Date")
+# feature_columns.remove("Policy Start Date")
+df = df.withColumn("Policy Start Date", F.unix_timestamp("Policy Start Date").cast("double"))
 
-for col, col_type in df.dtypes:
-    if col_type == 'string':
-        new_col_name = f"{col}_index"
-        string_columns.append(col)
-        string_columns_index.append(new_col_name)
+string_columns = [col for col, dtype in df.dtypes if dtype == 'string']
+indexers = [StringIndexer(inputCol=col, outputCol=f"{col}_index", handleInvalid="keep") for col in string_columns]
+feature_columns = [col for col in feature_columns if col not in string_columns]
+feature_columns += [f"{col}_index" for col in string_columns]
 
-        indexer = StringIndexer(inputCol=col, outputCol=new_col_name, handleInvalid="keep")
-        indexers.append(indexer)
-        feature_columns.remove(col)
-        feature_columns.append(new_col_name)
-
-        #df = indexer.fit(df).transform(df)
-
-#df.show()
+# df.show()
 df = df.fillna({'Age': 0, 'Annual Income': 0, 'Health Score': 0, 'Credit Score': 0, 'Previous Claims': 0,
                 'Number of Dependents': 0, 'Vehicle Age': 0, 'Insurance Duration': 0})
 
@@ -41,25 +40,88 @@ df = df.withColumnRenamed(output_column, "label")
 assembler = VectorAssembler(inputCols=feature_columns, outputCol="features",
                             handleInvalid="keep")
 
-#regressor = DecisionTreeRegressor(featuresCol="features", labelCol='label')
+# regressor = DecisionTreeRegressor(featuresCol="features", labelCol='label')
 
-regressor = GeneralizedLinearRegression(family="gamma", link="inverse", maxIter=10, regParam=0.3)
 
-pipeline = Pipeline(stages=indexers + [assembler, regressor])
-model = pipeline.fit(df)
+max_iter = 25
+reg_param = 0.01
 
-print("Coefficients: " + str(model.coefficients))
-print("Intercept: " + str(model.intercept))
+glm = GeneralizedLinearRegression(family="gamma",
+                                  link="log",
+                                  featuresCol='scaled_features',
+                                  # predictionCol='glm_gamma_log_prediction',
+                                  maxIter=max_iter,
+                                  regParam=reg_param
+                                  )
 
-prediction = model.transform(df)
-#transformed_df = assembler.transform(df)
+glm_gamma_ident_regressor = GeneralizedLinearRegression(family="gamma",
+                                                        link="identity",
+                                                        featuresCol='scaled_features',
+                                                        # predictionCol='glm_gamma_identity_prediction',
+                                                        maxIter=max_iter,
+                                                        regParam=reg_param
+                                                        )
 
-#indexed = featureIndexer.transform(transformed_df)
+glm_gamma_inverse_regressor = GeneralizedLinearRegression(family="gamma",
+                                                          link="inverse",
+                                                          featuresCol='scaled_features',
+                                                          # predictionCol='glm_gamma_inverse_prediction',
+                                                          maxIter=max_iter,
+                                                          regParam=reg_param
+                                                          )
 
-print(string_columns)
-print(string_columns_index)
-print(df.columns)
-df.printSchema()
+glm_gaussian_log_regressor = GeneralizedLinearRegression(family="gaussian",
+                                                         link="log",
+                                                         featuresCol='scaled_features',
+                                                         # predictionCol='glm_gaussian_log_prediction',
+                                                         maxIter=max_iter,
+                                                         regParam=reg_param
+                                                         )
 
-prediction.select(output_column, 'prediction').show()
+gbt = GBTRegressor(featuresCol="features",
+                   maxIter=max_iter,
+                   maxDepth=10,
+                   maxBins=32,
+                   lossType='squared',
+                   impurity='variance'
+                   )
 
+rf = RandomForestRegressor(featuresCol="features",
+                           maxDepth=10,
+                           numTrees=30)
+
+regressors = [
+    glm, glm_gamma_ident_regressor, glm_gamma_inverse_regressor, glm_gaussian_log_regressor,
+    gbt, rf]
+
+df = df.cache()
+
+std_scaler = StandardScaler(inputCol='features', outputCol='scaled_features', withStd=True, withMean=True)
+rob_scaler = RobustScaler(inputCol='features', outputCol='scaled_features',
+                          lower=0.25, upper=0.75)
+
+for regressor in regressors:
+    for scaler in [std_scaler, rob_scaler]:
+        print(type(regressor).__name__, type(scaler).__name__)
+
+        if type(regressor).__name__ in ['GBTRegressor', 'RandomForestRegressor']:
+
+            pipeline = Pipeline(stages=indexers + [assembler,
+                                                   regressor,
+                                                   ])
+        else:
+            pipeline = Pipeline(stages=indexers + [assembler,
+                                                   scaler,
+                                                   regressor,
+                                                   ])
+
+        model = pipeline.fit(df)
+        prediction = model.transform(df)
+        prediction.select('label',
+                          'prediction'
+                          ).show()
+        evaluator = RegressionEvaluator(labelCol="label", predictionCol="prediction", metricName="rmse")
+        rmse = evaluator.evaluate(prediction)
+        print("Root Mean Squared Error (RMSE) on test data = %g" % rmse)
+        usedModel = model.stages[-1]
+        print(usedModel)
