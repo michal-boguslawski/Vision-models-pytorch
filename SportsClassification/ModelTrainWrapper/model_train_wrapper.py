@@ -6,6 +6,7 @@ from torch.utils.data import DataLoader
 from sklearn.metrics import accuracy_score, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 import numpy as np
+from IPython.display import clear_output
 
 
 class ModelTrainWrapper:
@@ -132,14 +133,20 @@ class ModelTrainWrapper:
         preds: T.Tensor,
         set_type: str | None = None
     ):
-        disp = ConfusionMatrixDisplay.from_predictions(
+        fig, ax = plt.subplots(figsize=(20, 18))
+        _ = ConfusionMatrixDisplay.from_predictions(
             y_true=labels,
             y_pred=preds,
             labels=range(100),
             display_labels=self.class_names,
-            normalize="true"
+            normalize=None,  # Optional
+            ax=ax,
+            xticks_rotation='vertical',
         )
-        disp.ax_.set_title(f"Confusion Matrix {set_type}")
+        ax.set_title(f"Confusion Matrix {set_type}")
+        ax.set_xlabel("Predicted Label")
+        ax.set_ylabel("True Label")
+        plt.tight_layout()
         plt.show()
     
     def on_epoch_end(
@@ -153,7 +160,7 @@ class ModelTrainWrapper:
         Actions taken at the end of each epoch.
         Calculate accuracy for both training and test datasets, show sample of images with predictions, confusion matrix and plot loss function
         '''
-        
+        clear_output(wait=True)
         print(50 * "=")
         # Calculate accuracy and get sample image data and predictions for train set
         train_accuracy, train_sample, all_train_labels, all_train_preds = self.evaluate_accuracy(dataloader=train_dataloader)
@@ -172,11 +179,11 @@ class ModelTrainWrapper:
         print(f"Epoch: {epoch}, train set accuracy {train_accuracy:.4f} test set accuracy {test_accuracy:.4f}")
         print("Train sample")
         self.plot_images(train_images, train_preds_classes, train_labels_classes)
-        # self.confusion_matrix(all_train_labels, all_train_preds, "train")
+        self.confusion_matrix(all_train_labels, all_train_preds, "train")
         if test_dataloader:
             print("Test sample")
             self.plot_images(test_images, test_preds_classes, test_labels_classes)
-            # self.confusion_matrix(all_test_labels, all_test_preds, "test")
+            self.confusion_matrix(all_test_labels, all_test_preds, "test")
             
         print("Loss plot")
         self.plot_loss(epoch=epoch, losses=losses)
