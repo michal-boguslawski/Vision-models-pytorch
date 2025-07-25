@@ -1,0 +1,5 @@
+**/data/**
+**/__pycache__/**
+**/.vscode/**
+
+!**/data/download_data.py
