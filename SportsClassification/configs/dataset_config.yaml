@@ -1,0 +1,29 @@
+# dataset_config.yaml
+name: sports_images
+
+source: kaggle
+kaggle_dataset_name: gpiosenka/sports-classification
+force_download: false
+root_dir: data
+raw_subdir: raw
+processed_subdir: processed
+annotations_subdir: annotations
+annotations_file: sports.csv
+use_existing_train_test_split: true
+train_subdir: train
+val_subdir: val
+test_subdir: test
+
+input_size: [224, 224]
+normalize_mean: [0.485, 0.456, 0.406]
+normalize_std: [0.229, 0.224, 0.225]
+augmentations:
+  horizontal_flip: true
+  rotation: false
+  random_crop: true
+  color_jitter: false
+
+batch_size: 32
+shuffle: true
+num_workers: 1
+seed: 42

@@ -1,0 +1,8 @@
+2025-09-02 16:34:49,973 [INFO] Global seed set to 42
+2025-09-02 16:34:49,974 [INFO] Folder logs/sports_cv_project_classification/alexnet was removed with its entire content
+2025-09-02 16:34:49,974 [INFO] Path logs/sports_cv_project_classification/alexnet/train created or existed
+2025-09-02 16:34:49,975 [INFO] Path logs/sports_cv_project_classification/alexnet/val created or existed
+2025-09-02 16:34:49,975 [INFO] Path logs/sports_cv_project_classification/alexnet/test created or existed
+2025-09-02 16:34:49,975 [INFO] Folder checkpoints/sports_cv_project_classification/alexnet was removed with its entire content
+2025-09-02 16:34:49,978 [INFO] Path checkpoints/sports_cv_project_classification/alexnet created or existed
+2025-09-02 16:34:49,986 [INFO] Training started...

@@ -1,0 +1,47 @@
+# default.yaml
+project_name: sports_cv_project_classification
+experiment_name: alexnet
+
+# Include model and dataset configs
+model: !include model_config.yaml
+dataset: !include dataset_config.yaml
+
+# Paths for outputs
+checkpoint_dir: checkpoints/
+log_dir: logs/
+# Subfolders for clarity
+log_subdirs:
+  train: train
+  val: val
+  test: test
+
+# Training settings
+training:
+  optimizer:
+    type: adam
+    lr: 0.0001
+    weight_decay: 1e-4
+  scheduler:
+    type: step_lr
+    step_size: 10
+    gamma: 0.1
+  loss:
+    type: cross_entropy
+    bbox_loss: smooth_l1
+    obj_loss: binary_cross_entropy
+  num_epochs: 50
+  save_best_only: true
+  save_checkpoint: true
+  log_interval: 50
+
+# Evaluation
+evaluation:
+  metrics: [accuracy, top-5-accuracy]
+  iou_threshold: 0.5
+  conf_threshold: 0.3
+
+# Misc
+misc:
+  device: cuda  # cpu
+  seed: 42
+  deterministic: true
