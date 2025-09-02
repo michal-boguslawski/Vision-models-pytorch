@@ -33,6 +33,12 @@ class AlexNet(nn.Module):
                 padding=0,
             ),
             activation_fn(inplace=True),
+            nn.LocalResponseNorm(
+                size=5,
+                k=2,
+                alpha=1e-4,
+                beta=0.75
+            ),
             pool_type(kernel_size=3, stride=2),
             nn.Conv2d(
                 in_channels=96,
@@ -41,6 +47,12 @@ class AlexNet(nn.Module):
                 padding=2,
             ),
             activation_fn(inplace=True),
+            nn.LocalResponseNorm(
+                size=5,
+                k=2,
+                alpha=1e-4,
+                beta=0.75
+            ),
             pool_type(kernel_size=3, stride=2),
             nn.Conv2d(
                 in_channels=256,

@@ -8,7 +8,7 @@
 ## Summary of models
 |Model Description|Train accuracy|Test accuracy|Evaluation notebook|
 |----------|------------|----------|----------|
-|AlexNet|0.9812|0.6125|<a href="01_AlexNet/notebooks/AlexNetTraining.ipynb">Link</a>|
+|AlexNet|0.7725|0.504|xxx|
 |Vision Transformer|xxx|xxx||
 |ResNet-18|xxx|xxx||
 |VGG|xxx|xxx||

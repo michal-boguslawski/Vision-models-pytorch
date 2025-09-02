@@ -2,7 +2,7 @@ import os
 from PIL import Image, UnidentifiedImageError
 import pandas as pd
 from tqdm import tqdm
-from utils.helpers import remove_dir_with_content, make_dirs
+from utils.filesystem import remove_dir_with_content, make_dirs
 
 
 default_annotation_dict = {

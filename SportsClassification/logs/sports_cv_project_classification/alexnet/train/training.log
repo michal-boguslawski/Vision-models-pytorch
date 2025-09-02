@@ -1,8 +1,943 @@
-2025-09-02 16:34:49,973 [INFO] Global seed set to 42
-2025-09-02 16:34:49,974 [INFO] Folder logs/sports_cv_project_classification/alexnet was removed with its entire content
-2025-09-02 16:34:49,974 [INFO] Path logs/sports_cv_project_classification/alexnet/train created or existed
-2025-09-02 16:34:49,975 [INFO] Path logs/sports_cv_project_classification/alexnet/val created or existed
-2025-09-02 16:34:49,975 [INFO] Path logs/sports_cv_project_classification/alexnet/test created or existed
-2025-09-02 16:34:49,975 [INFO] Folder checkpoints/sports_cv_project_classification/alexnet was removed with its entire content
-2025-09-02 16:34:49,978 [INFO] Path checkpoints/sports_cv_project_classification/alexnet created or existed
-2025-09-02 16:34:49,986 [INFO] Training started...
+2025-09-02 20:44:44,261 [INFO] Global seed set to 42
+2025-09-02 20:44:44,262 [INFO] Folder logs/sports_cv_project_classification/alexnet was removed with its entire content
+2025-09-02 20:44:44,262 [INFO] Path logs/sports_cv_project_classification/alexnet/train created or existed
+2025-09-02 20:44:44,262 [INFO] Path logs/sports_cv_project_classification/alexnet/val created or existed
+2025-09-02 20:44:44,262 [INFO] Path logs/sports_cv_project_classification/alexnet/test created or existed
+2025-09-02 20:44:44,262 [INFO] Folder checkpoints/sports_cv_project_classification/alexnet was removed with its entire content
+2025-09-02 20:44:44,262 [INFO] Path checkpoints/sports_cv_project_classification/alexnet created or existed
+2025-09-02 20:44:44,268 [INFO] Training started...
+2025-09-02 20:44:48,094 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:44:48,094 [INFO] loss: 4.604500 accuracy: 0.010625 top-5-accuracy: 0.054375
+2025-09-02 20:44:51,158 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:44:51,158 [INFO] loss: 4.597219 accuracy: 0.008750 top-5-accuracy: 0.058750
+2025-09-02 20:44:54,307 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:44:54,307 [INFO] loss: 4.502351 accuracy: 0.015000 top-5-accuracy: 0.093125
+2025-09-02 20:44:57,369 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:44:57,370 [INFO] loss: 4.437018 accuracy: 0.024375 top-5-accuracy: 0.105625
+2025-09-02 20:45:00,383 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:00,383 [INFO] loss: 4.423897 accuracy: 0.019375 top-5-accuracy: 0.100625
+2025-09-02 20:45:03,714 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:03,714 [INFO] loss: 4.409603 accuracy: 0.025000 top-5-accuracy: 0.105000
+2025-09-02 20:45:06,892 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:06,892 [INFO] loss: 4.407680 accuracy: 0.025000 top-5-accuracy: 0.103750
+2025-09-02 20:45:09,926 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:09,926 [INFO] loss: 4.387776 accuracy: 0.017500 top-5-accuracy: 0.106250
+2025-09-02 20:45:11,156 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:11,156 [INFO] loss: 4.397610 epoch_loss: 4.467156 accuracy: 0.014881 epoch_accuracy: 0.018143 top-5-accuracy: 0.109821 epoch_top-5-accuracy: 0.091958
+2025-09-02 20:45:11,156 [INFO] Epoch summary loss: 4.467156 accuracy: 0.018143 top-5-accuracy: 0.091958
+2025-09-02 20:45:11,157 [INFO] Current lr: [0.0002]
+2025-09-02 20:45:11,744 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:45:11,744 [INFO] accuracy: 0.020000 top-5-accuracy: 0.104000 loss: 4.360194
+2025-09-02 20:45:11,915 [INFO] Model saved. New best value 4.360194
+2025-09-02 20:45:15,698 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:15,698 [INFO] loss: 4.372084 accuracy: 0.022500 top-5-accuracy: 0.107500
+2025-09-02 20:45:18,793 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:18,794 [INFO] loss: 4.362337 accuracy: 0.025625 top-5-accuracy: 0.123125
+2025-09-02 20:45:21,829 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:21,830 [INFO] loss: 4.379121 accuracy: 0.025625 top-5-accuracy: 0.114375
+2025-09-02 20:45:25,098 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:25,099 [INFO] loss: 4.335891 accuracy: 0.030625 top-5-accuracy: 0.119375
+2025-09-02 20:45:28,212 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:28,212 [INFO] loss: 4.354085 accuracy: 0.025000 top-5-accuracy: 0.121875
+2025-09-02 20:45:31,304 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:31,304 [INFO] loss: 4.336640 accuracy: 0.028750 top-5-accuracy: 0.120625
+2025-09-02 20:45:34,451 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:34,451 [INFO] loss: 4.277867 accuracy: 0.035625 top-5-accuracy: 0.146875
+2025-09-02 20:45:37,605 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:37,605 [INFO] loss: 4.283659 accuracy: 0.029375 top-5-accuracy: 0.137500
+2025-09-02 20:45:38,927 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:38,927 [INFO] loss: 4.274777 epoch_loss: 4.333801 accuracy: 0.041964 epoch_accuracy: 0.028599 top-5-accuracy: 0.138095 epoch_top-5-accuracy: 0.124911
+2025-09-02 20:45:38,927 [INFO] Epoch summary loss: 4.333801 accuracy: 0.028599 top-5-accuracy: 0.124911
+2025-09-02 20:45:38,927 [INFO] Current lr: [0.0002]
+2025-09-02 20:45:39,467 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:45:39,467 [INFO] accuracy: 0.028000 top-5-accuracy: 0.152000 loss: 4.237397
+2025-09-02 20:45:39,664 [INFO] Model saved. New best value 4.237397
+2025-09-02 20:45:43,275 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:43,276 [INFO] loss: 4.282788 accuracy: 0.020625 top-5-accuracy: 0.144375
+2025-09-02 20:45:46,440 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:46,440 [INFO] loss: 4.247716 accuracy: 0.034375 top-5-accuracy: 0.155625
+2025-09-02 20:45:49,444 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:49,444 [INFO] loss: 4.254708 accuracy: 0.039375 top-5-accuracy: 0.158125
+2025-09-02 20:45:52,742 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:52,745 [INFO] loss: 4.236044 accuracy: 0.041875 top-5-accuracy: 0.153125
+2025-09-02 20:45:55,858 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:55,859 [INFO] loss: 4.203619 accuracy: 0.041875 top-5-accuracy: 0.174375
+2025-09-02 20:45:58,803 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:45:58,803 [INFO] loss: 4.231892 accuracy: 0.035625 top-5-accuracy: 0.160625
+2025-09-02 20:46:02,094 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:02,094 [INFO] loss: 4.224284 accuracy: 0.030000 top-5-accuracy: 0.166875
+2025-09-02 20:46:05,306 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:05,306 [INFO] loss: 4.228540 accuracy: 0.031250 top-5-accuracy: 0.165000
+2025-09-02 20:46:06,672 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:06,673 [INFO] loss: 4.202302 epoch_loss: 4.236763 accuracy: 0.035714 epoch_accuracy: 0.034360 top-5-accuracy: 0.166964 epoch_top-5-accuracy: 0.160041
+2025-09-02 20:46:06,673 [INFO] Epoch summary loss: 4.236763 accuracy: 0.034360 top-5-accuracy: 0.160041
+2025-09-02 20:46:06,673 [INFO] Current lr: [0.0002]
+2025-09-02 20:46:07,253 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:46:07,254 [INFO] accuracy: 0.050000 top-5-accuracy: 0.198000 loss: 4.083686
+2025-09-02 20:46:07,465 [INFO] Model saved. New best value 4.083686
+2025-09-02 20:46:10,998 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:10,999 [INFO] loss: 4.183799 accuracy: 0.045625 top-5-accuracy: 0.178750
+2025-09-02 20:46:14,308 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:14,308 [INFO] loss: 4.123034 accuracy: 0.055625 top-5-accuracy: 0.189375
+2025-09-02 20:46:17,347 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:17,347 [INFO] loss: 4.194571 accuracy: 0.040625 top-5-accuracy: 0.175000
+2025-09-02 20:46:20,444 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:20,444 [INFO] loss: 4.149862 accuracy: 0.038125 top-5-accuracy: 0.192500
+2025-09-02 20:46:23,554 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:23,554 [INFO] loss: 4.162393 accuracy: 0.044375 top-5-accuracy: 0.174375
+2025-09-02 20:46:26,809 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:26,810 [INFO] loss: 4.136124 accuracy: 0.041875 top-5-accuracy: 0.186250
+2025-09-02 20:46:29,850 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:29,850 [INFO] loss: 4.110515 accuracy: 0.048750 top-5-accuracy: 0.203125
+2025-09-02 20:46:32,900 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:32,900 [INFO] loss: 4.105691 accuracy: 0.053125 top-5-accuracy: 0.206875
+2025-09-02 20:46:34,260 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:34,260 [INFO] loss: 4.134209 epoch_loss: 4.144585 accuracy: 0.035714 epoch_accuracy: 0.045542 top-5-accuracy: 0.197024 epoch_top-5-accuracy: 0.188863
+2025-09-02 20:46:34,260 [INFO] Epoch summary loss: 4.144585 accuracy: 0.045542 top-5-accuracy: 0.188863
+2025-09-02 20:46:34,260 [INFO] Current lr: [0.0002]
+2025-09-02 20:46:34,850 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:46:34,850 [INFO] accuracy: 0.050000 top-5-accuracy: 0.208000 loss: 3.960263
+2025-09-02 20:46:35,044 [INFO] Model saved. New best value 3.960263
+2025-09-02 20:46:38,549 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:38,550 [INFO] loss: 4.079555 accuracy: 0.046875 top-5-accuracy: 0.217500
+2025-09-02 20:46:41,613 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:41,614 [INFO] loss: 4.075334 accuracy: 0.058750 top-5-accuracy: 0.219375
+2025-09-02 20:46:44,752 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:44,752 [INFO] loss: 4.094544 accuracy: 0.053125 top-5-accuracy: 0.205625
+2025-09-02 20:46:47,901 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:47,907 [INFO] loss: 4.032248 accuracy: 0.053750 top-5-accuracy: 0.235625
+2025-09-02 20:46:50,977 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:50,977 [INFO] loss: 4.063941 accuracy: 0.058750 top-5-accuracy: 0.210625
+2025-09-02 20:46:54,220 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:54,220 [INFO] loss: 4.044462 accuracy: 0.043750 top-5-accuracy: 0.216250
+2025-09-02 20:46:57,287 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:46:57,287 [INFO] loss: 4.036934 accuracy: 0.052500 top-5-accuracy: 0.245625
+2025-09-02 20:47:00,352 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:00,352 [INFO] loss: 4.031110 accuracy: 0.055625 top-5-accuracy: 0.229375
+2025-09-02 20:47:01,787 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:01,788 [INFO] loss: 3.998027 epoch_loss: 4.054106 accuracy: 0.071131 epoch_accuracy: 0.053747 top-5-accuracy: 0.274702 epoch_top-5-accuracy: 0.225163
+2025-09-02 20:47:01,788 [INFO] Epoch summary loss: 4.054106 accuracy: 0.053747 top-5-accuracy: 0.225163
+2025-09-02 20:47:01,788 [INFO] Current lr: [0.0002]
+2025-09-02 20:47:02,389 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:47:02,390 [INFO] accuracy: 0.074000 top-5-accuracy: 0.258000 loss: 3.833387
+2025-09-02 20:47:02,581 [INFO] Model saved. New best value 3.833387
+2025-09-02 20:47:06,361 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:06,362 [INFO] loss: 4.025118 accuracy: 0.056875 top-5-accuracy: 0.230000
+2025-09-02 20:47:09,423 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:09,424 [INFO] loss: 3.960941 accuracy: 0.056875 top-5-accuracy: 0.237500
+2025-09-02 20:47:12,639 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:12,639 [INFO] loss: 3.946233 accuracy: 0.060625 top-5-accuracy: 0.263750
+2025-09-02 20:47:15,851 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:15,851 [INFO] loss: 3.914258 accuracy: 0.074375 top-5-accuracy: 0.265000
+2025-09-02 20:47:19,144 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:19,144 [INFO] loss: 3.957880 accuracy: 0.070000 top-5-accuracy: 0.256875
+2025-09-02 20:47:22,259 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:22,263 [INFO] loss: 3.892310 accuracy: 0.070625 top-5-accuracy: 0.265000
+2025-09-02 20:47:25,353 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:25,353 [INFO] loss: 3.914421 accuracy: 0.071250 top-5-accuracy: 0.268750
+2025-09-02 20:47:28,700 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:28,701 [INFO] loss: 3.929490 accuracy: 0.071875 top-5-accuracy: 0.282500
+2025-09-02 20:47:29,971 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:29,971 [INFO] loss: 3.795756 epoch_loss: 3.934890 accuracy: 0.072917 epoch_accuracy: 0.066795 top-5-accuracy: 0.328571 epoch_top-5-accuracy: 0.262204
+2025-09-02 20:47:29,972 [INFO] Epoch summary loss: 3.934890 accuracy: 0.066795 top-5-accuracy: 0.262204
+2025-09-02 20:47:29,972 [INFO] Current lr: [0.0002]
+2025-09-02 20:47:30,547 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:47:30,547 [INFO] accuracy: 0.094000 top-5-accuracy: 0.296000 loss: 3.722175
+2025-09-02 20:47:30,752 [INFO] Model saved. New best value 3.722175
+2025-09-02 20:47:34,552 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:34,553 [INFO] loss: 3.842717 accuracy: 0.079375 top-5-accuracy: 0.281250
+2025-09-02 20:47:37,839 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:37,839 [INFO] loss: 3.862881 accuracy: 0.065625 top-5-accuracy: 0.282500
+2025-09-02 20:47:40,716 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:40,716 [INFO] loss: 3.858817 accuracy: 0.077500 top-5-accuracy: 0.292500
+2025-09-02 20:47:44,023 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:44,023 [INFO] loss: 3.794702 accuracy: 0.094375 top-5-accuracy: 0.315000
+2025-09-02 20:47:47,089 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:47,089 [INFO] loss: 3.776907 accuracy: 0.105625 top-5-accuracy: 0.327500
+2025-09-02 20:47:50,159 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:50,159 [INFO] loss: 3.841525 accuracy: 0.088750 top-5-accuracy: 0.294375
+2025-09-02 20:47:53,396 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:53,396 [INFO] loss: 3.802520 accuracy: 0.096875 top-5-accuracy: 0.316875
+2025-09-02 20:47:56,575 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:56,575 [INFO] loss: 3.856626 accuracy: 0.094375 top-5-accuracy: 0.301250
+2025-09-02 20:47:57,844 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:47:57,844 [INFO] loss: 3.804294 epoch_loss: 3.828450 accuracy: 0.110417 epoch_accuracy: 0.088803 top-5-accuracy: 0.311607 epoch_top-5-accuracy: 0.302014
+2025-09-02 20:47:57,844 [INFO] Epoch summary loss: 3.828450 accuracy: 0.088803 top-5-accuracy: 0.302014
+2025-09-02 20:47:57,845 [INFO] Current lr: [0.0002]
+2025-09-02 20:47:58,429 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:47:58,429 [INFO] accuracy: 0.096000 top-5-accuracy: 0.362000 loss: 3.587046
+2025-09-02 20:47:58,612 [INFO] Model saved. New best value 3.587046
+2025-09-02 20:48:02,325 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:02,326 [INFO] loss: 3.753610 accuracy: 0.091250 top-5-accuracy: 0.303750
+2025-09-02 20:48:05,544 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:05,544 [INFO] loss: 3.769689 accuracy: 0.100625 top-5-accuracy: 0.334375
+2025-09-02 20:48:08,642 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:08,642 [INFO] loss: 3.736662 accuracy: 0.095625 top-5-accuracy: 0.324375
+2025-09-02 20:48:11,817 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:11,817 [INFO] loss: 3.736122 accuracy: 0.101875 top-5-accuracy: 0.329375
+2025-09-02 20:48:15,002 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:15,002 [INFO] loss: 3.750418 accuracy: 0.100625 top-5-accuracy: 0.315000
+2025-09-02 20:48:18,155 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:18,155 [INFO] loss: 3.745281 accuracy: 0.108125 top-5-accuracy: 0.344375
+2025-09-02 20:48:21,333 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:21,333 [INFO] loss: 3.763480 accuracy: 0.101875 top-5-accuracy: 0.317500
+2025-09-02 20:48:24,361 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:24,361 [INFO] loss: 3.770578 accuracy: 0.084375 top-5-accuracy: 0.336875
+2025-09-02 20:48:25,750 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:25,750 [INFO] loss: 3.720750 epoch_loss: 3.751979 accuracy: 0.114286 epoch_accuracy: 0.098919 top-5-accuracy: 0.345238 epoch_top-5-accuracy: 0.326644
+2025-09-02 20:48:25,750 [INFO] Epoch summary loss: 3.751979 accuracy: 0.098919 top-5-accuracy: 0.326644
+2025-09-02 20:48:25,750 [INFO] Current lr: [0.0002]
+2025-09-02 20:48:26,345 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:48:26,345 [INFO] accuracy: 0.140000 top-5-accuracy: 0.410000 loss: 3.446544
+2025-09-02 20:48:26,548 [INFO] Model saved. New best value 3.446544
+2025-09-02 20:48:30,208 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:30,208 [INFO] loss: 3.731074 accuracy: 0.095625 top-5-accuracy: 0.343750
+2025-09-02 20:48:33,392 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:33,392 [INFO] loss: 3.696388 accuracy: 0.108750 top-5-accuracy: 0.341875
+2025-09-02 20:48:36,427 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:36,427 [INFO] loss: 3.648094 accuracy: 0.114375 top-5-accuracy: 0.371875
+2025-09-02 20:48:39,558 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:39,558 [INFO] loss: 3.640254 accuracy: 0.116875 top-5-accuracy: 0.363750
+2025-09-02 20:48:42,786 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:42,787 [INFO] loss: 3.649670 accuracy: 0.113750 top-5-accuracy: 0.359375
+2025-09-02 20:48:45,940 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:45,940 [INFO] loss: 3.688159 accuracy: 0.100000 top-5-accuracy: 0.350000
+2025-09-02 20:48:48,957 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:48,957 [INFO] loss: 3.671888 accuracy: 0.115625 top-5-accuracy: 0.360000
+2025-09-02 20:48:52,148 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:52,148 [INFO] loss: 3.702026 accuracy: 0.113125 top-5-accuracy: 0.350000
+2025-09-02 20:48:53,592 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:53,593 [INFO] loss: 3.603783 epoch_loss: 3.674579 accuracy: 0.128869 epoch_accuracy: 0.110826 top-5-accuracy: 0.384226 epoch_top-5-accuracy: 0.356576
+2025-09-02 20:48:53,593 [INFO] Epoch summary loss: 3.674579 accuracy: 0.110826 top-5-accuracy: 0.356576
+2025-09-02 20:48:53,593 [INFO] Current lr: [0.0002]
+2025-09-02 20:48:54,199 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:48:54,199 [INFO] accuracy: 0.134000 top-5-accuracy: 0.394000 loss: 3.529903
+2025-09-02 20:48:57,922 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:48:57,922 [INFO] loss: 3.602140 accuracy: 0.131875 top-5-accuracy: 0.380625
+2025-09-02 20:49:00,948 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:00,949 [INFO] loss: 3.627422 accuracy: 0.132500 top-5-accuracy: 0.369375
+2025-09-02 20:49:04,170 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:04,171 [INFO] loss: 3.644876 accuracy: 0.115625 top-5-accuracy: 0.353125
+2025-09-02 20:49:07,435 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:07,435 [INFO] loss: 3.578723 accuracy: 0.124375 top-5-accuracy: 0.393750
+2025-09-02 20:49:10,511 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:10,511 [INFO] loss: 3.624375 accuracy: 0.126250 top-5-accuracy: 0.373125
+2025-09-02 20:49:13,949 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:13,949 [INFO] loss: 3.651572 accuracy: 0.110625 top-5-accuracy: 0.364375
+2025-09-02 20:49:17,193 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:17,194 [INFO] loss: 3.585318 accuracy: 0.126875 top-5-accuracy: 0.387500
+2025-09-02 20:49:20,272 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:20,273 [INFO] loss: 3.627090 accuracy: 0.128125 top-5-accuracy: 0.388125
+2025-09-02 20:49:21,684 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:21,685 [INFO] loss: 3.551257 epoch_loss: 3.613954 accuracy: 0.116964 epoch_accuracy: 0.124008 top-5-accuracy: 0.394345 epoch_top-5-accuracy: 0.377370
+2025-09-02 20:49:21,685 [INFO] Epoch summary loss: 3.613954 accuracy: 0.124008 top-5-accuracy: 0.377370
+2025-09-02 20:49:21,685 [INFO] Current lr: [0.0002]
+2025-09-02 20:49:22,282 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:49:22,282 [INFO] accuracy: 0.144000 top-5-accuracy: 0.420000 loss: 3.422000
+2025-09-02 20:49:22,483 [INFO] Model saved. New best value 3.422000
+2025-09-02 20:49:26,311 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:26,312 [INFO] loss: 3.547066 accuracy: 0.139375 top-5-accuracy: 0.398125
+2025-09-02 20:49:29,318 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:29,318 [INFO] loss: 3.519837 accuracy: 0.144375 top-5-accuracy: 0.417500
+2025-09-02 20:49:32,447 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:32,448 [INFO] loss: 3.581338 accuracy: 0.131875 top-5-accuracy: 0.395625
+2025-09-02 20:49:35,760 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:35,760 [INFO] loss: 3.549911 accuracy: 0.132500 top-5-accuracy: 0.408750
+2025-09-02 20:49:38,657 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:38,657 [INFO] loss: 3.549650 accuracy: 0.142500 top-5-accuracy: 0.400000
+2025-09-02 20:49:41,847 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:41,847 [INFO] loss: 3.627241 accuracy: 0.131875 top-5-accuracy: 0.377500
+2025-09-02 20:49:45,062 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:45,062 [INFO] loss: 3.495008 accuracy: 0.137500 top-5-accuracy: 0.400000
+2025-09-02 20:49:48,147 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:48,148 [INFO] loss: 3.569205 accuracy: 0.133125 top-5-accuracy: 0.389375
+2025-09-02 20:49:49,537 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:49,537 [INFO] loss: 3.470586 epoch_loss: 3.550399 accuracy: 0.135119 epoch_accuracy: 0.136685 top-5-accuracy: 0.417857 epoch_top-5-accuracy: 0.399422
+2025-09-02 20:49:49,538 [INFO] Epoch summary loss: 3.550399 accuracy: 0.136685 top-5-accuracy: 0.399422
+2025-09-02 20:49:49,538 [INFO] Current lr: [0.0002]
+2025-09-02 20:49:50,128 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:49:50,128 [INFO] accuracy: 0.172000 top-5-accuracy: 0.474000 loss: 3.298126
+2025-09-02 20:49:50,327 [INFO] Model saved. New best value 3.298126
+2025-09-02 20:49:53,978 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:53,978 [INFO] loss: 3.544907 accuracy: 0.145625 top-5-accuracy: 0.402500
+2025-09-02 20:49:56,990 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:49:56,991 [INFO] loss: 3.457955 accuracy: 0.136250 top-5-accuracy: 0.421875
+2025-09-02 20:50:00,061 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:00,061 [INFO] loss: 3.513968 accuracy: 0.143125 top-5-accuracy: 0.390625
+2025-09-02 20:50:03,428 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:03,428 [INFO] loss: 3.434130 accuracy: 0.153750 top-5-accuracy: 0.428750
+2025-09-02 20:50:06,504 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:06,505 [INFO] loss: 3.454562 accuracy: 0.148125 top-5-accuracy: 0.435625
+2025-09-02 20:50:09,691 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:09,692 [INFO] loss: 3.504787 accuracy: 0.140000 top-5-accuracy: 0.412500
+2025-09-02 20:50:12,931 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:12,932 [INFO] loss: 3.444741 accuracy: 0.136875 top-5-accuracy: 0.412500
+2025-09-02 20:50:16,173 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:16,174 [INFO] loss: 3.539508 accuracy: 0.136875 top-5-accuracy: 0.405000
+2025-09-02 20:50:17,544 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:17,545 [INFO] loss: 3.452688 epoch_loss: 3.485619 accuracy: 0.185417 epoch_accuracy: 0.144816 top-5-accuracy: 0.433929 epoch_top-5-accuracy: 0.414736
+2025-09-02 20:50:17,545 [INFO] Epoch summary loss: 3.485619 accuracy: 0.144816 top-5-accuracy: 0.414736
+2025-09-02 20:50:17,545 [INFO] Current lr: [0.0002]
+2025-09-02 20:50:18,180 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:50:18,180 [INFO] accuracy: 0.158000 top-5-accuracy: 0.456000 loss: 3.326225
+2025-09-02 20:50:21,962 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:21,962 [INFO] loss: 3.434384 accuracy: 0.151875 top-5-accuracy: 0.419375
+2025-09-02 20:50:25,147 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:25,148 [INFO] loss: 3.470089 accuracy: 0.146250 top-5-accuracy: 0.411250
+2025-09-02 20:50:28,251 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:28,251 [INFO] loss: 3.409012 accuracy: 0.163125 top-5-accuracy: 0.437500
+2025-09-02 20:50:31,489 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:31,489 [INFO] loss: 3.436307 accuracy: 0.151250 top-5-accuracy: 0.440000
+2025-09-02 20:50:34,669 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:34,669 [INFO] loss: 3.499301 accuracy: 0.160625 top-5-accuracy: 0.410000
+2025-09-02 20:50:37,730 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:37,733 [INFO] loss: 3.483719 accuracy: 0.132500 top-5-accuracy: 0.406875
+2025-09-02 20:50:40,800 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:40,801 [INFO] loss: 3.395205 accuracy: 0.164375 top-5-accuracy: 0.448750
+2025-09-02 20:50:43,956 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:43,956 [INFO] loss: 3.453079 accuracy: 0.146250 top-5-accuracy: 0.424375
+2025-09-02 20:50:45,281 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:45,281 [INFO] loss: 3.335145 epoch_loss: 3.441872 accuracy: 0.175298 epoch_accuracy: 0.153569 top-5-accuracy: 0.441964 epoch_top-5-accuracy: 0.425652
+2025-09-02 20:50:45,281 [INFO] Epoch summary loss: 3.441872 accuracy: 0.153569 top-5-accuracy: 0.425652
+2025-09-02 20:50:45,281 [INFO] Current lr: [0.0002]
+2025-09-02 20:50:45,848 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:50:45,848 [INFO] accuracy: 0.222000 top-5-accuracy: 0.504000 loss: 3.123858
+2025-09-02 20:50:46,048 [INFO] Model saved. New best value 3.123858
+2025-09-02 20:50:49,621 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:49,621 [INFO] loss: 3.299250 accuracy: 0.171875 top-5-accuracy: 0.465625
+2025-09-02 20:50:52,823 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:52,823 [INFO] loss: 3.410352 accuracy: 0.151875 top-5-accuracy: 0.441250
+2025-09-02 20:50:55,978 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:55,979 [INFO] loss: 3.452204 accuracy: 0.157500 top-5-accuracy: 0.431250
+2025-09-02 20:50:59,044 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:50:59,045 [INFO] loss: 3.383007 accuracy: 0.157500 top-5-accuracy: 0.441875
+2025-09-02 20:51:02,253 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:02,254 [INFO] loss: 3.426394 accuracy: 0.160625 top-5-accuracy: 0.435625
+2025-09-02 20:51:05,518 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:05,518 [INFO] loss: 3.334426 accuracy: 0.166250 top-5-accuracy: 0.459375
+2025-09-02 20:51:08,531 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:08,531 [INFO] loss: 3.387507 accuracy: 0.164375 top-5-accuracy: 0.443750
+2025-09-02 20:51:11,650 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:11,650 [INFO] loss: 3.367326 accuracy: 0.175625 top-5-accuracy: 0.439375
+2025-09-02 20:51:13,023 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:13,023 [INFO] loss: 3.422193 epoch_loss: 3.384817 accuracy: 0.154762 epoch_accuracy: 0.162693 top-5-accuracy: 0.436310 epoch_top-5-accuracy: 0.444328
+2025-09-02 20:51:13,024 [INFO] Epoch summary loss: 3.384817 accuracy: 0.162693 top-5-accuracy: 0.444328
+2025-09-02 20:51:13,024 [INFO] Current lr: [0.0002]
+2025-09-02 20:51:13,636 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:51:13,636 [INFO] accuracy: 0.208000 top-5-accuracy: 0.508000 loss: 3.066370
+2025-09-02 20:51:13,834 [INFO] Model saved. New best value 3.066370
+2025-09-02 20:51:17,362 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:17,362 [INFO] loss: 3.345426 accuracy: 0.170000 top-5-accuracy: 0.465625
+2025-09-02 20:51:20,457 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:20,458 [INFO] loss: 3.311769 accuracy: 0.183125 top-5-accuracy: 0.456875
+2025-09-02 20:51:23,658 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:23,659 [INFO] loss: 3.319923 accuracy: 0.186875 top-5-accuracy: 0.478125
+2025-09-02 20:51:26,827 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:26,828 [INFO] loss: 3.398928 accuracy: 0.170000 top-5-accuracy: 0.446250
+2025-09-02 20:51:29,866 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:29,867 [INFO] loss: 3.344058 accuracy: 0.177500 top-5-accuracy: 0.471875
+2025-09-02 20:51:33,069 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:33,070 [INFO] loss: 3.296876 accuracy: 0.183125 top-5-accuracy: 0.478125
+2025-09-02 20:51:36,335 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:36,336 [INFO] loss: 3.313449 accuracy: 0.164375 top-5-accuracy: 0.471250
+2025-09-02 20:51:39,396 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:39,396 [INFO] loss: 3.369880 accuracy: 0.171250 top-5-accuracy: 0.456250
+2025-09-02 20:51:40,810 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:40,810 [INFO] loss: 3.378560 epoch_loss: 3.339202 accuracy: 0.186012 epoch_accuracy: 0.176466 top-5-accuracy: 0.448512 epoch_top-5-accuracy: 0.464633
+2025-09-02 20:51:40,811 [INFO] Epoch summary loss: 3.339202 accuracy: 0.176466 top-5-accuracy: 0.464633
+2025-09-02 20:51:40,811 [INFO] Current lr: [0.0002]
+2025-09-02 20:51:41,372 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:51:41,372 [INFO] accuracy: 0.218000 top-5-accuracy: 0.530000 loss: 3.096160
+2025-09-02 20:51:44,999 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:45,007 [INFO] loss: 3.264058 accuracy: 0.178125 top-5-accuracy: 0.476250
+2025-09-02 20:51:48,141 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:48,141 [INFO] loss: 3.328200 accuracy: 0.181250 top-5-accuracy: 0.455000
+2025-09-02 20:51:51,345 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:51,345 [INFO] loss: 3.327877 accuracy: 0.185625 top-5-accuracy: 0.465625
+2025-09-02 20:51:54,407 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:54,407 [INFO] loss: 3.319488 accuracy: 0.176250 top-5-accuracy: 0.468125
+2025-09-02 20:51:57,352 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:51:57,352 [INFO] loss: 3.355239 accuracy: 0.196250 top-5-accuracy: 0.455625
+2025-09-02 20:52:00,468 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:00,468 [INFO] loss: 3.275930 accuracy: 0.178125 top-5-accuracy: 0.480625
+2025-09-02 20:52:03,847 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:03,847 [INFO] loss: 3.277528 accuracy: 0.181875 top-5-accuracy: 0.485000
+2025-09-02 20:52:07,022 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:07,022 [INFO] loss: 3.313096 accuracy: 0.193750 top-5-accuracy: 0.472500
+2025-09-02 20:52:08,316 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:08,316 [INFO] loss: 3.221948 epoch_loss: 3.302805 accuracy: 0.184226 epoch_accuracy: 0.183783 top-5-accuracy: 0.481845 epoch_top-5-accuracy: 0.470512
+2025-09-02 20:52:08,316 [INFO] Epoch summary loss: 3.302805 accuracy: 0.183783 top-5-accuracy: 0.470512
+2025-09-02 20:52:08,316 [INFO] Current lr: [0.0002]
+2025-09-02 20:52:08,931 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:52:08,931 [INFO] accuracy: 0.228000 top-5-accuracy: 0.526000 loss: 3.106497
+2025-09-02 20:52:12,772 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:12,773 [INFO] loss: 3.289426 accuracy: 0.187500 top-5-accuracy: 0.474375
+2025-09-02 20:52:16,056 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:16,056 [INFO] loss: 3.237466 accuracy: 0.201875 top-5-accuracy: 0.486875
+2025-09-02 20:52:19,081 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:19,081 [INFO] loss: 3.228434 accuracy: 0.187500 top-5-accuracy: 0.481250
+2025-09-02 20:52:22,278 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:22,278 [INFO] loss: 3.259191 accuracy: 0.190625 top-5-accuracy: 0.485000
+2025-09-02 20:52:25,449 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:25,450 [INFO] loss: 3.253229 accuracy: 0.203125 top-5-accuracy: 0.483750
+2025-09-02 20:52:28,488 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:28,488 [INFO] loss: 3.268414 accuracy: 0.193750 top-5-accuracy: 0.469375
+2025-09-02 20:52:31,743 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:31,743 [INFO] loss: 3.317193 accuracy: 0.175625 top-5-accuracy: 0.470000
+2025-09-02 20:52:34,950 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:34,950 [INFO] loss: 3.255845 accuracy: 0.187500 top-5-accuracy: 0.493125
+2025-09-02 20:52:36,241 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:36,241 [INFO] loss: 3.314117 epoch_loss: 3.266134 accuracy: 0.194643 epoch_accuracy: 0.191188 top-5-accuracy: 0.488690 epoch_top-5-accuracy: 0.480850
+2025-09-02 20:52:36,241 [INFO] Epoch summary loss: 3.266134 accuracy: 0.191188 top-5-accuracy: 0.480850
+2025-09-02 20:52:36,241 [INFO] Current lr: [0.0002]
+2025-09-02 20:52:36,835 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:52:36,836 [INFO] accuracy: 0.214000 top-5-accuracy: 0.546000 loss: 2.978763
+2025-09-02 20:52:37,040 [INFO] Model saved. New best value 2.978763
+2025-09-02 20:52:40,745 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:40,745 [INFO] loss: 3.221632 accuracy: 0.178750 top-5-accuracy: 0.487500
+2025-09-02 20:52:44,021 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:44,021 [INFO] loss: 3.196801 accuracy: 0.206875 top-5-accuracy: 0.496875
+2025-09-02 20:52:47,027 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:47,027 [INFO] loss: 3.248036 accuracy: 0.197500 top-5-accuracy: 0.486250
+2025-09-02 20:52:50,145 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:50,146 [INFO] loss: 3.201518 accuracy: 0.205625 top-5-accuracy: 0.498125
+2025-09-02 20:52:53,466 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:53,467 [INFO] loss: 3.246281 accuracy: 0.200000 top-5-accuracy: 0.477500
+2025-09-02 20:52:56,554 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:56,555 [INFO] loss: 3.243560 accuracy: 0.200625 top-5-accuracy: 0.492500
+2025-09-02 20:52:59,601 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:52:59,602 [INFO] loss: 3.238533 accuracy: 0.203750 top-5-accuracy: 0.478750
+2025-09-02 20:53:02,908 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:02,908 [INFO] loss: 3.220740 accuracy: 0.195000 top-5-accuracy: 0.501875
+2025-09-02 20:53:04,291 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:04,291 [INFO] loss: 3.163708 epoch_loss: 3.224279 accuracy: 0.199405 epoch_accuracy: 0.198682 top-5-accuracy: 0.491964 epoch_top-5-accuracy: 0.490121
+2025-09-02 20:53:04,292 [INFO] Epoch summary loss: 3.224279 accuracy: 0.198682 top-5-accuracy: 0.490121
+2025-09-02 20:53:04,292 [INFO] Current lr: [0.0002]
+2025-09-02 20:53:04,876 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:53:04,877 [INFO] accuracy: 0.242000 top-5-accuracy: 0.550000 loss: 2.927470
+2025-09-02 20:53:05,071 [INFO] Model saved. New best value 2.927470
+2025-09-02 20:53:08,708 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:08,708 [INFO] loss: 3.169420 accuracy: 0.215625 top-5-accuracy: 0.510625
+2025-09-02 20:53:11,879 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:11,880 [INFO] loss: 3.196726 accuracy: 0.199375 top-5-accuracy: 0.506875
+2025-09-02 20:53:15,147 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:15,148 [INFO] loss: 3.145132 accuracy: 0.199375 top-5-accuracy: 0.508125
+2025-09-02 20:53:18,286 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:18,286 [INFO] loss: 3.237112 accuracy: 0.206250 top-5-accuracy: 0.479375
+2025-09-02 20:53:21,501 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:21,501 [INFO] loss: 3.179019 accuracy: 0.193750 top-5-accuracy: 0.501250
+2025-09-02 20:53:24,681 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:24,681 [INFO] loss: 3.183399 accuracy: 0.198125 top-5-accuracy: 0.506250
+2025-09-02 20:53:27,678 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:27,678 [INFO] loss: 3.237653 accuracy: 0.198750 top-5-accuracy: 0.478750
+2025-09-02 20:53:30,766 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:30,766 [INFO] loss: 3.166788 accuracy: 0.218125 top-5-accuracy: 0.507500
+2025-09-02 20:53:32,231 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:32,231 [INFO] loss: 3.181015 epoch_loss: 3.189472 accuracy: 0.200893 epoch_accuracy: 0.203495 top-5-accuracy: 0.497024 epoch_top-5-accuracy: 0.499334
+2025-09-02 20:53:32,232 [INFO] Epoch summary loss: 3.189472 accuracy: 0.203495 top-5-accuracy: 0.499334
+2025-09-02 20:53:32,232 [INFO] Current lr: [0.0002]
+2025-09-02 20:53:32,844 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:53:32,844 [INFO] accuracy: 0.256000 top-5-accuracy: 0.562000 loss: 2.844588
+2025-09-02 20:53:33,063 [INFO] Model saved. New best value 2.844588
+2025-09-02 20:53:36,850 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:36,851 [INFO] loss: 3.143033 accuracy: 0.215625 top-5-accuracy: 0.513125
+2025-09-02 20:53:39,972 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:39,972 [INFO] loss: 3.187776 accuracy: 0.219375 top-5-accuracy: 0.490625
+2025-09-02 20:53:43,181 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:43,181 [INFO] loss: 3.124230 accuracy: 0.225000 top-5-accuracy: 0.517500
+2025-09-02 20:53:46,159 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:46,159 [INFO] loss: 3.087657 accuracy: 0.213750 top-5-accuracy: 0.538750
+2025-09-02 20:53:49,202 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:49,203 [INFO] loss: 3.153126 accuracy: 0.186875 top-5-accuracy: 0.507500
+2025-09-02 20:53:52,448 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:52,448 [INFO] loss: 3.229840 accuracy: 0.206875 top-5-accuracy: 0.497500
+2025-09-02 20:53:55,591 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:55,591 [INFO] loss: 3.147373 accuracy: 0.210625 top-5-accuracy: 0.506875
+2025-09-02 20:53:58,744 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:53:58,744 [INFO] loss: 3.118991 accuracy: 0.221875 top-5-accuracy: 0.533125
+2025-09-02 20:54:00,042 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:00,042 [INFO] loss: 3.183334 epoch_loss: 3.149651 accuracy: 0.220238 epoch_accuracy: 0.213196 top-5-accuracy: 0.526190 epoch_top-5-accuracy: 0.514114
+2025-09-02 20:54:00,042 [INFO] Epoch summary loss: 3.149651 accuracy: 0.213196 top-5-accuracy: 0.514114
+2025-09-02 20:54:00,043 [INFO] Current lr: [0.0002]
+2025-09-02 20:54:00,672 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:54:00,672 [INFO] accuracy: 0.260000 top-5-accuracy: 0.600000 loss: 2.967354
+2025-09-02 20:54:04,560 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:04,561 [INFO] loss: 3.154201 accuracy: 0.205000 top-5-accuracy: 0.516875
+2025-09-02 20:54:07,651 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:07,651 [INFO] loss: 3.096093 accuracy: 0.224375 top-5-accuracy: 0.533750
+2025-09-02 20:54:10,824 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:10,824 [INFO] loss: 3.083572 accuracy: 0.220000 top-5-accuracy: 0.516250
+2025-09-02 20:54:14,098 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:14,098 [INFO] loss: 3.161644 accuracy: 0.222500 top-5-accuracy: 0.509375
+2025-09-02 20:54:17,264 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:17,264 [INFO] loss: 3.146088 accuracy: 0.214375 top-5-accuracy: 0.521250
+2025-09-02 20:54:20,499 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:20,499 [INFO] loss: 3.173736 accuracy: 0.217500 top-5-accuracy: 0.521875
+2025-09-02 20:54:23,686 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:23,686 [INFO] loss: 3.164845 accuracy: 0.203125 top-5-accuracy: 0.520000
+2025-09-02 20:54:26,695 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:26,695 [INFO] loss: 3.131074 accuracy: 0.211250 top-5-accuracy: 0.525625
+2025-09-02 20:54:28,081 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:28,082 [INFO] loss: 3.099002 epoch_loss: 3.138346 accuracy: 0.224405 epoch_accuracy: 0.215033 top-5-accuracy: 0.530357 epoch_top-5-accuracy: 0.520690
+2025-09-02 20:54:28,082 [INFO] Epoch summary loss: 3.138346 accuracy: 0.215033 top-5-accuracy: 0.520690
+2025-09-02 20:54:28,082 [INFO] Current lr: [0.0002]
+2025-09-02 20:54:28,639 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:54:28,639 [INFO] accuracy: 0.204000 top-5-accuracy: 0.538000 loss: 3.066160
+2025-09-02 20:54:32,473 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:32,473 [INFO] loss: 3.041262 accuracy: 0.235625 top-5-accuracy: 0.525625
+2025-09-02 20:54:35,566 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:35,566 [INFO] loss: 3.136876 accuracy: 0.207500 top-5-accuracy: 0.511250
+2025-09-02 20:54:38,735 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:38,735 [INFO] loss: 3.010926 accuracy: 0.228750 top-5-accuracy: 0.553125
+2025-09-02 20:54:41,944 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:41,944 [INFO] loss: 3.120555 accuracy: 0.233125 top-5-accuracy: 0.524375
+2025-09-02 20:54:44,980 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:44,981 [INFO] loss: 3.096198 accuracy: 0.229375 top-5-accuracy: 0.526250
+2025-09-02 20:54:48,061 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:48,062 [INFO] loss: 3.128149 accuracy: 0.231250 top-5-accuracy: 0.519375
+2025-09-02 20:54:51,474 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:51,477 [INFO] loss: 3.099797 accuracy: 0.221875 top-5-accuracy: 0.535000
+2025-09-02 20:54:54,645 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:54,645 [INFO] loss: 3.191581 accuracy: 0.222500 top-5-accuracy: 0.500000
+2025-09-02 20:54:55,901 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:54:55,902 [INFO] loss: 3.076563 epoch_loss: 3.100300 accuracy: 0.231250 epoch_accuracy: 0.226629 top-5-accuracy: 0.529167 epoch_top-5-accuracy: 0.525148
+2025-09-02 20:54:55,902 [INFO] Epoch summary loss: 3.100300 accuracy: 0.226629 top-5-accuracy: 0.525148
+2025-09-02 20:54:55,902 [INFO] Current lr: [0.0002]
+2025-09-02 20:54:56,454 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:54:56,455 [INFO] accuracy: 0.258000 top-5-accuracy: 0.592000 loss: 2.847090
+2025-09-02 20:55:00,153 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:00,153 [INFO] loss: 3.018389 accuracy: 0.249375 top-5-accuracy: 0.551875
+2025-09-02 20:55:03,453 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:03,453 [INFO] loss: 3.041775 accuracy: 0.238125 top-5-accuracy: 0.546250
+2025-09-02 20:55:06,553 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:06,554 [INFO] loss: 3.026170 accuracy: 0.236250 top-5-accuracy: 0.546875
+2025-09-02 20:55:09,728 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:09,729 [INFO] loss: 2.994364 accuracy: 0.238125 top-5-accuracy: 0.554375
+2025-09-02 20:55:12,926 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:12,926 [INFO] loss: 3.100034 accuracy: 0.231250 top-5-accuracy: 0.528125
+2025-09-02 20:55:16,069 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:16,070 [INFO] loss: 3.048598 accuracy: 0.239375 top-5-accuracy: 0.531875
+2025-09-02 20:55:19,201 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:19,201 [INFO] loss: 3.106395 accuracy: 0.226250 top-5-accuracy: 0.528750
+2025-09-02 20:55:22,375 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:22,376 [INFO] loss: 3.071655 accuracy: 0.236250 top-5-accuracy: 0.523125
+2025-09-02 20:55:23,722 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:23,723 [INFO] loss: 3.064824 epoch_loss: 3.052509 accuracy: 0.232440 epoch_accuracy: 0.236537 top-5-accuracy: 0.537798 epoch_top-5-accuracy: 0.538759
+2025-09-02 20:55:23,723 [INFO] Epoch summary loss: 3.052509 accuracy: 0.236537 top-5-accuracy: 0.538759
+2025-09-02 20:55:23,723 [INFO] Current lr: [0.0002]
+2025-09-02 20:55:24,280 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:55:24,281 [INFO] accuracy: 0.278000 top-5-accuracy: 0.600000 loss: 2.773441
+2025-09-02 20:55:24,468 [INFO] Model saved. New best value 2.773441
+2025-09-02 20:55:28,292 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:28,292 [INFO] loss: 3.027875 accuracy: 0.232500 top-5-accuracy: 0.538750
+2025-09-02 20:55:31,495 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:31,495 [INFO] loss: 3.054374 accuracy: 0.253750 top-5-accuracy: 0.534375
+2025-09-02 20:55:34,543 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:34,543 [INFO] loss: 3.043760 accuracy: 0.230000 top-5-accuracy: 0.525625
+2025-09-02 20:55:37,621 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:37,622 [INFO] loss: 3.045584 accuracy: 0.228125 top-5-accuracy: 0.540625
+2025-09-02 20:55:40,810 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:40,811 [INFO] loss: 3.074745 accuracy: 0.228125 top-5-accuracy: 0.541875
+2025-09-02 20:55:43,929 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:43,929 [INFO] loss: 3.049168 accuracy: 0.244375 top-5-accuracy: 0.541875
+2025-09-02 20:55:47,122 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:47,123 [INFO] loss: 3.048104 accuracy: 0.236875 top-5-accuracy: 0.533750
+2025-09-02 20:55:50,252 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:50,253 [INFO] loss: 2.953608 accuracy: 0.248750 top-5-accuracy: 0.553750
+2025-09-02 20:55:51,631 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:51,632 [INFO] loss: 2.966756 epoch_loss: 3.033908 accuracy: 0.263988 epoch_accuracy: 0.238848 top-5-accuracy: 0.554762 epoch_top-5-accuracy: 0.539603
+2025-09-02 20:55:51,632 [INFO] Epoch summary loss: 3.033908 accuracy: 0.238848 top-5-accuracy: 0.539603
+2025-09-02 20:55:51,633 [INFO] Current lr: [0.0002]
+2025-09-02 20:55:52,225 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:55:52,226 [INFO] accuracy: 0.286000 top-5-accuracy: 0.630000 loss: 2.721289
+2025-09-02 20:55:52,410 [INFO] Model saved. New best value 2.721289
+2025-09-02 20:55:56,045 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:56,045 [INFO] loss: 3.000734 accuracy: 0.245000 top-5-accuracy: 0.541250
+2025-09-02 20:55:59,215 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:55:59,216 [INFO] loss: 3.040773 accuracy: 0.238750 top-5-accuracy: 0.547500
+2025-09-02 20:56:02,351 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:02,351 [INFO] loss: 2.980556 accuracy: 0.256875 top-5-accuracy: 0.562500
+2025-09-02 20:56:05,492 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:05,492 [INFO] loss: 2.985720 accuracy: 0.246875 top-5-accuracy: 0.563125
+2025-09-02 20:56:08,655 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:08,656 [INFO] loss: 3.032783 accuracy: 0.248750 top-5-accuracy: 0.546875
+2025-09-02 20:56:11,923 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:11,923 [INFO] loss: 2.957356 accuracy: 0.257500 top-5-accuracy: 0.562500
+2025-09-02 20:56:15,141 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:15,141 [INFO] loss: 3.102303 accuracy: 0.213125 top-5-accuracy: 0.536250
+2025-09-02 20:56:18,357 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:18,357 [INFO] loss: 2.940565 accuracy: 0.257500 top-5-accuracy: 0.566875
+2025-09-02 20:56:19,710 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:19,710 [INFO] loss: 3.015253 epoch_loss: 3.005924 accuracy: 0.253274 epoch_accuracy: 0.245720 top-5-accuracy: 0.545238 epoch_top-5-accuracy: 0.552681
+2025-09-02 20:56:19,710 [INFO] Epoch summary loss: 3.005924 accuracy: 0.245720 top-5-accuracy: 0.552681
+2025-09-02 20:56:19,711 [INFO] Current lr: [0.0002]
+2025-09-02 20:56:20,301 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:56:20,301 [INFO] accuracy: 0.298000 top-5-accuracy: 0.640000 loss: 2.661812
+2025-09-02 20:56:20,488 [INFO] Model saved. New best value 2.661812
+2025-09-02 20:56:24,242 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:24,243 [INFO] loss: 2.973801 accuracy: 0.253125 top-5-accuracy: 0.546250
+2025-09-02 20:56:27,551 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:27,551 [INFO] loss: 2.909968 accuracy: 0.263750 top-5-accuracy: 0.574375
+2025-09-02 20:56:30,748 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:30,748 [INFO] loss: 2.995321 accuracy: 0.250625 top-5-accuracy: 0.554375
+2025-09-02 20:56:34,027 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:34,027 [INFO] loss: 2.899174 accuracy: 0.266250 top-5-accuracy: 0.571250
+2025-09-02 20:56:37,306 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:37,306 [INFO] loss: 2.872895 accuracy: 0.269375 top-5-accuracy: 0.583125
+2025-09-02 20:56:40,448 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:40,448 [INFO] loss: 3.013862 accuracy: 0.240000 top-5-accuracy: 0.542500
+2025-09-02 20:56:43,604 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:43,604 [INFO] loss: 3.027281 accuracy: 0.259375 top-5-accuracy: 0.556875
+2025-09-02 20:56:46,704 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:46,704 [INFO] loss: 2.953985 accuracy: 0.246875 top-5-accuracy: 0.556875
+2025-09-02 20:56:48,029 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:48,029 [INFO] loss: 2.968169 epoch_loss: 2.957146 accuracy: 0.226786 epoch_accuracy: 0.254621 top-5-accuracy: 0.583631 epoch_top-5-accuracy: 0.561700
+2025-09-02 20:56:48,029 [INFO] Epoch summary loss: 2.957146 accuracy: 0.254621 top-5-accuracy: 0.561700
+2025-09-02 20:56:48,030 [INFO] Current lr: [0.0002]
+2025-09-02 20:56:48,650 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:56:48,650 [INFO] accuracy: 0.292000 top-5-accuracy: 0.664000 loss: 2.710018
+2025-09-02 20:56:52,338 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:52,339 [INFO] loss: 2.986625 accuracy: 0.250000 top-5-accuracy: 0.550000
+2025-09-02 20:56:55,419 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:55,419 [INFO] loss: 2.970862 accuracy: 0.240625 top-5-accuracy: 0.560000
+2025-09-02 20:56:58,556 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:56:58,557 [INFO] loss: 2.921259 accuracy: 0.269375 top-5-accuracy: 0.576250
+2025-09-02 20:57:01,753 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:01,753 [INFO] loss: 2.994137 accuracy: 0.235625 top-5-accuracy: 0.565625
+2025-09-02 20:57:04,919 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:04,919 [INFO] loss: 2.968712 accuracy: 0.246250 top-5-accuracy: 0.558750
+2025-09-02 20:57:08,138 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:08,138 [INFO] loss: 2.958896 accuracy: 0.268125 top-5-accuracy: 0.555625
+2025-09-02 20:57:11,349 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:11,349 [INFO] loss: 2.980888 accuracy: 0.240625 top-5-accuracy: 0.552500
+2025-09-02 20:57:14,515 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:14,515 [INFO] loss: 2.836690 accuracy: 0.291875 top-5-accuracy: 0.586250
+2025-09-02 20:57:15,868 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:15,869 [INFO] loss: 2.865495 epoch_loss: 2.948125 accuracy: 0.270536 epoch_accuracy: 0.256057 top-5-accuracy: 0.576190 epoch_top-5-accuracy: 0.563774
+2025-09-02 20:57:15,870 [INFO] Epoch summary loss: 2.948125 accuracy: 0.256057 top-5-accuracy: 0.563774
+2025-09-02 20:57:15,870 [INFO] Current lr: [0.0002]
+2025-09-02 20:57:16,454 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:57:16,454 [INFO] accuracy: 0.342000 top-5-accuracy: 0.676000 loss: 2.530015
+2025-09-02 20:57:16,663 [INFO] Model saved. New best value 2.530015
+2025-09-02 20:57:20,356 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:20,356 [INFO] loss: 2.852108 accuracy: 0.299375 top-5-accuracy: 0.584375
+2025-09-02 20:57:23,655 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:23,655 [INFO] loss: 2.955536 accuracy: 0.263750 top-5-accuracy: 0.575625
+2025-09-02 20:57:26,795 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:26,796 [INFO] loss: 2.988539 accuracy: 0.251875 top-5-accuracy: 0.566875
+2025-09-02 20:57:29,752 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:29,752 [INFO] loss: 2.918860 accuracy: 0.258125 top-5-accuracy: 0.566875
+2025-09-02 20:57:32,893 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:32,893 [INFO] loss: 2.938431 accuracy: 0.260625 top-5-accuracy: 0.583125
+2025-09-02 20:57:36,079 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:36,079 [INFO] loss: 2.885351 accuracy: 0.276250 top-5-accuracy: 0.571875
+2025-09-02 20:57:39,265 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:39,265 [INFO] loss: 2.935495 accuracy: 0.263750 top-5-accuracy: 0.571875
+2025-09-02 20:57:42,372 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:42,372 [INFO] loss: 2.849827 accuracy: 0.282500 top-5-accuracy: 0.593125
+2025-09-02 20:57:43,712 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:43,712 [INFO] loss: 2.912406 epoch_loss: 2.915601 accuracy: 0.280357 epoch_accuracy: 0.270098 top-5-accuracy: 0.565179 epoch_top-5-accuracy: 0.576185
+2025-09-02 20:57:43,713 [INFO] Epoch summary loss: 2.915601 accuracy: 0.270098 top-5-accuracy: 0.576185
+2025-09-02 20:57:43,713 [INFO] Current lr: [0.0002]
+2025-09-02 20:57:44,296 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:57:44,297 [INFO] accuracy: 0.326000 top-5-accuracy: 0.670000 loss: 2.596914
+2025-09-02 20:57:48,091 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:48,095 [INFO] loss: 2.844421 accuracy: 0.270625 top-5-accuracy: 0.592500
+2025-09-02 20:57:51,188 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:51,188 [INFO] loss: 2.782169 accuracy: 0.296250 top-5-accuracy: 0.599375
+2025-09-02 20:57:54,341 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:54,341 [INFO] loss: 2.923073 accuracy: 0.279375 top-5-accuracy: 0.573750
+2025-09-02 20:57:57,449 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:57:57,449 [INFO] loss: 2.876555 accuracy: 0.271250 top-5-accuracy: 0.573750
+2025-09-02 20:58:00,498 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:00,498 [INFO] loss: 2.860176 accuracy: 0.277500 top-5-accuracy: 0.588750
+2025-09-02 20:58:03,768 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:03,769 [INFO] loss: 2.848782 accuracy: 0.285625 top-5-accuracy: 0.593750
+2025-09-02 20:58:07,023 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:07,023 [INFO] loss: 2.888427 accuracy: 0.271250 top-5-accuracy: 0.575000
+2025-09-02 20:58:10,054 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:10,054 [INFO] loss: 2.909699 accuracy: 0.271250 top-5-accuracy: 0.581250
+2025-09-02 20:58:11,397 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:11,398 [INFO] loss: 2.997887 epoch_loss: 2.873333 accuracy: 0.223214 epoch_accuracy: 0.275030 top-5-accuracy: 0.565179 epoch_top-5-accuracy: 0.583590
+2025-09-02 20:58:11,398 [INFO] Epoch summary loss: 2.873333 accuracy: 0.275030 top-5-accuracy: 0.583590
+2025-09-02 20:58:11,399 [INFO] Current lr: [0.0002]
+2025-09-02 20:58:11,997 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:58:11,997 [INFO] accuracy: 0.354000 top-5-accuracy: 0.680000 loss: 2.524825
+2025-09-02 20:58:12,189 [INFO] Model saved. New best value 2.524825
+2025-09-02 20:58:16,054 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:16,055 [INFO] loss: 2.874696 accuracy: 0.285625 top-5-accuracy: 0.591250
+2025-09-02 20:58:19,212 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:19,212 [INFO] loss: 2.793821 accuracy: 0.282500 top-5-accuracy: 0.608125
+2025-09-02 20:58:22,323 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:22,323 [INFO] loss: 2.858478 accuracy: 0.286875 top-5-accuracy: 0.593125
+2025-09-02 20:58:25,484 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:25,484 [INFO] loss: 2.866635 accuracy: 0.270000 top-5-accuracy: 0.586875
+2025-09-02 20:58:28,814 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:28,814 [INFO] loss: 2.857317 accuracy: 0.273750 top-5-accuracy: 0.593125
+2025-09-02 20:58:32,058 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:32,058 [INFO] loss: 2.867031 accuracy: 0.281250 top-5-accuracy: 0.591875
+2025-09-02 20:58:35,247 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:35,248 [INFO] loss: 2.793529 accuracy: 0.300000 top-5-accuracy: 0.605625
+2025-09-02 20:58:38,333 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:38,333 [INFO] loss: 2.810010 accuracy: 0.273125 top-5-accuracy: 0.601875
+2025-09-02 20:58:39,619 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:39,619 [INFO] loss: 2.945102 epoch_loss: 2.845329 accuracy: 0.246131 epoch_accuracy: 0.279799 top-5-accuracy: 0.566071 epoch_top-5-accuracy: 0.594964
+2025-09-02 20:58:39,619 [INFO] Epoch summary loss: 2.845329 accuracy: 0.279799 top-5-accuracy: 0.594964
+2025-09-02 20:58:39,620 [INFO] Current lr: [0.0002]
+2025-09-02 20:58:40,177 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:58:40,177 [INFO] accuracy: 0.330000 top-5-accuracy: 0.666000 loss: 2.524579
+2025-09-02 20:58:40,372 [INFO] Model saved. New best value 2.524579
+2025-09-02 20:58:44,105 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:44,105 [INFO] loss: 2.773523 accuracy: 0.283125 top-5-accuracy: 0.614375
+2025-09-02 20:58:47,241 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:47,241 [INFO] loss: 2.884464 accuracy: 0.277500 top-5-accuracy: 0.581250
+2025-09-02 20:58:50,236 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:50,237 [INFO] loss: 2.849578 accuracy: 0.281875 top-5-accuracy: 0.588750
+2025-09-02 20:58:53,521 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:53,521 [INFO] loss: 2.800901 accuracy: 0.281250 top-5-accuracy: 0.601250
+2025-09-02 20:58:56,633 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:56,633 [INFO] loss: 2.833875 accuracy: 0.268750 top-5-accuracy: 0.582500
+2025-09-02 20:58:59,668 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:58:59,668 [INFO] loss: 2.896913 accuracy: 0.273125 top-5-accuracy: 0.584375
+2025-09-02 20:59:03,020 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:03,027 [INFO] loss: 2.779860 accuracy: 0.291875 top-5-accuracy: 0.617500
+2025-09-02 20:59:06,150 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:06,150 [INFO] loss: 2.730374 accuracy: 0.297500 top-5-accuracy: 0.620000
+2025-09-02 20:59:07,507 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:07,507 [INFO] loss: 2.835586 epoch_loss: 2.819860 accuracy: 0.283333 epoch_accuracy: 0.281798 top-5-accuracy: 0.577976 epoch_top-5-accuracy: 0.597778
+2025-09-02 20:59:07,508 [INFO] Epoch summary loss: 2.819860 accuracy: 0.281798 top-5-accuracy: 0.597778
+2025-09-02 20:59:07,508 [INFO] Current lr: [0.0002]
+2025-09-02 20:59:08,113 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:59:08,114 [INFO] accuracy: 0.366000 top-5-accuracy: 0.684000 loss: 2.530202
+2025-09-02 20:59:11,924 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:11,924 [INFO] loss: 2.732689 accuracy: 0.302500 top-5-accuracy: 0.615625
+2025-09-02 20:59:15,177 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:15,177 [INFO] loss: 2.771308 accuracy: 0.308750 top-5-accuracy: 0.613125
+2025-09-02 20:59:18,255 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:18,256 [INFO] loss: 2.850430 accuracy: 0.275625 top-5-accuracy: 0.595000
+2025-09-02 20:59:21,379 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:21,379 [INFO] loss: 2.747468 accuracy: 0.285000 top-5-accuracy: 0.620000
+2025-09-02 20:59:24,566 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:24,566 [INFO] loss: 2.845300 accuracy: 0.273125 top-5-accuracy: 0.575625
+2025-09-02 20:59:27,749 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:27,750 [INFO] loss: 2.831652 accuracy: 0.292500 top-5-accuracy: 0.599375
+2025-09-02 20:59:30,756 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:30,756 [INFO] loss: 2.710754 accuracy: 0.297500 top-5-accuracy: 0.627500
+2025-09-02 20:59:33,928 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:33,928 [INFO] loss: 2.782112 accuracy: 0.296250 top-5-accuracy: 0.603125
+2025-09-02 20:59:35,328 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:35,328 [INFO] loss: 2.716457 epoch_loss: 2.782122 accuracy: 0.302381 epoch_accuracy: 0.291706 top-5-accuracy: 0.609524 epoch_top-5-accuracy: 0.606013
+2025-09-02 20:59:35,328 [INFO] Epoch summary loss: 2.782122 accuracy: 0.291706 top-5-accuracy: 0.606013
+2025-09-02 20:59:35,329 [INFO] Current lr: [0.0002]
+2025-09-02 20:59:35,933 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 20:59:35,934 [INFO] accuracy: 0.352000 top-5-accuracy: 0.656000 loss: 2.491790
+2025-09-02 20:59:36,138 [INFO] Model saved. New best value 2.491790
+2025-09-02 20:59:39,769 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:39,769 [INFO] loss: 2.753716 accuracy: 0.284375 top-5-accuracy: 0.602500
+2025-09-02 20:59:42,912 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:42,912 [INFO] loss: 2.760093 accuracy: 0.301250 top-5-accuracy: 0.622500
+2025-09-02 20:59:46,062 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:46,062 [INFO] loss: 2.763889 accuracy: 0.295625 top-5-accuracy: 0.620000
+2025-09-02 20:59:49,226 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:49,227 [INFO] loss: 2.805690 accuracy: 0.274375 top-5-accuracy: 0.593125
+2025-09-02 20:59:52,335 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:52,335 [INFO] loss: 2.755390 accuracy: 0.293750 top-5-accuracy: 0.621250
+2025-09-02 20:59:55,568 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:55,568 [INFO] loss: 2.771646 accuracy: 0.288125 top-5-accuracy: 0.605000
+2025-09-02 20:59:58,633 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 20:59:58,633 [INFO] loss: 2.800517 accuracy: 0.280000 top-5-accuracy: 0.611875
+2025-09-02 21:00:01,635 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:01,635 [INFO] loss: 2.851690 accuracy: 0.287500 top-5-accuracy: 0.587500
+2025-09-02 21:00:03,112 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:03,112 [INFO] loss: 2.710171 epoch_loss: 2.778724 accuracy: 0.333036 epoch_accuracy: 0.290714 top-5-accuracy: 0.616964 epoch_top-5-accuracy: 0.608531
+2025-09-02 21:00:03,113 [INFO] Epoch summary loss: 2.778724 accuracy: 0.290714 top-5-accuracy: 0.608531
+2025-09-02 21:00:03,113 [INFO] Current lr: [0.0002]
+2025-09-02 21:00:03,721 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 21:00:03,721 [INFO] accuracy: 0.354000 top-5-accuracy: 0.678000 loss: 2.470906
+2025-09-02 21:00:03,880 [INFO] Model saved. New best value 2.470906
+2025-09-02 21:00:07,658 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:07,658 [INFO] loss: 2.714364 accuracy: 0.294375 top-5-accuracy: 0.620000
+2025-09-02 21:00:10,722 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:10,722 [INFO] loss: 2.771388 accuracy: 0.296250 top-5-accuracy: 0.606875
+2025-09-02 21:00:13,983 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:13,984 [INFO] loss: 2.769462 accuracy: 0.286250 top-5-accuracy: 0.618125
+2025-09-02 21:00:17,351 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:17,351 [INFO] loss: 2.788859 accuracy: 0.282500 top-5-accuracy: 0.603125
+2025-09-02 21:00:20,460 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:20,460 [INFO] loss: 2.826572 accuracy: 0.283125 top-5-accuracy: 0.605625
+2025-09-02 21:00:23,607 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:23,607 [INFO] loss: 2.713162 accuracy: 0.295000 top-5-accuracy: 0.616250
+2025-09-02 21:00:26,842 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:26,842 [INFO] loss: 2.726502 accuracy: 0.310625 top-5-accuracy: 0.614375
+2025-09-02 21:00:29,805 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:29,805 [INFO] loss: 2.744255 accuracy: 0.312500 top-5-accuracy: 0.620000
+2025-09-02 21:00:31,142 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:31,142 [INFO] loss: 2.695994 epoch_loss: 2.754278 accuracy: 0.285417 epoch_accuracy: 0.294491 top-5-accuracy: 0.637500 epoch_top-5-accuracy: 0.614218
+2025-09-02 21:00:31,143 [INFO] Epoch summary loss: 2.754278 accuracy: 0.294491 top-5-accuracy: 0.614218
+2025-09-02 21:00:31,143 [INFO] Current lr: [0.0002]
+2025-09-02 21:00:31,754 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 21:00:31,755 [INFO] accuracy: 0.338000 top-5-accuracy: 0.692000 loss: 2.468589
+2025-09-02 21:00:31,958 [INFO] Model saved. New best value 2.468589
+2025-09-02 21:00:35,801 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:35,801 [INFO] loss: 2.688131 accuracy: 0.300625 top-5-accuracy: 0.609375
+2025-09-02 21:00:39,004 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:39,004 [INFO] loss: 2.677630 accuracy: 0.313125 top-5-accuracy: 0.636875
+2025-09-02 21:00:42,145 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:42,146 [INFO] loss: 2.728980 accuracy: 0.291250 top-5-accuracy: 0.619375
+2025-09-02 21:00:45,383 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:45,383 [INFO] loss: 2.695428 accuracy: 0.307500 top-5-accuracy: 0.638750
+2025-09-02 21:00:48,458 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:48,458 [INFO] loss: 2.722523 accuracy: 0.300625 top-5-accuracy: 0.617500
+2025-09-02 21:00:51,502 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:51,502 [INFO] loss: 2.787956 accuracy: 0.286250 top-5-accuracy: 0.591875
+2025-09-02 21:00:54,739 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:54,739 [INFO] loss: 2.730222 accuracy: 0.312500 top-5-accuracy: 0.625625
+2025-09-02 21:00:57,853 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:57,853 [INFO] loss: 2.737915 accuracy: 0.316250 top-5-accuracy: 0.624375
+2025-09-02 21:00:59,189 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:00:59,189 [INFO] loss: 2.805973 epoch_loss: 2.726408 accuracy: 0.302083 epoch_accuracy: 0.303243 top-5-accuracy: 0.621726 epoch_top-5-accuracy: 0.620394
+2025-09-02 21:00:59,190 [INFO] Epoch summary loss: 2.726408 accuracy: 0.303243 top-5-accuracy: 0.620394
+2025-09-02 21:00:59,191 [INFO] Current lr: [0.0002]
+2025-09-02 21:00:59,748 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 21:00:59,748 [INFO] accuracy: 0.380000 top-5-accuracy: 0.708000 loss: 2.361552
+2025-09-02 21:00:59,942 [INFO] Model saved. New best value 2.361552
+2025-09-02 21:01:03,913 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:03,913 [INFO] loss: 2.669603 accuracy: 0.317500 top-5-accuracy: 0.628125
+2025-09-02 21:01:06,978 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:06,978 [INFO] loss: 2.595864 accuracy: 0.318750 top-5-accuracy: 0.639375
+2025-09-02 21:01:10,050 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:10,050 [INFO] loss: 2.785670 accuracy: 0.285000 top-5-accuracy: 0.615625
+2025-09-02 21:01:13,267 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:13,268 [INFO] loss: 2.729201 accuracy: 0.303125 top-5-accuracy: 0.622500
+2025-09-02 21:01:16,503 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:16,503 [INFO] loss: 2.755190 accuracy: 0.303750 top-5-accuracy: 0.622500
+2025-09-02 21:01:19,541 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:19,541 [INFO] loss: 2.589903 accuracy: 0.331875 top-5-accuracy: 0.648750
+2025-09-02 21:01:22,781 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:22,781 [INFO] loss: 2.689939 accuracy: 0.312500 top-5-accuracy: 0.631250
+2025-09-02 21:01:25,994 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:25,994 [INFO] loss: 2.685856 accuracy: 0.315625 top-5-accuracy: 0.628125
+2025-09-02 21:01:27,421 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:27,421 [INFO] loss: 2.718380 epoch_loss: 2.690305 accuracy: 0.290476 epoch_accuracy: 0.309923 top-5-accuracy: 0.631250 epoch_top-5-accuracy: 0.629532
+2025-09-02 21:01:27,422 [INFO] Epoch summary loss: 2.690305 accuracy: 0.309923 top-5-accuracy: 0.629532
+2025-09-02 21:01:27,422 [INFO] Current lr: [0.0002]
+2025-09-02 21:01:28,007 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 21:01:28,007 [INFO] accuracy: 0.356000 top-5-accuracy: 0.686000 loss: 2.470221
+2025-09-02 21:01:31,700 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:31,700 [INFO] loss: 2.642852 accuracy: 0.326875 top-5-accuracy: 0.631875
+2025-09-02 21:01:34,969 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:34,969 [INFO] loss: 2.732667 accuracy: 0.308125 top-5-accuracy: 0.618125
+2025-09-02 21:01:38,162 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:38,162 [INFO] loss: 2.675374 accuracy: 0.316250 top-5-accuracy: 0.633125
+2025-09-02 21:01:41,090 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:41,090 [INFO] loss: 2.706627 accuracy: 0.308750 top-5-accuracy: 0.620000
+2025-09-02 21:01:44,341 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:44,343 [INFO] loss: 2.711323 accuracy: 0.306875 top-5-accuracy: 0.635000
+2025-09-02 21:01:47,559 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:47,560 [INFO] loss: 2.656767 accuracy: 0.318750 top-5-accuracy: 0.641875
+2025-09-02 21:01:50,521 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:50,521 [INFO] loss: 2.710464 accuracy: 0.308750 top-5-accuracy: 0.637500
+2025-09-02 21:01:53,904 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:53,904 [INFO] loss: 2.778271 accuracy: 0.296875 top-5-accuracy: 0.609375
+2025-09-02 21:01:55,213 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:55,213 [INFO] loss: 2.699158 epoch_loss: 2.701653 accuracy: 0.308333 epoch_accuracy: 0.311330 top-5-accuracy: 0.638095 epoch_top-5-accuracy: 0.628836
+2025-09-02 21:01:55,214 [INFO] Epoch summary loss: 2.701653 accuracy: 0.311330 top-5-accuracy: 0.628836
+2025-09-02 21:01:55,214 [INFO] Current lr: [0.0002]
+2025-09-02 21:01:55,796 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 21:01:55,797 [INFO] accuracy: 0.322000 top-5-accuracy: 0.660000 loss: 2.602056
+2025-09-02 21:01:59,406 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:01:59,406 [INFO] loss: 2.579169 accuracy: 0.337500 top-5-accuracy: 0.646250
+2025-09-02 21:02:02,610 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:02,610 [INFO] loss: 2.613747 accuracy: 0.330625 top-5-accuracy: 0.638750
+2025-09-02 21:02:05,829 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:05,835 [INFO] loss: 2.637195 accuracy: 0.330625 top-5-accuracy: 0.644375
+2025-09-02 21:02:08,896 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:08,897 [INFO] loss: 2.696351 accuracy: 0.313750 top-5-accuracy: 0.628750
+2025-09-02 21:02:12,031 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:12,032 [INFO] loss: 2.714924 accuracy: 0.301875 top-5-accuracy: 0.630000
+2025-09-02 21:02:15,404 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:15,405 [INFO] loss: 2.660993 accuracy: 0.320000 top-5-accuracy: 0.648125
+2025-09-02 21:02:18,497 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:18,497 [INFO] loss: 2.660811 accuracy: 0.313750 top-5-accuracy: 0.636875
+2025-09-02 21:02:21,772 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:21,773 [INFO] loss: 2.682748 accuracy: 0.324375 top-5-accuracy: 0.628125
+2025-09-02 21:02:23,135 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:23,135 [INFO] loss: 2.637305 epoch_loss: 2.654699 accuracy: 0.327381 epoch_accuracy: 0.322127 top-5-accuracy: 0.638988 epoch_top-5-accuracy: 0.637618
+2025-09-02 21:02:23,136 [INFO] Epoch summary loss: 2.654699 accuracy: 0.322127 top-5-accuracy: 0.637618
+2025-09-02 21:02:23,136 [INFO] Current lr: [0.0002]
+2025-09-02 21:02:23,740 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 21:02:23,741 [INFO] accuracy: 0.366000 top-5-accuracy: 0.700000 loss: 2.432336
+2025-09-02 21:02:27,504 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:27,504 [INFO] loss: 2.645268 accuracy: 0.334375 top-5-accuracy: 0.646250
+2025-09-02 21:02:30,464 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:30,464 [INFO] loss: 2.684864 accuracy: 0.289375 top-5-accuracy: 0.626875
+2025-09-02 21:02:33,690 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:33,690 [INFO] loss: 2.645112 accuracy: 0.321875 top-5-accuracy: 0.629375
+2025-09-02 21:02:36,890 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:36,890 [INFO] loss: 2.541300 accuracy: 0.331250 top-5-accuracy: 0.660000
+2025-09-02 21:02:40,002 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:40,002 [INFO] loss: 2.591558 accuracy: 0.350000 top-5-accuracy: 0.640625
+2025-09-02 21:02:43,287 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:43,287 [INFO] loss: 2.624403 accuracy: 0.334375 top-5-accuracy: 0.655000
+2025-09-02 21:02:46,431 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:46,431 [INFO] loss: 2.701893 accuracy: 0.308750 top-5-accuracy: 0.610625
+2025-09-02 21:02:49,458 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:49,458 [INFO] loss: 2.632983 accuracy: 0.342500 top-5-accuracy: 0.640625
+2025-09-02 21:02:50,750 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:02:50,750 [INFO] loss: 2.683457 epoch_loss: 2.635380 accuracy: 0.319940 epoch_accuracy: 0.326422 top-5-accuracy: 0.633333 epoch_top-5-accuracy: 0.638522
+2025-09-02 21:02:50,751 [INFO] Epoch summary loss: 2.635380 accuracy: 0.326422 top-5-accuracy: 0.638522
+2025-09-02 21:02:50,751 [INFO] Current lr: [0.0002]
+2025-09-02 21:02:51,364 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 21:02:51,365 [INFO] accuracy: 0.392000 top-5-accuracy: 0.720000 loss: 2.277011
+2025-09-02 21:02:51,570 [INFO] Model saved. New best value 2.277011
+2025-09-02 21:03:03,795 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:03,795 [INFO] loss: 2.589343 accuracy: 0.343750 top-5-accuracy: 0.645000
+2025-09-02 21:03:07,022 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:07,023 [INFO] loss: 2.703984 accuracy: 0.322500 top-5-accuracy: 0.613125
+2025-09-02 21:03:10,093 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:10,094 [INFO] loss: 2.609173 accuracy: 0.332500 top-5-accuracy: 0.636250
+2025-09-02 21:03:13,198 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:13,199 [INFO] loss: 2.651254 accuracy: 0.328750 top-5-accuracy: 0.637500
+2025-09-02 21:03:16,443 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:16,444 [INFO] loss: 2.634719 accuracy: 0.331875 top-5-accuracy: 0.638750
+2025-09-02 21:03:19,512 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:19,513 [INFO] loss: 2.578066 accuracy: 0.332500 top-5-accuracy: 0.654375
+2025-09-02 21:03:22,761 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:22,766 [INFO] loss: 2.656558 accuracy: 0.316875 top-5-accuracy: 0.637500
+2025-09-02 21:03:25,892 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:25,892 [INFO] loss: 2.629110 accuracy: 0.320000 top-5-accuracy: 0.625000
+2025-09-02 21:03:27,283 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:27,283 [INFO] loss: 2.655244 epoch_loss: 2.633307 accuracy: 0.320833 epoch_accuracy: 0.328169 top-5-accuracy: 0.643750 epoch_top-5-accuracy: 0.636152
+2025-09-02 21:03:27,284 [INFO] Epoch summary loss: 2.633307 accuracy: 0.328169 top-5-accuracy: 0.636152
+2025-09-02 21:03:27,284 [INFO] Current lr: [0.0002]
+2025-09-02 21:03:27,846 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 21:03:27,846 [INFO] accuracy: 0.366000 top-5-accuracy: 0.714000 loss: 2.409739
+2025-09-02 21:03:31,577 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:31,577 [INFO] loss: 2.508145 accuracy: 0.358125 top-5-accuracy: 0.676875
+2025-09-02 21:03:34,770 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:34,770 [INFO] loss: 2.605417 accuracy: 0.330000 top-5-accuracy: 0.654375
+2025-09-02 21:03:37,899 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:37,899 [INFO] loss: 2.519426 accuracy: 0.362500 top-5-accuracy: 0.670000
+2025-09-02 21:03:41,074 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:41,074 [INFO] loss: 2.563670 accuracy: 0.342500 top-5-accuracy: 0.655000
+2025-09-02 21:03:44,246 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:44,247 [INFO] loss: 2.643238 accuracy: 0.309375 top-5-accuracy: 0.638750
+2025-09-02 21:03:47,299 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:47,299 [INFO] loss: 2.607067 accuracy: 0.338125 top-5-accuracy: 0.643125
+2025-09-02 21:03:50,496 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:50,496 [INFO] loss: 2.683516 accuracy: 0.324375 top-5-accuracy: 0.629375
+2025-09-02 21:03:53,582 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:53,582 [INFO] loss: 2.575579 accuracy: 0.332500 top-5-accuracy: 0.651250
+2025-09-02 21:03:54,892 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:54,892 [INFO] loss: 2.635886 epoch_loss: 2.590825 accuracy: 0.315179 epoch_accuracy: 0.335738 top-5-accuracy: 0.655655 epoch_top-5-accuracy: 0.652222
+2025-09-02 21:03:54,893 [INFO] Epoch summary loss: 2.590825 accuracy: 0.335738 top-5-accuracy: 0.652222
+2025-09-02 21:03:54,893 [INFO] Current lr: [0.0002]
+2025-09-02 21:03:55,456 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/val/metrics.json
+2025-09-02 21:03:55,456 [INFO] accuracy: 0.406000 top-5-accuracy: 0.728000 loss: 2.233494
+2025-09-02 21:03:55,652 [INFO] Model saved. New best value 2.233494
+2025-09-02 21:03:59,549 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:03:59,549 [INFO] loss: 2.554752 accuracy: 0.357500 top-5-accuracy: 0.652500
+2025-09-02 21:04:02,798 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:04:02,798 [INFO] loss: 2.576969 accuracy: 0.336250 top-5-accuracy: 0.640000
+2025-09-02 21:04:05,941 [INFO] New metrics saved to logs/sports_cv_project_classification/alexnet/train/metrics.json
+2025-09-02 21:04:05,942 [INFO] loss: 2.567026 accuracy: 0.339375 top-5-accuracy: 0.656875

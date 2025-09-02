@@ -42,7 +42,13 @@ def create_target_encoders(df: pd.DataFrame) -> tuple[dict, dict]:
 
 
 class ImageDataset(Dataset):
-    def __init__(self, annotations_file_path: str, root_dir: str = "data", processed_subdir: str = "processed", transform=None):
+    def __init__(
+        self,
+        annotations_file_path: str,
+        root_dir: str = "data",
+        processed_subdir: str = "processed",
+        transform=None,
+    ):
         super().__init__()
         self.annotations_df = pd.read_csv(annotations_file_path)
         self.id_to_label, self.label_to_id = create_target_encoders(self.annotations_df)
@@ -83,7 +89,7 @@ def create_dataloader(
         annotations_file_path=annotations_file_path,
         root_dir=root_dir,
         processed_subdir=processed_subdir,
-        transform=transform
+        transform=transform,
     )
     dl = DataLoader(
         dataset=dt,

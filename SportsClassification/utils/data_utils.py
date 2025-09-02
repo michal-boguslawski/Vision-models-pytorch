@@ -1,6 +1,7 @@
 import kagglehub
 import os
-from utils.helpers import remove_dir_with_content, check_data_exists
+import shutil
+from utils.filesystem import remove_dir_with_content, check_data_exists, make_dirs
 
 
 def _download_data_kaggle(
@@ -16,13 +17,14 @@ def _download_data_kaggle(
     remove_dir_with_content(path)
 
     print(f"Path to dataset files: {dataset_path}")
-    
-    os.rename(dataset_path, path)
+
+    shutil.move(dataset_path, path)
     print(f"Folder moved from {dataset_path} to {path}")
 
 
 def download_data(
     source: str,
+    kaggle_dataset_name: str,
     root_dir: str = "data",
     raw_subdir: str = "raw",
     force_download: bool = False,
@@ -35,6 +37,7 @@ def download_data(
             or ( force_download )
         ):
             _download_data_kaggle(
+                kaggle_dataset_name=kaggle_dataset_name,
                 root_dir=root_dir,
                 raw_subdir=raw_subdir,
                 *args,

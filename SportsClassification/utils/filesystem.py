@@ -22,6 +22,11 @@ def flush_cache():
     _message_cache.clear()
 
 
+def check_data_exists(root_dir: str = "data", subdir: str = "raw", *args, **kwargs):
+    path = os.path.join(root_dir, subdir)
+    return os.path.exists(path) and len(os.listdir(path)) > 0
+
+
 def remove_dir_with_content(path: str):
     """Remove directory with its content if it exists."""
     logger = logging.getLogger()

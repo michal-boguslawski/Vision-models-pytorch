@@ -19,11 +19,12 @@ normalize_mean: [0.485, 0.456, 0.406]
 normalize_std: [0.229, 0.224, 0.225]
 augmentations:
   horizontal_flip: true
-  rotation: false
-  random_crop: true
-  color_jitter: false
+  rotation: true
+  random_crop: false
+  random_resized_crop: true
+  color_jitter: true
 
 batch_size: 32
 shuffle: true
-num_workers: 1
+num_workers: 6
 seed: 42

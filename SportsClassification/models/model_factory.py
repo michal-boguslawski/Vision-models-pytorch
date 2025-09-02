@@ -31,6 +31,7 @@ def build_model(
     detection_head_name: str | None = None,
     backbone_kwargs: dict | None = None,
     detection_head_kwargs: dict | None = None,
+    device: str | None = None,
     *args,
     **kwargs
  )-> nn.Module:
@@ -50,6 +51,7 @@ def build_model(
     """
     backbone_kwargs = backbone_kwargs or {}
     detection_head_kwargs = detection_head_kwargs or {}
+    device = device or "cpu"
 
     if model_name:
         if model_name not in BACKBONES_DICT:
@@ -64,7 +66,7 @@ def build_model(
             out_features=num_classes,
             **detection_head_kwargs
         )
-        return nn.Sequential(backbone, detection_head)
+        return nn.Sequential(backbone, detection_head).to(device)
     elif backbone_name and detection_head_name:
         if backbone_name not in BACKBONES_DICT:
             raise KeyError(f"Unknown backbone: {backbone_name}. Available: {list(BACKBONES_DICT.keys())}")
@@ -77,6 +79,6 @@ def build_model(
             out_features=num_classes,
             **detection_head_kwargs
         )
-        return nn.Sequential(backbone, detection_head)
+        return nn.Sequential(backbone, detection_head).to(device)
     else:
         raise ValueError("You must provide either `model_name` or both `backbone_name` and `detection_head_name`.")

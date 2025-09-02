@@ -20,9 +20,10 @@ class Trainer:
         self.config = config
         self.project_name = self.config.get("project_name")
         self.experiment_name = self.config.get("experiment_name")
+        self.device = self.config["misc"].get("device")
 
         self._setup()
-        self.evaluator = Evaluator(**filter_kwargs(Evaluator, self.config.get("evaluation")))
+        self.evaluator = Evaluator(device=self.device, **filter_kwargs(Evaluator, self.config.get("evaluation")))
         self.logger = Logger(**filter_kwargs(Logger, self.config.config))
 
     def _setup(self):
@@ -30,7 +31,7 @@ class Trainer:
 
         # setup model
         model_config = self.config["model"]
-        self.model = build_model(**filter_kwargs(build_model, model_config))
+        self.model = build_model(device=self.device, **filter_kwargs(build_model, model_config))
 
         # setup training related objects
         training_config = self.config["training"]
@@ -55,6 +56,7 @@ class Trainer:
         }
         pbar = tqdm(train_dataloader, desc=f"Training epoch {epoch}", unit="batch")
         for batch_idx, (images, labels) in enumerate(pbar):
+            images, labels = images.to(self.device), labels.to(self.device)
             self.optimizer.zero_grad()
             outputs = self.model(images)
             loss = self.loss_fn(outputs, labels)
@@ -91,6 +93,7 @@ class Trainer:
             self.train_one_epoch(epoch, train_dataloader)
             if self.scheduler:
                 self.scheduler.step()
+                self.logger.log_info(f"Current lr: {self.scheduler.get_last_lr()}")
             
             val_metrics = {}
             if val_dataloader:

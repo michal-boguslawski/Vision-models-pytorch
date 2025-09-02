@@ -3,11 +3,6 @@ import json
 import os
 
 
-def check_data_exists(root_dir: str = "data", subdir: str = "raw", *args, **kwargs):
-    path = os.path.join(root_dir, subdir)
-    return os.path.exists(path) and len(os.listdir(path)) > 0
-
-
 def filter_kwargs(cls, config: dict):
     valid_params = inspect.signature(cls).parameters
     filtered_config = {k: v for k, v in config.items() if k in valid_params}
