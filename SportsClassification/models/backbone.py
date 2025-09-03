@@ -23,12 +23,8 @@ class AlexNet(nn.Module):
         self.activation_fn = activation_fn
         self.pool_type = pool_type
         self.dropout = dropout
-        self.if_flatten = if_flatten
-        
-        if if_flatten:
-            self.out_features = 5 * 5 * 256
-        else:
-            self.out_features = 256
+        self.out_features = (256, 5, 5)
+
         self.local_resp_norm_kwargs = {
             "size": 5,
             "k": 2,
@@ -54,9 +50,6 @@ class AlexNet(nn.Module):
             pool_type(kernel_size=3, stride=2),
         ]
 
-        if if_flatten:
-            layers.append(nn.Flatten(start_dim=1))
-
         self.features = nn.Sequential(*layers)
     
     def forward(self, image: T.Tensor) -> T.Tensor:
@@ -76,7 +69,6 @@ class VGG(nn.Module):
         hidden_dims_list: List[int] = [64, 128, 256, 512, 512],
         activation_fn: Type[nn.Module] = nn.ReLU,
         pool_type: Type[nn.Module] = nn.MaxPool2d,
-        if_flatten: bool = True,
         *args,
         **kwargs
     ):
@@ -87,8 +79,7 @@ class VGG(nn.Module):
         self.pool_type = pool_type
         self.num_layers_list = num_layers_list
         self.hidden_dims_list = hidden_dims_list
-        self.if_flatten = if_flatten
-        self.out_features = 7 * 7 * 512 if if_flatten else 512
+        self.out_features = (512, 7, 7)
         
         list_of_layers = self._prebuild_list_of_layers(
             in_channels=in_channels,
@@ -97,9 +88,6 @@ class VGG(nn.Module):
             activation_fn=activation_fn,
             pool_type=pool_type
         )
-        
-        if if_flatten:
-            list_of_layers.append(nn.Flatten(start_dim=1))
         
         self.features = nn.Sequential(*list_of_layers)
 

@@ -101,8 +101,6 @@ class Trainer:
         # setup model
         model_config = self.config["model"]
         self.model = BuildModel(**filter_kwargs(BuildModel, model_config)).to(self.device)
-        print(self.model.backbone)
-        print(self.model.detecton_head)
 
         # setup training related objects
         training_config = self.config["training"]
@@ -162,15 +160,23 @@ class Trainer:
         }
         batch_idx = -1
         pbar = tqdm(train_dataloader, desc=f"Training epoch {epoch}", unit="batch")
+        accumulate_steps = 1
+        max_norm = 5.0
+        self.optimizer.zero_grad()
+
         for batch_idx, (images, labels) in enumerate(pbar):
             images, labels = images.to(self.device), labels.to(self.device)
-            self.optimizer.zero_grad()
             outputs = self.model(images)
             loss = self.loss_fn(outputs, labels)
+            loss /= accumulate_steps
             loss.backward()
-            self.optimizer.step()
 
-            total_metrics["loss"].append(loss.item())
+            if (batch_idx + 1) % accumulate_steps == 0:
+                T.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=max_norm)
+                self.optimizer.step()
+                self.optimizer.zero_grad()
+
+            total_metrics["loss"].append(accumulate_steps * loss.item())
             metrics = self.evaluator.calc_metrics(outputs=outputs, labels=labels)
             total_metrics = append_dict_to_dict(total_metrics, metrics)
 

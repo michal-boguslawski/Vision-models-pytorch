@@ -1,6 +1,6 @@
 # default.yaml
 project_name: sports_cv_project_classification
-experiment_name: vgg16-base
+experiment_name: vgg8-base
 
 # Include model and dataset configs
 model: !include model_config.yaml
@@ -19,7 +19,7 @@ log_subdirs:
 training:
   optimizer:
     type: adam
-    lr: 0.0001
+    lr: 0.001
     weight_decay: 5e-4
   scheduler:
     type: reduce_lr_on_plateau

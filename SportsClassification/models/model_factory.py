@@ -26,6 +26,7 @@ PREDEFINED_CONFIGS = {
 CONFIG_TO_GENERAL = {
     "VGG16": "VGG",
     "VGG19": "VGG",
+    "VGG8": "VGG",
 }
 
 
@@ -45,6 +46,7 @@ DETECTION_HEADS_DICT = {
     "SimpleClassification": detection_head.SimpleClassificationHead,
     "AlexNet": detection_head.DoubleLinearHead,
     "VGG": detection_head.DoubleLinearHead,
+    "GAP": detection_head.GAPDoubleLinearHead,
 }
 
 

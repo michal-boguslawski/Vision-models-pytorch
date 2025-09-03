@@ -1,7 +1,8 @@
 project_name: sports_cv_project_classification
-experiment_name: vgg16-base
+experiment_name: vgg8-base
 model:
-  model_name: VGG16
+  backbone_name: VGG8
+  detection_head_name: GAP
   pretrained: false
   num_classes: 100
   num_anchors: 3
@@ -24,13 +25,21 @@ dataset:
   input_size:
   - 224
   - 224
+  normalize_mean:
+  - 0.4714
+  - 0.4699
+  - 0.4551
+  normalize_std:
+  - 0.2391
+  - 0.2302
+  - 0.232
   augmentations:
     horizontal_flip: false
     rotation: false
     random_crop: false
     color_jitter: false
     random_resized_crop: false
-  batch_size: 32
+  batch_size: 64
   shuffle: true
   num_workers: 6
   seed: 42
@@ -43,7 +52,7 @@ log_subdirs:
 training:
   optimizer:
     type: adam
-    lr: 0.01
+    lr: 0.001
     weight_decay: 0.0005
   scheduler:
     type: reduce_lr_on_plateau

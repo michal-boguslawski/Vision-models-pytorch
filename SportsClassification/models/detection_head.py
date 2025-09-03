@@ -15,6 +15,7 @@ Activation functions (sigmoid/softmax) for probabilities.
 
 Optional post-processing (e.g., NMS) in inference.
 """
+import math
 from typing import Type
 import torch as T
 import torch.nn as nn
@@ -23,7 +24,7 @@ import torch.nn as nn
 class DoubleLinearHead(nn.Module):
     def __init__(
         self,
-        in_features: int = 5 * 5 * 256,
+        in_features: int | tuple,
         out_features: int = 1000,
         activation_fn: Type[nn.Module] = nn.ReLU,
         hidden_dims: int = 4096,
@@ -32,13 +33,14 @@ class DoubleLinearHead(nn.Module):
         **kwargs
     ):
         super().__init__(*args, **kwargs)
-        self.in_features = in_features
+        self.in_features = math.prod(in_features)
         self.out_features = out_features
         self.activation_fn = activation_fn
         self.hidden_dims = hidden_dims
         self.dropout = dropout
         
         self.classifier = nn.Sequential(
+            nn.Flatten(1),
             nn.Linear(in_features, hidden_dims),
             activation_fn(inplace=True),
             nn.Dropout(dropout),
@@ -49,20 +51,53 @@ class DoubleLinearHead(nn.Module):
         )
 
     def forward(self, input_tensor: T.Tensor) -> T.Tensor:
-        assert input_tensor.dim() <= 2
+        return self.classifier(input_tensor)
+
+
+class GAPDoubleLinearHead(nn.Module):
+    def __init__(
+        self,
+        in_features: tuple,
+        out_features: int = 1000,
+        activation_fn: Type[nn.Module] = nn.ReLU,
+        hidden_dims: int = 4096,
+        dropout: float = 0.5,
+        *args,
+        **kwargs
+    ):
+        super().__init__(*args, **kwargs)
+        self.in_features = in_features[0]
+        self.out_features = out_features
+        self.activation_fn = activation_fn
+        self.hidden_dims = hidden_dims
+        self.dropout = dropout
+        
+        self.classifier = nn.Sequential(
+            nn.AvgPool2d(in_features[1:]),
+            nn.Flatten(1),
+            nn.Linear(self.in_features, hidden_dims),
+            activation_fn(inplace=True),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_dims, hidden_dims),
+            activation_fn(inplace=True),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_dims, out_features)
+        )
+
+    def forward(self, input_tensor: T.Tensor) -> T.Tensor:
         return self.classifier(input_tensor)
 
 
 class SimpleClassificationHead(nn.Module):
     def __init__(
         self,
-        in_features: int,
+        in_features: int | tuple,
         out_features: int,
         *args,
         **kwargs
     ):
         super().__init__(*args, **kwargs)
-        self.in_features = in_features
+        self.in_features = math.prod(in_features)
         self.out_features = out_features
         
         self.head = nn.Linear(
@@ -71,5 +106,4 @@ class SimpleClassificationHead(nn.Module):
         )
 
     def forward(self, input_tensor: T.Tensor) -> T.Tensor:
-        assert input_tensor.dim() <= 2
         return self.head(input_tensor)
