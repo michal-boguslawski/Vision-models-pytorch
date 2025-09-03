@@ -1,0 +1,7 @@
+wget
+ipykernel
+matplotlib
+transformers
+matplotlib
+torchmetrics
+timm

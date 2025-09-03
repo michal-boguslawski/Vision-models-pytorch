@@ -1,0 +1,1 @@
+docker run -d --name TorchPython -v ${PWD}:/app python:3.11-slim sleep inf
