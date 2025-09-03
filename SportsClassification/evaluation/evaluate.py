@@ -5,9 +5,10 @@ from evaluation.metrics import setup_metric
 
 
 class Evaluator:
-    def __init__(self, metrics: list[str]):
+    def __init__(self, metrics: list[str], device: str | None = None):
         self.metrics = metrics
         self.metrics_fn = {k: setup_metric(k) for k in metrics}
+        self.device = device or "cpu"
 
     def _reset_metrics(self):
         for values in self.metrics_fn.values():
@@ -19,6 +20,7 @@ class Evaluator:
         if loss_fn:
             loss = 0
         for input_, labels in dl:
+            input_, labels = input_.to(self.device), labels.to(self.device)
             with T.no_grad():
                 outputs = model(input_)
             

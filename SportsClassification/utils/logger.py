@@ -88,14 +88,14 @@ class Logger:
         if self.save_best_only and self.save_checkpoint:
             if self.best_val_loss is None or val_loss < self.best_val_loss:
                 self.best_val_loss = val_loss
-                checkpoint_path = os.path.join(self.checkpoint_dir, "model_best.pth")
+                checkpoint_path = os.path.join(self.experiment_checkpoint_dir, "model_best.pth")
                 self._save_weights(model=model, path=checkpoint_path)
                 self.log_info(f"Model saved. New best value {val_loss:.6f}")
         elif ( not self.save_checkpoint ) and end:
-            checkpoint_path = os.path.join(self.checkpoint_dir, "model.pth")
+            checkpoint_path = os.path.join(self.experiment_checkpoint_dir, "model.pth")
             self._save_weights(model=model, path=checkpoint_path)
             self.log_info(f"Model saved.")
         elif self.save_checkpoint:
-            checkpoint_path = os.path.join(self.checkpoint_dir, f"model_epoch_{epoch}.pth")
+            checkpoint_path = os.path.join(self.experiment_checkpoint_dir, f"model_epoch_{epoch}.pth")
             self._save_weights(model=model, path=checkpoint_path)
             self.log_info(f"Model saved for epoch {epoch}.")

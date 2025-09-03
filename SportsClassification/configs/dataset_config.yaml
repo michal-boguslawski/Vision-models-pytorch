@@ -20,11 +20,11 @@ normalize_std: [0.229, 0.224, 0.225]
 augmentations:
   horizontal_flip: true
   rotation: false
-  random_crop: true
+  random_crop: false
   color_jitter: false
-  random_resized_crop: false
+  random_resized_crop: true
 
 batch_size: 32
 shuffle: true
-num_workers: 1
+num_workers: 6
 seed: 42
