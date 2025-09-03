@@ -22,6 +22,7 @@ augmentations:
   rotation: false
   random_crop: true
   color_jitter: false
+  random_resized_crop: false
 
 batch_size: 32
 shuffle: true

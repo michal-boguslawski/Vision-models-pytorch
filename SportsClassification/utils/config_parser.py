@@ -26,6 +26,11 @@ class ConfigParser:
         """Access nested keys safely."""
         return self.config.get(key, default)
 
+    def pop(self, key):
+        """Remove occurence of key in dictionary and return the value."""
+        value = self.config.pop(key)
+        return value
+
     def merge(self, other_config: dict):
         """Merge another config dictionary into current config (override defaults)."""
         self._deep_update(self.config, other_config)
