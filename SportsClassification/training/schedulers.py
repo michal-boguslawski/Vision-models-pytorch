@@ -1,10 +1,11 @@
-from torch.optim.lr_scheduler import StepLR
+from torch.optim.lr_scheduler import StepLR, ReduceLROnPlateau
 from torch.optim import Optimizer
 from utils.helpers import filter_kwargs
 
 
 SCHEDULERS_DICT = {
-    "step_lr": StepLR
+    "step_lr": StepLR,
+    "reduce_lr_on_plateau": ReduceLROnPlateau,
 }
 
 

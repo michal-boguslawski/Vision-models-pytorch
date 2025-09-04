@@ -1,0 +1,67 @@
+2025-09-03 20:05:21,790 [INFO] Global seed set to 42
+2025-09-03 20:05:21,790 [INFO] Folder logs/sports_cv_project_classification/vgg16-base was removed with its entire content
+2025-09-03 20:05:21,790 [INFO] Path logs/sports_cv_project_classification/vgg16-base/train created or existed
+2025-09-03 20:05:21,790 [INFO] Path logs/sports_cv_project_classification/vgg16-base/val created or existed
+2025-09-03 20:05:21,790 [INFO] Path logs/sports_cv_project_classification/vgg16-base/test created or existed
+2025-09-03 20:05:21,790 [INFO] Folder checkpoints/sports_cv_project_classification/vgg16-base was removed with its entire content
+2025-09-03 20:05:21,790 [INFO] Path checkpoints/sports_cv_project_classification/vgg16-base created or existed
+2025-09-03 20:05:21,792 [INFO] Training started...
+2025-09-03 20:05:36,777 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:05:36,777 [INFO] loss: 438061.436304 accuracy: 0.006250 top-5-accuracy: 0.051875
+2025-09-03 20:05:51,371 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:05:51,371 [INFO] loss: 131.116574 accuracy: 0.011875 top-5-accuracy: 0.056250
+2025-09-03 20:06:06,044 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:06:06,044 [INFO] loss: 4.639981 accuracy: 0.013125 top-5-accuracy: 0.061875
+2025-09-03 20:06:20,774 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:06:20,774 [INFO] loss: 4.623897 accuracy: 0.010000 top-5-accuracy: 0.061250
+2025-09-03 20:06:35,570 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:06:35,570 [INFO] loss: 4.632471 accuracy: 0.013125 top-5-accuracy: 0.063125
+2025-09-03 20:06:50,398 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:06:50,398 [INFO] loss: 4.618006 accuracy: 0.008750 top-5-accuracy: 0.055000
+2025-09-03 20:07:05,252 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:07:05,253 [INFO] loss: 4.665289 accuracy: 0.013750 top-5-accuracy: 0.061250
+2025-09-03 20:07:20,077 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:07:20,078 [INFO] loss: 4.619574 accuracy: 0.013125 top-5-accuracy: 0.051875
+2025-09-03 20:07:26,532 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:07:26,532 [INFO] loss: 4.608466 epoch_loss: 51922.082845 accuracy: 0.016369 epoch_accuracy: 0.011478 top-5-accuracy: 0.061012 epoch_top-5-accuracy: 0.058057
+2025-09-03 20:07:26,532 [INFO] Epoch summary loss: 51922.082845 accuracy: 0.011478 top-5-accuracy: 0.058057
+2025-09-03 20:07:28,077 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/val/metrics.json
+2025-09-03 20:07:28,077 [INFO] accuracy: 0.010000 top-5-accuracy: 0.050000 loss: 4.623799
+2025-09-03 20:07:28,077 [INFO] Current lr: [0.01]
+2025-09-03 20:07:28,294 [INFO] Model saved. New best value 4.623799
+2025-09-03 20:07:43,117 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:07:43,117 [INFO] loss: 4.619928 accuracy: 0.010000 top-5-accuracy: 0.053750
+2025-09-03 20:07:57,855 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:07:57,855 [INFO] loss: 4.624903 accuracy: 0.015000 top-5-accuracy: 0.054375
+2025-09-03 20:08:12,679 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:08:12,679 [INFO] loss: 4.628660 accuracy: 0.006250 top-5-accuracy: 0.055625
+2025-09-03 20:08:27,448 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:08:27,449 [INFO] loss: 4.621054 accuracy: 0.009375 top-5-accuracy: 0.055625
+2025-09-03 20:08:42,228 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:08:42,229 [INFO] loss: 4.615626 accuracy: 0.018125 top-5-accuracy: 0.068750
+2025-09-03 20:08:56,945 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:08:56,945 [INFO] loss: 4.617327 accuracy: 0.011875 top-5-accuracy: 0.064375
+2025-09-03 20:09:11,674 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:09:11,674 [INFO] loss: 4.613006 accuracy: 0.013125 top-5-accuracy: 0.059375
+2025-09-03 20:09:26,397 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:09:26,398 [INFO] loss: 4.606594 accuracy: 0.009375 top-5-accuracy: 0.060000
+2025-09-03 20:09:32,795 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:09:32,795 [INFO] loss: 4.613555 epoch_loss: 4.618199 accuracy: 0.011905 epoch_accuracy: 0.011626 top-5-accuracy: 0.061012 epoch_top-5-accuracy: 0.058945
+2025-09-03 20:09:32,795 [INFO] Epoch summary loss: 4.618199 accuracy: 0.011626 top-5-accuracy: 0.058945
+2025-09-03 20:09:34,317 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/val/metrics.json
+2025-09-03 20:09:34,317 [INFO] accuracy: 0.010000 top-5-accuracy: 0.050000 loss: 4.624489
+2025-09-03 20:09:34,318 [INFO] Current lr: [0.01]
+2025-09-03 20:09:49,010 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:09:49,010 [INFO] loss: 4.613882 accuracy: 0.015000 top-5-accuracy: 0.067500
+2025-09-03 20:10:03,681 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:10:03,681 [INFO] loss: 4.602671 accuracy: 0.011875 top-5-accuracy: 0.057500
+2025-09-03 20:10:18,352 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:10:18,352 [INFO] loss: 4.612888 accuracy: 0.008750 top-5-accuracy: 0.051875
+2025-09-03 20:10:32,994 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:10:32,994 [INFO] loss: 4.607432 accuracy: 0.009375 top-5-accuracy: 0.062500
+2025-09-03 20:10:47,622 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:10:47,622 [INFO] loss: 4.648114 accuracy: 0.008750 top-5-accuracy: 0.055625
+2025-09-03 20:11:02,265 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:11:02,265 [INFO] loss: 4.611514 accuracy: 0.014375 top-5-accuracy: 0.065625
+2025-09-03 20:11:16,963 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg16-base/train/metrics.json
+2025-09-03 20:11:16,964 [INFO] loss: 4.614564 accuracy: 0.013125 top-5-accuracy: 0.051875

@@ -1,11 +1,11 @@
 import inspect
 import json
 import os
+from typing import Dict, Any, Callable, Optional
 
 
-def filter_kwargs(cls, config: dict | None) -> dict:
-    if config is None:
-        return {}
+def filter_kwargs(cls: Callable, config: Optional[dict[str, Any]]) -> Dict[str, Any]:
+    config = config or {}
     valid_params = inspect.signature(cls).parameters
     filtered_config = {k: v for k, v in config.items() if k in valid_params}
     return filtered_config

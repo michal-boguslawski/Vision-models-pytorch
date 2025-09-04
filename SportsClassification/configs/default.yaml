@@ -1,6 +1,6 @@
 # default.yaml
 project_name: sports_cv_project_classification
-experiment_name: alexnet
+experiment_name: vgg8-base
 
 # Include model and dataset configs
 model: !include model_config.yaml
@@ -19,17 +19,20 @@ log_subdirs:
 training:
   optimizer:
     type: adam
-    lr: 0.0002
-    weight_decay: 1e-4
+    lr: 0.001
+    weight_decay: 5e-4
   scheduler:
-    type: step_lr
-    step_size: 50
-    gamma: 0.1
+    type: reduce_lr_on_plateau
+    patience: 10
+    factor: 0.1
   loss:
     type: cross_entropy
     bbox_loss: smooth_l1
     obj_loss: binary_cross_entropy
-  num_epochs: 500
+  early_stopping:
+    patience: 30
+    threshold: 0.0001
+  num_epochs: 1000
   save_best_only: true
   save_checkpoint: true
   log_interval: 50

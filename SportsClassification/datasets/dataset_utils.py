@@ -79,9 +79,9 @@ def create_dataloader(
         normalize_mean=config.get("normalize_mean"),
         normalize_std=config.get("normalize_std"),
     )
-    root_dir = config["root_dir"]
-    annotations_subdir = config.get("annotations_subdir", "annotations")
-    processed_subdir = config.get("processed_subdir", "processed")
+    root_dir = str(config["root_dir"])
+    annotations_subdir = str(config.get("annotations_subdir", "annotations"))
+    processed_subdir = str(config.get("processed_subdir", "processed"))
     
     annotations_file_path = os.path.join(root_dir, annotations_subdir, sub_dataset + ".csv")
 

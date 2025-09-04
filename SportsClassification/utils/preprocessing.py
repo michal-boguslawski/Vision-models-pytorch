@@ -2,7 +2,9 @@ import os
 from PIL import Image, UnidentifiedImageError
 import pandas as pd
 from tqdm import tqdm
+from datasets.dataset_utils import ImageDataset
 from utils.filesystem import remove_dir_with_content, make_dirs
+from utils.data_utils import compute_mean_std
 
 
 default_annotation_dict = {
@@ -100,7 +102,6 @@ class DataPreprocessor:
     def _run_preprocessing(self, df: pd.DataFrame) -> None:
         print("Use existing split")
         processed_data_set_name = ""
-        
         data_sets = df[self.annotations_config["train_test_split"]].unique()
         for data_set in data_sets:
             data_set_df = df[df[self.annotations_config["train_test_split"]] == data_set]
@@ -115,6 +116,17 @@ class DataPreprocessor:
                 self._preprocessing_loop(df=data_set_df, data_set=processed_data_set_name)
         print("Data preprocessed")
 
+    def _compute_mean_and_std(self):
+        print("Compute mean and std")
+        dt = ImageDataset(
+            annotations_file_path=os.path.join(self.annotations_dir, "train.csv"),
+            root_dir=self.root_dir,
+            processed_subdir=self.processed_subdir,
+            transform=None,
+        )
+        mean, std = compute_mean_std(dt)
+        print(f"Mean: {mean}, Std: {std}")
+
     def run(self) -> None:
         print("Start preprocessing")
         annotations_df = pd.read_csv(self.annotations_file_path)
@@ -125,3 +137,5 @@ class DataPreprocessor:
         
         if self.use_existing_train_test_split:
             self._run_preprocessing(annotations_df)
+
+        self._compute_mean_and_std()

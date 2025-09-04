@@ -8,10 +8,10 @@
 ## Summary of models
 |Model Description|Train accuracy|Test accuracy|Evaluation notebook|
 |----------|------------|----------|----------|
-|AlexNet|0.7725|0.504|xxx|
+|AlexNet|0.7725|0.512|xxx|
 |Vision Transformer|xxx|xxx||
 |ResNet-18|xxx|xxx||
-|VGG|xxx|xxx||
+|VGG16|xxx|xxx||
 |EfficientNet|xxx|xxx||
 |Inception|xxx|xxx||
 

@@ -1,7 +1,7 @@
 # model_config.yaml
-model_name: AlexNet
-backbone_name: resnet50
-detection_head_name: resnet50
+# model_name: VGG8
+backbone_name: VGG8
+detection_head_name: GAP
 pretrained: false
 num_classes: 100
 num_anchors: 3

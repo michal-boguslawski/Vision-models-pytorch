@@ -1,7 +1,8 @@
 import kagglehub
 import os
 import shutil
-from utils.filesystem import remove_dir_with_content, check_data_exists, make_dirs
+from torch.utils.data import Dataset, DataLoader
+from utils.filesystem import remove_dir_with_content, check_data_exists
 
 
 def _download_data_kaggle(
@@ -45,3 +46,21 @@ def download_data(
             )
         else:
             print("Dataset already exists in location {root_dir}")
+
+def compute_mean_std(dt: Dataset):
+    loader = DataLoader(dt, batch_size=64, shuffle=False, num_workers=4)
+    mean = 0.0
+    std = 0.0
+    total_samples = 0
+    
+    for images, _ in loader:
+        images = images.float() / 255.0
+        batch_samples = images.size(0)
+        images = images.view(batch_samples, images.size(1), -1)
+        mean += images.mean(2).sum(0)
+        std += images.std(2).sum(0)
+        total_samples += batch_samples
+
+    mean /= total_samples
+    std /= total_samples
+    return mean, std
