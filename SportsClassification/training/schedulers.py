@@ -1,4 +1,4 @@
-from torch.optim.lr_scheduler import StepLR, ReduceLROnPlateau
+from torch.optim.lr_scheduler import StepLR, ReduceLROnPlateau, OneCycleLR
 from torch.optim import Optimizer
 from utils.helpers import filter_kwargs
 
@@ -6,6 +6,7 @@ from utils.helpers import filter_kwargs
 SCHEDULERS_DICT = {
     "step_lr": StepLR,
     "reduce_lr_on_plateau": ReduceLROnPlateau,
+    "one_cycle_lr": OneCycleLR
 }
 
 

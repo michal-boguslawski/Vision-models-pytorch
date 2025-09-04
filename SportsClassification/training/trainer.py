@@ -1,11 +1,13 @@
 import numpy as np
+import os
 from tqdm import tqdm
 from typing import Dict
-from torch.utils.data import DataLoader
 import torch as T
+from torch.utils.data import DataLoader
 
 from evaluation.evaluate import Evaluator
 from models.model_factory import BuildModel
+from models.utils import ModelHandler
 from training.early_stopping import EarlyStopping
 from training.optimizers import setup_optimizer
 from training.losses import setup_loss
@@ -64,10 +66,15 @@ class Trainer:
         self.project_name = self.config.get("project_name")
         self.experiment_name = self.config.get("experiment_name")
         self.device = self.config["misc"].get("device")
+        self.s3_bucket_name = self.config.get("s3_bucket_name")
 
-        self._setup()
         self.evaluator = Evaluator(device=self.device, **filter_kwargs(Evaluator, self.config.get("evaluation")))
         self.logger = Logger(**filter_kwargs(Logger, self.config.config))
+
+        self.scaler = T.GradScaler(self.device)
+        self.model_handler = ModelHandler()
+
+        self._setup()
 
     def _setup(self):
         """
@@ -100,7 +107,16 @@ class Trainer:
 
         # setup model
         model_config = self.config["model"]
-        self.model = BuildModel(**filter_kwargs(BuildModel, model_config)).to(self.device)
+        model = BuildModel(**filter_kwargs(BuildModel, model_config)).to(self.device)
+        pretrained = (self.config.get("pretrained") or {})
+        self.model_handler.load_weights(
+            model=model,
+            checkpoint_dir = self.checkpoint_dir,
+            project_name = self.config["project_name"],
+            **pretrained
+        )
+
+        self.model = model
 
         # setup training related objects
         training_config = self.config["training"]
@@ -114,6 +130,7 @@ class Trainer:
 
         self.num_epochs = training_config["num_epochs"]
         self.log_interval = training_config.get("log_interval")
+        self.freeze_time = pretrained.get("freeze_time", self.num_epochs)
 
     def _setup_directories(self):
         """
@@ -128,9 +145,9 @@ class Trainer:
             - The directory paths are retrieved from `self.config`.
             - This method does not create the directories on the filesystem; it only sets the paths.
         """
-        self.checkpoint_dir = self.config.get("checkpoint_dir")
-        self.log_dir = self.config.get("log_dir")
-        self.log_subdirs = self.config.get("log_subdirs")
+        self.checkpoint_dir = str(self.config.get("checkpoint_dir", ""))
+        self.log_dir = str(self.config.get("log_dir", ""))
+        self.log_subdirs = str(self.config.get("log_subdirs", ""))
 
     def train_one_epoch(self, epoch: int, train_dataloader: DataLoader) -> None:
         """
@@ -166,14 +183,21 @@ class Trainer:
 
         for batch_idx, (images, labels) in enumerate(pbar):
             images, labels = images.to(self.device), labels.to(self.device)
-            outputs = self.model(images)
-            loss = self.loss_fn(outputs, labels)
-            loss /= accumulate_steps
-            loss.backward()
+
+            # Forward pass with autocast
+            with T.autocast(device_type=self.device, dtype=T.float16):
+                outputs = self.model(images)
+                loss = self.loss_fn(outputs, labels)
+                loss /= accumulate_steps
+
+            # Backward with scaled loss
+            self.scaler.scale(loss).backward()
 
             if (batch_idx + 1) % accumulate_steps == 0:
+                self.scaler.unscale_(self.optimizer)
                 T.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=max_norm)
-                self.optimizer.step()
+                self.scaler.step(self.optimizer)
+                self.scaler.update()
                 self.optimizer.zero_grad()
 
             total_metrics["loss"].append(accumulate_steps * loss.item())
@@ -262,7 +286,11 @@ class Trainer:
         """
         self.logger.log_config(self.config)
         self.logger.log_info("Training started...")
+        self.logger.log_info(self.model.__str__())
         for epoch in range(self.num_epochs):
+            if epoch == self.freeze_time:
+                self.model_handler.unfreeze_weights(self.model)
+
             self.train_one_epoch(epoch, train_dataloader)
             
             val_metrics = {}
@@ -283,6 +311,8 @@ class Trainer:
                 end=(epoch == (self.num_epochs - 1))
             )
 
+        self.logger.log_artifact(target="s3", s3_bucket_name=self.s3_bucket_name)
+
     def validate(self, dl: DataLoader) -> Dict[str, float]:
         """
         Evaluate the model on a validation dataset.
@@ -297,5 +327,5 @@ class Trainer:
             Dict[str, float]: Dictionary of computed metrics (e.g., loss, accuracy).
         """
         metrics = self.evaluator.evaluate(self.model, dl, self.loss_fn)
-        self.logger.log_metrics(metrics, "val")
+        self.logger.log_metrics({f"epoch_{k}": v for k, v in metrics.items()}, "val")
         return metrics

@@ -1,6 +1,6 @@
 # default.yaml
 project_name: sports_cv_project_classification
-experiment_name: vgg8-base
+experiment_name: alexnet-augmented-base
 
 # Include model and dataset configs
 model: !include model_config.yaml
@@ -19,12 +19,13 @@ log_subdirs:
 training:
   optimizer:
     type: adam
-    lr: 0.001
+    lr: 0.01
     weight_decay: 5e-4
   scheduler:
-    type: reduce_lr_on_plateau
-    patience: 10
-    factor: 0.1
+    type: one_cycle_lr
+    max_lr: 0.01
+    epochs: 1000
+    total_steps: 1000
   loss:
     type: cross_entropy
     bbox_loss: smooth_l1
@@ -49,4 +50,5 @@ misc:
   seed: 42
   deterministic: true
 
-s3_name: computer-vision-models-pytorch-bucket
+# AWS object names
+s3_bucket_name: computer-vision-models-pytorch-bucket

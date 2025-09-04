@@ -5,6 +5,7 @@ import os
 import sys
 import torch as T
 from torch import nn
+import boto3
 from utils.config_parser import ConfigParser
 from utils.filesystem import make_dirs, remove_dir_with_content, flush_cache
 from utils.helpers import load_dict_and_append
@@ -78,8 +79,9 @@ class Logger:
     def log_info(self, message: str):
         logging.info(message)
 
-    def log_artifact(self):
-        pass
+    def log_artifact(self, target: str = "s3", *args, **kwargs):
+        if target == "s3":
+            self._save_weights_to_s3(s3_bucket_name=kwargs["s3_bucket_name"])
 
     def _save_weights(self, model: nn.Module, path: str):
         T.save(model.state_dict(), path)        
@@ -99,3 +101,13 @@ class Logger:
             checkpoint_path = os.path.join(self.experiment_checkpoint_dir, f"model_epoch_{epoch}.pth")
             self._save_weights(model=model, path=checkpoint_path)
             self.log_info(f"Model saved for epoch {epoch}.")
+
+    def _save_weights_to_s3(self, s3_bucket_name: str):
+        s3 = boto3.client('s3')
+        for root, _, files in os.walk(self.experiment_checkpoint_dir):
+            for filename in files:
+                local_path = os.path.join(root, filename)
+                s3_path = local_path.replace("\\", "/")
+                
+                s3.upload_file(local_path, s3_bucket_name, s3_path)
+                print(f"Uploaded {local_path} to s3://{s3_bucket_name}/{s3_path}")

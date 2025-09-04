@@ -1,8 +1,13 @@
 # model_config.yaml
-# model_name: VGG8
-backbone_name: VGG8
-detection_head_name: GAP
-pretrained: false
+model_name: AlexNet
+# backbone_name: VGG16
+# detection_head_name: GAP
+# pretrained: 
+#   source: local
+#   model_part: backbone
+#   version_name: vgg11-gap-base
+#   freeze_time: 10
+
 num_classes: 100
 num_anchors: 3
 dropout_rate: 0.5

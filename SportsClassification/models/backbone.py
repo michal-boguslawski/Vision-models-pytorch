@@ -1,3 +1,4 @@
+from collections import OrderedDict
 from typing import Type, List
 import torch as T
 import torch.nn as nn
@@ -89,7 +90,7 @@ class VGG(nn.Module):
             pool_type=pool_type
         )
         
-        self.features = nn.Sequential(*list_of_layers)
+        self.features = nn.Sequential(OrderedDict(list_of_layers))
 
     @staticmethod
     def _prebuild_list_of_layers(
@@ -102,15 +103,21 @@ class VGG(nn.Module):
         list_of_layers = []
         prev_features = in_channels
         
-        for num_layers, hidden_dims in zip(num_layers_list, hidden_dims_list):
+        for i, (num_layers, hidden_dims) in enumerate(zip(num_layers_list, hidden_dims_list)):
             # add specified number of layers to the block
-            for _ in range(num_layers):
-                list_of_layers.append(nn.Conv2d(prev_features, hidden_dims, 3, 1, 1))
-                list_of_layers.append(activation_fn(inplace=True))
+            for n in range(num_layers):
+                list_of_layers.append(
+                    (f"block{i}conv{n}", nn.Conv2d(prev_features, hidden_dims, 3, 1, 1))
+                )
+                list_of_layers.append(
+                    (f"block{i}activation{n}", activation_fn(inplace=True))
+                )
                 prev_features = hidden_dims
 
             # at the end of each block apply max pool
-            list_of_layers.append(pool_type(kernel_size=2, stride=2))
+            list_of_layers.append(
+                (f"block{i}pool", pool_type(kernel_size=2, stride=2))
+            )
         return list_of_layers
     
     def forward(self, image: T.Tensor) -> T.Tensor:

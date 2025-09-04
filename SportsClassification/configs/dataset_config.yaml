@@ -15,16 +15,16 @@ val_subdir: val
 test_subdir: test
 
 input_size: [224, 224]
-normalize_mean: [0.4714, 0.4699, 0.4551]
-normalize_std: [0.2391, 0.2302, 0.2320]
+# normalize_mean: [0.4714, 0.4699, 0.4551]
+# normalize_std: [0.2391, 0.2302, 0.2320]
 augmentations:
-  horizontal_flip: false
-  rotation: false
+  horizontal_flip: true
+  rotation: true
   random_crop: false
-  color_jitter: false
-  random_resized_crop: false
+  color_jitter: true
+  random_resized_crop: true
 
-batch_size: 64
+batch_size: 128
 shuffle: true
 num_workers: 6
 seed: 42

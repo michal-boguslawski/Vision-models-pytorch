@@ -1,5 +1,5 @@
 project_name: sports_cv_project_classification
-experiment_name: alexnet-base
+experiment_name: alexnet-normalized-base
 model:
   model_name: AlexNet
   num_classes: 100
@@ -23,6 +23,14 @@ dataset:
   input_size:
   - 224
   - 224
+  normalize_mean:
+  - 0.4714
+  - 0.4699
+  - 0.4551
+  normalize_std:
+  - 0.2391
+  - 0.2302
+  - 0.232
   augmentations:
     horizontal_flip: false
     rotation: false

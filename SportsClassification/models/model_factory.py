@@ -8,6 +8,14 @@ from utils.helpers import filter_kwargs
 # Predefined configs for VGG variants
 # ------------------------------
 PREDEFINED_CONFIGS = {
+    "VGG11": {
+        "num_layers_list": [1, 1, 2, 2, 2],
+        "hidden_dims_list": [64, 128, 256, 512, 512],
+    },
+    "VGG13": {
+        "num_layers_list": [2, 2, 2, 2, 2],
+        "hidden_dims_list": [64, 128, 256, 512, 512],
+    },
     "VGG16": {
         "num_layers_list": [2, 2, 3, 3, 3],
         "hidden_dims_list": [64, 128, 256, 512, 512],

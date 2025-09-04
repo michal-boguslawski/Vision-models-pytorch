@@ -24,7 +24,9 @@ dependencies = [
     "torcheval",
     "pandas",
     "kagglehub",
-    "pytest"
+    "pytest",
+    "matplotlib",
+    "plotly"
 ]
 
 [tool.setuptools.packages.find]

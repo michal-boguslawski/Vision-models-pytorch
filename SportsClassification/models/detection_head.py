@@ -1,20 +1,3 @@
-"""
-🔹 Purpose of detection_head.py
-
-Take the feature map from the backbone (e.g., CNN or transformer features).
-
-Predict bounding boxes, class scores, and optionally objectness.
-
-Usually contains:
-
-Fully connected layers or convolutional layers.
-
-Anchor handling (if using anchor-based methods like Faster R-CNN).
-
-Activation functions (sigmoid/softmax) for probabilities.
-
-Optional post-processing (e.g., NMS) in inference.
-"""
 import math
 from typing import Type, Tuple
 import torch as T
