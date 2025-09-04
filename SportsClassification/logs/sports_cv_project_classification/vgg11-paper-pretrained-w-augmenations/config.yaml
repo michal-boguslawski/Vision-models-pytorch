@@ -1,0 +1,87 @@
+project_name: sports_cv_project_classification
+experiment_name: vgg11-paper-pretrained-w-augmenations
+model:
+  backbone_name: VGG11
+  detection_head_name: GAP
+  pretrained:
+    source: local
+    model_part: backbone
+    version_name: vgg11-gap-base
+    freeze_time: 5
+  num_classes: 100
+  num_anchors: 3
+  dropout_rate: 0.5
+  hidden_dim: 4096
+dataset:
+  name: sports_images
+  source: kaggle
+  kaggle_dataset_name: gpiosenka/sports-classification
+  force_download: false
+  root_dir: data
+  raw_subdir: raw
+  processed_subdir: processed
+  annotations_subdir: annotations
+  annotations_file: sports.csv
+  use_existing_train_test_split: true
+  train_subdir: train
+  val_subdir: val
+  test_subdir: test
+  input_size:
+  - 224
+  - 224
+  normalize_mean:
+  - 0.4714
+  - 0.4699
+  - 0.4551
+  normalize_std:
+  - 0.2391
+  - 0.2302
+  - 0.232
+  augmentations:
+    horizontal_flip: true
+    rotation: true
+    random_crop: false
+    color_jitter: true
+    random_resized_crop: true
+  batch_size: 128
+  shuffle: true
+  num_workers: 6
+  seed: 42
+checkpoint_dir: checkpoints/
+log_dir: logs/
+log_subdirs:
+  train: train
+  val: val
+  test: test
+training:
+  optimizer:
+    type: adam
+    lr: 0.001
+    weight_decay: 0.0005
+  scheduler:
+    type: one_cycle_lr
+    max_lr: 0.001
+    epochs: 200
+    total_steps: 200
+  loss:
+    type: cross_entropy
+    bbox_loss: smooth_l1
+    obj_loss: binary_cross_entropy
+  early_stopping:
+    patience: 30
+    threshold: 0.0001
+  num_epochs: 1000
+  save_best_only: true
+  save_checkpoint: true
+  log_interval: 50
+evaluation:
+  metrics:
+  - accuracy
+  - top-5-accuracy
+  iou_threshold: 0.5
+  conf_threshold: 0.3
+misc:
+  device: cuda
+  seed: 42
+  deterministic: true
+s3_bucket_name: computer-vision-models-pytorch-bucket

@@ -1,6 +1,6 @@
 # default.yaml
 project_name: sports_cv_project_classification
-experiment_name: alexnet-augmented-normalized_w-pretrained
+experiment_name: vgg16-paper-pretrained-w-augmenations
 
 # Include model and dataset configs
 model: !include model_config.yaml
@@ -19,13 +19,13 @@ log_subdirs:
 training:
   optimizer:
     type: adam
-    lr: 0.01
+    lr: 0.001
     weight_decay: 5e-4
   scheduler:
     type: one_cycle_lr
-    max_lr: 0.01
-    epochs: 1000
-    total_steps: 1000
+    max_lr: 0.001
+    epochs: 200
+    total_steps: 200
   loss:
     type: cross_entropy
     bbox_loss: smooth_l1

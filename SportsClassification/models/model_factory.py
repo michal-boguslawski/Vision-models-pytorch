@@ -32,9 +32,10 @@ PREDEFINED_CONFIGS = {
 # ------------------------------
 
 CONFIG_TO_GENERAL = {
+    "VGG11": "VGG",
+    "VGG13": "VGG",
     "VGG16": "VGG",
     "VGG19": "VGG",
-    "VGG8": "VGG",
 }
 
 
