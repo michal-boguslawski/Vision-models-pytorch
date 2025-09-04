@@ -91,11 +91,14 @@ def create_dataloader(
         processed_subdir=processed_subdir,
         transform=transform,
     )
+    
+    num_workers = config.get("num_workers", 1)
+    
     dl = DataLoader(
         dataset=dt,
         batch_size=config["batch_size"],
         shuffle=config["shuffle"] if sub_dataset == "train" else False,
-        num_workers=config.get("num_workers", 1),
+        num_workers=num_workers if isinstance(num_workers, int) else 0,
         worker_init_fn=seed_worker
     )
     return dl

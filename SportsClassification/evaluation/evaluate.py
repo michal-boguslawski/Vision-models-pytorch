@@ -17,8 +17,8 @@ class Evaluator:
     def evaluate(self, model: nn.Module, dl: DataLoader, loss_fn: nn.modules.loss._Loss | None = None):
         model.eval()
         self._reset_metrics()
-        if loss_fn:
-            loss = 0
+        loss = 0
+        
         for input_, labels in dl:
             input_, labels = input_.to(self.device), labels.to(self.device)
             with T.no_grad():
