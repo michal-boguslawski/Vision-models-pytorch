@@ -1,6 +1,6 @@
 # default.yaml
 project_name: sports_cv_project_classification
-experiment_name: alexnet-augmented-base
+experiment_name: alexnet-augmented-normalized_w-pretrained
 
 # Include model and dataset configs
 model: !include model_config.yaml

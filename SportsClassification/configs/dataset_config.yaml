@@ -15,8 +15,8 @@ val_subdir: val
 test_subdir: test
 
 input_size: [224, 224]
-# normalize_mean: [0.4714, 0.4699, 0.4551]
-# normalize_std: [0.2391, 0.2302, 0.2320]
+normalize_mean: [0.4714, 0.4699, 0.4551]
+normalize_std: [0.2391, 0.2302, 0.2320]
 augmentations:
   horizontal_flip: true
   rotation: true

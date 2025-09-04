@@ -48,7 +48,14 @@ class ModelHandler:
         pass
 
     @staticmethod
-    def _load_state_dict_from_local(checkpoint_dir: str, project_name: str, version_type: str = "latest", version_name: str = "") -> OrderedDict | None:
+    def _load_state_dict_from_local(
+        checkpoint_dir: str,
+        project_name: str,
+        version_type: str = "latest",
+        version_name: str = "",
+        *args,
+        **kwargs
+    ) -> OrderedDict | None:
         files = glob.glob(os.path.join(checkpoint_dir, project_name, f"*{version_name}*", "*.pth"))
         
         # Make sure the directory is not empty

@@ -3,4 +3,4 @@
 **/.vscode/**
 **/checkpoints/**
 **/.ipynb_checkpoints/**
-.env
+**/.env

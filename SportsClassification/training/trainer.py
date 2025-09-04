@@ -108,7 +108,8 @@ class Trainer:
         # setup model
         model_config = self.config["model"]
         model = BuildModel(**filter_kwargs(BuildModel, model_config)).to(self.device)
-        pretrained = (self.config.get("pretrained") or {})
+        pretrained = (model_config.get("pretrained") or {})
+        print(pretrained)
         self.model_handler.load_weights(
             model=model,
             checkpoint_dir = self.checkpoint_dir,
