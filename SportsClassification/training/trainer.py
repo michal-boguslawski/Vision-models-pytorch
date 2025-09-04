@@ -15,7 +15,7 @@ from utils.helpers import filter_kwargs, append_dict_to_dict
 class Trainer:
     def __init__(
         self,
-        config: ConfigParser | None = None
+        config: ConfigParser
     ):
         self.config = config
         self.project_name = self.config.get("project_name")
@@ -50,6 +50,7 @@ class Trainer:
         self.log_subdirs = self.config.get("log_subdirs")
 
     def train_one_epoch(self, epoch: int, train_dataloader: DataLoader):
+        batch_idx = 0
         self.model.train()
         total_metrics = {
             "loss": []

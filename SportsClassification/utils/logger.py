@@ -29,11 +29,11 @@ class Logger:
         self.save_best_only = save_best_only
         self.save_checkpoint = save_checkpoint
         self.log_dir = log_dir
-        self.log_subdirs = log_subdirs
+        self.log_subdirs = log_subdirs or {}
 
         self.best_val_loss = None
-        self.experiment_log_dir = None
-        self.experiment_checkpoint_dir = None
+        self.experiment_log_dir = ""
+        self.experiment_checkpoint_dir = ""
         
         self._setup()
         self._setup_logger()
@@ -85,7 +85,7 @@ class Logger:
         T.save(model.state_dict(), path)        
 
     def on_epoch_end_log(self, model: nn.Module, val_loss: float | None = None, epoch: int | None = None, end: bool = False):
-        if self.save_best_only and self.save_checkpoint:
+        if self.save_best_only and self.save_checkpoint and val_loss:
             if self.best_val_loss is None or val_loss < self.best_val_loss:
                 self.best_val_loss = val_loss
                 checkpoint_path = os.path.join(self.experiment_checkpoint_dir, "model_best.pth")

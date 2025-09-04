@@ -7,7 +7,7 @@ LOSSES_DICT = {
 }
 
 
-def setup_loss(loss_config: dict | None):
+def setup_loss(loss_config: dict):
     loss_type = loss_config["type"]
 
     loss_cls = LOSSES_DICT[loss_type]

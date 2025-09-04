@@ -45,3 +45,5 @@ misc:
   device: cuda  # cpu
   seed: 42
   deterministic: true
+
+s3_name: computer-vision-models-pytorch-bucket

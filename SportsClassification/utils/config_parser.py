@@ -1,4 +1,5 @@
 import os
+from typing import Any
 import yaml
 from utils.filesystem import cache_message
 
@@ -22,11 +23,11 @@ class ConfigParser:
         with open(path, 'r') as f:
             return yaml.safe_load(f)
 
-    def get(self, key, default=None):
+    def get(self, key: str, default: Any | None = None):
         """Access nested keys safely."""
         return self.config.get(key, default)
 
-    def pop(self, key):
+    def pop(self, key: str):
         """Remove occurence of key in dictionary and return the value."""
         value = self.config.pop(key)
         return value
@@ -51,7 +52,7 @@ class ConfigParser:
     def __repr__(self):
         return yaml.dump(self.config, sort_keys=False)
 
-    def _sanitize(self, d):
+    def _sanitize(self, d: dict) -> dict:
         """Recursively convert scientific string numbers like '1e-4' to floats."""
         if isinstance(d, dict):
             return {k: self._sanitize(v) for k, v in d.items()}

@@ -3,7 +3,9 @@ import json
 import os
 
 
-def filter_kwargs(cls, config: dict):
+def filter_kwargs(cls, config: dict | None) -> dict:
+    if config is None:
+        return {}
     valid_params = inspect.signature(cls).parameters
     filtered_config = {k: v for k, v in config.items() if k in valid_params}
     return filtered_config

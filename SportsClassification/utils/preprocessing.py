@@ -25,7 +25,7 @@ class DataPreprocessor:
         test_subdir: str = "test",
         annotations_file: str = "sports.csv",
         use_existing_train_test_split: bool = True,
-        input_size: tuple[int] = (224, 224),
+        input_size: tuple[int, int] = (224, 224),
         annotations_config: dict = default_annotation_dict,
         *args,
         **kwargs
@@ -65,8 +65,8 @@ class DataPreprocessor:
         temp_annotations_list = []
         
         for _, row in tqdm(df.iterrows(), desc=data_set, total=len(df)):
-            image_path = os.path.join(self.root_dir, self.raw_subdir, row[self.annotations_config["filepaths"]])
-            label = row[self.annotations_config["labels"]]
+            image_path = os.path.join(self.root_dir, self.raw_subdir, str(row[self.annotations_config["filepaths"]]))
+            label = str(row[self.annotations_config["labels"]])
             image_name = os.path.basename(image_path)
             processed_image_path = os.path.join(self.processed_dir, data_set, label, image_name)
             
@@ -99,6 +99,8 @@ class DataPreprocessor:
 
     def _run_preprocessing(self, df: pd.DataFrame) -> None:
         print("Use existing split")
+        processed_data_set_name = ""
+        
         data_sets = df[self.annotations_config["train_test_split"]].unique()
         for data_set in data_sets:
             data_set_df = df[df[self.annotations_config["train_test_split"]] == data_set]
