@@ -14,11 +14,15 @@ if __name__ == "__main__":
     
     train_dl = create_dataloader(
         config=config["dataset"],
-        sub_dataset="train"
+        sub_dataset="train",
+        use_augmentations=True,
+        shuffle=True
     )
     val_dl = create_dataloader(
         config=config["dataset"],
-        sub_dataset="val"
+        sub_dataset="val",
+        use_augmentations=True,
+        shuffle=False
     )
 
     trainer = Trainer(config=config)

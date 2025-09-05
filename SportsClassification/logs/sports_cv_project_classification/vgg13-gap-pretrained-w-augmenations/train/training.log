@@ -1,0 +1,52 @@
+2025-09-05 22:29:54,609 [INFO] Global seed set to 42
+2025-09-05 22:29:54,609 [INFO] Folder logs/sports_cv_project_classification/vgg13-gap-pretrained-w-augmenations was removed with its entire content
+2025-09-05 22:29:54,609 [INFO] Path logs/sports_cv_project_classification/vgg13-gap-pretrained-w-augmenations/train created or existed
+2025-09-05 22:29:54,609 [INFO] Path logs/sports_cv_project_classification/vgg13-gap-pretrained-w-augmenations/val created or existed
+2025-09-05 22:29:54,609 [INFO] Path logs/sports_cv_project_classification/vgg13-gap-pretrained-w-augmenations/test created or existed
+2025-09-05 22:29:54,609 [INFO] Folder checkpoints/sports_cv_project_classification/vgg13-gap-pretrained-w-augmenations was removed with its entire content
+2025-09-05 22:29:54,609 [INFO] Path checkpoints/sports_cv_project_classification/vgg13-gap-pretrained-w-augmenations created or existed
+2025-09-05 22:29:54,913 [INFO] Training started...
+2025-09-05 22:29:54,914 [INFO] BuildModel(
+  (backbone): VGG(
+    (features): Sequential(
+      (block0conv0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block0activation0): ReLU(inplace=True)
+      (block0conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block0activation1): ReLU(inplace=True)
+      (block0pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (block1conv0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block1activation0): ReLU(inplace=True)
+      (block1conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block1activation1): ReLU(inplace=True)
+      (block1pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (block2conv0): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block2activation0): ReLU(inplace=True)
+      (block2conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block2activation1): ReLU(inplace=True)
+      (block2pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (block3conv0): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block3activation0): ReLU(inplace=True)
+      (block3conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block3activation1): ReLU(inplace=True)
+      (block3pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (block4conv0): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block4activation0): ReLU(inplace=True)
+      (block4conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block4activation1): ReLU(inplace=True)
+      (block4pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    )
+  )
+  (detecton_head): GAPDoubleLinearHead(
+    (classifier): Sequential(
+      (0): AvgPool2d(kernel_size=(7, 7), stride=(7, 7), padding=0)
+      (1): Flatten(start_dim=1, end_dim=-1)
+      (2): Linear(in_features=512, out_features=4096, bias=True)
+      (3): ReLU(inplace=True)
+      (4): Dropout(p=0.5, inplace=False)
+      (5): Linear(in_features=4096, out_features=4096, bias=True)
+      (6): ReLU(inplace=True)
+      (7): Dropout(p=0.5, inplace=False)
+      (8): Linear(in_features=4096, out_features=100, bias=True)
+    )
+  )
+)

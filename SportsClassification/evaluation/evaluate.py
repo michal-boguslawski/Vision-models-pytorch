@@ -1,7 +1,15 @@
+import os
+import pandas as pd
+from tqdm import tqdm
 import torch as T
 from torch import nn
 from torch.utils.data import DataLoader
+from datasets.dataset_utils import create_dataloader
 from evaluation.metrics import setup_metric
+from models.model_factory import BuildModel
+from models.utils import ModelHandler
+from utils.config_parser import ConfigParser
+from utils.helpers import filter_kwargs
 
 
 class Evaluator:
@@ -19,7 +27,7 @@ class Evaluator:
         self._reset_metrics()
         loss = 0
         
-        for input_, labels in dl:
+        for input_, labels in tqdm(dl):
             input_, labels = input_.to(self.device), labels.to(self.device)
             with T.no_grad():
                 outputs = model(input_)
@@ -44,3 +52,69 @@ class Evaluator:
         self._calc_one_step(outputs=outputs, labels=labels)
         metrics = self._compute_metrics()
         return metrics
+
+
+class EvaluateProjectModels:
+    def __init__(self, project_name: str):
+        self.project_name = project_name
+
+        self.df_list = []
+        self.configs_list = []
+        self.logs_dir = os.path.join("logs", project_name)
+        self.checkpoints_dir = os.path.join("checkpoints", project_name)
+        self.model_handler = ModelHandler()
+
+    def _extract_configs(self):
+        for path, _, file in os.walk(self.logs_dir):
+            if "config.yaml" in file:
+                self.configs_list.append(os.path.join(path, "config.yaml"))
+
+    def _evaluate_single_model(self, config: ConfigParser):
+        experiment_name = config["experiment_name"]
+        device = config["misc"].get("device", "cpu")
+        evaluator = Evaluator(**filter_kwargs(Evaluator, config["evaluation"]), device=device)
+
+        # build model
+        model = BuildModel(**filter_kwargs(BuildModel, config["model"])).to(device)
+        # load weights
+        self.model_handler.load_weights(
+            model=model,
+            source="s3",
+            version_name=experiment_name + "/model_best.pth",
+            model_part="all",
+            checkpoint_dir=config["checkpoint_dir"],
+            project_name=self.project_name
+        )
+        
+        for dataset in ["train", "val", "test"]:
+            metrics = self._evaluate_dataset(
+                model=model,
+                evaluator=evaluator,
+                dataset_config=config["dataset"],
+                sub_dataset=dataset,
+                experiment_name=experiment_name
+            )
+            self.df_list.append(metrics)
+
+    @staticmethod
+    def _evaluate_dataset(model: nn.Module, evaluator: Evaluator, dataset_config: dict, sub_dataset: str, experiment_name: str) -> dict:
+        dataloader = create_dataloader(
+            config=dataset_config,
+            sub_dataset=sub_dataset,
+            use_augmentations=False,
+            shuffle=False
+        )
+
+        metrics = evaluator.evaluate(model=model, dl=dataloader)
+        metrics["sub_dataset"] = sub_dataset
+        metrics["experiment_name"] = experiment_name
+        return metrics
+
+    def evaluate(self):
+        self._extract_configs()
+
+        for config in self.configs_list:
+            self._evaluate_single_model(config=config)
+        
+        df = pd.DataFrame(self.df_list)
+        return df

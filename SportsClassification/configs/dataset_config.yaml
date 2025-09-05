@@ -23,8 +23,10 @@ augmentations:
   random_crop: false
   color_jitter: true
   random_resized_crop: true
+  grayscale: true
+  gaussian_blur: true
 
-batch_size: 128
+batch_size: 64
 shuffle: true
 num_workers: 6
 seed: 42

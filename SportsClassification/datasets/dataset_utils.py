@@ -15,10 +15,18 @@ def create_transforms(
     normalize_std: list | None = None
 ) -> v2.Compose:
     transforms_list = []
+    random_apply_list = []
     if augmentations:
         for key, value in augmentations.items():
             if key in AUGMENTATIONS_DICT and value:
-                transforms_list.append(AUGMENTATIONS_DICT[key])
+                apply_type, transform = AUGMENTATIONS_DICT[key]
+                if apply_type == "compose":
+                    transforms_list.append(transform)
+                elif apply_type == "random":
+                    random_apply_list.append(transform)
+
+    if random_apply_list:
+        transforms_list.append(v2.RandomApply(random_apply_list))
 
     transforms_list.append(v2.ToDtype(T.float32, scale=True))
 
@@ -73,9 +81,11 @@ class ImageDataset(Dataset):
 def create_dataloader(
     config: ConfigParser | dict,
     sub_dataset: str = "train",
+    use_augmentations: bool = True,
+    shuffle: bool = True,
 ):
     transform = create_transforms(
-        augmentations=config.get("augmentations") if sub_dataset == "train" else None,
+        augmentations=config.get("augmentations") if use_augmentations else None,
         normalize_mean=config.get("normalize_mean"),
         normalize_std=config.get("normalize_std"),
     )
@@ -97,7 +107,7 @@ def create_dataloader(
     dl = DataLoader(
         dataset=dt,
         batch_size=config["batch_size"],
-        shuffle=config["shuffle"] if sub_dataset == "train" else False,
+        shuffle=config["shuffle"] and shuffle,
         num_workers=num_workers if isinstance(num_workers, int) else 0,
         worker_init_fn=seed_worker
     )

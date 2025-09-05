@@ -4,11 +4,13 @@ import os
 from typing import Literal
 import torch as T
 from torch import nn
+from utils.aws_handler import AWSHandler
 
 
 class ModelHandler:
     LOAD_SOURCE_DICT = {
-        "local": "_load_state_dict_from_local"
+        "local": "_load_state_dict_from_local",
+        "s3": "_load_state_dict_from_s3"
     }
 
     def load_weights(
@@ -42,10 +44,6 @@ class ModelHandler:
         for param in model.parameters():
             param.requires_grad = True
         print("Weights were unfrozen")
-
-    @staticmethod
-    def _load_weights_from_s3(s3_bucket_name: str, type: str = "latest", version_name: str = "") -> OrderedDict | None:
-        pass
 
     @staticmethod
     def _load_state_dict_from_local(
@@ -84,3 +82,20 @@ class ModelHandler:
 
         if if_freeze:
             self.freeze_weights(model=model, state_dict=new_state_dict)
+
+    def _load_state_dict_from_s3(
+        self,
+        s3_bucket_name: str,
+        version_name: str,
+        checkpoint_dir: str,
+        project_name: str,
+        *args,
+        **kwargs
+    ) -> OrderedDict:
+        s3_path = os.path.join(checkpoint_dir, project_name, version_name)
+        aws_handler = AWSHandler(s3_bucket_name=s3_bucket_name)
+        temp_path = ".temp/state_dict.pth"
+        aws_handler.download_file(from_path=s3_path, local_path=temp_path)
+        state_dict = T.load(temp_path)
+        os.remove(temp_path)
+        return state_dict

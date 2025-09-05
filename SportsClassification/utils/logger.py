@@ -9,6 +9,7 @@ import boto3
 from utils.config_parser import ConfigParser
 from utils.filesystem import make_dirs, remove_dir_with_content, flush_cache
 from utils.helpers import load_dict_and_append
+from utils.aws_handler import AWSHandler
 
 
 class Logger:
@@ -103,11 +104,10 @@ class Logger:
             self.log_info(f"Model saved for epoch {epoch}.")
 
     def _save_weights_to_s3(self, s3_bucket_name: str):
-        s3 = boto3.client('s3')
+        aws_handler = AWSHandler(s3_bucket_name=s3_bucket_name)
         for root, _, files in os.walk(self.experiment_checkpoint_dir):
             for filename in files:
                 local_path = os.path.join(root, filename)
                 s3_path = local_path.replace("\\", "/")
                 
-                s3.upload_file(local_path, s3_bucket_name, s3_path)
-                print(f"Uploaded {local_path} to s3://{s3_bucket_name}/{s3_path}")
+                aws_handler.upload_file(local_path=local_path, to_path=s3_path)

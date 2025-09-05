@@ -1,6 +1,6 @@
 # default.yaml
 project_name: sports_cv_project_classification
-experiment_name: vgg11-gap-pretrained-w-augmenations
+experiment_name: vgg13-gap-pretrained-w-augmenations
 
 # Include model and dataset configs
 model: !include model_config.yaml
@@ -22,10 +22,10 @@ training:
     lr: 0.001
     weight_decay: 5e-4
   scheduler:
-    type: one_cycle_lr
-    max_lr: 0.001
-    epochs: 200
-    total_steps: 200
+    type: cosine_annealing_warm_restarts
+    T_0: 25
+    T_mult: 2
+    eta_min: 1e-7
   loss:
     type: cross_entropy
     bbox_loss: smooth_l1
