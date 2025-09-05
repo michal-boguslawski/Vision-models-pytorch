@@ -26,7 +26,9 @@ dependencies = [
     "kagglehub",
     "pytest",
     "matplotlib",
-    "plotly"
+    "plotly",
+    "nbformat",
+    "boto3"
 ]
 
 [tool.setuptools.packages.find]

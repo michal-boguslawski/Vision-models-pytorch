@@ -1,5 +1,5 @@
 project_name: sports_cv_project_classification
-experiment_name: vgg11-paper-pretrained-w-augmenations
+experiment_name: vgg11-gap-pretrained-w-augmenations
 model:
   backbone_name: VGG11
   detection_head_name: GAP
@@ -7,7 +7,7 @@ model:
     source: local
     model_part: backbone
     version_name: vgg11-gap-base
-    freeze_time: 5
+    freeze_time: 10
   num_classes: 100
   num_anchors: 3
   dropout_rate: 0.5

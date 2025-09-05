@@ -8,3 +8,5 @@ torcheval==0.0.7
 PyYAML==6.0.2
 matplotlib==3.10.6
 plotly==6.3.0
+nbformat==5.10.4
+boto3==1.40.24

@@ -1,6 +1,6 @@
 # default.yaml
 project_name: sports_cv_project_classification
-experiment_name: vgg16-paper-pretrained-w-augmenations
+experiment_name: vgg11-gap-pretrained-w-augmenations
 
 # Include model and dataset configs
 model: !include model_config.yaml

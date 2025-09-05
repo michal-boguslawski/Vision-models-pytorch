@@ -1,0 +1,1589 @@
+2025-09-05 11:02:39,221 [INFO] Global seed set to 42
+2025-09-05 11:02:39,221 [INFO] Folder logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations was removed with its entire content
+2025-09-05 11:02:39,221 [INFO] Path logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train created or existed
+2025-09-05 11:02:39,221 [INFO] Path logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val created or existed
+2025-09-05 11:02:39,221 [INFO] Path logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/test created or existed
+2025-09-05 11:02:39,221 [INFO] Folder checkpoints/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations was removed with its entire content
+2025-09-05 11:02:39,221 [INFO] Path checkpoints/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations created or existed
+2025-09-05 11:02:39,554 [INFO] Training started...
+2025-09-05 11:02:39,555 [INFO] BuildModel(
+  (backbone): VGG(
+    (features): Sequential(
+      (block0conv0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block0activation0): ReLU(inplace=True)
+      (block0pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (block1conv0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block1activation0): ReLU(inplace=True)
+      (block1pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (block2conv0): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block2activation0): ReLU(inplace=True)
+      (block2conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block2activation1): ReLU(inplace=True)
+      (block2pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (block3conv0): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block3activation0): ReLU(inplace=True)
+      (block3conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block3activation1): ReLU(inplace=True)
+      (block3pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (block4conv0): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block4activation0): ReLU(inplace=True)
+      (block4conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block4activation1): ReLU(inplace=True)
+      (block4pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    )
+  )
+  (detecton_head): GAPDoubleLinearHead(
+    (classifier): Sequential(
+      (0): AvgPool2d(kernel_size=(7, 7), stride=(7, 7), padding=0)
+      (1): Flatten(start_dim=1, end_dim=-1)
+      (2): Linear(in_features=512, out_features=4096, bias=True)
+      (3): ReLU(inplace=True)
+      (4): Dropout(p=0.5, inplace=False)
+      (5): Linear(in_features=4096, out_features=4096, bias=True)
+      (6): ReLU(inplace=True)
+      (7): Dropout(p=0.5, inplace=False)
+      (8): Linear(in_features=4096, out_features=100, bias=True)
+    )
+  )
+)
+2025-09-05 11:02:49,545 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:02:49,545 [INFO] loss: 4.557454 accuracy: 0.045937 top-5-accuracy: 0.159062
+2025-09-05 11:02:58,408 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:02:58,408 [INFO] loss: 4.414891 accuracy: 0.075781 top-5-accuracy: 0.246875
+2025-09-05 11:02:59,176 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:02:59,176 [INFO] loss: 4.260041 epoch_loss: 4.473908 accuracy: 0.092788 epoch_accuracy: 0.062676 top-5-accuracy: 0.335577 epoch_top-5-accuracy: 0.209668
+2025-09-05 11:02:59,177 [INFO] Epoch summary loss: 4.473908 accuracy: 0.062676 top-5-accuracy: 0.209668
+2025-09-05 11:03:00,103 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:03:00,103 [INFO] epoch_accuracy: 0.122000 epoch_top-5-accuracy: 0.356000 epoch_loss: 4.069923
+2025-09-05 11:03:00,103 [INFO] Current lr: [4.068030607515434e-05]
+2025-09-05 11:03:00,153 [INFO] Model saved. New best value 4.069923
+2025-09-05 11:03:10,623 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:03:10,624 [INFO] loss: 4.117543 accuracy: 0.128906 top-5-accuracy: 0.361250
+2025-09-05 11:03:19,779 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:03:19,779 [INFO] loss: 3.708622 accuracy: 0.205469 top-5-accuracy: 0.480469
+2025-09-05 11:03:20,478 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:03:20,478 [INFO] loss: 3.473149 epoch_loss: 3.889546 accuracy: 0.218750 epoch_accuracy: 0.169517 top-5-accuracy: 0.510938 epoch_top-5-accuracy: 0.425413
+2025-09-05 11:03:20,478 [INFO] Epoch summary loss: 3.889546 accuracy: 0.169517 top-5-accuracy: 0.425413
+2025-09-05 11:03:21,468 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:03:21,469 [INFO] epoch_accuracy: 0.296000 epoch_top-5-accuracy: 0.612000 epoch_loss: 2.993003
+2025-09-05 11:03:21,469 [INFO] Current lr: [4.271929589913417e-05]
+2025-09-05 11:03:21,537 [INFO] Model saved. New best value 2.993003
+2025-09-05 11:03:31,889 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:03:31,889 [INFO] loss: 3.349430 accuracy: 0.239687 top-5-accuracy: 0.546875
+2025-09-05 11:03:40,968 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:03:40,968 [INFO] loss: 3.096690 accuracy: 0.264219 top-5-accuracy: 0.584531
+2025-09-05 11:03:41,793 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:03:41,794 [INFO] loss: 2.947703 epoch_loss: 3.207447 accuracy: 0.298317 epoch_accuracy: 0.254490 top-5-accuracy: 0.606010 epoch_top-5-accuracy: 0.568164
+2025-09-05 11:03:41,794 [INFO] Epoch summary loss: 3.207447 accuracy: 0.254490 top-5-accuracy: 0.568164
+2025-09-05 11:03:42,744 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:03:42,744 [INFO] epoch_accuracy: 0.390000 epoch_top-5-accuracy: 0.730000 epoch_loss: 2.356978
+2025-09-05 11:03:42,744 [INFO] Current lr: [4.611118973375458e-05]
+2025-09-05 11:03:42,810 [INFO] Model saved. New best value 2.356978
+2025-09-05 11:03:52,914 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:03:52,915 [INFO] loss: 2.936900 accuracy: 0.277813 top-5-accuracy: 0.602656
+2025-09-05 11:04:01,673 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:04:01,673 [INFO] loss: 2.818259 accuracy: 0.299219 top-5-accuracy: 0.629844
+2025-09-05 11:04:02,581 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:04:02,581 [INFO] loss: 2.829577 epoch_loss: 2.874162 accuracy: 0.278365 epoch_accuracy: 0.288337 top-5-accuracy: 0.602043 epoch_top-5-accuracy: 0.616031
+2025-09-05 11:04:02,581 [INFO] Epoch summary loss: 2.874162 accuracy: 0.288337 top-5-accuracy: 0.616031
+2025-09-05 11:04:03,551 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:04:03,551 [INFO] epoch_accuracy: 0.432000 epoch_top-5-accuracy: 0.772000 epoch_loss: 2.130612
+2025-09-05 11:04:03,551 [INFO] Current lr: [5.084637288742396e-05]
+2025-09-05 11:04:03,622 [INFO] Model saved. New best value 2.130612
+2025-09-05 11:04:14,154 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:04:14,154 [INFO] loss: 2.736544 accuracy: 0.306406 top-5-accuracy: 0.637344
+2025-09-05 11:04:23,346 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:04:23,346 [INFO] loss: 2.701356 accuracy: 0.321719 top-5-accuracy: 0.645156
+2025-09-05 11:04:24,095 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:04:24,096 [INFO] loss: 2.624945 epoch_loss: 2.715321 accuracy: 0.325361 epoch_accuracy: 0.314212 top-5-accuracy: 0.640024 epoch_top-5-accuracy: 0.640818
+2025-09-05 11:04:24,096 [INFO] Epoch summary loss: 2.715321 accuracy: 0.314212 top-5-accuracy: 0.640818
+2025-09-05 11:04:25,034 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:04:25,034 [INFO] epoch_accuracy: 0.464000 epoch_top-5-accuracy: 0.782000 epoch_loss: 1.990384
+2025-09-05 11:04:25,034 [INFO] Current lr: [5.691142296903229e-05]
+2025-09-05 11:04:25,100 [INFO] Model saved. New best value 1.990384
+2025-09-05 11:04:35,348 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:04:35,348 [INFO] loss: 2.624068 accuracy: 0.339062 top-5-accuracy: 0.660937
+2025-09-05 11:04:44,387 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:04:44,387 [INFO] loss: 2.614278 accuracy: 0.329688 top-5-accuracy: 0.663906
+2025-09-05 11:04:45,113 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:04:45,113 [INFO] loss: 2.596938 epoch_loss: 2.616772 accuracy: 0.341226 epoch_accuracy: 0.335081 top-5-accuracy: 0.672837 epoch_top-5-accuracy: 0.663371
+2025-09-05 11:04:45,114 [INFO] Epoch summary loss: 2.616772 accuracy: 0.335081 top-5-accuracy: 0.663371
+2025-09-05 11:04:46,042 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:04:46,042 [INFO] epoch_accuracy: 0.502000 epoch_top-5-accuracy: 0.796000 epoch_loss: 1.899400
+2025-09-05 11:04:46,042 [INFO] Current lr: [6.428914793517695e-05]
+2025-09-05 11:04:46,110 [INFO] Model saved. New best value 1.899400
+2025-09-05 11:04:56,240 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:04:56,240 [INFO] loss: 2.585398 accuracy: 0.333594 top-5-accuracy: 0.653594
+2025-09-05 11:05:05,436 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:05:05,436 [INFO] loss: 2.554558 accuracy: 0.347969 top-5-accuracy: 0.673125
+2025-09-05 11:05:06,202 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:05:06,202 [INFO] loss: 2.529875 epoch_loss: 2.568864 accuracy: 0.341707 epoch_accuracy: 0.340779 top-5-accuracy: 0.657212 epoch_top-5-accuracy: 0.663445
+2025-09-05 11:05:06,203 [INFO] Epoch summary loss: 2.568864 accuracy: 0.340779 top-5-accuracy: 0.663445
+2025-09-05 11:05:07,126 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:05:07,126 [INFO] epoch_accuracy: 0.508000 epoch_top-5-accuracy: 0.796000 epoch_loss: 1.850883
+2025-09-05 11:05:07,126 [INFO] Current lr: [7.295863482287745e-05]
+2025-09-05 11:05:07,196 [INFO] Model saved. New best value 1.850883
+2025-09-05 11:05:17,846 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:05:17,847 [INFO] loss: 2.501823 accuracy: 0.351875 top-5-accuracy: 0.682656
+2025-09-05 11:05:27,088 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:05:27,088 [INFO] loss: 2.484288 accuracy: 0.354063 top-5-accuracy: 0.689063
+2025-09-05 11:05:27,867 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:05:27,867 [INFO] loss: 2.483283 epoch_loss: 2.493497 accuracy: 0.355048 epoch_accuracy: 0.353127 top-5-accuracy: 0.675240 epoch_top-5-accuracy: 0.685521
+2025-09-05 11:05:27,867 [INFO] Epoch summary loss: 2.493497 accuracy: 0.353127 top-5-accuracy: 0.685521
+2025-09-05 11:05:28,798 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:05:28,798 [INFO] epoch_accuracy: 0.520000 epoch_top-5-accuracy: 0.820000 epoch_loss: 1.788675
+2025-09-05 11:05:28,798 [INFO] Current lr: [8.289530902964154e-05]
+2025-09-05 11:05:28,867 [INFO] Model saved. New best value 1.788675
+2025-09-05 11:05:38,955 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:05:38,955 [INFO] loss: 2.452612 accuracy: 0.365156 top-5-accuracy: 0.695625
+2025-09-05 11:05:47,930 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:05:47,931 [INFO] loss: 2.425225 accuracy: 0.366719 top-5-accuracy: 0.693594
+2025-09-05 11:05:48,628 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:05:48,628 [INFO] loss: 2.488400 epoch_loss: 2.439180 accuracy: 0.337260 epoch_accuracy: 0.365334 top-5-accuracy: 0.682933 epoch_top-5-accuracy: 0.694360
+2025-09-05 11:05:48,628 [INFO] Epoch summary loss: 2.439180 accuracy: 0.365334 top-5-accuracy: 0.694360
+2025-09-05 11:05:49,566 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:05:49,566 [INFO] epoch_accuracy: 0.516000 epoch_top-5-accuracy: 0.832000 epoch_loss: 1.794281
+2025-09-05 11:05:49,566 [INFO] Current lr: [9.407100397284564e-05]
+2025-09-05 11:05:59,670 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:05:59,670 [INFO] loss: 2.454515 accuracy: 0.357812 top-5-accuracy: 0.687656
+2025-09-05 11:06:09,127 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:06:09,127 [INFO] loss: 2.395173 accuracy: 0.371563 top-5-accuracy: 0.707500
+2025-09-05 11:06:09,831 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:06:09,832 [INFO] loss: 2.410865 epoch_loss: 2.425771 accuracy: 0.391226 epoch_accuracy: 0.365668 top-5-accuracy: 0.700240 epoch_top-5-accuracy: 0.696798
+2025-09-05 11:06:09,832 [INFO] Epoch summary loss: 2.425771 accuracy: 0.365668 top-5-accuracy: 0.696798
+2025-09-05 11:06:10,799 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:06:10,799 [INFO] epoch_accuracy: 0.526000 epoch_top-5-accuracy: 0.822000 epoch_loss: 1.771813
+2025-09-05 11:06:10,799 [INFO] Current lr: [0.0001064540409309731]
+2025-09-05 11:06:10,873 [INFO] Model saved. New best value 1.771813
+2025-09-05 11:06:28,249 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:06:28,250 [INFO] loss: 2.299554 accuracy: 0.394375 top-5-accuracy: 0.717812
+2025-09-05 11:06:44,238 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:06:44,238 [INFO] loss: 2.167976 accuracy: 0.416563 top-5-accuracy: 0.744844
+2025-09-05 11:06:46,007 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:06:46,007 [INFO] loss: 2.074629 epoch_loss: 2.225723 accuracy: 0.439303 epoch_accuracy: 0.407146 top-5-accuracy: 0.749159 epoch_top-5-accuracy: 0.732198
+2025-09-05 11:06:46,007 [INFO] Epoch summary loss: 2.225723 accuracy: 0.407146 top-5-accuracy: 0.732198
+2025-09-05 11:06:46,970 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:06:46,970 [INFO] epoch_accuracy: 0.568000 epoch_top-5-accuracy: 0.832000 epoch_loss: 1.619826
+2025-09-05 11:06:46,970 [INFO] Current lr: [0.0001200093188403928]
+2025-09-05 11:06:47,044 [INFO] Model saved. New best value 1.619826
+2025-09-05 11:07:04,255 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:07:04,255 [INFO] loss: 2.086270 accuracy: 0.434688 top-5-accuracy: 0.759531
+2025-09-05 11:07:20,262 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:07:20,262 [INFO] loss: 1.994327 accuracy: 0.459375 top-5-accuracy: 0.778125
+2025-09-05 11:07:22,038 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:07:22,038 [INFO] loss: 1.988769 epoch_loss: 2.040091 accuracy: 0.455288 epoch_accuracy: 0.447405 top-5-accuracy: 0.796514 epoch_top-5-accuracy: 0.769514
+2025-09-05 11:07:22,038 [INFO] Epoch summary loss: 2.040091 accuracy: 0.447405 top-5-accuracy: 0.769514
+2025-09-05 11:07:22,988 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:07:22,989 [INFO] epoch_accuracy: 0.572000 epoch_top-5-accuracy: 0.872000 epoch_loss: 1.526370
+2025-09-05 11:07:22,989 [INFO] Current lr: [0.0001346984137931375]
+2025-09-05 11:07:23,058 [INFO] Model saved. New best value 1.526370
+2025-09-05 11:07:40,244 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:07:40,244 [INFO] loss: 1.976934 accuracy: 0.458750 top-5-accuracy: 0.780781
+2025-09-05 11:07:56,213 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:07:56,213 [INFO] loss: 1.935840 accuracy: 0.468906 top-5-accuracy: 0.788438
+2025-09-05 11:07:57,954 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:07:57,954 [INFO] loss: 2.020289 epoch_loss: 1.959643 accuracy: 0.459615 epoch_accuracy: 0.463234 top-5-accuracy: 0.771995 epoch_top-5-accuracy: 0.784351
+2025-09-05 11:07:57,954 [INFO] Epoch summary loss: 1.959643 accuracy: 0.463234 top-5-accuracy: 0.784351
+2025-09-05 11:07:58,893 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:07:58,893 [INFO] epoch_accuracy: 0.566000 epoch_top-5-accuracy: 0.874000 epoch_loss: 1.531916
+2025-09-05 11:07:58,893 [INFO] Current lr: [0.00015047968795364503]
+2025-09-05 11:08:16,235 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:08:16,236 [INFO] loss: 1.857108 accuracy: 0.489063 top-5-accuracy: 0.800781
+2025-09-05 11:08:32,179 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:08:32,180 [INFO] loss: 1.847498 accuracy: 0.491875 top-5-accuracy: 0.805469
+2025-09-05 11:08:33,923 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:08:33,923 [INFO] loss: 1.774864 epoch_loss: 1.849126 accuracy: 0.514062 epoch_accuracy: 0.491524 top-5-accuracy: 0.818510 epoch_top-5-accuracy: 0.803423
+2025-09-05 11:08:33,923 [INFO] Epoch summary loss: 1.849126 accuracy: 0.491524 top-5-accuracy: 0.803423
+2025-09-05 11:08:34,864 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:08:34,865 [INFO] epoch_accuracy: 0.590000 epoch_top-5-accuracy: 0.884000 epoch_loss: 1.434463
+2025-09-05 11:08:34,865 [INFO] Current lr: [0.00016730840758572777]
+2025-09-05 11:08:34,931 [INFO] Model saved. New best value 1.434463
+2025-09-05 11:08:52,034 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:08:52,035 [INFO] loss: 1.801208 accuracy: 0.507656 top-5-accuracy: 0.813750
+2025-09-05 11:09:07,967 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:09:07,967 [INFO] loss: 1.790168 accuracy: 0.509219 top-5-accuracy: 0.814219
+2025-09-05 11:09:09,707 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:09:09,708 [INFO] loss: 1.744738 epoch_loss: 1.793762 accuracy: 0.514784 epoch_accuracy: 0.508657 top-5-accuracy: 0.803846 epoch_top-5-accuracy: 0.813566
+2025-09-05 11:09:09,708 [INFO] Epoch summary loss: 1.793762 accuracy: 0.508657 top-5-accuracy: 0.813566
+2025-09-05 11:09:10,647 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:09:10,647 [INFO] epoch_accuracy: 0.608000 epoch_top-5-accuracy: 0.876000 epoch_loss: 1.404088
+2025-09-05 11:09:10,647 [INFO] Current lr: [0.0001851368698552073]
+2025-09-05 11:09:10,717 [INFO] Model saved. New best value 1.404088
+2025-09-05 11:09:28,025 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:09:28,025 [INFO] loss: 1.758947 accuracy: 0.514687 top-5-accuracy: 0.816250
+2025-09-05 11:09:43,927 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:09:43,927 [INFO] loss: 1.709659 accuracy: 0.526719 top-5-accuracy: 0.829531
+2025-09-05 11:09:45,671 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:09:45,671 [INFO] loss: 1.871834 epoch_loss: 1.740989 accuracy: 0.488341 epoch_accuracy: 0.518981 top-5-accuracy: 0.807452 epoch_top-5-accuracy: 0.822064
+2025-09-05 11:09:45,671 [INFO] Epoch summary loss: 1.740989 accuracy: 0.518981 top-5-accuracy: 0.822064
+2025-09-05 11:09:46,659 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:09:46,659 [INFO] epoch_accuracy: 0.600000 epoch_top-5-accuracy: 0.876000 epoch_loss: 1.457411
+2025-09-05 11:09:46,659 [INFO] Current lr: [0.00020391453804878145]
+2025-09-05 11:10:03,716 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:10:03,716 [INFO] loss: 1.672354 accuracy: 0.532656 top-5-accuracy: 0.831562
+2025-09-05 11:10:19,677 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:10:19,677 [INFO] loss: 1.712866 accuracy: 0.522344 top-5-accuracy: 0.831562
+2025-09-05 11:10:21,434 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:10:21,434 [INFO] loss: 1.619790 epoch_loss: 1.688581 accuracy: 0.552043 epoch_accuracy: 0.528693 top-5-accuracy: 0.851923 epoch_top-5-accuracy: 0.832712
+2025-09-05 11:10:21,434 [INFO] Epoch summary loss: 1.688581 accuracy: 0.528693 top-5-accuracy: 0.832712
+2025-09-05 11:10:22,381 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:10:22,381 [INFO] epoch_accuracy: 0.622000 epoch_top-5-accuracy: 0.894000 epoch_loss: 1.359921
+2025-09-05 11:10:22,381 [INFO] Current lr: [0.00022358818482582786]
+2025-09-05 11:10:22,450 [INFO] Model saved. New best value 1.359921
+2025-09-05 11:10:39,568 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:10:39,569 [INFO] loss: 1.640822 accuracy: 0.540781 top-5-accuracy: 0.838750
+2025-09-05 11:10:55,457 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:10:55,457 [INFO] loss: 1.679269 accuracy: 0.532656 top-5-accuracy: 0.835156
+2025-09-05 11:10:57,205 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:10:57,205 [INFO] loss: 1.658594 epoch_loss: 1.660591 accuracy: 0.550000 epoch_accuracy: 0.536925 top-5-accuracy: 0.840986 epoch_top-5-accuracy: 0.837134
+2025-09-05 11:10:57,205 [INFO] Epoch summary loss: 1.660591 accuracy: 0.536925 top-5-accuracy: 0.837134
+2025-09-05 11:10:58,123 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:10:58,124 [INFO] epoch_accuracy: 0.608000 epoch_top-5-accuracy: 0.894000 epoch_loss: 1.359174
+2025-09-05 11:10:58,124 [INFO] Current lr: [0.00024410204309708466]
+2025-09-05 11:10:58,191 [INFO] Model saved. New best value 1.359174
+2025-09-05 11:11:15,319 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:11:15,319 [INFO] loss: 1.574841 accuracy: 0.558750 top-5-accuracy: 0.849688
+2025-09-05 11:11:31,258 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:11:31,259 [INFO] loss: 1.658949 accuracy: 0.538281 top-5-accuracy: 0.836875
+2025-09-05 11:11:32,997 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:11:32,997 [INFO] loss: 1.634577 epoch_loss: 1.619522 accuracy: 0.536538 epoch_accuracy: 0.547567 top-5-accuracy: 0.840264 epoch_top-5-accuracy: 0.842996
+2025-09-05 11:11:32,997 [INFO] Epoch summary loss: 1.619522 accuracy: 0.547567 top-5-accuracy: 0.842996
+2025-09-05 11:11:33,942 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:11:33,942 [INFO] epoch_accuracy: 0.644000 epoch_top-5-accuracy: 0.912000 epoch_loss: 1.239171
+2025-09-05 11:11:33,942 [INFO] Current lr: [0.0002653979641025236]
+2025-09-05 11:11:34,007 [INFO] Model saved. New best value 1.239171
+2025-09-05 11:11:50,980 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:11:50,981 [INFO] loss: 1.596196 accuracy: 0.550937 top-5-accuracy: 0.851094
+2025-09-05 11:12:06,915 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:12:06,915 [INFO] loss: 1.617118 accuracy: 0.557187 top-5-accuracy: 0.845625
+2025-09-05 11:12:08,651 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:12:08,651 [INFO] loss: 1.538192 epoch_loss: 1.603341 accuracy: 0.546154 epoch_accuracy: 0.553401 top-5-accuracy: 0.856851 epoch_top-5-accuracy: 0.848790
+2025-09-05 11:12:08,652 [INFO] Epoch summary loss: 1.603341 accuracy: 0.553401 top-5-accuracy: 0.848790
+2025-09-05 11:12:09,566 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:12:09,566 [INFO] epoch_accuracy: 0.596000 epoch_top-5-accuracy: 0.886000 epoch_loss: 1.374702
+2025-09-05 11:12:09,566 [INFO] Current lr: [0.00028741558224032785]
+2025-09-05 11:12:26,790 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:12:26,790 [INFO] loss: 1.556596 accuracy: 0.557031 top-5-accuracy: 0.856094
+2025-09-05 11:12:42,694 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:12:42,694 [INFO] loss: 1.551224 accuracy: 0.568750 top-5-accuracy: 0.857656
+2025-09-05 11:12:44,446 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:12:44,446 [INFO] loss: 1.511439 epoch_loss: 1.551747 accuracy: 0.593269 epoch_accuracy: 0.564099 top-5-accuracy: 0.858173 epoch_top-5-accuracy: 0.856886
+2025-09-05 11:12:44,446 [INFO] Epoch summary loss: 1.551747 accuracy: 0.564099 top-5-accuracy: 0.856886
+2025-09-05 11:12:45,380 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:12:45,380 [INFO] epoch_accuracy: 0.626000 epoch_top-5-accuracy: 0.894000 epoch_loss: 1.317049
+2025-09-05 11:12:45,380 [INFO] Current lr: [0.00031009248617974933]
+2025-09-05 11:13:02,552 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:13:02,552 [INFO] loss: 1.499458 accuracy: 0.577812 top-5-accuracy: 0.864219
+2025-09-05 11:13:18,528 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:13:18,528 [INFO] loss: 1.560153 accuracy: 0.566406 top-5-accuracy: 0.855781
+2025-09-05 11:13:20,273 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:13:20,273 [INFO] loss: 1.572462 epoch_loss: 1.532058 accuracy: 0.564784 epoch_accuracy: 0.571673 top-5-accuracy: 0.857452 epoch_top-5-accuracy: 0.860021
+2025-09-05 11:13:20,273 [INFO] Epoch summary loss: 1.532058 accuracy: 0.571673 top-5-accuracy: 0.860021
+2025-09-05 11:13:21,213 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:13:21,213 [INFO] epoch_accuracy: 0.626000 epoch_top-5-accuracy: 0.896000 epoch_loss: 1.338037
+2025-09-05 11:13:21,213 [INFO] Current lr: [0.00033336439577280597]
+2025-09-05 11:13:38,413 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:13:38,414 [INFO] loss: 1.496656 accuracy: 0.575156 top-5-accuracy: 0.868281
+2025-09-05 11:13:54,332 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:13:54,332 [INFO] loss: 1.507981 accuracy: 0.576406 top-5-accuracy: 0.866250
+2025-09-05 11:13:56,078 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:13:56,078 [INFO] loss: 1.520669 epoch_loss: 1.503122 accuracy: 0.571514 epoch_accuracy: 0.575528 top-5-accuracy: 0.857572 epoch_top-5-accuracy: 0.866660
+2025-09-05 11:13:56,078 [INFO] Epoch summary loss: 1.503122 accuracy: 0.575528 top-5-accuracy: 0.866660
+2025-09-05 11:13:57,005 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:13:57,005 [INFO] epoch_accuracy: 0.636000 epoch_top-5-accuracy: 0.908000 epoch_loss: 1.324456
+2025-09-05 11:13:57,005 [INFO] Current lr: [0.0003571653442633456]
+2025-09-05 11:14:14,143 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:14:14,143 [INFO] loss: 1.446500 accuracy: 0.586875 top-5-accuracy: 0.877188
+2025-09-05 11:14:30,090 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:14:30,090 [INFO] loss: 1.488439 accuracy: 0.575937 top-5-accuracy: 0.871719
+2025-09-05 11:14:31,855 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:14:31,856 [INFO] loss: 1.509543 epoch_loss: 1.470127 accuracy: 0.563101 epoch_accuracy: 0.580733 top-5-accuracy: 0.876923 epoch_top-5-accuracy: 0.874501
+2025-09-05 11:14:31,856 [INFO] Epoch summary loss: 1.470127 accuracy: 0.580733 top-5-accuracy: 0.874501
+2025-09-05 11:14:32,782 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:14:32,783 [INFO] epoch_accuracy: 0.622000 epoch_top-5-accuracy: 0.902000 epoch_loss: 1.329855
+2025-09-05 11:14:32,783 [INFO] Current lr: [0.00038142786527698195]
+2025-09-05 11:14:49,847 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:14:49,847 [INFO] loss: 1.483849 accuracy: 0.575937 top-5-accuracy: 0.868437
+2025-09-05 11:15:05,803 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:15:05,803 [INFO] loss: 1.495739 accuracy: 0.575469 top-5-accuracy: 0.866875
+2025-09-05 11:15:07,554 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:15:07,555 [INFO] loss: 1.477270 epoch_loss: 1.490633 accuracy: 0.561779 epoch_accuracy: 0.574627 top-5-accuracy: 0.888702 epoch_top-5-accuracy: 0.868129
+2025-09-05 11:15:07,555 [INFO] Epoch summary loss: 1.490633 accuracy: 0.574627 top-5-accuracy: 0.868129
+2025-09-05 11:15:08,482 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:15:08,482 [INFO] epoch_accuracy: 0.622000 epoch_top-5-accuracy: 0.886000 epoch_loss: 1.316890
+2025-09-05 11:15:08,483 [INFO] Current lr: [0.0004060831840618648]
+2025-09-05 11:15:25,658 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:15:25,659 [INFO] loss: 1.433768 accuracy: 0.591719 top-5-accuracy: 0.874219
+2025-09-05 11:15:41,607 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:15:41,607 [INFO] loss: 1.464431 accuracy: 0.582500 top-5-accuracy: 0.867500
+2025-09-05 11:15:43,352 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:15:43,352 [INFO] loss: 1.451161 epoch_loss: 1.450218 accuracy: 0.588341 epoch_accuracy: 0.586935 top-5-accuracy: 0.877885 epoch_top-5-accuracy: 0.871082
+2025-09-05 11:15:43,353 [INFO] Epoch summary loss: 1.450218 accuracy: 0.586935 top-5-accuracy: 0.871082
+2025-09-05 11:15:44,291 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:15:44,291 [INFO] epoch_accuracy: 0.672000 epoch_top-5-accuracy: 0.900000 epoch_loss: 1.193009
+2025-09-05 11:15:44,291 [INFO] Current lr: [0.0004310614124381851]
+2025-09-05 11:15:44,357 [INFO] Model saved. New best value 1.193009
+2025-09-05 11:16:01,377 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:16:01,377 [INFO] loss: 1.428393 accuracy: 0.596562 top-5-accuracy: 0.876094
+2025-09-05 11:16:17,371 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:16:17,371 [INFO] loss: 1.413167 accuracy: 0.599688 top-5-accuracy: 0.881250
+2025-09-05 11:16:19,108 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:16:19,108 [INFO] loss: 1.535276 epoch_loss: 1.427447 accuracy: 0.575000 epoch_accuracy: 0.596624 top-5-accuracy: 0.848077 epoch_top-5-accuracy: 0.877047
+2025-09-05 11:16:19,108 [INFO] Epoch summary loss: 1.427447 accuracy: 0.596624 top-5-accuracy: 0.877047
+2025-09-05 11:16:20,036 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:16:20,036 [INFO] epoch_accuracy: 0.662000 epoch_top-5-accuracy: 0.906000 epoch_loss: 1.218370
+2025-09-05 11:16:20,036 [INFO] Current lr: [0.0004562917469038135]
+2025-09-05 11:16:37,258 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:16:37,258 [INFO] loss: 1.386703 accuracy: 0.607031 top-5-accuracy: 0.890312
+2025-09-05 11:16:53,160 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:16:53,160 [INFO] loss: 1.439202 accuracy: 0.590625 top-5-accuracy: 0.877500
+2025-09-05 11:16:54,915 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:16:54,915 [INFO] loss: 1.395851 epoch_loss: 1.410835 accuracy: 0.588341 epoch_accuracy: 0.598433 top-5-accuracy: 0.882572 epoch_top-5-accuracy: 0.884275
+2025-09-05 11:16:54,915 [INFO] Epoch summary loss: 1.410835 accuracy: 0.598433 top-5-accuracy: 0.884275
+2025-09-05 11:16:55,839 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:16:55,839 [INFO] epoch_accuracy: 0.664000 epoch_top-5-accuracy: 0.912000 epoch_loss: 1.111951
+2025-09-05 11:16:55,839 [INFO] Current lr: [0.0004817026693345201]
+2025-09-05 11:16:55,904 [INFO] Model saved. New best value 1.111951
+2025-09-05 11:17:13,065 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:17:13,066 [INFO] loss: 1.391652 accuracy: 0.606563 top-5-accuracy: 0.885469
+2025-09-05 11:17:28,971 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:17:28,972 [INFO] loss: 1.412261 accuracy: 0.601562 top-5-accuracy: 0.880938
+2025-09-05 11:17:30,723 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:17:30,723 [INFO] loss: 1.551315 epoch_loss: 1.408231 accuracy: 0.579567 epoch_accuracy: 0.603252 top-5-accuracy: 0.860697 epoch_top-5-accuracy: 0.882138
+2025-09-05 11:17:30,723 [INFO] Epoch summary loss: 1.408231 accuracy: 0.603252 top-5-accuracy: 0.882138
+2025-09-05 11:17:31,712 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:17:31,712 [INFO] epoch_accuracy: 0.642000 epoch_top-5-accuracy: 0.900000 epoch_loss: 1.276555
+2025-09-05 11:17:31,712 [INFO] Current lr: [0.0005072221497098681]
+2025-09-05 11:17:48,810 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:17:48,810 [INFO] loss: 1.379087 accuracy: 0.604688 top-5-accuracy: 0.885000
+2025-09-05 11:18:04,747 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:18:04,747 [INFO] loss: 1.380624 accuracy: 0.609219 top-5-accuracy: 0.887500
+2025-09-05 11:18:06,505 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:18:06,505 [INFO] loss: 1.453137 epoch_loss: 1.385218 accuracy: 0.580288 epoch_accuracy: 0.605350 top-5-accuracy: 0.883894 epoch_top-5-accuracy: 0.885885
+2025-09-05 11:18:06,505 [INFO] Epoch summary loss: 1.385218 accuracy: 0.605350 top-5-accuracy: 0.885885
+2025-09-05 11:18:07,430 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:18:07,430 [INFO] epoch_accuracy: 0.652000 epoch_top-5-accuracy: 0.910000 epoch_loss: 1.225974
+2025-09-05 11:18:07,431 [INFO] Current lr: [0.0005327778502901318]
+2025-09-05 11:18:24,595 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:18:24,595 [INFO] loss: 1.361766 accuracy: 0.610156 top-5-accuracy: 0.890000
+2025-09-05 11:18:40,492 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:18:40,493 [INFO] loss: 1.416833 accuracy: 0.604062 top-5-accuracy: 0.878125
+2025-09-05 11:18:42,244 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:18:42,244 [INFO] loss: 1.384750 epoch_loss: 1.391279 accuracy: 0.594231 epoch_accuracy: 0.606007 top-5-accuracy: 0.890745 epoch_top-5-accuracy: 0.883997
+2025-09-05 11:18:42,244 [INFO] Epoch summary loss: 1.391279 accuracy: 0.606007 top-5-accuracy: 0.883997
+2025-09-05 11:18:43,175 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:18:43,175 [INFO] epoch_accuracy: 0.660000 epoch_top-5-accuracy: 0.908000 epoch_loss: 1.218093
+2025-09-05 11:18:43,175 [INFO] Current lr: [0.0005582973306654799]
+2025-09-05 11:19:00,324 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:19:00,324 [INFO] loss: 1.375493 accuracy: 0.611094 top-5-accuracy: 0.884687
+2025-09-05 11:19:16,294 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:19:16,294 [INFO] loss: 1.391692 accuracy: 0.605156 top-5-accuracy: 0.883281
+2025-09-05 11:19:18,043 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:19:18,043 [INFO] loss: 1.563498 epoch_loss: 1.393768 accuracy: 0.563822 epoch_accuracy: 0.605531 top-5-accuracy: 0.847596 epoch_top-5-accuracy: 0.881815
+2025-09-05 11:19:18,044 [INFO] Epoch summary loss: 1.393768 accuracy: 0.605531 top-5-accuracy: 0.881815
+2025-09-05 11:19:18,975 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:19:18,975 [INFO] epoch_accuracy: 0.658000 epoch_top-5-accuracy: 0.886000 epoch_loss: 1.269211
+2025-09-05 11:19:18,975 [INFO] Current lr: [0.0005837082530961865]
+2025-09-05 11:19:36,078 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:19:36,078 [INFO] loss: 1.340130 accuracy: 0.618906 top-5-accuracy: 0.886563
+2025-09-05 11:19:51,999 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:19:51,999 [INFO] loss: 1.397195 accuracy: 0.598594 top-5-accuracy: 0.882031
+2025-09-05 11:19:53,737 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:19:53,737 [INFO] loss: 1.396610 epoch_loss: 1.373504 accuracy: 0.598437 epoch_accuracy: 0.607532 top-5-accuracy: 0.893990 epoch_top-5-accuracy: 0.884150
+2025-09-05 11:19:53,737 [INFO] Epoch summary loss: 1.373504 accuracy: 0.607532 top-5-accuracy: 0.884150
+2025-09-05 11:19:54,670 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:19:54,670 [INFO] epoch_accuracy: 0.652000 epoch_top-5-accuracy: 0.894000 epoch_loss: 1.226605
+2025-09-05 11:19:54,670 [INFO] Current lr: [0.0006089385875618148]
+2025-09-05 11:20:11,893 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:20:11,894 [INFO] loss: 1.335105 accuracy: 0.625156 top-5-accuracy: 0.897188
+2025-09-05 11:20:27,800 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:20:27,800 [INFO] loss: 1.429464 accuracy: 0.597344 top-5-accuracy: 0.878594
+2025-09-05 11:20:29,547 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:20:29,547 [INFO] loss: 1.377198 epoch_loss: 1.380469 accuracy: 0.623197 epoch_accuracy: 0.612238 top-5-accuracy: 0.890264 epoch_top-5-accuracy: 0.888028
+2025-09-05 11:20:29,547 [INFO] Epoch summary loss: 1.380469 accuracy: 0.612238 top-5-accuracy: 0.888028
+2025-09-05 11:20:30,480 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:20:30,480 [INFO] epoch_accuracy: 0.616000 epoch_top-5-accuracy: 0.886000 epoch_loss: 1.432020
+2025-09-05 11:20:30,480 [INFO] Current lr: [0.0006339168159381352]
+2025-09-05 11:20:47,699 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:20:47,700 [INFO] loss: 1.369972 accuracy: 0.608437 top-5-accuracy: 0.889219
+2025-09-05 11:21:03,647 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:21:03,647 [INFO] loss: 1.387612 accuracy: 0.606406 top-5-accuracy: 0.884219
+2025-09-05 11:21:05,393 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:21:05,394 [INFO] loss: 1.397629 epoch_loss: 1.378738 accuracy: 0.595793 epoch_accuracy: 0.607039 top-5-accuracy: 0.882332 epoch_top-5-accuracy: 0.886696
+2025-09-05 11:21:05,394 [INFO] Epoch summary loss: 1.378738 accuracy: 0.607039 top-5-accuracy: 0.886696
+2025-09-05 11:21:06,348 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:21:06,348 [INFO] epoch_accuracy: 0.664000 epoch_top-5-accuracy: 0.914000 epoch_loss: 1.272761
+2025-09-05 11:21:06,348 [INFO] Current lr: [0.000658572134723018]
+2025-09-05 11:21:23,525 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:21:23,525 [INFO] loss: 1.325465 accuracy: 0.624531 top-5-accuracy: 0.894687
+2025-09-05 11:21:39,432 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:21:39,432 [INFO] loss: 1.399808 accuracy: 0.602656 top-5-accuracy: 0.883437
+2025-09-05 11:21:41,188 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:21:41,188 [INFO] loss: 1.462729 epoch_loss: 1.368861 accuracy: 0.596995 epoch_accuracy: 0.612550 top-5-accuracy: 0.874519 epoch_top-5-accuracy: 0.888244
+2025-09-05 11:21:41,189 [INFO] Epoch summary loss: 1.368861 accuracy: 0.612550 top-5-accuracy: 0.888244
+2025-09-05 11:21:42,137 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:21:42,137 [INFO] epoch_accuracy: 0.692000 epoch_top-5-accuracy: 0.930000 epoch_loss: 1.089256
+2025-09-05 11:21:42,137 [INFO] Current lr: [0.0006828346557366546]
+2025-09-05 11:21:42,205 [INFO] Model saved. New best value 1.089256
+2025-09-05 11:21:59,301 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:21:59,301 [INFO] loss: 1.324657 accuracy: 0.617188 top-5-accuracy: 0.896563
+2025-09-05 11:22:15,346 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:22:15,346 [INFO] loss: 1.363795 accuracy: 0.614219 top-5-accuracy: 0.890000
+2025-09-05 11:22:17,092 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:22:17,092 [INFO] loss: 1.376987 epoch_loss: 1.347196 accuracy: 0.616827 epoch_accuracy: 0.615254 top-5-accuracy: 0.891947 epoch_top-5-accuracy: 0.893193
+2025-09-05 11:22:17,092 [INFO] Epoch summary loss: 1.347196 accuracy: 0.615254 top-5-accuracy: 0.893193
+2025-09-05 11:22:18,017 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:22:18,017 [INFO] epoch_accuracy: 0.674000 epoch_top-5-accuracy: 0.932000 epoch_loss: 1.128888
+2025-09-05 11:22:18,017 [INFO] Current lr: [0.0007066356042271938]
+2025-09-05 11:22:35,212 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:22:35,213 [INFO] loss: 1.338044 accuracy: 0.618437 top-5-accuracy: 0.892813
+2025-09-05 11:22:51,093 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:22:51,093 [INFO] loss: 1.318576 accuracy: 0.629375 top-5-accuracy: 0.894844
+2025-09-05 11:22:52,844 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:22:52,845 [INFO] loss: 1.359719 epoch_loss: 1.327277 accuracy: 0.590986 epoch_accuracy: 0.623174 top-5-accuracy: 0.884856 epoch_top-5-accuracy: 0.893817
+2025-09-05 11:22:52,845 [INFO] Epoch summary loss: 1.327277 accuracy: 0.623174 top-5-accuracy: 0.893817
+2025-09-05 11:22:53,779 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:22:53,780 [INFO] epoch_accuracy: 0.646000 epoch_top-5-accuracy: 0.912000 epoch_loss: 1.280460
+2025-09-05 11:22:53,780 [INFO] Current lr: [0.0007299075138202506]
+2025-09-05 11:23:10,962 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:23:10,962 [INFO] loss: 1.276635 accuracy: 0.632031 top-5-accuracy: 0.902500
+2025-09-05 11:23:26,939 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:23:26,939 [INFO] loss: 1.328415 accuracy: 0.621719 top-5-accuracy: 0.897656
+2025-09-05 11:23:28,680 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:23:28,680 [INFO] loss: 1.364700 epoch_loss: 1.303253 accuracy: 0.609014 epoch_accuracy: 0.626604 top-5-accuracy: 0.897115 epoch_top-5-accuracy: 0.900586
+2025-09-05 11:23:28,680 [INFO] Epoch summary loss: 1.303253 accuracy: 0.626604 top-5-accuracy: 0.900586
+2025-09-05 11:23:29,611 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:23:29,612 [INFO] epoch_accuracy: 0.686000 epoch_top-5-accuracy: 0.924000 epoch_loss: 1.118336
+2025-09-05 11:23:29,612 [INFO] Current lr: [0.0007525844177596721]
+2025-09-05 11:23:46,771 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:23:46,772 [INFO] loss: 1.303919 accuracy: 0.623437 top-5-accuracy: 0.900781
+2025-09-05 11:24:02,723 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:24:02,723 [INFO] loss: 1.351380 accuracy: 0.617656 top-5-accuracy: 0.888437
+2025-09-05 11:24:04,480 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:24:04,480 [INFO] loss: 1.230567 epoch_loss: 1.323433 accuracy: 0.635697 epoch_accuracy: 0.621009 top-5-accuracy: 0.903486 epoch_top-5-accuracy: 0.894917
+2025-09-05 11:24:04,480 [INFO] Epoch summary loss: 1.323433 accuracy: 0.621009 top-5-accuracy: 0.894917
+2025-09-05 11:24:05,420 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:24:05,420 [INFO] epoch_accuracy: 0.656000 epoch_top-5-accuracy: 0.902000 epoch_loss: 1.335612
+2025-09-05 11:24:05,420 [INFO] Current lr: [0.0007746020358974764]
+2025-09-05 11:24:22,580 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:24:22,580 [INFO] loss: 1.279216 accuracy: 0.635781 top-5-accuracy: 0.901875
+2025-09-05 11:24:38,499 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:24:38,499 [INFO] loss: 1.321981 accuracy: 0.625469 top-5-accuracy: 0.892656
+2025-09-05 11:24:40,226 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:24:40,226 [INFO] loss: 1.338241 epoch_loss: 1.301024 accuracy: 0.611058 epoch_accuracy: 0.630312 top-5-accuracy: 0.874519 epoch_top-5-accuracy: 0.896204
+2025-09-05 11:24:40,226 [INFO] Epoch summary loss: 1.301024 accuracy: 0.630312 top-5-accuracy: 0.896204
+2025-09-05 11:24:41,173 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:24:41,174 [INFO] epoch_accuracy: 0.694000 epoch_top-5-accuracy: 0.912000 epoch_loss: 1.132008
+2025-09-05 11:24:41,174 [INFO] Current lr: [0.0007958979569029152]
+2025-09-05 11:24:58,326 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:24:58,327 [INFO] loss: 1.273307 accuracy: 0.638281 top-5-accuracy: 0.903438
+2025-09-05 11:25:14,354 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:25:14,354 [INFO] loss: 1.312041 accuracy: 0.627656 top-5-accuracy: 0.896250
+2025-09-05 11:25:16,111 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:25:16,112 [INFO] loss: 1.449773 epoch_loss: 1.299718 accuracy: 0.638341 epoch_accuracy: 0.633589 top-5-accuracy: 0.866827 epoch_top-5-accuracy: 0.898273
+2025-09-05 11:25:16,112 [INFO] Epoch summary loss: 1.299718 accuracy: 0.633589 top-5-accuracy: 0.898273
+2025-09-05 11:25:17,043 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:25:17,043 [INFO] epoch_accuracy: 0.660000 epoch_top-5-accuracy: 0.924000 epoch_loss: 1.220741
+2025-09-05 11:25:17,043 [INFO] Current lr: [0.000816411815174172]
+2025-09-05 11:25:34,189 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:25:34,189 [INFO] loss: 1.279915 accuracy: 0.634844 top-5-accuracy: 0.903750
+2025-09-05 11:25:50,087 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:25:50,087 [INFO] loss: 1.340717 accuracy: 0.622500 top-5-accuracy: 0.892031
+2025-09-05 11:25:51,845 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:25:51,845 [INFO] loss: 1.298188 epoch_loss: 1.306378 accuracy: 0.624279 epoch_accuracy: 0.629241 top-5-accuracy: 0.890144 epoch_top-5-accuracy: 0.897973
+2025-09-05 11:25:51,846 [INFO] Epoch summary loss: 1.306378 accuracy: 0.629241 top-5-accuracy: 0.897973
+2025-09-05 11:25:52,771 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:25:52,771 [INFO] epoch_accuracy: 0.658000 epoch_top-5-accuracy: 0.910000 epoch_loss: 1.185414
+2025-09-05 11:25:52,771 [INFO] Current lr: [0.0008360854619512185]
+2025-09-05 11:26:09,950 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:26:09,951 [INFO] loss: 1.265673 accuracy: 0.637188 top-5-accuracy: 0.904844
+2025-09-05 11:26:26,010 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:26:26,010 [INFO] loss: 1.286663 accuracy: 0.633125 top-5-accuracy: 0.900781
+2025-09-05 11:26:27,765 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:26:27,765 [INFO] loss: 1.384751 epoch_loss: 1.279525 accuracy: 0.615385 epoch_accuracy: 0.634275 top-5-accuracy: 0.862260 epoch_top-5-accuracy: 0.901153
+2025-09-05 11:26:27,765 [INFO] Epoch summary loss: 1.279525 accuracy: 0.634275 top-5-accuracy: 0.901153
+2025-09-05 11:26:28,686 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:26:28,686 [INFO] epoch_accuracy: 0.666000 epoch_top-5-accuracy: 0.918000 epoch_loss: 1.216450
+2025-09-05 11:26:28,687 [INFO] Current lr: [0.0008548631301447926]
+2025-09-05 11:26:45,855 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:26:45,855 [INFO] loss: 1.250705 accuracy: 0.637188 top-5-accuracy: 0.903750
+2025-09-05 11:27:01,730 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:27:01,730 [INFO] loss: 1.300844 accuracy: 0.633437 top-5-accuracy: 0.896563
+2025-09-05 11:27:03,482 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:27:03,482 [INFO] loss: 1.420547 epoch_loss: 1.282927 accuracy: 0.613582 epoch_accuracy: 0.634043 top-5-accuracy: 0.869832 epoch_top-5-accuracy: 0.898783
+2025-09-05 11:27:03,482 [INFO] Epoch summary loss: 1.282927 accuracy: 0.634043 top-5-accuracy: 0.898783
+2025-09-05 11:27:04,433 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:27:04,433 [INFO] epoch_accuracy: 0.644000 epoch_top-5-accuracy: 0.922000 epoch_loss: 1.244953
+2025-09-05 11:27:04,433 [INFO] Current lr: [0.0008726915924142722]
+2025-09-05 11:27:21,613 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:27:21,613 [INFO] loss: 1.225307 accuracy: 0.644219 top-5-accuracy: 0.912500
+2025-09-05 11:27:37,564 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:27:37,564 [INFO] loss: 1.298843 accuracy: 0.636094 top-5-accuracy: 0.898125
+2025-09-05 11:27:39,301 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:27:39,302 [INFO] loss: 1.442131 epoch_loss: 1.272884 accuracy: 0.578726 epoch_accuracy: 0.636231 top-5-accuracy: 0.866947 epoch_top-5-accuracy: 0.903291
+2025-09-05 11:27:39,302 [INFO] Epoch summary loss: 1.272884 accuracy: 0.636231 top-5-accuracy: 0.903291
+2025-09-05 11:27:40,226 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:27:40,226 [INFO] epoch_accuracy: 0.660000 epoch_top-5-accuracy: 0.894000 epoch_loss: 1.239737
+2025-09-05 11:27:40,226 [INFO] Current lr: [0.0008895203120463551]
+2025-09-05 11:27:57,434 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:27:57,435 [INFO] loss: 1.218838 accuracy: 0.652500 top-5-accuracy: 0.911719
+2025-09-05 11:28:13,417 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:28:13,417 [INFO] loss: 1.291827 accuracy: 0.628125 top-5-accuracy: 0.900625
+2025-09-05 11:28:15,170 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:28:15,170 [INFO] loss: 1.254424 epoch_loss: 1.255593 accuracy: 0.668269 epoch_accuracy: 0.641708 top-5-accuracy: 0.914303 epoch_top-5-accuracy: 0.906261
+2025-09-05 11:28:15,170 [INFO] Epoch summary loss: 1.255593 accuracy: 0.641708 top-5-accuracy: 0.906261
+2025-09-05 11:28:16,095 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:28:16,096 [INFO] epoch_accuracy: 0.696000 epoch_top-5-accuracy: 0.906000 epoch_loss: 1.194829
+2025-09-05 11:28:16,096 [INFO] Current lr: [0.0009053015862068624]
+2025-09-05 11:28:33,373 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:28:33,373 [INFO] loss: 1.265918 accuracy: 0.640938 top-5-accuracy: 0.906875
+2025-09-05 11:28:49,284 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:28:49,284 [INFO] loss: 1.296210 accuracy: 0.631875 top-5-accuracy: 0.899531
+2025-09-05 11:28:51,046 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:28:51,046 [INFO] loss: 1.434682 epoch_loss: 1.287297 accuracy: 0.585697 epoch_accuracy: 0.633686 top-5-accuracy: 0.877043 epoch_top-5-accuracy: 0.902072
+2025-09-05 11:28:51,047 [INFO] Epoch summary loss: 1.287297 accuracy: 0.633686 top-5-accuracy: 0.902072
+2025-09-05 11:28:52,025 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:28:52,025 [INFO] epoch_accuracy: 0.684000 epoch_top-5-accuracy: 0.916000 epoch_loss: 1.187780
+2025-09-05 11:28:52,025 [INFO] Current lr: [0.0009199906811596072]
+2025-09-05 11:29:09,110 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:29:09,110 [INFO] loss: 1.231221 accuracy: 0.646719 top-5-accuracy: 0.904687
+2025-09-05 11:29:25,067 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:29:25,067 [INFO] loss: 1.285853 accuracy: 0.637813 top-5-accuracy: 0.901875
+2025-09-05 11:29:26,821 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:29:26,821 [INFO] loss: 1.359696 epoch_loss: 1.262789 accuracy: 0.627764 epoch_accuracy: 0.641787 top-5-accuracy: 0.908173 epoch_top-5-accuracy: 0.903540
+2025-09-05 11:29:26,822 [INFO] Epoch summary loss: 1.262789 accuracy: 0.641787 top-5-accuracy: 0.903540
+2025-09-05 11:29:27,739 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:29:27,739 [INFO] epoch_accuracy: 0.696000 epoch_top-5-accuracy: 0.928000 epoch_loss: 1.086059
+2025-09-05 11:29:27,739 [INFO] Current lr: [0.000933545959069027]
+2025-09-05 11:29:27,807 [INFO] Model saved. New best value 1.086059
+2025-09-05 11:29:45,032 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:29:45,033 [INFO] loss: 1.213792 accuracy: 0.648906 top-5-accuracy: 0.911719
+2025-09-05 11:30:00,942 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:30:00,942 [INFO] loss: 1.251215 accuracy: 0.640625 top-5-accuracy: 0.906406
+2025-09-05 11:30:02,729 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:30:02,729 [INFO] loss: 1.373967 epoch_loss: 1.241601 accuracy: 0.616466 epoch_accuracy: 0.643023 top-5-accuracy: 0.880048 epoch_top-5-accuracy: 0.907151
+2025-09-05 11:30:02,730 [INFO] Epoch summary loss: 1.241601 accuracy: 0.643023 top-5-accuracy: 0.907151
+2025-09-05 11:30:03,669 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:30:03,669 [INFO] epoch_accuracy: 0.630000 epoch_top-5-accuracy: 0.882000 epoch_loss: 1.364592
+2025-09-05 11:30:03,670 [INFO] Current lr: [0.0009459289960271543]
+2025-09-05 11:30:20,791 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:30:20,791 [INFO] loss: 1.256615 accuracy: 0.647188 top-5-accuracy: 0.911094
+2025-09-05 11:30:36,711 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:30:36,711 [INFO] loss: 1.284964 accuracy: 0.636563 top-5-accuracy: 0.904375
+2025-09-05 11:30:38,452 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:30:38,452 [INFO] loss: 1.214108 epoch_loss: 1.269351 accuracy: 0.662019 epoch_accuracy: 0.642813 top-5-accuracy: 0.895673 epoch_top-5-accuracy: 0.906636
+2025-09-05 11:30:38,453 [INFO] Epoch summary loss: 1.269351 accuracy: 0.642813 top-5-accuracy: 0.906636
+2025-09-05 11:30:39,370 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:30:39,371 [INFO] epoch_accuracy: 0.686000 epoch_top-5-accuracy: 0.916000 epoch_loss: 1.233071
+2025-09-05 11:30:39,371 [INFO] Current lr: [0.0009571046909703584]
+2025-09-05 11:30:56,519 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:30:56,519 [INFO] loss: 1.266222 accuracy: 0.645625 top-5-accuracy: 0.903594
+2025-09-05 11:31:12,518 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:31:12,518 [INFO] loss: 1.323335 accuracy: 0.627500 top-5-accuracy: 0.892969
+2025-09-05 11:31:14,270 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:31:14,270 [INFO] loss: 1.261614 epoch_loss: 1.291880 accuracy: 0.649159 epoch_accuracy: 0.637711 top-5-accuracy: 0.897236 epoch_top-5-accuracy: 0.898086
+2025-09-05 11:31:14,270 [INFO] Epoch summary loss: 1.291880 accuracy: 0.637711 top-5-accuracy: 0.898086
+2025-09-05 11:31:15,195 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:31:15,195 [INFO] epoch_accuracy: 0.652000 epoch_top-5-accuracy: 0.904000 epoch_loss: 1.215721
+2025-09-05 11:31:15,195 [INFO] Current lr: [0.0009670413651771225]
+2025-09-05 11:31:32,384 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:31:32,384 [INFO] loss: 1.211851 accuracy: 0.659062 top-5-accuracy: 0.906563
+2025-09-05 11:31:48,310 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:31:48,310 [INFO] loss: 1.264333 accuracy: 0.639062 top-5-accuracy: 0.902344
+2025-09-05 11:31:50,049 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:31:50,050 [INFO] loss: 1.370011 epoch_loss: 1.243066 accuracy: 0.601202 epoch_accuracy: 0.647168 top-5-accuracy: 0.898558 epoch_top-5-accuracy: 0.904413
+2025-09-05 11:31:50,050 [INFO] Epoch summary loss: 1.243066 accuracy: 0.647168 top-5-accuracy: 0.904413
+2025-09-05 11:31:50,993 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:31:50,993 [INFO] epoch_accuracy: 0.630000 epoch_top-5-accuracy: 0.888000 epoch_loss: 1.443511
+2025-09-05 11:31:50,993 [INFO] Current lr: [0.0009757108520648231]
+2025-09-05 11:32:08,345 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:32:08,346 [INFO] loss: 1.224502 accuracy: 0.652188 top-5-accuracy: 0.907188
+2025-09-05 11:32:24,346 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:32:24,346 [INFO] loss: 1.273833 accuracy: 0.642813 top-5-accuracy: 0.903750
+2025-09-05 11:32:26,109 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:32:26,109 [INFO] loss: 1.287058 epoch_loss: 1.249806 accuracy: 0.652644 epoch_accuracy: 0.647973 top-5-accuracy: 0.904808 epoch_top-5-accuracy: 0.905445
+2025-09-05 11:32:26,109 [INFO] Epoch summary loss: 1.249806 accuracy: 0.647973 top-5-accuracy: 0.905445
+2025-09-05 11:32:27,045 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:32:27,045 [INFO] epoch_accuracy: 0.672000 epoch_top-5-accuracy: 0.914000 epoch_loss: 1.183269
+2025-09-05 11:32:27,045 [INFO] Current lr: [0.0009830885770309677]
+2025-09-05 11:32:44,164 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:32:44,164 [INFO] loss: 1.217500 accuracy: 0.657813 top-5-accuracy: 0.911406
+2025-09-05 11:33:00,050 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:33:00,051 [INFO] loss: 1.264753 accuracy: 0.646250 top-5-accuracy: 0.905937
+2025-09-05 11:33:01,833 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:33:01,833 [INFO] loss: 1.332155 epoch_loss: 1.247100 accuracy: 0.637139 epoch_accuracy: 0.651074 top-5-accuracy: 0.896394 epoch_top-5-accuracy: 0.907849
+2025-09-05 11:33:01,834 [INFO] Epoch summary loss: 1.247100 accuracy: 0.651074 top-5-accuracy: 0.907849
+2025-09-05 11:33:02,799 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:33:02,799 [INFO] epoch_accuracy: 0.652000 epoch_top-5-accuracy: 0.892000 epoch_loss: 1.293632
+2025-09-05 11:33:02,799 [INFO] Current lr: [0.000989153627112576]
+2025-09-05 11:33:19,965 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:33:19,965 [INFO] loss: 1.195389 accuracy: 0.658594 top-5-accuracy: 0.914531
+2025-09-05 11:33:35,928 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:33:35,928 [INFO] loss: 1.258016 accuracy: 0.649844 top-5-accuracy: 0.902344
+2025-09-05 11:33:37,681 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:33:37,681 [INFO] loss: 1.173443 epoch_loss: 1.225613 accuracy: 0.666587 epoch_accuracy: 0.654969 top-5-accuracy: 0.903365 epoch_top-5-accuracy: 0.908178
+2025-09-05 11:33:37,681 [INFO] Epoch summary loss: 1.225613 accuracy: 0.654969 top-5-accuracy: 0.908178
+2025-09-05 11:33:38,607 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:33:38,607 [INFO] epoch_accuracy: 0.702000 epoch_top-5-accuracy: 0.934000 epoch_loss: 1.120097
+2025-09-05 11:33:38,607 [INFO] Current lr: [0.0009938888102662454]
+2025-09-05 11:33:55,655 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:33:55,655 [INFO] loss: 1.216361 accuracy: 0.651406 top-5-accuracy: 0.910000
+2025-09-05 11:34:11,616 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:34:11,616 [INFO] loss: 1.241041 accuracy: 0.649062 top-5-accuracy: 0.902188
+2025-09-05 11:34:13,368 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:34:13,368 [INFO] loss: 1.112929 epoch_loss: 1.223595 accuracy: 0.696995 epoch_accuracy: 0.652276 top-5-accuracy: 0.900240 epoch_top-5-accuracy: 0.905598
+2025-09-05 11:34:13,368 [INFO] Epoch summary loss: 1.223595 accuracy: 0.652276 top-5-accuracy: 0.905598
+2025-09-05 11:34:14,305 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:34:14,305 [INFO] epoch_accuracy: 0.716000 epoch_top-5-accuracy: 0.936000 epoch_loss: 1.008121
+2025-09-05 11:34:14,305 [INFO] Current lr: [0.0009972807041008658]
+2025-09-05 11:34:14,378 [INFO] Model saved. New best value 1.008121
+2025-09-05 11:34:31,452 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:34:31,453 [INFO] loss: 1.237044 accuracy: 0.647969 top-5-accuracy: 0.910156
+2025-09-05 11:34:47,412 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:34:47,413 [INFO] loss: 1.234638 accuracy: 0.650000 top-5-accuracy: 0.910937
+2025-09-05 11:34:49,167 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:34:49,167 [INFO] loss: 1.252595 epoch_loss: 1.237161 accuracy: 0.644832 epoch_accuracy: 0.648931 top-5-accuracy: 0.896394 epoch_top-5-accuracy: 0.909691
+2025-09-05 11:34:49,167 [INFO] Epoch summary loss: 1.237161 accuracy: 0.648931 top-5-accuracy: 0.909691
+2025-09-05 11:34:50,100 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:34:50,100 [INFO] epoch_accuracy: 0.660000 epoch_top-5-accuracy: 0.886000 epoch_loss: 1.390300
+2025-09-05 11:34:50,100 [INFO] Current lr: [0.0009993196939248458]
+2025-09-05 11:35:07,273 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:35:07,274 [INFO] loss: 1.178691 accuracy: 0.665781 top-5-accuracy: 0.914062
+2025-09-05 11:35:23,179 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:35:23,179 [INFO] loss: 1.203019 accuracy: 0.664687 top-5-accuracy: 0.909844
+2025-09-05 11:35:24,937 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:35:24,937 [INFO] loss: 1.207327 epoch_loss: 1.192709 accuracy: 0.675962 epoch_accuracy: 0.665508 top-5-accuracy: 0.895072 epoch_top-5-accuracy: 0.911103
+2025-09-05 11:35:24,937 [INFO] Epoch summary loss: 1.192709 accuracy: 0.665508 top-5-accuracy: 0.911103
+2025-09-05 11:35:25,866 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:35:25,866 [INFO] epoch_accuracy: 0.734000 epoch_top-5-accuracy: 0.948000 epoch_loss: 1.038048
+2025-09-05 11:35:25,866 [INFO] Current lr: [0.001]
+2025-09-05 11:35:43,075 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:35:43,076 [INFO] loss: 1.159144 accuracy: 0.677344 top-5-accuracy: 0.918750
+2025-09-05 11:35:58,950 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:35:58,950 [INFO] loss: 1.177847 accuracy: 0.670312 top-5-accuracy: 0.910312
+2025-09-05 11:36:00,696 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:36:00,696 [INFO] loss: 1.158224 epoch_loss: 1.168351 accuracy: 0.671154 epoch_accuracy: 0.673536 top-5-accuracy: 0.906370 epoch_top-5-accuracy: 0.913994
+2025-09-05 11:36:00,696 [INFO] Epoch summary loss: 1.168351 accuracy: 0.673536 top-5-accuracy: 0.913994
+2025-09-05 11:36:01,663 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:36:01,664 [INFO] epoch_accuracy: 0.650000 epoch_top-5-accuracy: 0.886000 epoch_loss: 1.318627
+2025-09-05 11:36:01,664 [INFO] Current lr: [0.0009998741179747834]
+2025-09-05 11:36:18,903 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:36:18,904 [INFO] loss: 1.160425 accuracy: 0.671875 top-5-accuracy: 0.915469
+2025-09-05 11:36:34,846 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:36:34,847 [INFO] loss: 1.190239 accuracy: 0.660156 top-5-accuracy: 0.917656
+2025-09-05 11:36:36,655 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:36:36,655 [INFO] loss: 1.259821 epoch_loss: 1.178135 accuracy: 0.647957 epoch_accuracy: 0.665588 top-5-accuracy: 0.889543 epoch_top-5-accuracy: 0.915043
+2025-09-05 11:36:36,656 [INFO] Epoch summary loss: 1.178135 accuracy: 0.665588 top-5-accuracy: 0.915043
+2025-09-05 11:36:37,598 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:36:37,598 [INFO] epoch_accuracy: 0.706000 epoch_top-5-accuracy: 0.928000 epoch_loss: 0.987335
+2025-09-05 11:36:37,598 [INFO] Current lr: [0.0009994965352845243]
+2025-09-05 11:36:37,663 [INFO] Model saved. New best value 0.987335
+2025-09-05 11:36:54,796 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:36:54,796 [INFO] loss: 1.165639 accuracy: 0.667656 top-5-accuracy: 0.918750
+2025-09-05 11:37:10,726 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:37:10,726 [INFO] loss: 1.179594 accuracy: 0.664375 top-5-accuracy: 0.914531
+2025-09-05 11:37:12,487 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:37:12,488 [INFO] loss: 1.236674 epoch_loss: 1.177549 accuracy: 0.631611 epoch_accuracy: 0.663785 top-5-accuracy: 0.906731 epoch_top-5-accuracy: 0.916075
+2025-09-05 11:37:12,488 [INFO] Epoch summary loss: 1.177549 accuracy: 0.663785 top-5-accuracy: 0.916075
+2025-09-05 11:37:13,443 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:37:13,443 [INFO] epoch_accuracy: 0.702000 epoch_top-5-accuracy: 0.920000 epoch_loss: 1.102696
+2025-09-05 11:37:13,443 [INFO] Current lr: [0.0009988674420534779]
+2025-09-05 11:37:30,560 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:37:30,561 [INFO] loss: 1.146264 accuracy: 0.671562 top-5-accuracy: 0.919531
+2025-09-05 11:37:46,498 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:37:46,498 [INFO] loss: 1.192916 accuracy: 0.665312 top-5-accuracy: 0.910937
+2025-09-05 11:37:48,249 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:37:48,249 [INFO] loss: 1.118698 epoch_loss: 1.166844 accuracy: 0.684495 epoch_accuracy: 0.669596 top-5-accuracy: 0.933654 epoch_top-5-accuracy: 0.916387
+2025-09-05 11:37:48,249 [INFO] Epoch summary loss: 1.166844 accuracy: 0.669596 top-5-accuracy: 0.916387
+2025-09-05 11:37:49,171 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:37:49,171 [INFO] epoch_accuracy: 0.684000 epoch_top-5-accuracy: 0.912000 epoch_loss: 1.231300
+2025-09-05 11:37:49,171 [INFO] Current lr: [0.0009979871550490316]
+2025-09-05 11:38:06,317 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:38:06,317 [INFO] loss: 1.100235 accuracy: 0.686250 top-5-accuracy: 0.924687
+2025-09-05 11:38:22,291 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:38:22,291 [INFO] loss: 1.149520 accuracy: 0.678438 top-5-accuracy: 0.919063
+2025-09-05 11:38:24,038 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:38:24,038 [INFO] loss: 1.183160 epoch_loss: 1.127950 accuracy: 0.648918 epoch_accuracy: 0.680521 top-5-accuracy: 0.905168 epoch_top-5-accuracy: 0.921013
+2025-09-05 11:38:24,038 [INFO] Epoch summary loss: 1.127950 accuracy: 0.680521 top-5-accuracy: 0.921013
+2025-09-05 11:38:24,955 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:38:24,955 [INFO] epoch_accuracy: 0.702000 epoch_top-5-accuracy: 0.902000 epoch_loss: 1.145187
+2025-09-05 11:38:24,955 [INFO] Current lr: [0.0009968561175222016]
+2025-09-05 11:38:42,110 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:38:42,110 [INFO] loss: 1.084528 accuracy: 0.691250 top-5-accuracy: 0.922813
+2025-09-05 11:38:58,029 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:38:58,029 [INFO] loss: 1.152402 accuracy: 0.673438 top-5-accuracy: 0.921406
+2025-09-05 11:38:59,781 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:38:59,781 [INFO] loss: 1.297070 epoch_loss: 1.127757 accuracy: 0.647957 epoch_accuracy: 0.680476 top-5-accuracy: 0.896514 epoch_top-5-accuracy: 0.920752
+2025-09-05 11:38:59,781 [INFO] Epoch summary loss: 1.127757 accuracy: 0.680476 top-5-accuracy: 0.920752
+2025-09-05 11:39:00,704 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:39:00,704 [INFO] epoch_accuracy: 0.712000 epoch_top-5-accuracy: 0.928000 epoch_loss: 1.110811
+2025-09-05 11:39:00,704 [INFO] Current lr: [0.0009954748989844438]
+2025-09-05 11:39:18,111 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:39:18,112 [INFO] loss: 1.122423 accuracy: 0.674531 top-5-accuracy: 0.921875
+2025-09-05 11:39:34,062 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:39:34,062 [INFO] loss: 1.157972 accuracy: 0.673906 top-5-accuracy: 0.919687
+2025-09-05 11:39:35,808 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:39:35,808 [INFO] loss: 0.919050 epoch_loss: 1.128987 accuracy: 0.734135 epoch_accuracy: 0.677097 top-5-accuracy: 0.945433 epoch_top-5-accuracy: 0.922028
+2025-09-05 11:39:35,808 [INFO] Epoch summary loss: 1.128987 accuracy: 0.677097 top-5-accuracy: 0.922028
+2025-09-05 11:39:36,736 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:39:36,737 [INFO] epoch_accuracy: 0.708000 epoch_top-5-accuracy: 0.940000 epoch_loss: 1.036843
+2025-09-05 11:39:36,737 [INFO] Current lr: [0.0009938441949208876]
+2025-09-05 11:39:53,868 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:39:53,868 [INFO] loss: 1.098279 accuracy: 0.685937 top-5-accuracy: 0.920625
+2025-09-05 11:40:09,826 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:40:09,826 [INFO] loss: 1.120419 accuracy: 0.687187 top-5-accuracy: 0.921875
+2025-09-05 11:40:11,599 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:40:11,599 [INFO] loss: 1.051726 epoch_loss: 1.112595 accuracy: 0.680889 epoch_accuracy: 0.685346 top-5-accuracy: 0.940745 epoch_top-5-accuracy: 0.921660
+2025-09-05 11:40:11,599 [INFO] Epoch summary loss: 1.112595 accuracy: 0.685346 top-5-accuracy: 0.921660
+2025-09-05 11:40:12,573 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:40:12,573 [INFO] epoch_accuracy: 0.676000 epoch_top-5-accuracy: 0.932000 epoch_loss: 1.162375
+2025-09-05 11:40:12,573 [INFO] Current lr: [0.0009919648264401376]
+2025-09-05 11:40:29,652 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:40:29,652 [INFO] loss: 1.079982 accuracy: 0.685781 top-5-accuracy: 0.926094
+2025-09-05 11:40:45,581 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:40:45,581 [INFO] loss: 1.123372 accuracy: 0.683906 top-5-accuracy: 0.924844
+2025-09-05 11:40:47,326 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:40:47,326 [INFO] loss: 1.195523 epoch_loss: 1.104362 accuracy: 0.665865 epoch_accuracy: 0.684342 top-5-accuracy: 0.918990 epoch_top-5-accuracy: 0.925571
+2025-09-05 11:40:47,326 [INFO] Epoch summary loss: 1.104362 accuracy: 0.684342 top-5-accuracy: 0.925571
+2025-09-05 11:40:48,273 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:40:48,273 [INFO] epoch_accuracy: 0.676000 epoch_top-5-accuracy: 0.898000 epoch_loss: 1.334548
+2025-09-05 11:40:48,273 [INFO] Current lr: [0.000989837739860821]
+2025-09-05 11:41:05,437 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:41:05,437 [INFO] loss: 1.067853 accuracy: 0.698438 top-5-accuracy: 0.929063
+2025-09-05 11:41:21,387 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:41:21,387 [INFO] loss: 1.112868 accuracy: 0.691406 top-5-accuracy: 0.919844
+2025-09-05 11:41:23,150 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:41:23,151 [INFO] loss: 1.175754 epoch_loss: 1.094333 accuracy: 0.668149 epoch_accuracy: 0.693368 top-5-accuracy: 0.907332 epoch_top-5-accuracy: 0.923916
+2025-09-05 11:41:23,151 [INFO] Epoch summary loss: 1.094333 accuracy: 0.693368 top-5-accuracy: 0.923916
+2025-09-05 11:41:24,083 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:41:24,084 [INFO] epoch_accuracy: 0.716000 epoch_top-5-accuracy: 0.952000 epoch_loss: 0.999655
+2025-09-05 11:41:24,084 [INFO] Current lr: [0.0009874640062350875]
+2025-09-05 11:41:41,124 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:41:41,124 [INFO] loss: 1.031761 accuracy: 0.702344 top-5-accuracy: 0.930625
+2025-09-05 11:41:57,037 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:41:57,038 [INFO] loss: 1.097404 accuracy: 0.692656 top-5-accuracy: 0.922031
+2025-09-05 11:41:58,796 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:41:58,797 [INFO] loss: 1.040481 epoch_loss: 1.063566 accuracy: 0.686058 epoch_accuracy: 0.697013 top-5-accuracy: 0.942308 epoch_top-5-accuracy: 0.927261
+2025-09-05 11:41:58,797 [INFO] Epoch summary loss: 1.063566 accuracy: 0.697013 top-5-accuracy: 0.927261
+2025-09-05 11:41:59,731 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:41:59,731 [INFO] epoch_accuracy: 0.706000 epoch_top-5-accuracy: 0.916000 epoch_loss: 1.186517
+2025-09-05 11:41:59,731 [INFO] Current lr: [0.0009848448208093026]
+2025-09-05 11:42:16,908 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:42:16,908 [INFO] loss: 1.015485 accuracy: 0.708125 top-5-accuracy: 0.932656
+2025-09-05 11:42:32,883 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:42:32,883 [INFO] loss: 1.062268 accuracy: 0.698438 top-5-accuracy: 0.930469
+2025-09-05 11:42:34,640 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:42:34,641 [INFO] loss: 1.049383 epoch_loss: 1.043020 accuracy: 0.693750 epoch_accuracy: 0.701651 top-5-accuracy: 0.937620 epoch_top-5-accuracy: 0.931315
+2025-09-05 11:42:34,641 [INFO] Epoch summary loss: 1.043020 accuracy: 0.701651 top-5-accuracy: 0.931315
+2025-09-05 11:42:35,575 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:42:35,575 [INFO] epoch_accuracy: 0.730000 epoch_top-5-accuracy: 0.938000 epoch_loss: 0.969927
+2025-09-05 11:42:35,575 [INFO] Current lr: [0.0009819815024222052]
+2025-09-05 11:42:35,642 [INFO] Model saved. New best value 0.969927
+2025-09-05 11:42:52,774 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:42:52,774 [INFO] loss: 1.013384 accuracy: 0.712969 top-5-accuracy: 0.932656
+2025-09-05 11:43:08,747 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:43:08,747 [INFO] loss: 1.052482 accuracy: 0.702969 top-5-accuracy: 0.932031
+2025-09-05 11:43:10,505 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:43:10,506 [INFO] loss: 1.120825 epoch_loss: 1.035988 accuracy: 0.698678 epoch_accuracy: 0.707853 top-5-accuracy: 0.922115 epoch_top-5-accuracy: 0.931836
+2025-09-05 11:43:10,506 [INFO] Epoch summary loss: 1.035988 accuracy: 0.707853 top-5-accuracy: 0.931836
+2025-09-05 11:43:11,443 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:43:11,443 [INFO] epoch_accuracy: 0.710000 epoch_top-5-accuracy: 0.924000 epoch_loss: 1.100846
+2025-09-05 11:43:11,443 [INFO] Current lr: [0.0009788754928408319]
+2025-09-05 11:43:28,819 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:43:28,819 [INFO] loss: 0.991784 accuracy: 0.717500 top-5-accuracy: 0.936719
+2025-09-05 11:43:44,747 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:43:44,747 [INFO] loss: 1.058437 accuracy: 0.705313 top-5-accuracy: 0.926250
+2025-09-05 11:43:46,506 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:43:46,506 [INFO] loss: 1.132936 epoch_loss: 1.030516 accuracy: 0.670553 epoch_accuracy: 0.709254 top-5-accuracy: 0.919832 epoch_top-5-accuracy: 0.930918
+2025-09-05 11:43:46,506 [INFO] Epoch summary loss: 1.030516 accuracy: 0.709254 top-5-accuracy: 0.930918
+2025-09-05 11:43:47,428 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:43:47,428 [INFO] epoch_accuracy: 0.712000 epoch_top-5-accuracy: 0.916000 epoch_loss: 1.122660
+2025-09-05 11:43:47,429 [INFO] Current lr: [0.0009755283560345441]
+2025-09-05 11:44:04,608 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:44:04,608 [INFO] loss: 1.002757 accuracy: 0.718125 top-5-accuracy: 0.932500
+2025-09-05 11:44:20,626 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:44:20,626 [INFO] loss: 1.042322 accuracy: 0.707500 top-5-accuracy: 0.932969
+2025-09-05 11:44:22,395 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:44:22,395 [INFO] loss: 1.076517 epoch_loss: 1.024299 accuracy: 0.681370 epoch_accuracy: 0.711312 top-5-accuracy: 0.946995 epoch_top-5-accuracy: 0.933526
+2025-09-05 11:44:22,396 [INFO] Epoch summary loss: 1.024299 accuracy: 0.711312 top-5-accuracy: 0.933526
+2025-09-05 11:44:23,348 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:44:23,348 [INFO] epoch_accuracy: 0.736000 epoch_top-5-accuracy: 0.936000 epoch_loss: 1.026884
+2025-09-05 11:44:23,349 [INFO] Current lr: [0.0009719417773875231]
+2025-09-05 11:44:40,482 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:44:40,482 [INFO] loss: 0.963157 accuracy: 0.718594 top-5-accuracy: 0.939375
+2025-09-05 11:44:56,426 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:44:56,426 [INFO] loss: 1.023589 accuracy: 0.703438 top-5-accuracy: 0.931094
+2025-09-05 11:44:58,180 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:44:58,181 [INFO] loss: 0.918742 epoch_loss: 0.988802 accuracy: 0.738942 epoch_accuracy: 0.712406 top-5-accuracy: 0.935937 epoch_top-5-accuracy: 0.935363
+2025-09-05 11:44:58,181 [INFO] Epoch summary loss: 0.988802 accuracy: 0.712406 top-5-accuracy: 0.935363
+2025-09-05 11:44:59,115 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:44:59,115 [INFO] epoch_accuracy: 0.758000 epoch_top-5-accuracy: 0.948000 epoch_loss: 0.947545
+2025-09-05 11:44:59,115 [INFO] Current lr: [0.0009681175628501272]
+2025-09-05 11:44:59,182 [INFO] Model saved. New best value 0.947545
+2025-09-05 11:45:16,410 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:45:16,410 [INFO] loss: 0.977303 accuracy: 0.721250 top-5-accuracy: 0.939375
+2025-09-05 11:45:32,358 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:45:32,358 [INFO] loss: 1.031447 accuracy: 0.703906 top-5-accuracy: 0.935156
+2025-09-05 11:45:34,112 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:45:34,112 [INFO] loss: 0.994826 epoch_loss: 1.005322 accuracy: 0.720313 epoch_accuracy: 0.713001 top-5-accuracy: 0.938462 epoch_top-5-accuracy: 0.937103
+2025-09-05 11:45:34,112 [INFO] Epoch summary loss: 1.005322 accuracy: 0.713001 top-5-accuracy: 0.937103
+2025-09-05 11:45:35,031 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:45:35,031 [INFO] epoch_accuracy: 0.724000 epoch_top-5-accuracy: 0.928000 epoch_loss: 1.053203
+2025-09-05 11:45:35,031 [INFO] Current lr: [0.0009640576380295423]
+2025-09-05 11:45:52,104 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:45:52,105 [INFO] loss: 0.990792 accuracy: 0.715938 top-5-accuracy: 0.936562
+2025-09-05 11:46:08,126 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:46:08,126 [INFO] loss: 1.000966 accuracy: 0.715156 top-5-accuracy: 0.937813
+2025-09-05 11:46:09,899 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:46:09,899 [INFO] loss: 1.002151 epoch_loss: 0.995999 accuracy: 0.701082 epoch_accuracy: 0.714895 top-5-accuracy: 0.933053 epoch_top-5-accuracy: 0.936922
+2025-09-05 11:46:09,899 [INFO] Epoch summary loss: 0.995999 accuracy: 0.714895 top-5-accuracy: 0.936922
+2025-09-05 11:46:10,823 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:46:10,823 [INFO] epoch_accuracy: 0.710000 epoch_top-5-accuracy: 0.918000 epoch_loss: 1.164748
+2025-09-05 11:46:10,823 [INFO] Current lr: [0.0009597640472201802]
+2025-09-05 11:46:28,160 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:46:28,161 [INFO] loss: 0.944961 accuracy: 0.730625 top-5-accuracy: 0.942500
+2025-09-05 11:46:44,114 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:46:44,114 [INFO] loss: 1.024701 accuracy: 0.701250 top-5-accuracy: 0.935781
+2025-09-05 11:46:45,868 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:46:45,869 [INFO] loss: 1.010050 epoch_loss: 0.987739 accuracy: 0.708534 epoch_accuracy: 0.715099 top-5-accuracy: 0.943149 epoch_top-5-accuracy: 0.939167
+2025-09-05 11:46:45,869 [INFO] Epoch summary loss: 0.987739 accuracy: 0.715099 top-5-accuracy: 0.939167
+2025-09-05 11:46:46,797 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:46:46,797 [INFO] epoch_accuracy: 0.728000 epoch_top-5-accuracy: 0.930000 epoch_loss: 1.131137
+2025-09-05 11:46:46,797 [INFO] Current lr: [0.0009552389523743146]
+2025-09-05 11:47:03,958 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:47:03,959 [INFO] loss: 0.948375 accuracy: 0.724219 top-5-accuracy: 0.939844
+2025-09-05 11:47:19,941 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:47:19,941 [INFO] loss: 0.976240 accuracy: 0.719688 top-5-accuracy: 0.935000
+2025-09-05 11:47:21,721 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:47:21,721 [INFO] loss: 1.001900 epoch_loss: 0.964069 accuracy: 0.725000 epoch_accuracy: 0.722435 top-5-accuracy: 0.946995 epoch_top-5-accuracy: 0.937800
+2025-09-05 11:47:21,721 [INFO] Epoch summary loss: 0.964069 accuracy: 0.722435 top-5-accuracy: 0.937800
+2025-09-05 11:47:22,712 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:47:22,713 [INFO] epoch_accuracy: 0.738000 epoch_top-5-accuracy: 0.934000 epoch_loss: 1.069723
+2025-09-05 11:47:22,713 [INFO] Current lr: [0.0009504846320134736]
+2025-09-05 11:47:39,829 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:47:39,829 [INFO] loss: 0.935467 accuracy: 0.735938 top-5-accuracy: 0.943438
+2025-09-05 11:47:55,764 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:47:55,764 [INFO] loss: 0.978077 accuracy: 0.719688 top-5-accuracy: 0.936562
+2025-09-05 11:47:57,507 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:47:57,507 [INFO] loss: 1.034239 epoch_loss: 0.958384 accuracy: 0.720433 epoch_accuracy: 0.727895 top-5-accuracy: 0.929087 epoch_top-5-accuracy: 0.939388
+2025-09-05 11:47:57,507 [INFO] Epoch summary loss: 0.958384 accuracy: 0.727895 top-5-accuracy: 0.939388
+2025-09-05 11:47:58,432 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:47:58,432 [INFO] epoch_accuracy: 0.718000 epoch_top-5-accuracy: 0.934000 epoch_loss: 1.089147
+2025-09-05 11:47:58,432 [INFO] Current lr: [0.0009455034800811354]
+2025-09-05 11:48:15,603 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:48:15,603 [INFO] loss: 0.924045 accuracy: 0.731875 top-5-accuracy: 0.945937
+2025-09-05 11:48:31,519 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:48:31,519 [INFO] loss: 0.959694 accuracy: 0.729062 top-5-accuracy: 0.944063
+2025-09-05 11:48:33,268 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:48:33,268 [INFO] loss: 1.015589 epoch_loss: 0.946104 accuracy: 0.737981 epoch_accuracy: 0.730344 top-5-accuracy: 0.913462 epoch_top-5-accuracy: 0.943589
+2025-09-05 11:48:33,268 [INFO] Epoch summary loss: 0.946104 accuracy: 0.730344 top-5-accuracy: 0.943589
+2025-09-05 11:48:34,204 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:48:34,204 [INFO] epoch_accuracy: 0.742000 epoch_top-5-accuracy: 0.942000 epoch_loss: 0.913824
+2025-09-05 11:48:34,204 [INFO] Current lr: [0.0009402980047373052]
+2025-09-05 11:48:34,270 [INFO] Model saved. New best value 0.913824
+2025-09-05 11:48:51,278 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:48:51,278 [INFO] loss: 0.874434 accuracy: 0.747188 top-5-accuracy: 0.950000
+2025-09-05 11:49:07,248 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:49:07,248 [INFO] loss: 0.957830 accuracy: 0.720156 top-5-accuracy: 0.947344
+2025-09-05 11:49:09,002 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:49:09,002 [INFO] loss: 0.984292 epoch_loss: 0.918866 accuracy: 0.719832 epoch_accuracy: 0.733173 top-5-accuracy: 0.926803 epoch_top-5-accuracy: 0.947388
+2025-09-05 11:49:09,002 [INFO] Epoch summary loss: 0.918866 accuracy: 0.733173 top-5-accuracy: 0.947388
+2025-09-05 11:49:09,931 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:49:09,931 [INFO] epoch_accuracy: 0.718000 epoch_top-5-accuracy: 0.928000 epoch_loss: 1.135297
+2025-09-05 11:49:09,931 [INFO] Current lr: [0.0009348708270955813]
+2025-09-05 11:49:27,108 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:49:27,108 [INFO] loss: 0.871530 accuracy: 0.747656 top-5-accuracy: 0.951250
+2025-09-05 11:49:42,979 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:49:42,980 [INFO] loss: 0.958840 accuracy: 0.724531 top-5-accuracy: 0.938438
+2025-09-05 11:49:44,724 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:49:44,724 [INFO] loss: 1.013296 epoch_loss: 0.921209 accuracy: 0.714423 epoch_accuracy: 0.734539 top-5-accuracy: 0.917668 epoch_top-5-accuracy: 0.943198
+2025-09-05 11:49:44,724 [INFO] Epoch summary loss: 0.921209 accuracy: 0.734539 top-5-accuracy: 0.943198
+2025-09-05 11:49:45,660 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:49:45,660 [INFO] epoch_accuracy: 0.740000 epoch_top-5-accuracy: 0.936000 epoch_loss: 1.028229
+2025-09-05 11:49:45,660 [INFO] Current lr: [0.0009292246799033457]
+2025-09-05 11:50:02,737 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:50:02,738 [INFO] loss: 0.878935 accuracy: 0.747344 top-5-accuracy: 0.946562
+2025-09-05 11:50:18,674 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:50:18,674 [INFO] loss: 0.923470 accuracy: 0.737500 top-5-accuracy: 0.940937
+2025-09-05 11:50:20,427 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:50:20,428 [INFO] loss: 1.103357 epoch_loss: 0.913062 accuracy: 0.679327 epoch_accuracy: 0.738706 top-5-accuracy: 0.901082 epoch_top-5-accuracy: 0.941531
+2025-09-05 11:50:20,428 [INFO] Epoch summary loss: 0.913062 accuracy: 0.738706 top-5-accuracy: 0.941531
+2025-09-05 11:50:21,359 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:50:21,359 [INFO] epoch_accuracy: 0.704000 epoch_top-5-accuracy: 0.924000 epoch_loss: 1.055467
+2025-09-05 11:50:21,360 [INFO] Current lr: [0.0009233624061657436]
+2025-09-05 11:50:38,601 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:50:38,601 [INFO] loss: 0.872356 accuracy: 0.741563 top-5-accuracy: 0.951094
+2025-09-05 11:50:54,479 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:50:54,479 [INFO] loss: 0.911400 accuracy: 0.743125 top-5-accuracy: 0.942656
+2025-09-05 11:50:56,236 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:50:56,236 [INFO] loss: 1.072386 epoch_loss: 0.900820 accuracy: 0.692308 epoch_accuracy: 0.739835 top-5-accuracy: 0.922957 epoch_top-5-accuracy: 0.945732
+2025-09-05 11:50:56,236 [INFO] Epoch summary loss: 0.900820 accuracy: 0.739835 top-5-accuracy: 0.945732
+2025-09-05 11:50:57,187 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:50:57,188 [INFO] epoch_accuracy: 0.756000 epoch_top-5-accuracy: 0.932000 epoch_loss: 0.933982
+2025-09-05 11:50:57,188 [INFO] Current lr: [0.0009172869577141438]
+2025-09-05 11:51:14,310 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:51:14,311 [INFO] loss: 0.859550 accuracy: 0.749062 top-5-accuracy: 0.951875
+2025-09-05 11:51:30,203 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:51:30,203 [INFO] loss: 0.895294 accuracy: 0.739219 top-5-accuracy: 0.949844
+2025-09-05 11:51:31,978 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:51:31,978 [INFO] loss: 0.841880 epoch_loss: 0.876515 accuracy: 0.764663 epoch_accuracy: 0.745238 top-5-accuracy: 0.945312 epoch_top-5-accuracy: 0.950251
+2025-09-05 11:51:31,979 [INFO] Epoch summary loss: 0.876515 accuracy: 0.745238 top-5-accuracy: 0.950251
+2025-09-05 11:51:32,920 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:51:32,921 [INFO] epoch_accuracy: 0.716000 epoch_top-5-accuracy: 0.916000 epoch_loss: 1.122789
+2025-09-05 11:51:32,921 [INFO] Current lr: [0.0009110013937198041]
+2025-09-05 11:51:50,041 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:51:50,041 [INFO] loss: 0.844423 accuracy: 0.755156 top-5-accuracy: 0.951250
+2025-09-05 11:52:05,954 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:52:05,954 [INFO] loss: 0.870984 accuracy: 0.748594 top-5-accuracy: 0.949844
+2025-09-05 11:52:07,723 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:52:07,724 [INFO] loss: 0.915693 epoch_loss: 0.859330 accuracy: 0.723437 epoch_accuracy: 0.750884 top-5-accuracy: 0.955529 epoch_top-5-accuracy: 0.950732
+2025-09-05 11:52:07,724 [INFO] Epoch summary loss: 0.859330 accuracy: 0.750884 top-5-accuracy: 0.950732
+2025-09-05 11:52:08,683 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:52:08,683 [INFO] epoch_accuracy: 0.732000 epoch_top-5-accuracy: 0.942000 epoch_loss: 1.095505
+2025-09-05 11:52:08,683 [INFO] Current lr: [0.0009045088791534849]
+2025-09-05 11:52:25,910 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:52:25,910 [INFO] loss: 0.833504 accuracy: 0.757812 top-5-accuracy: 0.952812
+2025-09-05 11:52:41,856 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:52:41,856 [INFO] loss: 0.918734 accuracy: 0.735781 top-5-accuracy: 0.946562
+2025-09-05 11:52:43,620 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:52:43,621 [INFO] loss: 0.806601 epoch_loss: 0.872759 accuracy: 0.746154 epoch_accuracy: 0.746649 top-5-accuracy: 0.957212 epoch_top-5-accuracy: 0.950001
+2025-09-05 11:52:43,621 [INFO] Epoch summary loss: 0.872759 accuracy: 0.746649 top-5-accuracy: 0.950001
+2025-09-05 11:52:44,550 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:52:44,550 [INFO] epoch_accuracy: 0.736000 epoch_top-5-accuracy: 0.934000 epoch_loss: 1.038104
+2025-09-05 11:52:44,550 [INFO] Current lr: [0.0008978126831917926]
+2025-09-05 11:53:01,656 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:53:01,656 [INFO] loss: 0.806070 accuracy: 0.770000 top-5-accuracy: 0.955313
+2025-09-05 11:53:17,644 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:53:17,644 [INFO] loss: 0.894921 accuracy: 0.744375 top-5-accuracy: 0.948750
+2025-09-05 11:53:19,412 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:53:19,412 [INFO] loss: 0.824395 epoch_loss: 0.850500 accuracy: 0.737740 epoch_accuracy: 0.755908 top-5-accuracy: 0.949279 epoch_top-5-accuracy: 0.952059
+2025-09-05 11:53:19,412 [INFO] Epoch summary loss: 0.850500 accuracy: 0.755908 top-5-accuracy: 0.952059
+2025-09-05 11:53:20,340 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:53:20,340 [INFO] epoch_accuracy: 0.738000 epoch_top-5-accuracy: 0.934000 epoch_loss: 0.980472
+2025-09-05 11:53:20,340 [INFO] Current lr: [0.0008909161775710499]
+2025-09-05 11:53:37,528 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:53:37,528 [INFO] loss: 0.814689 accuracy: 0.759687 top-5-accuracy: 0.958125
+2025-09-05 11:53:53,394 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:53:53,394 [INFO] loss: 0.853359 accuracy: 0.749844 top-5-accuracy: 0.953906
+2025-09-05 11:53:55,143 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:53:55,143 [INFO] loss: 0.863591 epoch_loss: 0.837977 accuracy: 0.762500 epoch_accuracy: 0.754422 top-5-accuracy: 0.947837 epoch_top-5-accuracy: 0.955381
+2025-09-05 11:53:55,144 [INFO] Epoch summary loss: 0.837977 accuracy: 0.754422 top-5-accuracy: 0.955381
+2025-09-05 11:53:56,072 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:53:56,072 [INFO] epoch_accuracy: 0.756000 epoch_top-5-accuracy: 0.946000 epoch_loss: 0.940116
+2025-09-05 11:53:56,072 [INFO] Current lr: [0.0008838228348895247]
+2025-09-05 11:54:13,286 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:54:13,286 [INFO] loss: 0.794882 accuracy: 0.767813 top-5-accuracy: 0.957031
+2025-09-05 11:54:29,210 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:54:29,210 [INFO] loss: 0.836845 accuracy: 0.762188 top-5-accuracy: 0.953438
+2025-09-05 11:54:30,963 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:54:30,963 [INFO] loss: 0.901359 epoch_loss: 0.818800 accuracy: 0.739183 epoch_accuracy: 0.763641 top-5-accuracy: 0.959375 epoch_top-5-accuracy: 0.955557
+2025-09-05 11:54:30,963 [INFO] Epoch summary loss: 0.818800 accuracy: 0.763641 top-5-accuracy: 0.955557
+2025-09-05 11:54:31,910 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:54:31,910 [INFO] epoch_accuracy: 0.746000 epoch_top-5-accuracy: 0.938000 epoch_loss: 0.955063
+2025-09-05 11:54:31,910 [INFO] Current lr: [0.0008765362268588734]
+2025-09-05 11:54:48,985 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:54:48,985 [INFO] loss: 0.800088 accuracy: 0.763906 top-5-accuracy: 0.959844
+2025-09-05 11:55:04,899 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:55:04,899 [INFO] loss: 0.850990 accuracy: 0.755156 top-5-accuracy: 0.952187
+2025-09-05 11:55:06,661 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:55:06,661 [INFO] loss: 0.861868 epoch_loss: 0.826921 accuracy: 0.768630 epoch_accuracy: 0.760460 top-5-accuracy: 0.940865 epoch_top-5-accuracy: 0.955126
+2025-09-05 11:55:06,661 [INFO] Epoch summary loss: 0.826921 accuracy: 0.760460 top-5-accuracy: 0.955126
+2025-09-05 11:55:07,593 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:55:07,593 [INFO] epoch_accuracy: 0.752000 epoch_top-5-accuracy: 0.956000 epoch_loss: 0.873528
+2025-09-05 11:55:07,593 [INFO] Current lr: [0.0008690600225056753]
+2025-09-05 11:55:07,658 [INFO] Model saved. New best value 0.873528
+2025-09-05 11:55:24,827 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:55:24,828 [INFO] loss: 0.774260 accuracy: 0.772813 top-5-accuracy: 0.960156
+2025-09-05 11:55:40,768 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:55:40,768 [INFO] loss: 0.865465 accuracy: 0.753125 top-5-accuracy: 0.949844
+2025-09-05 11:55:42,530 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:55:42,530 [INFO] loss: 0.841759 epoch_loss: 0.820539 accuracy: 0.756851 epoch_accuracy: 0.762632 top-5-accuracy: 0.956250 epoch_top-5-accuracy: 0.955041
+2025-09-05 11:55:42,530 [INFO] Epoch summary loss: 0.820539 accuracy: 0.762632 top-5-accuracy: 0.955041
+2025-09-05 11:55:43,460 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:55:43,460 [INFO] epoch_accuracy: 0.718000 epoch_top-5-accuracy: 0.938000 epoch_loss: 1.078580
+2025-09-05 11:55:43,460 [INFO] Current lr: [0.000861397986323968]
+2025-09-05 11:56:00,464 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:56:00,464 [INFO] loss: 0.755661 accuracy: 0.775469 top-5-accuracy: 0.964063
+2025-09-05 11:56:16,468 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:56:16,469 [INFO] loss: 0.838857 accuracy: 0.750625 top-5-accuracy: 0.951406
+2025-09-05 11:56:18,219 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:56:18,219 [INFO] loss: 0.928210 epoch_loss: 0.806424 accuracy: 0.718389 epoch_accuracy: 0.760522 top-5-accuracy: 0.965024 epoch_top-5-accuracy: 0.957740
+2025-09-05 11:56:18,220 [INFO] Epoch summary loss: 0.806424 accuracy: 0.760522 top-5-accuracy: 0.957740
+2025-09-05 11:56:19,146 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:56:19,146 [INFO] epoch_accuracy: 0.768000 epoch_top-5-accuracy: 0.960000 epoch_loss: 0.856055
+2025-09-05 11:56:19,146 [INFO] Current lr: [0.0008535539763797113]
+2025-09-05 11:56:19,213 [INFO] Model saved. New best value 0.856055
+2025-09-05 11:56:36,370 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:56:36,370 [INFO] loss: 0.787118 accuracy: 0.775937 top-5-accuracy: 0.955781
+2025-09-05 11:56:52,264 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:56:52,264 [INFO] loss: 0.801826 accuracy: 0.765938 top-5-accuracy: 0.959375
+2025-09-05 11:56:54,014 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:56:54,015 [INFO] loss: 0.708018 epoch_loss: 0.790657 accuracy: 0.793510 epoch_accuracy: 0.771952 top-5-accuracy: 0.957091 epoch_top-5-accuracy: 0.957218
+2025-09-05 11:56:54,015 [INFO] Epoch summary loss: 0.790657 accuracy: 0.771952 top-5-accuracy: 0.957218
+2025-09-05 11:56:54,942 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:56:54,942 [INFO] epoch_accuracy: 0.738000 epoch_top-5-accuracy: 0.948000 epoch_loss: 0.933073
+2025-09-05 11:56:54,942 [INFO] Current lr: [0.0008455319423681343]
+2025-09-05 11:57:12,058 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:57:12,059 [INFO] loss: 0.766312 accuracy: 0.780937 top-5-accuracy: 0.960625
+2025-09-05 11:57:28,004 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:57:28,004 [INFO] loss: 0.772494 accuracy: 0.774219 top-5-accuracy: 0.957812
+2025-09-05 11:57:29,750 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:57:29,750 [INFO] loss: 0.823495 epoch_loss: 0.773615 accuracy: 0.769471 epoch_accuracy: 0.777009 top-5-accuracy: 0.945433 epoch_top-5-accuracy: 0.958437
+2025-09-05 11:57:29,750 [INFO] Epoch summary loss: 0.773615 accuracy: 0.777009 top-5-accuracy: 0.958437
+2025-09-05 11:57:30,707 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:57:30,708 [INFO] epoch_accuracy: 0.732000 epoch_top-5-accuracy: 0.944000 epoch_loss: 0.984438
+2025-09-05 11:57:30,708 [INFO] Current lr: [0.0008373359236249453]
+2025-09-05 11:57:47,851 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:57:47,851 [INFO] loss: 0.772959 accuracy: 0.768906 top-5-accuracy: 0.961094
+2025-09-05 11:58:03,798 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:58:03,798 [INFO] loss: 0.761251 accuracy: 0.775000 top-5-accuracy: 0.961094
+2025-09-05 11:58:05,562 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:58:05,562 [INFO] loss: 0.917172 epoch_loss: 0.773250 accuracy: 0.749399 epoch_accuracy: 0.770682 top-5-accuracy: 0.938462 epoch_top-5-accuracy: 0.959951
+2025-09-05 11:58:05,563 [INFO] Epoch summary loss: 0.773250 accuracy: 0.770682 top-5-accuracy: 0.959951
+2025-09-05 11:58:06,497 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:58:06,497 [INFO] epoch_accuracy: 0.746000 epoch_top-5-accuracy: 0.944000 epoch_loss: 0.960083
+2025-09-05 11:58:06,497 [INFO] Current lr: [0.0008289700470924044]
+2025-09-05 11:58:23,663 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:58:23,663 [INFO] loss: 0.746919 accuracy: 0.779375 top-5-accuracy: 0.964375
+2025-09-05 11:58:39,561 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:58:39,561 [INFO] loss: 0.808594 accuracy: 0.766250 top-5-accuracy: 0.954063
+2025-09-05 11:58:41,318 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:58:41,318 [INFO] loss: 0.737921 epoch_loss: 0.775855 accuracy: 0.790264 epoch_accuracy: 0.773936 top-5-accuracy: 0.952524 epoch_top-5-accuracy: 0.958919
+2025-09-05 11:58:41,318 [INFO] Epoch summary loss: 0.775855 accuracy: 0.773936 top-5-accuracy: 0.958919
+2025-09-05 11:58:42,283 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:58:42,283 [INFO] epoch_accuracy: 0.758000 epoch_top-5-accuracy: 0.956000 epoch_loss: 0.977960
+2025-09-05 11:58:42,283 [INFO] Current lr: [0.000820438525241284]
+2025-09-05 11:58:59,420 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:58:59,420 [INFO] loss: 0.767098 accuracy: 0.771250 top-5-accuracy: 0.961406
+2025-09-05 11:59:15,461 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:59:15,461 [INFO] loss: 0.751998 accuracy: 0.779844 top-5-accuracy: 0.962187
+2025-09-05 11:59:17,227 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:59:17,227 [INFO] loss: 0.825041 epoch_loss: 0.761639 accuracy: 0.758654 epoch_accuracy: 0.775025 top-5-accuracy: 0.950962 epoch_top-5-accuracy: 0.961130
+2025-09-05 11:59:17,228 [INFO] Epoch summary loss: 0.761639 accuracy: 0.775025 top-5-accuracy: 0.961130
+2025-09-05 11:59:18,161 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:59:18,161 [INFO] epoch_accuracy: 0.702000 epoch_top-5-accuracy: 0.920000 epoch_loss: 1.150479
+2025-09-05 11:59:18,161 [INFO] Current lr: [0.000811745653949763]
+2025-09-05 11:59:35,312 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:59:35,312 [INFO] loss: 0.693193 accuracy: 0.797031 top-5-accuracy: 0.967656
+2025-09-05 11:59:51,177 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:59:51,177 [INFO] loss: 0.742952 accuracy: 0.784062 top-5-accuracy: 0.964219
+2025-09-05 11:59:52,939 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 11:59:52,939 [INFO] loss: 0.774390 epoch_loss: 0.724031 accuracy: 0.781250 epoch_accuracy: 0.788841 top-5-accuracy: 0.958774 epoch_top-5-accuracy: 0.965331
+2025-09-05 11:59:52,940 [INFO] Epoch summary loss: 0.724031 accuracy: 0.788841 top-5-accuracy: 0.965331
+2025-09-05 11:59:53,869 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 11:59:53,869 [INFO] epoch_accuracy: 0.758000 epoch_top-5-accuracy: 0.942000 epoch_loss: 0.902136
+2025-09-05 11:59:53,869 [INFO] Current lr: [0.0008028958103403222]
+2025-09-05 12:00:11,118 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:00:11,118 [INFO] loss: 0.709726 accuracy: 0.787969 top-5-accuracy: 0.967187
+2025-09-05 12:00:27,120 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:00:27,120 [INFO] loss: 0.769715 accuracy: 0.769844 top-5-accuracy: 0.958281
+2025-09-05 12:00:28,883 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:00:28,883 [INFO] loss: 0.723361 epoch_loss: 0.738557 accuracy: 0.786538 epoch_accuracy: 0.779583 top-5-accuracy: 0.965024 epoch_top-5-accuracy: 0.962604
+2025-09-05 12:00:28,884 [INFO] Epoch summary loss: 0.738557 accuracy: 0.779583 top-5-accuracy: 0.962604
+2025-09-05 12:00:29,814 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:00:29,814 [INFO] epoch_accuracy: 0.752000 epoch_top-5-accuracy: 0.952000 epoch_loss: 0.949537
+2025-09-05 12:00:29,814 [INFO] Current lr: [0.0007938934505757319]
+2025-09-05 12:00:47,056 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:00:47,056 [INFO] loss: 0.713127 accuracy: 0.787813 top-5-accuracy: 0.965156
+2025-09-05 12:01:02,992 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:01:02,992 [INFO] loss: 0.741708 accuracy: 0.779062 top-5-accuracy: 0.963750
+2025-09-05 12:01:04,749 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:01:04,749 [INFO] loss: 0.794568 epoch_loss: 0.728989 accuracy: 0.771875 epoch_accuracy: 0.783314 top-5-accuracy: 0.946274 epoch_top-5-accuracy: 0.963636
+2025-09-05 12:01:04,749 [INFO] Epoch summary loss: 0.728989 accuracy: 0.783314 top-5-accuracy: 0.963636
+2025-09-05 12:01:05,680 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:01:05,680 [INFO] epoch_accuracy: 0.738000 epoch_top-5-accuracy: 0.930000 epoch_loss: 0.997104
+2025-09-05 12:01:05,680 [INFO] Current lr: [0.0007847431076152396]
+2025-09-05 12:01:22,983 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:01:22,984 [INFO] loss: 0.707627 accuracy: 0.792188 top-5-accuracy: 0.965938
+2025-09-05 12:01:38,904 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:01:38,905 [INFO] loss: 0.755273 accuracy: 0.782500 top-5-accuracy: 0.959688
+2025-09-05 12:01:40,657 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:01:40,657 [INFO] loss: 0.612878 epoch_loss: 0.725263 accuracy: 0.812260 epoch_accuracy: 0.788830 top-5-accuracy: 0.974279 epoch_top-5-accuracy: 0.963262
+2025-09-05 12:01:40,657 [INFO] Epoch summary loss: 0.725263 accuracy: 0.788830 top-5-accuracy: 0.963262
+2025-09-05 12:01:41,595 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:01:41,595 [INFO] epoch_accuracy: 0.762000 epoch_top-5-accuracy: 0.932000 epoch_loss: 1.002635
+2025-09-05 12:01:41,595 [INFO] Current lr: [0.0007754493889320882]
+2025-09-05 12:01:58,881 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:01:58,881 [INFO] loss: 0.680745 accuracy: 0.796250 top-5-accuracy: 0.968594
+2025-09-05 12:02:14,829 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:02:14,829 [INFO] loss: 0.741264 accuracy: 0.781875 top-5-accuracy: 0.960469
+2025-09-05 12:02:16,588 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:02:16,588 [INFO] loss: 0.650312 epoch_loss: 0.709502 accuracy: 0.805288 epoch_accuracy: 0.789607 top-5-accuracy: 0.971274 epoch_top-5-accuracy: 0.964889
+2025-09-05 12:02:16,589 [INFO] Epoch summary loss: 0.709502 accuracy: 0.789607 top-5-accuracy: 0.964889
+2025-09-05 12:02:17,514 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:02:17,515 [INFO] epoch_accuracy: 0.752000 epoch_top-5-accuracy: 0.926000 epoch_loss: 1.017365
+2025-09-05 12:02:17,515 [INFO] Current lr: [0.0007660169741935151]
+2025-09-05 12:02:34,689 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:02:34,690 [INFO] loss: 0.668781 accuracy: 0.803594 top-5-accuracy: 0.970938
+2025-09-05 12:02:50,622 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:02:50,622 [INFO] loss: 0.704346 accuracy: 0.792031 top-5-accuracy: 0.966562
+2025-09-05 12:02:52,390 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:02:52,391 [INFO] loss: 0.753869 epoch_loss: 0.688463 accuracy: 0.775601 epoch_accuracy: 0.797124 top-5-accuracy: 0.954808 epoch_top-5-accuracy: 0.968166
+2025-09-05 12:02:52,391 [INFO] Epoch summary loss: 0.688463 accuracy: 0.797124 top-5-accuracy: 0.968166
+2025-09-05 12:02:53,332 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:02:53,332 [INFO] epoch_accuracy: 0.732000 epoch_top-5-accuracy: 0.934000 epoch_loss: 0.938402
+2025-09-05 12:02:53,332 [INFO] Current lr: [0.0007564506129043982]
+2025-09-05 12:03:10,495 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:03:10,495 [INFO] loss: 0.660462 accuracy: 0.803906 top-5-accuracy: 0.970781
+2025-09-05 12:03:26,444 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:03:26,444 [INFO] loss: 0.697532 accuracy: 0.793438 top-5-accuracy: 0.969219
+2025-09-05 12:03:28,207 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:03:28,207 [INFO] loss: 0.629936 epoch_loss: 0.678004 accuracy: 0.819231 epoch_accuracy: 0.799551 top-5-accuracy: 0.969591 epoch_top-5-accuracy: 0.969674
+2025-09-05 12:03:28,208 [INFO] Epoch summary loss: 0.678004 accuracy: 0.799551 top-5-accuracy: 0.969674
+2025-09-05 12:03:29,134 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:03:29,134 [INFO] epoch_accuracy: 0.778000 epoch_top-5-accuracy: 0.950000 epoch_loss: 0.882714
+2025-09-05 12:03:29,134 [INFO] Current lr: [0.0007467551220157372]
+2025-09-05 12:03:46,329 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:03:46,329 [INFO] loss: 0.642705 accuracy: 0.807031 top-5-accuracy: 0.972187
+2025-09-05 12:04:02,280 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:04:02,280 [INFO] loss: 0.702112 accuracy: 0.791250 top-5-accuracy: 0.967500
+2025-09-05 12:04:04,054 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:04:04,055 [INFO] loss: 0.802419 epoch_loss: 0.678989 accuracy: 0.776322 epoch_accuracy: 0.798264 top-5-accuracy: 0.956370 epoch_top-5-accuracy: 0.968682
+2025-09-05 12:04:04,055 [INFO] Epoch summary loss: 0.678989 accuracy: 0.798264 top-5-accuracy: 0.968682
+2025-09-05 12:04:04,992 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:04:04,992 [INFO] epoch_accuracy: 0.756000 epoch_top-5-accuracy: 0.936000 epoch_loss: 0.943400
+2025-09-05 12:04:04,993 [INFO] Current lr: [0.0007369353834991743]
+2025-09-05 12:04:22,173 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:04:22,174 [INFO] loss: 0.631854 accuracy: 0.812813 top-5-accuracy: 0.972812
+2025-09-05 12:04:38,091 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:04:38,091 [INFO] loss: 0.714373 accuracy: 0.788281 top-5-accuracy: 0.963281
+2025-09-05 12:04:39,847 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:04:39,847 [INFO] loss: 0.550361 epoch_loss: 0.665963 accuracy: 0.852644 epoch_accuracy: 0.803559 top-5-accuracy: 0.984375 epoch_top-5-accuracy: 0.968897
+2025-09-05 12:04:39,847 [INFO] Epoch summary loss: 0.665963 accuracy: 0.803559 top-5-accuracy: 0.968897
+2025-09-05 12:04:40,781 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:04:40,781 [INFO] epoch_accuracy: 0.754000 epoch_top-5-accuracy: 0.938000 epoch_loss: 1.063297
+2025-09-05 12:04:40,781 [INFO] Current lr: [0.0007269963418887738]
+2025-09-05 12:04:58,004 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:04:58,004 [INFO] loss: 0.638280 accuracy: 0.808594 top-5-accuracy: 0.972344
+2025-09-05 12:05:14,000 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:05:14,000 [INFO] loss: 0.665085 accuracy: 0.807500 top-5-accuracy: 0.969375
+2025-09-05 12:05:15,757 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:05:15,757 [INFO] loss: 0.594277 epoch_loss: 0.648467 accuracy: 0.815385 epoch_accuracy: 0.808435 top-5-accuracy: 0.979688 epoch_top-5-accuracy: 0.971256
+2025-09-05 12:05:15,758 [INFO] Epoch summary loss: 0.648467 accuracy: 0.808435 top-5-accuracy: 0.971256
+2025-09-05 12:05:16,694 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:05:16,694 [INFO] epoch_accuracy: 0.758000 epoch_top-5-accuracy: 0.954000 epoch_loss: 0.872638
+2025-09-05 12:05:16,695 [INFO] Current lr: [0.0007169430017913008]
+2025-09-05 12:05:33,896 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:05:33,896 [INFO] loss: 0.613803 accuracy: 0.815937 top-5-accuracy: 0.972656
+2025-09-05 12:05:49,823 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:05:49,823 [INFO] loss: 0.647140 accuracy: 0.812187 top-5-accuracy: 0.972969
+2025-09-05 12:05:51,585 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:05:51,586 [INFO] loss: 0.653663 epoch_loss: 0.630970 accuracy: 0.801442 epoch_accuracy: 0.813600 top-5-accuracy: 0.967308 epoch_top-5-accuracy: 0.972588
+2025-09-05 12:05:51,586 [INFO] Epoch summary loss: 0.630970 accuracy: 0.813600 top-5-accuracy: 0.972588
+2025-09-05 12:05:52,574 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:05:52,574 [INFO] epoch_accuracy: 0.766000 epoch_top-5-accuracy: 0.952000 epoch_loss: 0.882906
+2025-09-05 12:05:52,574 [INFO] Current lr: [0.0007067804253662503]
+2025-09-05 12:06:09,655 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:06:09,655 [INFO] loss: 0.578699 accuracy: 0.828594 top-5-accuracy: 0.974688
+2025-09-05 12:06:25,600 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:06:25,600 [INFO] loss: 0.639950 accuracy: 0.815781 top-5-accuracy: 0.975469
+2025-09-05 12:06:27,358 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:06:27,358 [INFO] loss: 0.642578 epoch_loss: 0.609638 accuracy: 0.829207 epoch_accuracy: 0.822943 top-5-accuracy: 0.966466 epoch_top-5-accuracy: 0.974686
+2025-09-05 12:06:27,359 [INFO] Epoch summary loss: 0.609638 accuracy: 0.822943 top-5-accuracy: 0.974686
+2025-09-05 12:06:28,280 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:06:28,280 [INFO] epoch_accuracy: 0.764000 epoch_top-5-accuracy: 0.952000 epoch_loss: 0.906259
+2025-09-05 12:06:28,280 [INFO] Current lr: [0.0006965137297768985]
+2025-09-05 12:06:45,445 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:06:45,445 [INFO] loss: 0.629536 accuracy: 0.816562 top-5-accuracy: 0.973281
+2025-09-05 12:07:01,339 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:07:01,339 [INFO] loss: 0.613094 accuracy: 0.821719 top-5-accuracy: 0.973437
+2025-09-05 12:07:03,139 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:07:03,139 [INFO] loss: 0.782218 epoch_loss: 0.629591 accuracy: 0.776202 epoch_accuracy: 0.816979 top-5-accuracy: 0.973437 epoch_top-5-accuracy: 0.973320
+2025-09-05 12:07:03,140 [INFO] Epoch summary loss: 0.629591 accuracy: 0.816979 top-5-accuracy: 0.973320
+2025-09-05 12:07:04,075 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:07:04,075 [INFO] epoch_accuracy: 0.788000 epoch_top-5-accuracy: 0.948000 epoch_loss: 0.820708
+2025-09-05 12:07:04,075 [INFO] Current lr: [0.0006861480846136557]
+2025-09-05 12:07:04,145 [INFO] Model saved. New best value 0.820708
+2025-09-05 12:07:21,396 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:07:21,397 [INFO] loss: 0.619622 accuracy: 0.815312 top-5-accuracy: 0.973906
+2025-09-05 12:07:37,349 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:07:37,349 [INFO] loss: 0.612837 accuracy: 0.816406 top-5-accuracy: 0.973437
+2025-09-05 12:07:39,108 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:07:39,108 [INFO] loss: 0.551458 epoch_loss: 0.612444 accuracy: 0.818630 epoch_accuracy: 0.816179 top-5-accuracy: 0.985938 epoch_top-5-accuracy: 0.974351
+2025-09-05 12:07:39,108 [INFO] Epoch summary loss: 0.612444 accuracy: 0.816179 top-5-accuracy: 0.974351
+2025-09-05 12:07:40,038 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:07:40,038 [INFO] epoch_accuracy: 0.752000 epoch_top-5-accuracy: 0.950000 epoch_loss: 1.014066
+2025-09-05 12:07:40,038 [INFO] Current lr: [0.0006756887092910232]
+2025-09-05 12:07:57,102 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:07:57,102 [INFO] loss: 0.625727 accuracy: 0.815937 top-5-accuracy: 0.971094
+2025-09-05 12:08:13,055 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:08:13,055 [INFO] loss: 0.605689 accuracy: 0.815625 top-5-accuracy: 0.977187
+2025-09-05 12:08:14,818 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:08:14,818 [INFO] loss: 0.636930 epoch_loss: 0.615937 accuracy: 0.814063 epoch_accuracy: 0.815964 top-5-accuracy: 0.973678 epoch_top-5-accuracy: 0.974215
+2025-09-05 12:08:14,818 [INFO] Epoch summary loss: 0.615937 accuracy: 0.815964 top-5-accuracy: 0.974215
+2025-09-05 12:08:15,738 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:08:15,738 [INFO] epoch_accuracy: 0.754000 epoch_top-5-accuracy: 0.946000 epoch_loss: 0.939473
+2025-09-05 12:08:15,738 [INFO] Current lr: [0.0006651408704194596]
+2025-09-05 12:08:32,946 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:08:32,946 [INFO] loss: 0.588140 accuracy: 0.827812 top-5-accuracy: 0.978125
+2025-09-05 12:08:48,846 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:08:48,847 [INFO] loss: 0.587821 accuracy: 0.824844 top-5-accuracy: 0.975313
+2025-09-05 12:08:50,605 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:08:50,606 [INFO] loss: 0.690837 epoch_loss: 0.592060 accuracy: 0.806010 epoch_accuracy: 0.825313 top-5-accuracy: 0.970313 epoch_top-5-accuracy: 0.976562
+2025-09-05 12:08:50,606 [INFO] Epoch summary loss: 0.592060 accuracy: 0.825313 top-5-accuracy: 0.976562
+2025-09-05 12:08:51,525 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:08:51,526 [INFO] epoch_accuracy: 0.756000 epoch_top-5-accuracy: 0.954000 epoch_loss: 0.964901
+2025-09-05 12:08:51,526 [INFO] Current lr: [0.0006545098791534849]
+2025-09-05 12:09:08,911 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:09:08,911 [INFO] loss: 0.563552 accuracy: 0.829844 top-5-accuracy: 0.976406
+2025-09-05 12:09:24,959 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:09:24,959 [INFO] loss: 0.601340 accuracy: 0.817969 top-5-accuracy: 0.975938
+2025-09-05 12:09:26,715 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:09:26,715 [INFO] loss: 0.511082 epoch_loss: 0.578356 accuracy: 0.842668 epoch_accuracy: 0.825273 top-5-accuracy: 0.971154 epoch_top-5-accuracy: 0.976013
+2025-09-05 12:09:26,715 [INFO] Epoch summary loss: 0.578356 accuracy: 0.825273 top-5-accuracy: 0.976013
+2025-09-05 12:09:27,646 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:09:27,646 [INFO] epoch_accuracy: 0.764000 epoch_top-5-accuracy: 0.934000 epoch_loss: 1.028698
+2025-09-05 12:09:27,646 [INFO] Current lr: [0.0006438010885173537]
+2025-09-05 12:09:44,813 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:09:44,813 [INFO] loss: 0.531854 accuracy: 0.838125 top-5-accuracy: 0.981406
+2025-09-05 12:10:00,683 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:10:00,683 [INFO] loss: 0.587883 accuracy: 0.820781 top-5-accuracy: 0.980938
+2025-09-05 12:10:02,481 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:10:02,481 [INFO] loss: 0.581222 epoch_loss: 0.559223 accuracy: 0.839543 epoch_accuracy: 0.830285 top-5-accuracy: 0.975120 epoch_top-5-accuracy: 0.980917
+2025-09-05 12:10:02,482 [INFO] Epoch summary loss: 0.559223 accuracy: 0.830285 top-5-accuracy: 0.980917
+2025-09-05 12:10:03,423 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:10:03,424 [INFO] epoch_accuracy: 0.774000 epoch_top-5-accuracy: 0.966000 epoch_loss: 0.886120
+2025-09-05 12:10:03,424 [INFO] Current lr: [0.0006330198907096463]
+2025-09-05 12:10:20,695 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:10:20,695 [INFO] loss: 0.538442 accuracy: 0.837969 top-5-accuracy: 0.982187
+2025-09-05 12:10:36,645 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:10:36,645 [INFO] loss: 0.571296 accuracy: 0.828594 top-5-accuracy: 0.977344
+2025-09-05 12:10:38,408 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:10:38,409 [INFO] loss: 0.542478 epoch_loss: 0.553747 accuracy: 0.835577 epoch_accuracy: 0.833857 top-5-accuracy: 0.978245 epoch_top-5-accuracy: 0.979516
+2025-09-05 12:10:38,409 [INFO] Epoch summary loss: 0.553747 accuracy: 0.833857 top-5-accuracy: 0.979516
+2025-09-05 12:10:39,341 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:10:39,341 [INFO] epoch_accuracy: 0.762000 epoch_top-5-accuracy: 0.952000 epoch_loss: 1.021895
+2025-09-05 12:10:39,341 [INFO] Current lr: [0.0006221717143881346]
+2025-09-05 12:10:56,469 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:10:56,469 [INFO] loss: 0.536845 accuracy: 0.840313 top-5-accuracy: 0.978125
+2025-09-05 12:11:12,478 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:11:12,478 [INFO] loss: 0.544859 accuracy: 0.838281 top-5-accuracy: 0.980313
+2025-09-05 12:11:14,246 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:11:14,246 [INFO] loss: 0.558984 epoch_loss: 0.542827 accuracy: 0.838582 epoch_accuracy: 0.839010 top-5-accuracy: 0.976562 epoch_top-5-accuracy: 0.978921
+2025-09-05 12:11:14,247 [INFO] Epoch summary loss: 0.542827 accuracy: 0.839010 top-5-accuracy: 0.978921
+2025-09-05 12:11:15,175 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:11:15,175 [INFO] epoch_accuracy: 0.778000 epoch_top-5-accuracy: 0.968000 epoch_loss: 0.883849
+2025-09-05 12:11:15,175 [INFO] Current lr: [0.0006112620219362892]
+2025-09-05 12:11:32,291 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:11:32,291 [INFO] loss: 0.524653 accuracy: 0.844063 top-5-accuracy: 0.983125
+2025-09-05 12:11:48,218 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:11:48,218 [INFO] loss: 0.541578 accuracy: 0.844531 top-5-accuracy: 0.978750
+2025-09-05 12:11:49,987 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:11:49,987 [INFO] loss: 0.602534 epoch_loss: 0.537009 accuracy: 0.828125 epoch_accuracy: 0.843529 top-5-accuracy: 0.966707 epoch_top-5-accuracy: 0.980151
+2025-09-05 12:11:49,988 [INFO] Epoch summary loss: 0.537009 accuracy: 0.843529 top-5-accuracy: 0.980151
+2025-09-05 12:11:50,905 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:11:50,905 [INFO] epoch_accuracy: 0.778000 epoch_top-5-accuracy: 0.960000 epoch_loss: 0.827399
+2025-09-05 12:11:50,905 [INFO] Current lr: [0.0006002963067128047]
+2025-09-05 12:12:08,185 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:12:08,185 [INFO] loss: 0.483343 accuracy: 0.853906 top-5-accuracy: 0.983594
+2025-09-05 12:12:24,149 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:12:24,150 [INFO] loss: 0.539176 accuracy: 0.834375 top-5-accuracy: 0.980781
+2025-09-05 12:12:25,912 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:12:25,912 [INFO] loss: 0.403635 epoch_loss: 0.505739 accuracy: 0.870072 epoch_accuracy: 0.845508 top-5-accuracy: 0.992188 epoch_top-5-accuracy: 0.982532
+2025-09-05 12:12:25,912 [INFO] Epoch summary loss: 0.505739 accuracy: 0.845508 top-5-accuracy: 0.982532
+2025-09-05 12:12:26,834 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:12:26,834 [INFO] epoch_accuracy: 0.794000 epoch_top-5-accuracy: 0.958000 epoch_loss: 0.781538
+2025-09-05 12:12:26,834 [INFO] Current lr: [0.0005892800902855287]
+2025-09-05 12:12:26,902 [INFO] Model saved. New best value 0.781538
+2025-09-05 12:12:44,238 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:12:44,238 [INFO] loss: 0.506373 accuracy: 0.847969 top-5-accuracy: 0.982812
+2025-09-05 12:13:00,151 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:13:00,151 [INFO] loss: 0.529577 accuracy: 0.842031 top-5-accuracy: 0.981719
+2025-09-05 12:13:01,971 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:13:01,971 [INFO] loss: 0.479498 epoch_loss: 0.517387 accuracy: 0.849159 epoch_accuracy: 0.844742 top-5-accuracy: 0.986779 epoch_top-5-accuracy: 0.982498
+2025-09-05 12:13:01,971 [INFO] Epoch summary loss: 0.517387 accuracy: 0.844742 top-5-accuracy: 0.982498
+2025-09-05 12:13:02,991 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:13:02,991 [INFO] epoch_accuracy: 0.780000 epoch_top-5-accuracy: 0.946000 epoch_loss: 0.935844
+2025-09-05 12:13:02,991 [INFO] Current lr: [0.0005782189196511853]
+2025-09-05 12:13:20,198 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:13:20,198 [INFO] loss: 0.527689 accuracy: 0.844844 top-5-accuracy: 0.977344
+2025-09-05 12:13:36,192 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:13:36,192 [INFO] loss: 0.524495 accuracy: 0.838125 top-5-accuracy: 0.980938
+2025-09-05 12:13:37,966 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:13:37,967 [INFO] loss: 0.411600 epoch_loss: 0.522929 accuracy: 0.875361 epoch_accuracy: 0.842367 top-5-accuracy: 0.995313 epoch_top-5-accuracy: 0.979584
+2025-09-05 12:13:37,967 [INFO] Epoch summary loss: 0.522929 accuracy: 0.842367 top-5-accuracy: 0.979584
+2025-09-05 12:13:38,892 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:13:38,892 [INFO] epoch_accuracy: 0.766000 epoch_top-5-accuracy: 0.936000 epoch_loss: 1.020809
+2025-09-05 12:13:38,893 [INFO] Current lr: [0.000567118364442296]
+2025-09-05 12:13:56,038 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:13:56,039 [INFO] loss: 0.470744 accuracy: 0.859375 top-5-accuracy: 0.984062
+2025-09-05 12:14:12,037 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:14:12,037 [INFO] loss: 0.507052 accuracy: 0.851562 top-5-accuracy: 0.984531
+2025-09-05 12:14:13,817 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:14:13,817 [INFO] loss: 0.425113 epoch_loss: 0.485351 accuracy: 0.871394 epoch_accuracy: 0.856257 top-5-accuracy: 0.982812 epoch_top-5-accuracy: 0.984301
+2025-09-05 12:14:13,818 [INFO] Epoch summary loss: 0.485351 accuracy: 0.856257 top-5-accuracy: 0.984301
+2025-09-05 12:14:14,744 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:14:14,744 [INFO] epoch_accuracy: 0.780000 epoch_top-5-accuracy: 0.962000 epoch_loss: 0.831381
+2025-09-05 12:14:14,744 [INFO] Current lr: [0.0005559840141227016]
+2025-09-05 12:14:31,903 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:14:31,904 [INFO] loss: 0.458459 accuracy: 0.859844 top-5-accuracy: 0.985469
+2025-09-05 12:14:47,836 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:14:47,836 [INFO] loss: 0.535363 accuracy: 0.842812 top-5-accuracy: 0.980938
+2025-09-05 12:14:49,598 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:14:49,598 [INFO] loss: 0.524428 epoch_loss: 0.498654 accuracy: 0.851202 epoch_accuracy: 0.851472 top-5-accuracy: 0.975841 epoch_top-5-accuracy: 0.982793
+2025-09-05 12:14:49,598 [INFO] Epoch summary loss: 0.498654 accuracy: 0.851472 top-5-accuracy: 0.982793
+2025-09-05 12:14:50,525 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:14:50,526 [INFO] epoch_accuracy: 0.762000 epoch_top-5-accuracy: 0.950000 epoch_loss: 1.012634
+2025-09-05 12:14:50,526 [INFO] Current lr: [0.0005448214751730989]
+2025-09-05 12:15:07,702 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:15:07,702 [INFO] loss: 0.471557 accuracy: 0.859844 top-5-accuracy: 0.987969
+2025-09-05 12:15:23,669 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:15:23,669 [INFO] loss: 0.484044 accuracy: 0.851875 top-5-accuracy: 0.984688
+2025-09-05 12:15:25,427 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:15:25,427 [INFO] loss: 0.529269 epoch_loss: 0.481250 accuracy: 0.836659 epoch_accuracy: 0.854471 top-5-accuracy: 0.985938 epoch_top-5-accuracy: 0.986291
+2025-09-05 12:15:25,428 [INFO] Epoch summary loss: 0.481250 accuracy: 0.854471 top-5-accuracy: 0.986291
+2025-09-05 12:15:26,367 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:15:26,367 [INFO] epoch_accuracy: 0.766000 epoch_top-5-accuracy: 0.942000 epoch_loss: 1.001603
+2025-09-05 12:15:26,367 [INFO] Current lr: [0.0005336363682680086]
+2025-09-05 12:15:43,610 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:15:43,610 [INFO] loss: 0.469243 accuracy: 0.857969 top-5-accuracy: 0.982344
+2025-09-05 12:15:59,505 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:15:59,505 [INFO] loss: 0.482076 accuracy: 0.852969 top-5-accuracy: 0.984844
+2025-09-05 12:16:01,260 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:16:01,261 [INFO] loss: 0.414665 epoch_loss: 0.472905 accuracy: 0.880769 epoch_accuracy: 0.856478 top-5-accuracy: 0.978125 epoch_top-5-accuracy: 0.983196
+2025-09-05 12:16:01,261 [INFO] Epoch summary loss: 0.472905 accuracy: 0.856478 top-5-accuracy: 0.983196
+2025-09-05 12:16:02,219 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:16:02,219 [INFO] epoch_accuracy: 0.806000 epoch_top-5-accuracy: 0.958000 epoch_loss: 0.814574
+2025-09-05 12:16:02,219 [INFO] Current lr: [0.0005224343254455967]
+2025-09-05 12:16:19,559 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:16:19,559 [INFO] loss: 0.415634 accuracy: 0.873281 top-5-accuracy: 0.988594
+2025-09-05 12:16:35,531 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:16:35,531 [INFO] loss: 0.474539 accuracy: 0.859062 top-5-accuracy: 0.985469
+2025-09-05 12:16:37,297 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:16:37,297 [INFO] loss: 0.414098 epoch_loss: 0.444762 accuracy: 0.881490 epoch_accuracy: 0.866683 top-5-accuracy: 0.993750 epoch_top-5-accuracy: 0.987323
+2025-09-05 12:16:37,297 [INFO] Epoch summary loss: 0.444762 accuracy: 0.866683 top-5-accuracy: 0.987323
+2025-09-05 12:16:38,220 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:16:38,220 [INFO] epoch_accuracy: 0.796000 epoch_top-5-accuracy: 0.960000 epoch_loss: 0.874635
+2025-09-05 12:16:38,220 [INFO] Current lr: [0.0005112209872717738]
+2025-09-05 12:16:55,301 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:16:55,301 [INFO] loss: 0.423014 accuracy: 0.869375 top-5-accuracy: 0.988437
+2025-09-05 12:17:11,247 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:17:11,247 [INFO] loss: 0.439771 accuracy: 0.866563 top-5-accuracy: 0.988750
+2025-09-05 12:17:13,024 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:17:13,024 [INFO] loss: 0.500510 epoch_loss: 0.434235 accuracy: 0.846514 epoch_accuracy: 0.866876 top-5-accuracy: 0.992188 epoch_top-5-accuracy: 0.988797
+2025-09-05 12:17:13,024 [INFO] Epoch summary loss: 0.434235 accuracy: 0.866876 top-5-accuracy: 0.988797
+2025-09-05 12:17:13,967 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:17:13,967 [INFO] epoch_accuracy: 0.760000 epoch_top-5-accuracy: 0.950000 epoch_loss: 1.050439
+2025-09-05 12:17:13,967 [INFO] Current lr: [0.0005000019999999999]
+2025-09-05 12:17:31,096 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:17:31,096 [INFO] loss: 0.412083 accuracy: 0.877188 top-5-accuracy: 0.986719
+2025-09-05 12:17:47,046 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:17:47,046 [INFO] loss: 0.456359 accuracy: 0.859531 top-5-accuracy: 0.987969
+2025-09-05 12:17:48,800 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:17:48,800 [INFO] loss: 0.432610 epoch_loss: 0.433336 accuracy: 0.883173 epoch_accuracy: 0.869416 top-5-accuracy: 0.988341 epoch_top-5-accuracy: 0.987363
+2025-09-05 12:17:48,800 [INFO] Epoch summary loss: 0.433336 accuracy: 0.869416 top-5-accuracy: 0.987363
+2025-09-05 12:17:49,734 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:17:49,735 [INFO] epoch_accuracy: 0.788000 epoch_top-5-accuracy: 0.962000 epoch_loss: 0.837349
+2025-09-05 12:17:49,735 [INFO] Current lr: [0.0004887830127282261]
+2025-09-05 12:18:06,919 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:18:06,919 [INFO] loss: 0.402600 accuracy: 0.878594 top-5-accuracy: 0.989062
+2025-09-05 12:18:22,907 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:18:22,907 [INFO] loss: 0.417704 accuracy: 0.872500 top-5-accuracy: 0.986094
+2025-09-05 12:18:24,666 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:18:24,666 [INFO] loss: 0.488186 epoch_loss: 0.413904 accuracy: 0.853486 epoch_accuracy: 0.874206 top-5-accuracy: 0.991466 epoch_top-5-accuracy: 0.987879
+2025-09-05 12:18:24,667 [INFO] Epoch summary loss: 0.413904 accuracy: 0.874206 top-5-accuracy: 0.987879
+2025-09-05 12:18:25,593 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:18:25,593 [INFO] epoch_accuracy: 0.782000 epoch_top-5-accuracy: 0.958000 epoch_loss: 0.883587
+2025-09-05 12:18:25,593 [INFO] Current lr: [0.0004775696745544034]
+2025-09-05 12:18:42,835 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:18:42,835 [INFO] loss: 0.382489 accuracy: 0.883750 top-5-accuracy: 0.988281
+2025-09-05 12:18:58,761 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:18:58,761 [INFO] loss: 0.404353 accuracy: 0.878594 top-5-accuracy: 0.990156
+2025-09-05 12:19:00,522 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:19:00,522 [INFO] loss: 0.377035 epoch_loss: 0.392020 accuracy: 0.906490 epoch_accuracy: 0.882603 top-5-accuracy: 0.993750 epoch_top-5-accuracy: 0.989534
+2025-09-05 12:19:00,523 [INFO] Epoch summary loss: 0.392020 accuracy: 0.882603 top-5-accuracy: 0.989534
+2025-09-05 12:19:01,452 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:19:01,453 [INFO] epoch_accuracy: 0.800000 epoch_top-5-accuracy: 0.958000 epoch_loss: 0.880373
+2025-09-05 12:19:01,453 [INFO] Current lr: [0.0004663676317319914]
+2025-09-05 12:19:18,981 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:19:18,981 [INFO] loss: 0.403691 accuracy: 0.881563 top-5-accuracy: 0.988750
+2025-09-05 12:19:35,015 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:19:35,015 [INFO] loss: 0.397380 accuracy: 0.872969 top-5-accuracy: 0.989688
+2025-09-05 12:19:36,784 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:19:36,784 [INFO] loss: 0.422603 epoch_loss: 0.401941 accuracy: 0.882572 epoch_accuracy: 0.877421 top-5-accuracy: 0.983654 epoch_top-5-accuracy: 0.988911
+2025-09-05 12:19:36,785 [INFO] Epoch summary loss: 0.401941 accuracy: 0.877421 top-5-accuracy: 0.988911
+2025-09-05 12:19:37,718 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:19:37,718 [INFO] epoch_accuracy: 0.774000 epoch_top-5-accuracy: 0.954000 epoch_loss: 1.007620
+2025-09-05 12:19:37,718 [INFO] Current lr: [0.0004551825248269011]
+2025-09-05 12:19:54,907 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:19:54,908 [INFO] loss: 0.378618 accuracy: 0.884062 top-5-accuracy: 0.989844
+2025-09-05 12:20:10,974 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:20:10,975 [INFO] loss: 0.391620 accuracy: 0.879687 top-5-accuracy: 0.990313
+2025-09-05 12:20:12,779 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:20:12,780 [INFO] loss: 0.324424 epoch_loss: 0.381826 accuracy: 0.894832 epoch_accuracy: 0.882716 top-5-accuracy: 0.992188 epoch_top-5-accuracy: 0.990271
+2025-09-05 12:20:12,780 [INFO] Epoch summary loss: 0.381826 accuracy: 0.882716 top-5-accuracy: 0.990271
+2025-09-05 12:20:13,756 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:20:13,756 [INFO] epoch_accuracy: 0.788000 epoch_top-5-accuracy: 0.970000 epoch_loss: 0.855878
+2025-09-05 12:20:13,756 [INFO] Current lr: [0.0004440199858772983]
+2025-09-05 12:20:30,956 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:20:30,956 [INFO] loss: 0.361909 accuracy: 0.889062 top-5-accuracy: 0.990938
+2025-09-05 12:20:46,977 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:20:46,977 [INFO] loss: 0.378835 accuracy: 0.885312 top-5-accuracy: 0.991563
+2025-09-05 12:20:48,743 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:20:48,744 [INFO] loss: 0.436792 epoch_loss: 0.373002 accuracy: 0.881611 epoch_accuracy: 0.887031 top-5-accuracy: 0.981370 epoch_top-5-accuracy: 0.990867
+2025-09-05 12:20:48,744 [INFO] Epoch summary loss: 0.373002 accuracy: 0.887031 top-5-accuracy: 0.990867
+2025-09-05 12:20:49,670 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:20:49,670 [INFO] epoch_accuracy: 0.762000 epoch_top-5-accuracy: 0.962000 epoch_loss: 0.995747
+2025-09-05 12:20:49,670 [INFO] Current lr: [0.00043288563555770405]
+2025-09-05 12:21:07,009 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:21:07,010 [INFO] loss: 0.381800 accuracy: 0.878906 top-5-accuracy: 0.990313
+2025-09-05 12:21:23,113 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:21:23,113 [INFO] loss: 0.385219 accuracy: 0.885938 top-5-accuracy: 0.989844
+2025-09-05 12:21:24,893 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:21:24,893 [INFO] loss: 0.380696 epoch_loss: 0.382958 accuracy: 0.880048 epoch_accuracy: 0.882608 top-5-accuracy: 0.993029 epoch_top-5-accuracy: 0.990237
+2025-09-05 12:21:24,893 [INFO] Epoch summary loss: 0.382958 accuracy: 0.882608 top-5-accuracy: 0.990237
+2025-09-05 12:21:25,826 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:21:25,826 [INFO] epoch_accuracy: 0.774000 epoch_top-5-accuracy: 0.956000 epoch_loss: 0.965598
+2025-09-05 12:21:25,826 [INFO] Current lr: [0.00042178508034881456]
+2025-09-05 12:21:43,082 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:21:43,083 [INFO] loss: 0.347817 accuracy: 0.894531 top-5-accuracy: 0.992344
+2025-09-05 12:21:58,971 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:21:58,971 [INFO] loss: 0.368900 accuracy: 0.891250 top-5-accuracy: 0.990938
+2025-09-05 12:22:00,742 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:22:00,742 [INFO] loss: 0.391363 epoch_loss: 0.361704 accuracy: 0.885577 epoch_accuracy: 0.892303 top-5-accuracy: 0.987500 epoch_top-5-accuracy: 0.991156
+2025-09-05 12:22:00,743 [INFO] Epoch summary loss: 0.361704 accuracy: 0.892303 top-5-accuracy: 0.991156
+2025-09-05 12:22:01,679 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:22:01,679 [INFO] epoch_accuracy: 0.810000 epoch_top-5-accuracy: 0.962000 epoch_loss: 0.795180
+2025-09-05 12:22:01,679 [INFO] Current lr: [0.0004107239097144713]
+2025-09-05 12:22:19,131 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:22:19,132 [INFO] loss: 0.338160 accuracy: 0.894687 top-5-accuracy: 0.992812
+2025-09-05 12:22:35,073 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:22:35,074 [INFO] loss: 0.368732 accuracy: 0.885625 top-5-accuracy: 0.990938
+2025-09-05 12:22:36,841 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:22:36,841 [INFO] loss: 0.318739 epoch_loss: 0.351614 accuracy: 0.900841 epoch_accuracy: 0.890665 top-5-accuracy: 0.991466 epoch_top-5-accuracy: 0.991859
+2025-09-05 12:22:36,841 [INFO] Epoch summary loss: 0.351614 accuracy: 0.890665 top-5-accuracy: 0.991859
+2025-09-05 12:22:37,765 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:22:37,765 [INFO] epoch_accuracy: 0.812000 epoch_top-5-accuracy: 0.960000 epoch_loss: 0.905208
+2025-09-05 12:22:37,765 [INFO] Current lr: [0.0003997076932871952]
+2025-09-05 12:22:54,859 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:22:54,859 [INFO] loss: 0.333355 accuracy: 0.894375 top-5-accuracy: 0.993437
+2025-09-05 12:23:10,842 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:23:10,843 [INFO] loss: 0.356804 accuracy: 0.894062 top-5-accuracy: 0.991406
+2025-09-05 12:23:12,640 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:23:12,641 [INFO] loss: 0.382192 epoch_loss: 0.347718 accuracy: 0.888582 epoch_accuracy: 0.893993 top-5-accuracy: 1.000000 epoch_top-5-accuracy: 0.992851
+2025-09-05 12:23:12,641 [INFO] Epoch summary loss: 0.347718 accuracy: 0.893993 top-5-accuracy: 0.992851
+2025-09-05 12:23:13,615 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:23:13,615 [INFO] epoch_accuracy: 0.784000 epoch_top-5-accuracy: 0.952000 epoch_loss: 0.917874
+2025-09-05 12:23:13,615 [INFO] Current lr: [0.00038874197806371076]
+2025-09-05 12:23:30,829 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:23:30,830 [INFO] loss: 0.344833 accuracy: 0.896719 top-5-accuracy: 0.991875
+2025-09-05 12:23:46,770 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:23:46,770 [INFO] loss: 0.346585 accuracy: 0.895469 top-5-accuracy: 0.991875
+2025-09-05 12:23:48,532 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:23:48,532 [INFO] loss: 0.318835 epoch_loss: 0.344881 accuracy: 0.905769 epoch_accuracy: 0.896204 top-5-accuracy: 0.995313 epoch_top-5-accuracy: 0.992114
+2025-09-05 12:23:48,533 [INFO] Epoch summary loss: 0.344881 accuracy: 0.896204 top-5-accuracy: 0.992114
+2025-09-05 12:23:49,456 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:23:49,456 [INFO] epoch_accuracy: 0.798000 epoch_top-5-accuracy: 0.960000 epoch_loss: 0.860431
+2025-09-05 12:23:49,456 [INFO] Current lr: [0.00037783228561186514]
+2025-09-05 12:24:06,632 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:24:06,633 [INFO] loss: 0.348765 accuracy: 0.889062 top-5-accuracy: 0.991719
+2025-09-05 12:24:22,609 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:24:22,609 [INFO] loss: 0.315519 accuracy: 0.903281 top-5-accuracy: 0.993281
+2025-09-05 12:24:24,383 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:24:24,384 [INFO] loss: 0.314156 epoch_loss: 0.330604 accuracy: 0.905048 epoch_accuracy: 0.896980 top-5-accuracy: 0.990625 epoch_top-5-accuracy: 0.992409
+2025-09-05 12:24:24,384 [INFO] Epoch summary loss: 0.330604 accuracy: 0.896980 top-5-accuracy: 0.992409
+2025-09-05 12:24:25,314 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:24:25,314 [INFO] epoch_accuracy: 0.772000 epoch_top-5-accuracy: 0.950000 epoch_loss: 1.015011
+2025-09-05 12:24:25,314 [INFO] Current lr: [0.0003669841092903536]
+2025-09-05 12:24:42,475 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:24:42,475 [INFO] loss: 0.287223 accuracy: 0.910312 top-5-accuracy: 0.994844
+2025-09-05 12:24:58,370 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:24:58,370 [INFO] loss: 0.338190 accuracy: 0.897813 top-5-accuracy: 0.991875
+2025-09-05 12:25:00,137 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:25:00,138 [INFO] loss: 0.354419 epoch_loss: 0.314440 accuracy: 0.886298 epoch_accuracy: 0.903171 top-5-accuracy: 0.993750 epoch_top-5-accuracy: 0.993440
+2025-09-05 12:25:00,138 [INFO] Epoch summary loss: 0.314440 accuracy: 0.903171 top-5-accuracy: 0.993440
+2025-09-05 12:25:01,062 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:25:01,062 [INFO] epoch_accuracy: 0.804000 epoch_top-5-accuracy: 0.960000 epoch_loss: 0.867616
+2025-09-05 12:25:01,062 [INFO] Current lr: [0.00035620291148264627]
+2025-09-05 12:25:18,427 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:25:18,427 [INFO] loss: 0.315672 accuracy: 0.902500 top-5-accuracy: 0.993125
+2025-09-05 12:25:34,367 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:25:34,367 [INFO] loss: 0.317668 accuracy: 0.905469 top-5-accuracy: 0.994844
+2025-09-05 12:25:36,127 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:25:36,128 [INFO] loss: 0.325787 epoch_loss: 0.318288 accuracy: 0.891707 epoch_accuracy: 0.903132 top-5-accuracy: 0.996875 epoch_top-5-accuracy: 0.994104
+2025-09-05 12:25:36,128 [INFO] Epoch summary loss: 0.318288 accuracy: 0.903132 top-5-accuracy: 0.994104
+2025-09-05 12:25:37,054 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:25:37,054 [INFO] epoch_accuracy: 0.782000 epoch_top-5-accuracy: 0.956000 epoch_loss: 0.836669
+2025-09-05 12:25:37,055 [INFO] Current lr: [0.0003454941208465151]
+2025-09-05 12:25:54,204 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:25:54,204 [INFO] loss: 0.309498 accuracy: 0.906250 top-5-accuracy: 0.993594
+2025-09-05 12:26:10,122 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:26:10,122 [INFO] loss: 0.285823 accuracy: 0.912031 top-5-accuracy: 0.994062
+2025-09-05 12:26:11,902 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:26:11,902 [INFO] loss: 0.267028 epoch_loss: 0.297079 accuracy: 0.915024 epoch_accuracy: 0.909243 top-5-accuracy: 0.995313 epoch_top-5-accuracy: 0.993809
+2025-09-05 12:26:11,903 [INFO] Epoch summary loss: 0.297079 accuracy: 0.909243 top-5-accuracy: 0.993809
+2025-09-05 12:26:12,884 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:26:12,884 [INFO] epoch_accuracy: 0.794000 epoch_top-5-accuracy: 0.950000 epoch_loss: 0.946989
+2025-09-05 12:26:12,884 [INFO] Current lr: [0.00033486312958054055]
+2025-09-05 12:26:30,073 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:26:30,073 [INFO] loss: 0.272274 accuracy: 0.915156 top-5-accuracy: 0.995313
+2025-09-05 12:26:46,035 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:26:46,035 [INFO] loss: 0.303490 accuracy: 0.908438 top-5-accuracy: 0.992344
+2025-09-05 12:26:47,814 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:26:47,815 [INFO] loss: 0.328815 epoch_loss: 0.290401 accuracy: 0.893990 epoch_accuracy: 0.910905 top-5-accuracy: 0.990625 epoch_top-5-accuracy: 0.993662
+2025-09-05 12:26:47,815 [INFO] Epoch summary loss: 0.290401 accuracy: 0.910905 top-5-accuracy: 0.993662
+2025-09-05 12:26:48,740 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:26:48,740 [INFO] epoch_accuracy: 0.796000 epoch_top-5-accuracy: 0.956000 epoch_loss: 0.939722
+2025-09-05 12:26:48,740 [INFO] Current lr: [0.00032431529070897674]
+2025-09-05 12:27:05,892 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:27:05,892 [INFO] loss: 0.279061 accuracy: 0.915312 top-5-accuracy: 0.994531
+2025-09-05 12:27:21,864 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:27:21,864 [INFO] loss: 0.294092 accuracy: 0.912969 top-5-accuracy: 0.993437
+2025-09-05 12:27:23,642 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:27:23,642 [INFO] loss: 0.239107 epoch_loss: 0.284162 accuracy: 0.926803 epoch_accuracy: 0.914737 top-5-accuracy: 0.994591 epoch_top-5-accuracy: 0.993996
+2025-09-05 12:27:23,642 [INFO] Epoch summary loss: 0.284162 accuracy: 0.914737 top-5-accuracy: 0.993996
+2025-09-05 12:27:24,593 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:27:24,593 [INFO] epoch_accuracy: 0.790000 epoch_top-5-accuracy: 0.958000 epoch_loss: 0.907442
+2025-09-05 12:27:24,593 [INFO] Current lr: [0.00031385591538634424]
+2025-09-05 12:27:41,718 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:27:41,719 [INFO] loss: 0.269724 accuracy: 0.916094 top-5-accuracy: 0.994531
+2025-09-05 12:27:57,665 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:27:57,665 [INFO] loss: 0.257821 accuracy: 0.919844 top-5-accuracy: 0.995313
+2025-09-05 12:27:59,435 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:27:59,435 [INFO] loss: 0.251991 epoch_loss: 0.263363 accuracy: 0.925962 epoch_accuracy: 0.918456 top-5-accuracy: 0.993029 epoch_top-5-accuracy: 0.994880
+2025-09-05 12:27:59,435 [INFO] Epoch summary loss: 0.263363 accuracy: 0.918456 top-5-accuracy: 0.994880
+2025-09-05 12:28:00,360 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:28:00,360 [INFO] epoch_accuracy: 0.812000 epoch_top-5-accuracy: 0.960000 epoch_loss: 0.922096
+2025-09-05 12:28:00,360 [INFO] Current lr: [0.00030349027022310155]
+2025-09-05 12:28:17,511 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:28:17,511 [INFO] loss: 0.258986 accuracy: 0.922656 top-5-accuracy: 0.994062
+2025-09-05 12:28:33,446 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:28:33,446 [INFO] loss: 0.254149 accuracy: 0.918438 top-5-accuracy: 0.995313
+2025-09-05 12:28:35,207 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:28:35,207 [INFO] loss: 0.270610 epoch_loss: 0.257168 accuracy: 0.912861 epoch_accuracy: 0.920123 top-5-accuracy: 0.990625 epoch_top-5-accuracy: 0.994546
+2025-09-05 12:28:35,207 [INFO] Epoch summary loss: 0.257168 accuracy: 0.920123 top-5-accuracy: 0.994546
+2025-09-05 12:28:36,148 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:28:36,148 [INFO] epoch_accuracy: 0.816000 epoch_top-5-accuracy: 0.964000 epoch_loss: 0.887628
+2025-09-05 12:28:36,148 [INFO] Current lr: [0.0002932235746337497]
+2025-09-05 12:28:53,312 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:28:53,312 [INFO] loss: 0.267402 accuracy: 0.917656 top-5-accuracy: 0.995938
+2025-09-05 12:29:09,285 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:29:09,285 [INFO] loss: 0.271948 accuracy: 0.917344 top-5-accuracy: 0.994844
+2025-09-05 12:29:11,055 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:29:11,055 [INFO] loss: 0.324975 epoch_loss: 0.272766 accuracy: 0.908894 epoch_accuracy: 0.916988 top-5-accuracy: 0.986779 epoch_top-5-accuracy: 0.994807
+2025-09-05 12:29:11,056 [INFO] Epoch summary loss: 0.272766 accuracy: 0.916988 top-5-accuracy: 0.994807
+2025-09-05 12:29:11,981 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:29:11,981 [INFO] epoch_accuracy: 0.812000 epoch_top-5-accuracy: 0.972000 epoch_loss: 0.786703
+2025-09-05 12:29:11,982 [INFO] Current lr: [0.0002830609982086992]
+2025-09-05 12:29:29,329 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:29:29,329 [INFO] loss: 0.227476 accuracy: 0.930000 top-5-accuracy: 0.995625
+2025-09-05 12:29:45,293 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:29:45,293 [INFO] loss: 0.253616 accuracy: 0.923125 top-5-accuracy: 0.995469
+2025-09-05 12:29:47,069 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:29:47,069 [INFO] loss: 0.236890 epoch_loss: 0.240778 accuracy: 0.927644 epoch_accuracy: 0.926496 top-5-accuracy: 0.994591 epoch_top-5-accuracy: 0.995470
+2025-09-05 12:29:47,069 [INFO] Epoch summary loss: 0.240778 accuracy: 0.926496 top-5-accuracy: 0.995470
+2025-09-05 12:29:48,000 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:29:48,000 [INFO] epoch_accuracy: 0.812000 epoch_top-5-accuracy: 0.974000 epoch_loss: 0.794151
+2025-09-05 12:29:48,000 [INFO] Current lr: [0.0002730076581112261]
+2025-09-05 12:30:05,200 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:30:05,200 [INFO] loss: 0.230439 accuracy: 0.927031 top-5-accuracy: 0.996406
+2025-09-05 12:30:21,128 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:30:21,128 [INFO] loss: 0.247510 accuracy: 0.923906 top-5-accuracy: 0.996094
+2025-09-05 12:30:22,917 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/train/metrics.json
+2025-09-05 12:30:22,917 [INFO] loss: 0.285522 epoch_loss: 0.240862 accuracy: 0.915264 epoch_accuracy: 0.925101 top-5-accuracy: 0.994591 epoch_top-5-accuracy: 0.996207
+2025-09-05 12:30:22,917 [INFO] Epoch summary loss: 0.240862 accuracy: 0.925101 top-5-accuracy: 0.996207
+2025-09-05 12:30:23,859 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-gap-pretrained-w-augmenations/val/metrics.json
+2025-09-05 12:30:23,859 [INFO] epoch_accuracy: 0.804000 epoch_top-5-accuracy: 0.970000 epoch_loss: 0.798818
+2025-09-05 12:30:23,859 [INFO] Current lr: [0.00026306861650082563]
+2025-09-05 12:30:23,859 [INFO] Early stopping triggered at epoch 150
+2025-09-05 12:30:23,865 [INFO] Found credentials in environment variables.

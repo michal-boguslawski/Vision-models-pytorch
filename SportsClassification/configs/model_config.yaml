@@ -1,11 +1,11 @@
 # model_config.yaml
-model_name: VGG16
-# backbone_name: VGG16
-# detection_head_name: GAP
+# model_name: VGG16
+backbone_name: VGG11
+detection_head_name: GAP
 pretrained: 
   source: local
   model_part: backbone
-  version_name: vgg11-paper-pretrained-w-augmenations
+  version_name: vgg11-gap-base
   freeze_time: 10
 
 num_classes: 100
