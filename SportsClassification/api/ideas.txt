@@ -1,0 +1,84 @@
+Great question 👍
+
+If you’re moving from scripts (infer.py, run_batch.py) to an API, the best way is to create a separate top-level module just for serving. That way, training/evaluation/inference remain cleanly separated.
+
+📂 Suggested layout
+project_root/
+│── models/                  # architectures
+│── datasets/                # transforms, labels
+│── utils/                   # checkpoints, s3
+│── inference/               # infer.py, run_batch.py
+│
+├── api/
+│   ├── main.py              # FastAPI/Flask entrypoint
+│   ├── routers/             # (optional) route definitions
+│   ├── schemas.py           # request/response models
+│   └── requirements.txt     # serving dependencies
+
+📝 Example with FastAPI
+# api/main.py
+import torch
+from fastapi import FastAPI, UploadFile, File
+from PIL import Image
+
+from models import build_model
+from utils.checkpoint import load_weights
+from datasets.transforms import get_inference_transforms
+from datasets.labels import idx_to_class
+
+app = FastAPI(title="Sports Classification API")
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
+# Load model at startup
+@app.on_event("startup")
+def load_model():
+    global model, transform
+    model = build_model(model_name="resnet18", num_classes=len(idx_to_class))
+    state_dict = load_weights("./checkpoints/model_best.pth")  # could be S3
+    model.load_state_dict(state_dict)
+    model.to(device).eval()
+    transform = get_inference_transforms()
+
+
+@app.post("/predict/")
+async def predict(file: UploadFile = File(...)):
+    image = Image.open(file.file).convert("RGB")
+    tensor = transform(image).unsqueeze(0).to(device)
+
+    with torch.no_grad():
+        outputs = model(tensor)
+        probs = torch.nn.functional.softmax(outputs, dim=1)[0]
+        pred_idx = torch.argmax(probs).item()
+
+    return {
+        "label": idx_to_class[str(pred_idx)],
+        "confidence": float(probs[pred_idx].item()),
+    }
+
+🚀 Run API locally
+uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
+
+
+Then test with:
+
+curl -X POST "http://0.0.0.0:8000/predict/" \
+  -F "file=@examples/sample.jpg"
+
+🏗 Where this fits
+
+Training/Evaluation → stays in scripts/ + evaluation/
+
+Inference (CLI for testing, batch runs) → stays in inference/
+
+Serving API → new api/ folder, lightweight wrapper around inference logic
+
+This separation means:
+
+You can deploy only api/ + checkpoints in production
+
+You don’t ship training/evaluation code if not needed
+
+Inference logic is reused (API just wraps infer.py functions)
+
+👉 Do you plan to serve this API for internal use (like batch scoring jobs) or public use (external clients hitting it)? That will influence whether we keep it as FastAPI or package it in something like TorchServe / Docker.

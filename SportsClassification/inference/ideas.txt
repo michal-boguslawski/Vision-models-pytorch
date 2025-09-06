@@ -1,0 +1,140 @@
+Perfect 👍 Let’s keep inference/ lightweight and reuse your existing models/, datasets/, and utils/ modules. I’ll sketch two scripts:
+
+infer.py → run inference on a single image
+
+run_batch.py → run inference on a folder of images
+
+📂 Project structure reminder
+project_root/
+│── models/                  # architectures, model_handler
+│── datasets/                # transforms, labels
+│── utils/                   # checkpoint + S3 handlers
+│
+├── inference/
+│   ├── infer.py
+│   └── run_batch.py
+
+📝 infer.py (single image inference)
+# inference/infer.py
+import argparse
+import torch
+from PIL import Image
+
+from models import build_model
+from utils.checkpoint import load_weights
+from datasets.transforms import get_inference_transforms
+from datasets.labels import idx_to_class  # dict: { "0": "class_name", ... }
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
+
+def predict(image_path, checkpoint_path, model_name="resnet18"):
+    # 1. Load model
+    model = build_model(model_name=model_name, num_classes=len(idx_to_class))
+    state_dict = load_weights(checkpoint_path)  # works with S3/local
+    model.load_state_dict(state_dict)
+    model.to(device).eval()
+
+    # 2. Preprocess image
+    image = Image.open(image_path).convert("RGB")
+    transform = get_inference_transforms()
+    tensor = transform(image).unsqueeze(0).to(device)
+
+    # 3. Forward pass
+    with torch.no_grad():
+        outputs = model(tensor)
+        probs = torch.nn.functional.softmax(outputs, dim=1)[0]
+        pred_idx = torch.argmax(probs).item()
+
+    return idx_to_class[str(pred_idx)], probs[pred_idx].item()
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Run inference on a single image.")
+    parser.add_argument("--image", type=str, required=True, help="Path to input image")
+    parser.add_argument("--checkpoint", type=str, required=True, help="Model checkpoint path (local or s3)")
+    parser.add_argument("--model", type=str, default="resnet18", help="Model name (default: resnet18)")
+    args = parser.parse_args()
+
+    label, prob = predict(args.image, args.checkpoint, args.model)
+    print(f"Predicted: {label} (confidence: {prob:.4f})")
+
+📝 run_batch.py (folder inference)
+# inference/run_batch.py
+import argparse
+import torch
+from pathlib import Path
+from PIL import Image
+
+from models import build_model
+from utils.checkpoint import load_weights
+from datasets.transforms import get_inference_transforms
+from datasets.labels import idx_to_class
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
+
+def batch_predict(folder_path, checkpoint_path, model_name="resnet18"):
+    # 1. Load model
+    model = build_model(model_name=model_name, num_classes=len(idx_to_class))
+    state_dict = load_weights(checkpoint_path)
+    model.load_state_dict(state_dict)
+    model.to(device).eval()
+
+    transform = get_inference_transforms()
+
+    results = {}
+    for img_path in Path(folder_path).glob("*.jpg"):
+        image = Image.open(img_path).convert("RGB")
+        tensor = transform(image).unsqueeze(0).to(device)
+
+        with torch.no_grad():
+            outputs = model(tensor)
+            probs = torch.nn.functional.softmax(outputs, dim=1)[0]
+            pred_idx = torch.argmax(probs).item()
+
+        results[img_path.name] = {
+            "label": idx_to_class[str(pred_idx)],
+            "confidence": probs[pred_idx].item(),
+        }
+    return results
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Run inference on a folder of images.")
+    parser.add_argument("--folder", type=str, required=True, help="Path to folder with images")
+    parser.add_argument("--checkpoint", type=str, required=True, help="Model checkpoint path (local or s3)")
+    parser.add_argument("--model", type=str, default="resnet18", help="Model name (default: resnet18)")
+    args = parser.parse_args()
+
+    results = batch_predict(args.folder, args.checkpoint, args.model)
+    for fname, pred in results.items():
+        print(f"{fname}: {pred['label']} ({pred['confidence']:.4f})")
+
+🚀 Usage
+
+Single image:
+
+python inference/infer.py \
+    --image ./examples/sample.jpg \
+    --checkpoint s3://computer-vision-models-pytorch-bucket/checkpoints/sports_cv_project_classification/alexnet-augmented-base/model_best.pth \
+    --model alexnet
+
+
+Batch folder:
+
+python inference/run_batch.py \
+    --folder ./examples/ \
+    --checkpoint ./checkpoints/model_best.pth \
+    --model resnet18
+
+
+✅ This setup makes inference/ a thin wrapper:
+
+reuses models/, datasets/, utils/
+
+keeps inference logic simple & reproducible
+
+supports both local and S3 checkpoints
+
+Do you want me to also include a TorchScript / ONNX export option in inference, so you can later deploy without needing the full Python project?
