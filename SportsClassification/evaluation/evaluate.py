@@ -83,7 +83,8 @@ class EvaluateProjectModels:
             version_name=experiment_name + "/model_best.pth",
             model_part="all",
             checkpoint_dir=config["checkpoint_dir"],
-            project_name=self.project_name
+            project_name=self.project_name,
+            s3_bucket_name=config["s3_bucket_name"]
         )
         
         for dataset in ["train", "val", "test"]:
@@ -114,7 +115,8 @@ class EvaluateProjectModels:
         self._extract_configs()
 
         for config in self.configs_list:
-            self._evaluate_single_model(config=config)
+            config_parser = ConfigParser(config)
+            self._evaluate_single_model(config=config_parser)
         
         df = pd.DataFrame(self.df_list)
         return df

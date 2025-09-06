@@ -72,10 +72,14 @@ class ModelHandler:
     def _load_weights(
         self,
         model: nn.Module,
-        state_dict: OrderedDict,
+        state_dict: OrderedDict | None,
         model_part: Literal["all", "backbone", "detection_head"],
         if_freeze: bool = True
     ):
+        if state_dict is None:
+            print("No weights available")
+            return
+
         new_state_dict = {k: v for k, v in state_dict.items() if ( model_part in k or model_part == "all")}
         model.load_state_dict(new_state_dict, strict=False)
         print("Weights loaded")
@@ -95,6 +99,7 @@ class ModelHandler:
         s3_path = os.path.join(checkpoint_dir, project_name, version_name)
         aws_handler = AWSHandler(s3_bucket_name=s3_bucket_name)
         temp_path = ".temp/state_dict.pth"
+        os.makedirs(os.path.dirname(temp_path), exist_ok=True)
         aws_handler.download_file(from_path=s3_path, local_path=temp_path)
         state_dict = T.load(temp_path)
         os.remove(temp_path)

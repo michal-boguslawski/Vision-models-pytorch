@@ -6,14 +6,16 @@
 <b>Used framework:</b> PyTorch
 
 ## Summary of models
-|Model Description|Train accuracy|Test accuracy|Evaluation notebook|
-|----------|------------|----------|----------|
-|AlexNet|0.7725|0.512|<a href="notebooks/SportsClassification/summary_of_models.ipynb">Link</a>|
-|Vision Transformer|xxx|xxx||
-|ResNet-18|xxx|xxx||
-|VGG16|xxx|xxx||
-|EfficientNet|xxx|xxx||
-|Inception|xxx|xxx||
+|Model Description|Train accuracy|Validation accuracy|Test accuracy|
+|----------|----------|----------|----------|
+|AlexNet|0.665283|0.586|0.594|
+|VGG11|0.999259|0.884|0.88|
+|VGG13|0.858657|0.752|0.768|
+|VGG16|xxx|xxx|xxx|
+|Vision Transformer|xxx|xxx|xxx|
+|ResNet-18|xxx|xxx|xxx|
+|EfficientNet|xxx|xxx|xxx|
+|Inception|xxx|xxx|xxx|
 
 
 ## Models were designed according to papers

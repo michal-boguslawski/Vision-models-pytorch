@@ -1,4 +1,5 @@
 import boto3
+from botocore.exceptions import ClientError
 
 
 class AWSHandler:
@@ -14,7 +15,12 @@ class AWSHandler:
 
     def download_file(self, from_path: str, local_path: str | None = None):
         s3 = boto3.client('s3')
-        from_path = local_path or from_path
-        
-        s3.download_file(self.s3_bucket_name, from_path, local_path)
+        local_path = local_path or from_path
+        try:
+            s3.download_file(self.s3_bucket_name, from_path, local_path)
+        except ClientError as e:
+            if e.response['Error']['Code'] == "404":
+                print(f"The object s3://{self.s3_bucket_name}/{from_path} does not exist.")
+            else:
+                raise e
         print(f"Downloaded s3://{self.s3_bucket_name}/{from_path} to {local_path}")

@@ -239,7 +239,7 @@ class Trainer:
                 self.scheduler.step(metrics=metric)
             else:
                 self.scheduler.step()
-            self.logger.log_info(f"Current lr: {self.scheduler.get_last_lr()}")
+            self.logger.log_info(f"Current lr: {self.scheduler.get_last_lr()[0]}")
 
     def _early_stopping_step(self, metric: float) -> bool:
         """
@@ -258,6 +258,7 @@ class Trainer:
         """
         if self.early_stopper:
             self.early_stopper(metric)
+            self.logger.log_info(f"Last best score {self.early_stopper.best_score} - {self.early_stopper.counter} steps ago")
             return self.early_stopper.should_stop
         return False
 

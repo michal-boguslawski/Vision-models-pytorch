@@ -1,0 +1,1166 @@
+2025-09-06 18:41:05,708 [INFO] Global seed set to 42
+2025-09-06 18:41:05,708 [INFO] Folder logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr was removed with its entire content
+2025-09-06 18:41:05,708 [INFO] Path logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train created or existed
+2025-09-06 18:41:05,709 [INFO] Path logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val created or existed
+2025-09-06 18:41:05,709 [INFO] Path logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/test created or existed
+2025-09-06 18:41:05,709 [INFO] Folder checkpoints/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr was removed with its entire content
+2025-09-06 18:41:05,709 [INFO] Path checkpoints/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr created or existed
+2025-09-06 18:41:06,611 [INFO] Training started...
+2025-09-06 18:41:06,611 [INFO] BuildModel(
+  (backbone): VGG(
+    (features): Sequential(
+      (block0conv0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block0activation0): ReLU(inplace=True)
+      (block0pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (block1conv0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block1activation0): ReLU(inplace=True)
+      (block1pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (block2conv0): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block2activation0): ReLU(inplace=True)
+      (block2conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block2activation1): ReLU(inplace=True)
+      (block2pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (block3conv0): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block3activation0): ReLU(inplace=True)
+      (block3conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block3activation1): ReLU(inplace=True)
+      (block3pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (block4conv0): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block4activation0): ReLU(inplace=True)
+      (block4conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (block4activation1): ReLU(inplace=True)
+      (block4pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    )
+  )
+  (detecton_head): DoubleLinearHead(
+    (classifier): Sequential(
+      (0): Flatten(start_dim=1, end_dim=-1)
+      (1): Linear(in_features=25088, out_features=4096, bias=True)
+      (2): ReLU(inplace=True)
+      (3): Dropout(p=0.5, inplace=False)
+      (4): Linear(in_features=4096, out_features=4096, bias=True)
+      (5): ReLU(inplace=True)
+      (6): Dropout(p=0.5, inplace=False)
+      (7): Linear(in_features=4096, out_features=100, bias=True)
+    )
+  )
+)
+2025-09-06 18:41:17,859 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:41:17,859 [INFO] loss: 3.785313 accuracy: 0.189688 top-5-accuracy: 0.390937
+2025-09-06 18:41:27,809 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:41:27,810 [INFO] loss: 2.813248 accuracy: 0.330469 top-5-accuracy: 0.603594
+2025-09-06 18:41:28,971 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:41:28,971 [INFO] loss: 2.839613 epoch_loss: 3.273243 accuracy: 0.329447 epoch_accuracy: 0.263845 top-5-accuracy: 0.595072 epoch_top-5-accuracy: 0.502347
+2025-09-06 18:41:28,972 [INFO] Epoch summary loss: 3.273243 accuracy: 0.263845 top-5-accuracy: 0.502347
+2025-09-06 18:41:31,000 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:41:31,000 [INFO] epoch_accuracy: 0.382000 epoch_top-5-accuracy: 0.656000 epoch_loss: 2.460982
+2025-09-06 18:41:31,000 [INFO] Current lr: 0.00095
+2025-09-06 18:41:31,000 [INFO] Last best score 2.460982084274292 - 0 steps ago
+2025-09-06 18:41:31,297 [INFO] Model saved. New best value 2.460982
+2025-09-06 18:41:42,249 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:41:42,249 [INFO] loss: 2.666302 accuracy: 0.369063 top-5-accuracy: 0.631875
+2025-09-06 18:41:52,233 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:41:52,233 [INFO] loss: 2.594441 accuracy: 0.386719 top-5-accuracy: 0.646719
+2025-09-06 18:41:53,386 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:41:53,386 [INFO] loss: 2.732065 epoch_loss: 2.637734 accuracy: 0.355889 epoch_accuracy: 0.376383 top-5-accuracy: 0.619952 epoch_top-5-accuracy: 0.638250
+2025-09-06 18:41:53,386 [INFO] Epoch summary loss: 2.637734 accuracy: 0.376383 top-5-accuracy: 0.638250
+2025-09-06 18:41:55,413 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:41:55,413 [INFO] epoch_accuracy: 0.444000 epoch_top-5-accuracy: 0.682000 epoch_loss: 2.255333
+2025-09-06 18:41:55,414 [INFO] Current lr: 0.0009025
+2025-09-06 18:41:55,414 [INFO] Last best score 2.2553329467773438 - 0 steps ago
+2025-09-06 18:41:55,791 [INFO] Model saved. New best value 2.255333
+2025-09-06 18:42:06,872 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:42:06,872 [INFO] loss: 2.575163 accuracy: 0.388594 top-5-accuracy: 0.641719
+2025-09-06 18:42:16,962 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:42:16,962 [INFO] loss: 2.581135 accuracy: 0.396562 top-5-accuracy: 0.651719
+2025-09-06 18:42:18,133 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:42:18,133 [INFO] loss: 2.377570 epoch_loss: 2.567584 accuracy: 0.440144 epoch_accuracy: 0.394582 top-5-accuracy: 0.685216 epoch_top-5-accuracy: 0.648772
+2025-09-06 18:42:18,133 [INFO] Epoch summary loss: 2.567584 accuracy: 0.394582 top-5-accuracy: 0.648772
+2025-09-06 18:42:20,140 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:42:20,140 [INFO] epoch_accuracy: 0.484000 epoch_top-5-accuracy: 0.712000 epoch_loss: 2.172764
+2025-09-06 18:42:20,140 [INFO] Current lr: 0.000857375
+2025-09-06 18:42:20,140 [INFO] Last best score 2.172763556241989 - 0 steps ago
+2025-09-06 18:42:20,517 [INFO] Model saved. New best value 2.172764
+2025-09-06 18:42:31,561 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:42:31,562 [INFO] loss: 2.434476 accuracy: 0.421406 top-5-accuracy: 0.680312
+2025-09-06 18:42:41,568 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:42:41,568 [INFO] loss: 2.536719 accuracy: 0.410938 top-5-accuracy: 0.662500
+2025-09-06 18:42:42,727 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:42:42,728 [INFO] loss: 2.538957 epoch_loss: 2.488834 accuracy: 0.413341 epoch_accuracy: 0.416018 top-5-accuracy: 0.647957 epoch_top-5-accuracy: 0.669789
+2025-09-06 18:42:42,728 [INFO] Epoch summary loss: 2.488834 accuracy: 0.416018 top-5-accuracy: 0.669789
+2025-09-06 18:42:44,745 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:42:44,746 [INFO] epoch_accuracy: 0.456000 epoch_top-5-accuracy: 0.704000 epoch_loss: 2.257234
+2025-09-06 18:42:44,746 [INFO] Current lr: 0.0008145062499999999
+2025-09-06 18:42:44,746 [INFO] Last best score 2.172763556241989 - 1 steps ago
+2025-09-06 18:42:55,738 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:42:55,738 [INFO] loss: 2.441238 accuracy: 0.423906 top-5-accuracy: 0.672344
+2025-09-06 18:43:05,777 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:43:05,778 [INFO] loss: 2.420463 accuracy: 0.432344 top-5-accuracy: 0.672969
+2025-09-06 18:43:06,945 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:43:06,946 [INFO] loss: 2.418475 epoch_loss: 2.429723 accuracy: 0.431490 epoch_accuracy: 0.428520 top-5-accuracy: 0.655048 epoch_top-5-accuracy: 0.672408
+2025-09-06 18:43:06,946 [INFO] Epoch summary loss: 2.429723 accuracy: 0.428520 top-5-accuracy: 0.672408
+2025-09-06 18:43:08,985 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:43:08,985 [INFO] epoch_accuracy: 0.454000 epoch_top-5-accuracy: 0.728000 epoch_loss: 2.259425
+2025-09-06 18:43:08,985 [INFO] Current lr: 0.0007737809374999998
+2025-09-06 18:43:08,985 [INFO] Last best score 2.172763556241989 - 2 steps ago
+2025-09-06 18:43:20,169 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:43:20,169 [INFO] loss: 2.365809 accuracy: 0.445937 top-5-accuracy: 0.679219
+2025-09-06 18:43:30,282 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:43:30,282 [INFO] loss: 2.365603 accuracy: 0.445312 top-5-accuracy: 0.684219
+2025-09-06 18:43:31,453 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:43:31,453 [INFO] loss: 2.290612 epoch_loss: 2.362454 accuracy: 0.450000 epoch_accuracy: 0.446197 top-5-accuracy: 0.690745 epoch_top-5-accuracy: 0.682052
+2025-09-06 18:43:31,453 [INFO] Epoch summary loss: 2.362454 accuracy: 0.446197 top-5-accuracy: 0.682052
+2025-09-06 18:43:33,524 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:43:33,524 [INFO] epoch_accuracy: 0.508000 epoch_top-5-accuracy: 0.734000 epoch_loss: 2.131375
+2025-09-06 18:43:33,524 [INFO] Current lr: 0.0007350918906249997
+2025-09-06 18:43:33,524 [INFO] Last best score 2.131374955177307 - 0 steps ago
+2025-09-06 18:43:33,906 [INFO] Model saved. New best value 2.131375
+2025-09-06 18:43:44,942 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:43:44,942 [INFO] loss: 2.322052 accuracy: 0.450937 top-5-accuracy: 0.685156
+2025-09-06 18:43:54,948 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:43:54,948 [INFO] loss: 2.393599 accuracy: 0.431719 top-5-accuracy: 0.681406
+2025-09-06 18:43:56,105 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:43:56,105 [INFO] loss: 2.176725 epoch_loss: 2.348116 accuracy: 0.461779 epoch_accuracy: 0.442404 top-5-accuracy: 0.709976 epoch_top-5-accuracy: 0.684949
+2025-09-06 18:43:56,105 [INFO] Epoch summary loss: 2.348116 accuracy: 0.442404 top-5-accuracy: 0.684949
+2025-09-06 18:43:58,141 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:43:58,141 [INFO] epoch_accuracy: 0.476000 epoch_top-5-accuracy: 0.752000 epoch_loss: 2.121631
+2025-09-06 18:43:58,141 [INFO] Current lr: 0.0006983372960937497
+2025-09-06 18:43:58,142 [INFO] Last best score 2.1216307282447815 - 0 steps ago
+2025-09-06 18:43:58,555 [INFO] Model saved. New best value 2.121631
+2025-09-06 18:44:09,646 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:44:09,646 [INFO] loss: 2.322464 accuracy: 0.451719 top-5-accuracy: 0.686094
+2025-09-06 18:44:19,743 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:44:19,743 [INFO] loss: 2.332425 accuracy: 0.455000 top-5-accuracy: 0.690156
+2025-09-06 18:44:20,915 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:44:20,916 [INFO] loss: 2.263961 epoch_loss: 2.323626 accuracy: 0.464062 epoch_accuracy: 0.454157 top-5-accuracy: 0.695433 epoch_top-5-accuracy: 0.688390
+2025-09-06 18:44:20,916 [INFO] Epoch summary loss: 2.323626 accuracy: 0.454157 top-5-accuracy: 0.688390
+2025-09-06 18:44:22,991 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:44:22,991 [INFO] epoch_accuracy: 0.528000 epoch_top-5-accuracy: 0.774000 epoch_loss: 2.002822
+2025-09-06 18:44:22,991 [INFO] Current lr: 0.0006634204312890621
+2025-09-06 18:44:22,991 [INFO] Last best score 2.002821683883667 - 0 steps ago
+2025-09-06 18:44:23,387 [INFO] Model saved. New best value 2.002822
+2025-09-06 18:44:34,539 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:44:34,539 [INFO] loss: 2.244905 accuracy: 0.463281 top-5-accuracy: 0.701875
+2025-09-06 18:44:44,598 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:44:44,598 [INFO] loss: 2.306266 accuracy: 0.462656 top-5-accuracy: 0.686406
+2025-09-06 18:44:45,766 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:44:45,766 [INFO] loss: 2.275073 epoch_loss: 2.274442 accuracy: 0.487500 epoch_accuracy: 0.464402 top-5-accuracy: 0.681370 epoch_top-5-accuracy: 0.693697
+2025-09-06 18:44:45,766 [INFO] Epoch summary loss: 2.274442 accuracy: 0.464402 top-5-accuracy: 0.693697
+2025-09-06 18:44:47,837 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:44:47,837 [INFO] epoch_accuracy: 0.488000 epoch_top-5-accuracy: 0.738000 epoch_loss: 2.143643
+2025-09-06 18:44:47,837 [INFO] Current lr: 0.000630249409724609
+2025-09-06 18:44:47,837 [INFO] Last best score 2.002821683883667 - 1 steps ago
+2025-09-06 18:44:58,878 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:44:58,878 [INFO] loss: 2.232858 accuracy: 0.464219 top-5-accuracy: 0.698906
+2025-09-06 18:45:08,980 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:45:08,980 [INFO] loss: 2.255989 accuracy: 0.455313 top-5-accuracy: 0.703750
+2025-09-06 18:45:10,140 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:45:10,140 [INFO] loss: 1.950507 epoch_loss: 2.228449 accuracy: 0.519111 epoch_accuracy: 0.462723 top-5-accuracy: 0.771514 epoch_top-5-accuracy: 0.705098
+2025-09-06 18:45:10,140 [INFO] Epoch summary loss: 2.228449 accuracy: 0.462723 top-5-accuracy: 0.705098
+2025-09-06 18:45:12,207 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:45:12,207 [INFO] epoch_accuracy: 0.526000 epoch_top-5-accuracy: 0.804000 epoch_loss: 1.974265
+2025-09-06 18:45:12,207 [INFO] Current lr: 0.0005987369392383785
+2025-09-06 18:45:12,207 [INFO] Last best score 1.9742651581764221 - 0 steps ago
+2025-09-06 18:45:12,586 [INFO] Model saved. New best value 1.974265
+2025-09-06 18:45:36,985 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:45:36,985 [INFO] loss: 2.188161 accuracy: 0.468594 top-5-accuracy: 0.717344
+2025-09-06 18:46:00,342 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:46:00,343 [INFO] loss: 2.111598 accuracy: 0.485312 top-5-accuracy: 0.736719
+2025-09-06 18:46:02,969 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:46:02,970 [INFO] loss: 1.981847 epoch_loss: 2.139924 accuracy: 0.498437 epoch_accuracy: 0.478405 top-5-accuracy: 0.758534 epoch_top-5-accuracy: 0.728955
+2025-09-06 18:46:02,970 [INFO] Epoch summary loss: 2.139924 accuracy: 0.478405 top-5-accuracy: 0.728955
+2025-09-06 18:46:05,031 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:46:05,032 [INFO] epoch_accuracy: 0.534000 epoch_top-5-accuracy: 0.748000 epoch_loss: 1.981381
+2025-09-06 18:46:05,032 [INFO] Current lr: 0.0005688000922764595
+2025-09-06 18:46:05,032 [INFO] Last best score 1.9742651581764221 - 1 steps ago
+2025-09-06 18:46:29,345 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:46:29,345 [INFO] loss: 1.954341 accuracy: 0.519531 top-5-accuracy: 0.767500
+2025-09-06 18:46:52,675 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:46:52,675 [INFO] loss: 1.920842 accuracy: 0.517031 top-5-accuracy: 0.770312
+2025-09-06 18:46:55,290 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:46:55,290 [INFO] loss: 2.086018 epoch_loss: 1.943144 accuracy: 0.476082 epoch_accuracy: 0.516634 top-5-accuracy: 0.757212 epoch_top-5-accuracy: 0.768766
+2025-09-06 18:46:55,290 [INFO] Epoch summary loss: 1.943144 accuracy: 0.516634 top-5-accuracy: 0.768766
+2025-09-06 18:46:57,374 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:46:57,374 [INFO] epoch_accuracy: 0.594000 epoch_top-5-accuracy: 0.816000 epoch_loss: 1.800033
+2025-09-06 18:46:57,374 [INFO] Current lr: 0.0005403600876626365
+2025-09-06 18:46:57,374 [INFO] Last best score 1.8000328540802002 - 0 steps ago
+2025-09-06 18:46:57,753 [INFO] Model saved. New best value 1.800033
+2025-09-06 18:47:21,961 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:47:21,961 [INFO] loss: 1.815856 accuracy: 0.540156 top-5-accuracy: 0.791875
+2025-09-06 18:47:45,295 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:47:45,295 [INFO] loss: 1.815599 accuracy: 0.537500 top-5-accuracy: 0.796250
+2025-09-06 18:47:47,918 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:47:47,919 [INFO] loss: 1.760572 epoch_loss: 1.811776 accuracy: 0.562139 epoch_accuracy: 0.540667 top-5-accuracy: 0.797476 epoch_top-5-accuracy: 0.794840
+2025-09-06 18:47:47,919 [INFO] Epoch summary loss: 1.811776 accuracy: 0.540667 top-5-accuracy: 0.794840
+2025-09-06 18:47:49,954 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:47:49,954 [INFO] epoch_accuracy: 0.576000 epoch_top-5-accuracy: 0.820000 epoch_loss: 1.679863
+2025-09-06 18:47:49,954 [INFO] Current lr: 0.0005133420832795047
+2025-09-06 18:47:49,954 [INFO] Last best score 1.6798628270626068 - 0 steps ago
+2025-09-06 18:47:50,331 [INFO] Model saved. New best value 1.679863
+2025-09-06 18:48:14,676 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:48:14,676 [INFO] loss: 1.733189 accuracy: 0.562656 top-5-accuracy: 0.806875
+2025-09-06 18:48:37,991 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:48:37,991 [INFO] loss: 1.762775 accuracy: 0.549063 top-5-accuracy: 0.790312
+2025-09-06 18:48:40,606 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:48:40,606 [INFO] loss: 1.740948 epoch_loss: 1.751071 accuracy: 0.560096 epoch_accuracy: 0.555459 top-5-accuracy: 0.788341 epoch_top-5-accuracy: 0.797578
+2025-09-06 18:48:40,606 [INFO] Epoch summary loss: 1.751071 accuracy: 0.555459 top-5-accuracy: 0.797578
+2025-09-06 18:48:42,777 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:48:42,778 [INFO] epoch_accuracy: 0.572000 epoch_top-5-accuracy: 0.840000 epoch_loss: 1.635639
+2025-09-06 18:48:42,778 [INFO] Current lr: 0.00048767497911552944
+2025-09-06 18:48:42,778 [INFO] Last best score 1.6356385946273804 - 0 steps ago
+2025-09-06 18:48:43,156 [INFO] Model saved. New best value 1.635639
+2025-09-06 18:49:07,554 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:49:07,555 [INFO] loss: 1.680137 accuracy: 0.567031 top-5-accuracy: 0.815937
+2025-09-06 18:49:30,850 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:49:30,850 [INFO] loss: 1.684739 accuracy: 0.566719 top-5-accuracy: 0.814219
+2025-09-06 18:49:33,449 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:49:33,449 [INFO] loss: 1.735098 epoch_loss: 1.682877 accuracy: 0.553005 epoch_accuracy: 0.566917 top-5-accuracy: 0.803966 epoch_top-5-accuracy: 0.814751
+2025-09-06 18:49:33,449 [INFO] Epoch summary loss: 1.682877 accuracy: 0.566917 top-5-accuracy: 0.814751
+2025-09-06 18:49:35,592 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:49:35,592 [INFO] epoch_accuracy: 0.620000 epoch_top-5-accuracy: 0.818000 epoch_loss: 1.613902
+2025-09-06 18:49:35,592 [INFO] Current lr: 0.00046329123015975297
+2025-09-06 18:49:35,592 [INFO] Last best score 1.6139020919799805 - 0 steps ago
+2025-09-06 18:49:35,963 [INFO] Model saved. New best value 1.613902
+2025-09-06 18:50:00,228 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:50:00,229 [INFO] loss: 1.593426 accuracy: 0.591250 top-5-accuracy: 0.826406
+2025-09-06 18:50:23,518 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:50:23,518 [INFO] loss: 1.640231 accuracy: 0.578281 top-5-accuracy: 0.824531
+2025-09-06 18:50:26,129 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:50:26,129 [INFO] loss: 1.615171 epoch_loss: 1.617162 accuracy: 0.585817 epoch_accuracy: 0.585269 top-5-accuracy: 0.818510 epoch_top-5-accuracy: 0.825018
+2025-09-06 18:50:26,129 [INFO] Epoch summary loss: 1.617162 accuracy: 0.585269 top-5-accuracy: 0.825018
+2025-09-06 18:50:28,189 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:50:28,189 [INFO] epoch_accuracy: 0.606000 epoch_top-5-accuracy: 0.844000 epoch_loss: 1.555426
+2025-09-06 18:50:28,189 [INFO] Current lr: 0.0004401266686517653
+2025-09-06 18:50:28,189 [INFO] Last best score 1.5554258823394775 - 0 steps ago
+2025-09-06 18:50:28,567 [INFO] Model saved. New best value 1.555426
+2025-09-06 18:50:52,916 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:50:52,916 [INFO] loss: 1.626689 accuracy: 0.574375 top-5-accuracy: 0.819375
+2025-09-06 18:51:16,248 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:51:16,249 [INFO] loss: 1.626065 accuracy: 0.582187 top-5-accuracy: 0.823906
+2025-09-06 18:51:18,861 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:51:18,862 [INFO] loss: 1.590488 epoch_loss: 1.627165 accuracy: 0.599760 epoch_accuracy: 0.578408 top-5-accuracy: 0.800601 epoch_top-5-accuracy: 0.820193
+2025-09-06 18:51:18,862 [INFO] Epoch summary loss: 1.627165 accuracy: 0.578408 top-5-accuracy: 0.820193
+2025-09-06 18:51:20,899 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:51:20,899 [INFO] epoch_accuracy: 0.598000 epoch_top-5-accuracy: 0.854000 epoch_loss: 1.510314
+2025-09-06 18:51:20,900 [INFO] Current lr: 0.00041812033521917703
+2025-09-06 18:51:20,900 [INFO] Last best score 1.5103143751621246 - 0 steps ago
+2025-09-06 18:51:21,278 [INFO] Model saved. New best value 1.510314
+2025-09-06 18:51:45,631 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:51:45,632 [INFO] loss: 1.521976 accuracy: 0.609062 top-5-accuracy: 0.833906
+2025-09-06 18:52:08,960 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:52:08,960 [INFO] loss: 1.551765 accuracy: 0.602344 top-5-accuracy: 0.828750
+2025-09-06 18:52:11,572 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:52:11,572 [INFO] loss: 1.545534 epoch_loss: 1.534723 accuracy: 0.594591 epoch_accuracy: 0.605508 top-5-accuracy: 0.823438 epoch_top-5-accuracy: 0.831515
+2025-09-06 18:52:11,573 [INFO] Epoch summary loss: 1.534723 accuracy: 0.605508 top-5-accuracy: 0.831515
+2025-09-06 18:52:13,647 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:52:13,647 [INFO] epoch_accuracy: 0.612000 epoch_top-5-accuracy: 0.842000 epoch_loss: 1.532992
+2025-09-06 18:52:13,647 [INFO] Current lr: 0.00039721431845821814
+2025-09-06 18:52:13,647 [INFO] Last best score 1.5103143751621246 - 1 steps ago
+2025-09-06 18:52:37,959 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:52:37,959 [INFO] loss: 1.481890 accuracy: 0.614219 top-5-accuracy: 0.850469
+2025-09-06 18:53:01,317 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:53:01,317 [INFO] loss: 1.512585 accuracy: 0.608125 top-5-accuracy: 0.836406
+2025-09-06 18:53:03,927 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:53:03,928 [INFO] loss: 1.584995 epoch_loss: 1.500083 accuracy: 0.573317 epoch_accuracy: 0.609664 top-5-accuracy: 0.823918 epoch_top-5-accuracy: 0.842667
+2025-09-06 18:53:03,928 [INFO] Epoch summary loss: 1.500083 accuracy: 0.609664 top-5-accuracy: 0.842667
+2025-09-06 18:53:05,944 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:53:05,944 [INFO] epoch_accuracy: 0.624000 epoch_top-5-accuracy: 0.880000 epoch_loss: 1.375890
+2025-09-06 18:53:05,944 [INFO] Current lr: 0.0003773536025353072
+2025-09-06 18:53:05,944 [INFO] Last best score 1.375889539718628 - 0 steps ago
+2025-09-06 18:53:06,363 [INFO] Model saved. New best value 1.375890
+2025-09-06 18:53:30,772 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:53:30,772 [INFO] loss: 1.445793 accuracy: 0.620000 top-5-accuracy: 0.844844
+2025-09-06 18:53:54,126 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:53:54,127 [INFO] loss: 1.490795 accuracy: 0.609688 top-5-accuracy: 0.838437
+2025-09-06 18:53:56,745 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:53:56,746 [INFO] loss: 1.431008 epoch_loss: 1.468156 accuracy: 0.608413 epoch_accuracy: 0.614194 top-5-accuracy: 0.863822 epoch_top-5-accuracy: 0.842117
+2025-09-06 18:53:56,746 [INFO] Epoch summary loss: 1.468156 accuracy: 0.614194 top-5-accuracy: 0.842117
+2025-09-06 18:53:58,777 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:53:58,778 [INFO] epoch_accuracy: 0.640000 epoch_top-5-accuracy: 0.866000 epoch_loss: 1.381758
+2025-09-06 18:53:58,778 [INFO] Current lr: 0.0003584859224085418
+2025-09-06 18:53:58,778 [INFO] Last best score 1.375889539718628 - 1 steps ago
+2025-09-06 18:54:23,249 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:54:23,249 [INFO] loss: 1.464335 accuracy: 0.616875 top-5-accuracy: 0.844531
+2025-09-06 18:54:46,658 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:54:46,658 [INFO] loss: 1.390363 accuracy: 0.631563 top-5-accuracy: 0.857656
+2025-09-06 18:54:49,279 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:54:49,280 [INFO] loss: 1.490068 epoch_loss: 1.429902 accuracy: 0.601082 epoch_accuracy: 0.623356 top-5-accuracy: 0.849760 epoch_top-5-accuracy: 0.850888
+2025-09-06 18:54:49,280 [INFO] Epoch summary loss: 1.429902 accuracy: 0.623356 top-5-accuracy: 0.850888
+2025-09-06 18:54:51,382 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:54:51,382 [INFO] epoch_accuracy: 0.638000 epoch_top-5-accuracy: 0.868000 epoch_loss: 1.348413
+2025-09-06 18:54:51,382 [INFO] Current lr: 0.0003405616262881147
+2025-09-06 18:54:51,382 [INFO] Last best score 1.348412811756134 - 0 steps ago
+2025-09-06 18:54:51,757 [INFO] Model saved. New best value 1.348413
+2025-09-06 18:55:16,177 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:55:16,177 [INFO] loss: 1.385184 accuracy: 0.637031 top-5-accuracy: 0.858437
+2025-09-06 18:55:39,574 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:55:39,575 [INFO] loss: 1.401233 accuracy: 0.631250 top-5-accuracy: 0.861094
+2025-09-06 18:55:42,207 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:55:42,207 [INFO] loss: 1.377341 epoch_loss: 1.393747 accuracy: 0.638462 epoch_accuracy: 0.634111 top-5-accuracy: 0.859014 epoch_top-5-accuracy: 0.859063
+2025-09-06 18:55:42,207 [INFO] Epoch summary loss: 1.393747 accuracy: 0.634111 top-5-accuracy: 0.859063
+2025-09-06 18:55:44,214 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:55:44,214 [INFO] epoch_accuracy: 0.644000 epoch_top-5-accuracy: 0.874000 epoch_loss: 1.317930
+2025-09-06 18:55:44,214 [INFO] Current lr: 0.00032353354497370894
+2025-09-06 18:55:44,214 [INFO] Last best score 1.31793013215065 - 0 steps ago
+2025-09-06 18:55:44,592 [INFO] Model saved. New best value 1.317930
+2025-09-06 18:56:08,949 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:56:08,949 [INFO] loss: 1.374298 accuracy: 0.638750 top-5-accuracy: 0.856406
+2025-09-06 18:56:32,273 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:56:32,273 [INFO] loss: 1.352658 accuracy: 0.641094 top-5-accuracy: 0.863906
+2025-09-06 18:56:34,886 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:56:34,886 [INFO] loss: 1.238618 epoch_loss: 1.357293 accuracy: 0.665865 epoch_accuracy: 0.641300 top-5-accuracy: 0.863822 epoch_top-5-accuracy: 0.860543
+2025-09-06 18:56:34,887 [INFO] Epoch summary loss: 1.357293 accuracy: 0.641300 top-5-accuracy: 0.860543
+2025-09-06 18:56:37,004 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:56:37,004 [INFO] epoch_accuracy: 0.618000 epoch_top-5-accuracy: 0.872000 epoch_loss: 1.362971
+2025-09-06 18:56:37,004 [INFO] Current lr: 0.00030735686772502346
+2025-09-06 18:56:37,004 [INFO] Last best score 1.31793013215065 - 1 steps ago
+2025-09-06 18:57:01,394 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:57:01,394 [INFO] loss: 1.305693 accuracy: 0.650156 top-5-accuracy: 0.871719
+2025-09-06 18:57:24,734 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:57:24,734 [INFO] loss: 1.360602 accuracy: 0.639531 top-5-accuracy: 0.865938
+2025-09-06 18:57:27,346 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:57:27,346 [INFO] loss: 1.145466 epoch_loss: 1.325392 accuracy: 0.702404 epoch_accuracy: 0.647077 top-5-accuracy: 0.896394 epoch_top-5-accuracy: 0.869818
+2025-09-06 18:57:27,346 [INFO] Epoch summary loss: 1.325392 accuracy: 0.647077 top-5-accuracy: 0.869818
+2025-09-06 18:57:29,393 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:57:29,394 [INFO] epoch_accuracy: 0.640000 epoch_top-5-accuracy: 0.886000 epoch_loss: 1.255133
+2025-09-06 18:57:29,394 [INFO] Current lr: 0.00029198902433877225
+2025-09-06 18:57:29,394 [INFO] Last best score 1.255132794380188 - 0 steps ago
+2025-09-06 18:57:29,770 [INFO] Model saved. New best value 1.255133
+2025-09-06 18:57:54,063 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:57:54,063 [INFO] loss: 1.282035 accuracy: 0.656250 top-5-accuracy: 0.871406
+2025-09-06 18:58:17,401 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:58:17,401 [INFO] loss: 1.301280 accuracy: 0.648281 top-5-accuracy: 0.873281
+2025-09-06 18:58:20,015 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:58:20,015 [INFO] loss: 1.353465 epoch_loss: 1.294015 accuracy: 0.633173 epoch_accuracy: 0.651624 top-5-accuracy: 0.868990 epoch_top-5-accuracy: 0.872284
+2025-09-06 18:58:20,016 [INFO] Epoch summary loss: 1.294015 accuracy: 0.651624 top-5-accuracy: 0.872284
+2025-09-06 18:58:22,116 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:58:22,116 [INFO] epoch_accuracy: 0.650000 epoch_top-5-accuracy: 0.872000 epoch_loss: 1.335800
+2025-09-06 18:58:22,116 [INFO] Current lr: 0.00027738957312183364
+2025-09-06 18:58:22,116 [INFO] Last best score 1.255132794380188 - 1 steps ago
+2025-09-06 18:58:46,549 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:58:46,549 [INFO] loss: 1.280683 accuracy: 0.659062 top-5-accuracy: 0.875469
+2025-09-06 18:59:09,879 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:59:09,879 [INFO] loss: 1.264301 accuracy: 0.663281 top-5-accuracy: 0.871563
+2025-09-06 18:59:12,499 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:59:12,499 [INFO] loss: 1.193412 epoch_loss: 1.267855 accuracy: 0.680409 epoch_accuracy: 0.662549 top-5-accuracy: 0.890144 epoch_top-5-accuracy: 0.874388
+2025-09-06 18:59:12,499 [INFO] Epoch summary loss: 1.267855 accuracy: 0.662549 top-5-accuracy: 0.874388
+2025-09-06 18:59:14,553 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 18:59:14,554 [INFO] epoch_accuracy: 0.658000 epoch_top-5-accuracy: 0.900000 epoch_loss: 1.289371
+2025-09-06 18:59:14,554 [INFO] Current lr: 0.0002635200944657419
+2025-09-06 18:59:14,554 [INFO] Last best score 1.255132794380188 - 2 steps ago
+2025-09-06 18:59:38,950 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 18:59:38,950 [INFO] loss: 1.252208 accuracy: 0.665781 top-5-accuracy: 0.876250
+2025-09-06 19:00:02,271 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:00:02,271 [INFO] loss: 1.289314 accuracy: 0.655000 top-5-accuracy: 0.877812
+2025-09-06 19:00:04,900 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:00:04,901 [INFO] loss: 1.369298 epoch_loss: 1.275070 accuracy: 0.629928 epoch_accuracy: 0.658988 top-5-accuracy: 0.856731 epoch_top-5-accuracy: 0.876128
+2025-09-06 19:00:04,901 [INFO] Epoch summary loss: 1.275070 accuracy: 0.658988 top-5-accuracy: 0.876128
+2025-09-06 19:00:06,851 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:00:06,851 [INFO] epoch_accuracy: 0.674000 epoch_top-5-accuracy: 0.916000 epoch_loss: 1.240744
+2025-09-06 19:00:06,851 [INFO] Current lr: 0.0002503440897424548
+2025-09-06 19:00:06,851 [INFO] Last best score 1.240744024515152 - 0 steps ago
+2025-09-06 19:00:07,236 [INFO] Model saved. New best value 1.240744
+2025-09-06 19:00:31,561 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:00:31,561 [INFO] loss: 1.205982 accuracy: 0.672813 top-5-accuracy: 0.880625
+2025-09-06 19:00:54,873 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:00:54,873 [INFO] loss: 1.245006 accuracy: 0.662500 top-5-accuracy: 0.875469
+2025-09-06 19:00:57,488 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:00:57,488 [INFO] loss: 1.312423 epoch_loss: 1.230032 accuracy: 0.659255 epoch_accuracy: 0.667226 top-5-accuracy: 0.884135 epoch_top-5-accuracy: 0.878453
+2025-09-06 19:00:57,489 [INFO] Epoch summary loss: 1.230032 accuracy: 0.667226 top-5-accuracy: 0.878453
+2025-09-06 19:00:59,537 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:00:59,537 [INFO] epoch_accuracy: 0.656000 epoch_top-5-accuracy: 0.886000 epoch_loss: 1.296670
+2025-09-06 19:00:59,537 [INFO] Current lr: 0.00023782688525533205
+2025-09-06 19:00:59,538 [INFO] Last best score 1.240744024515152 - 1 steps ago
+2025-09-06 19:01:23,883 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:01:23,883 [INFO] loss: 1.217408 accuracy: 0.676719 top-5-accuracy: 0.879531
+2025-09-06 19:01:47,212 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:01:47,212 [INFO] loss: 1.214817 accuracy: 0.677656 top-5-accuracy: 0.877500
+2025-09-06 19:01:49,831 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:01:49,831 [INFO] loss: 1.278419 epoch_loss: 1.217801 accuracy: 0.659014 epoch_accuracy: 0.676722 top-5-accuracy: 0.879327 epoch_top-5-accuracy: 0.879037
+2025-09-06 19:01:49,831 [INFO] Epoch summary loss: 1.217801 accuracy: 0.676722 top-5-accuracy: 0.879037
+2025-09-06 19:01:51,877 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:01:51,877 [INFO] epoch_accuracy: 0.640000 epoch_top-5-accuracy: 0.880000 epoch_loss: 1.307131
+2025-09-06 19:01:51,877 [INFO] Current lr: 0.00022593554099256544
+2025-09-06 19:01:51,877 [INFO] Last best score 1.240744024515152 - 2 steps ago
+2025-09-06 19:02:16,184 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:02:16,184 [INFO] loss: 1.178971 accuracy: 0.686094 top-5-accuracy: 0.884219
+2025-09-06 19:02:39,516 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:02:39,516 [INFO] loss: 1.177458 accuracy: 0.681250 top-5-accuracy: 0.888281
+2025-09-06 19:02:42,144 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:02:42,145 [INFO] loss: 1.239563 epoch_loss: 1.180713 accuracy: 0.670433 epoch_accuracy: 0.683083 top-5-accuracy: 0.880889 epoch_top-5-accuracy: 0.886260
+2025-09-06 19:02:42,145 [INFO] Epoch summary loss: 1.180713 accuracy: 0.683083 top-5-accuracy: 0.886260
+2025-09-06 19:02:44,274 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:02:44,274 [INFO] epoch_accuracy: 0.674000 epoch_top-5-accuracy: 0.884000 epoch_loss: 1.250583
+2025-09-06 19:02:44,274 [INFO] Current lr: 0.00021463876394293716
+2025-09-06 19:02:44,274 [INFO] Last best score 1.240744024515152 - 3 steps ago
+2025-09-06 19:03:08,684 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:03:08,685 [INFO] loss: 1.138180 accuracy: 0.692344 top-5-accuracy: 0.893437
+2025-09-06 19:03:32,059 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:03:32,059 [INFO] loss: 1.182225 accuracy: 0.683750 top-5-accuracy: 0.889687
+2025-09-06 19:03:34,680 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:03:34,680 [INFO] loss: 1.106994 epoch_loss: 1.157666 accuracy: 0.704808 epoch_accuracy: 0.689275 top-5-accuracy: 0.882572 epoch_top-5-accuracy: 0.891056
+2025-09-06 19:03:34,680 [INFO] Epoch summary loss: 1.157666 accuracy: 0.689275 top-5-accuracy: 0.891056
+2025-09-06 19:03:36,717 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:03:36,718 [INFO] epoch_accuracy: 0.672000 epoch_top-5-accuracy: 0.898000 epoch_loss: 1.177586
+2025-09-06 19:03:36,718 [INFO] Current lr: 0.0002039068257457903
+2025-09-06 19:03:36,718 [INFO] Last best score 1.1775858104228973 - 0 steps ago
+2025-09-06 19:03:37,092 [INFO] Model saved. New best value 1.177586
+2025-09-06 19:04:01,467 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:04:01,468 [INFO] loss: 1.111124 accuracy: 0.698594 top-5-accuracy: 0.894219
+2025-09-06 19:04:24,799 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:04:24,799 [INFO] loss: 1.156751 accuracy: 0.690469 top-5-accuracy: 0.892188
+2025-09-06 19:04:27,421 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:04:27,422 [INFO] loss: 1.082404 epoch_loss: 1.131241 accuracy: 0.722596 epoch_accuracy: 0.695862 top-5-accuracy: 0.901082 epoch_top-5-accuracy: 0.893477
+2025-09-06 19:04:27,422 [INFO] Epoch summary loss: 1.131241 accuracy: 0.695862 top-5-accuracy: 0.893477
+2025-09-06 19:04:29,505 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:04:29,505 [INFO] epoch_accuracy: 0.652000 epoch_top-5-accuracy: 0.882000 epoch_loss: 1.257574
+2025-09-06 19:04:29,505 [INFO] Current lr: 0.00019371148445850077
+2025-09-06 19:04:29,505 [INFO] Last best score 1.1775858104228973 - 1 steps ago
+2025-09-06 19:04:53,821 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:04:53,821 [INFO] loss: 1.114773 accuracy: 0.700000 top-5-accuracy: 0.897656
+2025-09-06 19:05:17,136 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:05:17,137 [INFO] loss: 1.099716 accuracy: 0.707812 top-5-accuracy: 0.898750
+2025-09-06 19:05:19,753 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:05:19,753 [INFO] loss: 1.151445 epoch_loss: 1.110827 accuracy: 0.685937 epoch_accuracy: 0.702904 top-5-accuracy: 0.890024 epoch_top-5-accuracy: 0.897451
+2025-09-06 19:05:19,753 [INFO] Epoch summary loss: 1.110827 accuracy: 0.702904 top-5-accuracy: 0.897451
+2025-09-06 19:05:21,735 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:05:21,736 [INFO] epoch_accuracy: 0.678000 epoch_top-5-accuracy: 0.890000 epoch_loss: 1.151148
+2025-09-06 19:05:21,736 [INFO] Current lr: 0.00018402591023557573
+2025-09-06 19:05:21,736 [INFO] Last best score 1.1511476933956146 - 0 steps ago
+2025-09-06 19:05:22,113 [INFO] Model saved. New best value 1.151148
+2025-09-06 19:05:46,409 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:05:46,410 [INFO] loss: 1.120782 accuracy: 0.693750 top-5-accuracy: 0.896406
+2025-09-06 19:06:09,665 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:06:09,665 [INFO] loss: 1.078241 accuracy: 0.709688 top-5-accuracy: 0.901406
+2025-09-06 19:06:12,285 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:06:12,285 [INFO] loss: 1.119504 epoch_loss: 1.100747 accuracy: 0.706250 epoch_accuracy: 0.701798 top-5-accuracy: 0.889423 epoch_top-5-accuracy: 0.898233
+2025-09-06 19:06:12,285 [INFO] Epoch summary loss: 1.100747 accuracy: 0.701798 top-5-accuracy: 0.898233
+2025-09-06 19:06:14,344 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:06:14,344 [INFO] epoch_accuracy: 0.668000 epoch_top-5-accuracy: 0.902000 epoch_loss: 1.176941
+2025-09-06 19:06:14,344 [INFO] Current lr: 0.00017482461472379692
+2025-09-06 19:06:14,344 [INFO] Last best score 1.1511476933956146 - 1 steps ago
+2025-09-06 19:06:38,637 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:06:38,638 [INFO] loss: 1.082496 accuracy: 0.707031 top-5-accuracy: 0.900312
+2025-09-06 19:07:01,948 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:07:01,948 [INFO] loss: 1.077073 accuracy: 0.707969 top-5-accuracy: 0.899219
+2025-09-06 19:07:04,569 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:07:04,569 [INFO] loss: 0.920046 epoch_loss: 1.071478 accuracy: 0.743630 epoch_accuracy: 0.709384 top-5-accuracy: 0.926803 epoch_top-5-accuracy: 0.901028
+2025-09-06 19:07:04,569 [INFO] Epoch summary loss: 1.071478 accuracy: 0.709384 top-5-accuracy: 0.901028
+2025-09-06 19:07:06,617 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:07:06,617 [INFO] epoch_accuracy: 0.694000 epoch_top-5-accuracy: 0.906000 epoch_loss: 1.123993
+2025-09-06 19:07:06,618 [INFO] Current lr: 0.00016608338398760707
+2025-09-06 19:07:06,618 [INFO] Last best score 1.1239932477474213 - 0 steps ago
+2025-09-06 19:07:06,991 [INFO] Model saved. New best value 1.123993
+2025-09-06 19:07:31,432 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:07:31,432 [INFO] loss: 1.055692 accuracy: 0.715000 top-5-accuracy: 0.904062
+2025-09-06 19:07:54,745 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:07:54,745 [INFO] loss: 1.055105 accuracy: 0.712500 top-5-accuracy: 0.901719
+2025-09-06 19:07:57,362 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:07:57,363 [INFO] loss: 0.932376 epoch_loss: 1.050447 accuracy: 0.744231 epoch_accuracy: 0.715161 top-5-accuracy: 0.924279 epoch_top-5-accuracy: 0.903563
+2025-09-06 19:07:57,363 [INFO] Epoch summary loss: 1.050447 accuracy: 0.715161 top-5-accuracy: 0.903563
+2025-09-06 19:07:59,506 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:07:59,507 [INFO] epoch_accuracy: 0.692000 epoch_top-5-accuracy: 0.918000 epoch_loss: 1.174627
+2025-09-06 19:07:59,507 [INFO] Current lr: 0.0001577792147882267
+2025-09-06 19:07:59,507 [INFO] Last best score 1.1239932477474213 - 1 steps ago
+2025-09-06 19:08:23,895 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:08:23,895 [INFO] loss: 1.057242 accuracy: 0.718906 top-5-accuracy: 0.899219
+2025-09-06 19:08:47,207 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:08:47,207 [INFO] loss: 1.069306 accuracy: 0.706875 top-5-accuracy: 0.900625
+2025-09-06 19:08:49,820 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:08:49,820 [INFO] loss: 1.049741 epoch_loss: 1.062805 accuracy: 0.715625 epoch_accuracy: 0.712927 top-5-accuracy: 0.897115 epoch_top-5-accuracy: 0.899775
+2025-09-06 19:08:49,820 [INFO] Epoch summary loss: 1.062805 accuracy: 0.712927 top-5-accuracy: 0.899775
+2025-09-06 19:08:51,929 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:08:51,929 [INFO] epoch_accuracy: 0.692000 epoch_top-5-accuracy: 0.922000 epoch_loss: 1.036735
+2025-09-06 19:08:51,929 [INFO] Current lr: 0.00014989025404881537
+2025-09-06 19:08:51,929 [INFO] Last best score 1.0367349833250046 - 0 steps ago
+2025-09-06 19:08:52,344 [INFO] Model saved. New best value 1.036735
+2025-09-06 19:09:16,757 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:09:16,757 [INFO] loss: 1.054964 accuracy: 0.709688 top-5-accuracy: 0.911719
+2025-09-06 19:09:40,074 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:09:40,074 [INFO] loss: 1.055413 accuracy: 0.714688 top-5-accuracy: 0.900000
+2025-09-06 19:09:42,704 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:09:42,704 [INFO] loss: 0.939304 epoch_loss: 1.050328 accuracy: 0.734375 epoch_accuracy: 0.712927 top-5-accuracy: 0.930529 epoch_top-5-accuracy: 0.907100
+2025-09-06 19:09:42,704 [INFO] Epoch summary loss: 1.050328 accuracy: 0.712927 top-5-accuracy: 0.907100
+2025-09-06 19:09:44,626 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:09:44,627 [INFO] epoch_accuracy: 0.710000 epoch_top-5-accuracy: 0.914000 epoch_loss: 1.092597
+2025-09-06 19:09:44,627 [INFO] Current lr: 0.00014239574134637458
+2025-09-06 19:09:44,627 [INFO] Last best score 1.0367349833250046 - 1 steps ago
+2025-09-06 19:10:08,946 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:10:08,946 [INFO] loss: 0.987028 accuracy: 0.731875 top-5-accuracy: 0.908906
+2025-09-06 19:10:32,291 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:10:32,291 [INFO] loss: 1.005471 accuracy: 0.722969 top-5-accuracy: 0.915000
+2025-09-06 19:10:34,911 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:10:34,911 [INFO] loss: 0.951493 epoch_loss: 0.993884 accuracy: 0.735096 epoch_accuracy: 0.727702 top-5-accuracy: 0.927524 epoch_top-5-accuracy: 0.912634
+2025-09-06 19:10:34,912 [INFO] Epoch summary loss: 0.993884 accuracy: 0.727702 top-5-accuracy: 0.912634
+2025-09-06 19:10:36,884 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:10:36,884 [INFO] epoch_accuracy: 0.712000 epoch_top-5-accuracy: 0.922000 epoch_loss: 1.029435
+2025-09-06 19:10:36,884 [INFO] Current lr: 0.00013527595427905584
+2025-09-06 19:10:36,885 [INFO] Last best score 1.029435321688652 - 0 steps ago
+2025-09-06 19:10:37,264 [INFO] Model saved. New best value 1.029435
+2025-09-06 19:11:01,581 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:11:01,581 [INFO] loss: 0.969638 accuracy: 0.734688 top-5-accuracy: 0.915781
+2025-09-06 19:11:24,916 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:11:24,916 [INFO] loss: 0.987995 accuracy: 0.729219 top-5-accuracy: 0.911563
+2025-09-06 19:11:27,540 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:11:27,540 [INFO] loss: 0.978280 epoch_loss: 0.978561 accuracy: 0.746394 epoch_accuracy: 0.732878 top-5-accuracy: 0.909014 epoch_top-5-accuracy: 0.913382
+2025-09-06 19:11:27,540 [INFO] Epoch summary loss: 0.978561 accuracy: 0.732878 top-5-accuracy: 0.913382
+2025-09-06 19:11:29,502 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:11:29,502 [INFO] epoch_accuracy: 0.702000 epoch_top-5-accuracy: 0.904000 epoch_loss: 1.102647
+2025-09-06 19:11:29,502 [INFO] Current lr: 0.00012851215656510304
+2025-09-06 19:11:29,502 [INFO] Last best score 1.029435321688652 - 1 steps ago
+2025-09-06 19:11:53,716 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:11:53,716 [INFO] loss: 0.968273 accuracy: 0.733437 top-5-accuracy: 0.914219
+2025-09-06 19:12:17,082 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:12:17,082 [INFO] loss: 0.978858 accuracy: 0.730156 top-5-accuracy: 0.916094
+2025-09-06 19:12:19,704 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:12:19,705 [INFO] loss: 0.978535 epoch_loss: 0.974741 accuracy: 0.739904 epoch_accuracy: 0.731761 top-5-accuracy: 0.904327 epoch_top-5-accuracy: 0.914193
+2025-09-06 19:12:19,705 [INFO] Epoch summary loss: 0.974741 accuracy: 0.731761 top-5-accuracy: 0.914193
+2025-09-06 19:12:21,723 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:12:21,723 [INFO] epoch_accuracy: 0.724000 epoch_top-5-accuracy: 0.912000 epoch_loss: 1.085396
+2025-09-06 19:12:21,723 [INFO] Current lr: 0.00012208654873684788
+2025-09-06 19:12:21,723 [INFO] Last best score 1.029435321688652 - 2 steps ago
+2025-09-06 19:12:45,991 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:12:45,992 [INFO] loss: 0.952116 accuracy: 0.737344 top-5-accuracy: 0.918125
+2025-09-06 19:13:09,311 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:13:09,311 [INFO] loss: 0.956060 accuracy: 0.735469 top-5-accuracy: 0.915469
+2025-09-06 19:13:11,947 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:13:11,947 [INFO] loss: 1.014017 epoch_loss: 0.958099 accuracy: 0.726803 epoch_accuracy: 0.735639 top-5-accuracy: 0.915865 epoch_top-5-accuracy: 0.916580
+2025-09-06 19:13:11,947 [INFO] Epoch summary loss: 0.958099 accuracy: 0.735639 top-5-accuracy: 0.916580
+2025-09-06 19:13:13,980 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:13:13,980 [INFO] epoch_accuracy: 0.648000 epoch_top-5-accuracy: 0.908000 epoch_loss: 1.212738
+2025-09-06 19:13:13,980 [INFO] Current lr: 0.00011598222130000548
+2025-09-06 19:13:13,980 [INFO] Last best score 1.029435321688652 - 3 steps ago
+2025-09-06 19:13:38,275 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:13:38,275 [INFO] loss: 0.976729 accuracy: 0.734062 top-5-accuracy: 0.907188
+2025-09-06 19:14:01,622 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:14:01,622 [INFO] loss: 0.928599 accuracy: 0.740156 top-5-accuracy: 0.921719
+2025-09-06 19:14:04,246 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:14:04,246 [INFO] loss: 1.031040 epoch_loss: 0.958688 accuracy: 0.723678 epoch_accuracy: 0.735787 top-5-accuracy: 0.909736 epoch_top-5-accuracy: 0.913858
+2025-09-06 19:14:04,246 [INFO] Epoch summary loss: 0.958688 accuracy: 0.735787 top-5-accuracy: 0.913858
+2025-09-06 19:14:06,349 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:14:06,349 [INFO] epoch_accuracy: 0.712000 epoch_top-5-accuracy: 0.914000 epoch_loss: 1.020774
+2025-09-06 19:14:06,349 [INFO] Current lr: 0.00011018311023500519
+2025-09-06 19:14:06,349 [INFO] Last best score 1.0207735300064087 - 0 steps ago
+2025-09-06 19:14:06,738 [INFO] Model saved. New best value 1.020774
+2025-09-06 19:14:31,116 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:14:31,116 [INFO] loss: 0.907398 accuracy: 0.748906 top-5-accuracy: 0.921875
+2025-09-06 19:14:54,454 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:14:54,455 [INFO] loss: 0.941712 accuracy: 0.745625 top-5-accuracy: 0.920781
+2025-09-06 19:14:57,078 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:14:57,078 [INFO] loss: 1.001572 epoch_loss: 0.927856 accuracy: 0.709736 epoch_accuracy: 0.745447 top-5-accuracy: 0.928365 epoch_top-5-accuracy: 0.921813
+2025-09-06 19:14:57,078 [INFO] Epoch summary loss: 0.927856 accuracy: 0.745447 top-5-accuracy: 0.921813
+2025-09-06 19:14:59,115 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:14:59,115 [INFO] epoch_accuracy: 0.682000 epoch_top-5-accuracy: 0.920000 epoch_loss: 1.102634
+2025-09-06 19:14:59,115 [INFO] Current lr: 0.00010467395472325493
+2025-09-06 19:14:59,115 [INFO] Last best score 1.0207735300064087 - 1 steps ago
+2025-09-06 19:15:23,426 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:15:23,427 [INFO] loss: 0.937070 accuracy: 0.742500 top-5-accuracy: 0.920156
+2025-09-06 19:15:46,734 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:15:46,734 [INFO] loss: 0.920264 accuracy: 0.747344 top-5-accuracy: 0.916719
+2025-09-06 19:15:49,349 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:15:49,349 [INFO] loss: 1.006793 epoch_loss: 0.931333 accuracy: 0.742308 epoch_accuracy: 0.745289 top-5-accuracy: 0.893389 epoch_top-5-accuracy: 0.917288
+2025-09-06 19:15:49,350 [INFO] Epoch summary loss: 0.931333 accuracy: 0.745289 top-5-accuracy: 0.917288
+2025-09-06 19:15:51,417 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:15:51,418 [INFO] epoch_accuracy: 0.730000 epoch_top-5-accuracy: 0.916000 epoch_loss: 1.005729
+2025-09-06 19:15:51,418 [INFO] Current lr: 9.944025698709218e-05
+2025-09-06 19:15:51,418 [INFO] Last best score 1.00572869181633 - 0 steps ago
+2025-09-06 19:15:51,790 [INFO] Model saved. New best value 1.005729
+2025-09-06 19:16:16,146 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:16:16,146 [INFO] loss: 0.887783 accuracy: 0.757969 top-5-accuracy: 0.917813
+2025-09-06 19:16:39,518 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:16:39,518 [INFO] loss: 0.933420 accuracy: 0.741875 top-5-accuracy: 0.913281
+2025-09-06 19:16:42,149 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:16:42,150 [INFO] loss: 0.872323 epoch_loss: 0.910243 accuracy: 0.756851 epoch_accuracy: 0.750397 top-5-accuracy: 0.938341 epoch_top-5-accuracy: 0.916387
+2025-09-06 19:16:42,150 [INFO] Epoch summary loss: 0.910243 accuracy: 0.750397 top-5-accuracy: 0.916387
+2025-09-06 19:16:44,178 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:16:44,178 [INFO] epoch_accuracy: 0.704000 epoch_top-5-accuracy: 0.908000 epoch_loss: 1.104726
+2025-09-06 19:16:44,179 [INFO] Current lr: 9.446824413773756e-05
+2025-09-06 19:16:44,179 [INFO] Last best score 1.00572869181633 - 1 steps ago
+2025-09-06 19:17:08,613 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:17:08,613 [INFO] loss: 0.932658 accuracy: 0.745156 top-5-accuracy: 0.919531
+2025-09-06 19:17:32,070 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:17:32,070 [INFO] loss: 0.898217 accuracy: 0.747969 top-5-accuracy: 0.923750
+2025-09-06 19:17:34,716 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:17:34,717 [INFO] loss: 0.868111 epoch_loss: 0.912257 accuracy: 0.764784 epoch_accuracy: 0.747676 top-5-accuracy: 0.929087 epoch_top-5-accuracy: 0.922068
+2025-09-06 19:17:34,717 [INFO] Epoch summary loss: 0.912257 accuracy: 0.747676 top-5-accuracy: 0.922068
+2025-09-06 19:17:36,641 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:17:36,642 [INFO] epoch_accuracy: 0.710000 epoch_top-5-accuracy: 0.918000 epoch_loss: 1.027442
+2025-09-06 19:17:36,642 [INFO] Current lr: 8.974483193085068e-05
+2025-09-06 19:17:36,642 [INFO] Last best score 1.00572869181633 - 2 steps ago
+2025-09-06 19:18:00,945 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:18:00,945 [INFO] loss: 0.878994 accuracy: 0.759375 top-5-accuracy: 0.924219
+2025-09-06 19:18:24,283 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:18:24,283 [INFO] loss: 0.882813 accuracy: 0.757500 top-5-accuracy: 0.922813
+2025-09-06 19:18:26,907 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:18:26,907 [INFO] loss: 0.920709 epoch_loss: 0.884301 accuracy: 0.728365 epoch_accuracy: 0.756866 top-5-accuracy: 0.934736 epoch_top-5-accuracy: 0.923587
+2025-09-06 19:18:26,907 [INFO] Epoch summary loss: 0.884301 accuracy: 0.756866 top-5-accuracy: 0.923587
+2025-09-06 19:18:29,033 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:18:29,033 [INFO] epoch_accuracy: 0.696000 epoch_top-5-accuracy: 0.908000 epoch_loss: 1.116722
+2025-09-06 19:18:29,033 [INFO] Current lr: 8.525759033430814e-05
+2025-09-06 19:18:29,033 [INFO] Last best score 1.00572869181633 - 3 steps ago
+2025-09-06 19:18:53,339 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:18:53,339 [INFO] loss: 0.882655 accuracy: 0.760469 top-5-accuracy: 0.921250
+2025-09-06 19:19:16,666 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:19:16,667 [INFO] loss: 0.901065 accuracy: 0.752656 top-5-accuracy: 0.924375
+2025-09-06 19:19:19,288 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:19:19,288 [INFO] loss: 0.966332 epoch_loss: 0.894577 accuracy: 0.736659 epoch_accuracy: 0.755562 top-5-accuracy: 0.902644 epoch_top-5-accuracy: 0.921926
+2025-09-06 19:19:19,288 [INFO] Epoch summary loss: 0.894577 accuracy: 0.755562 top-5-accuracy: 0.921926
+2025-09-06 19:19:21,396 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:19:21,396 [INFO] epoch_accuracy: 0.730000 epoch_top-5-accuracy: 0.924000 epoch_loss: 0.945025
+2025-09-06 19:19:21,396 [INFO] Current lr: 8.099471081759274e-05
+2025-09-06 19:19:21,396 [INFO] Last best score 0.9450247585773468 - 0 steps ago
+2025-09-06 19:19:21,774 [INFO] Model saved. New best value 0.945025
+2025-09-06 19:19:46,080 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:19:46,080 [INFO] loss: 0.847784 accuracy: 0.768281 top-5-accuracy: 0.931875
+2025-09-06 19:20:09,399 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:20:09,399 [INFO] loss: 0.876217 accuracy: 0.769062 top-5-accuracy: 0.926562
+2025-09-06 19:20:12,022 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:20:12,022 [INFO] loss: 0.837977 epoch_loss: 0.862946 accuracy: 0.769952 epoch_accuracy: 0.768261 top-5-accuracy: 0.920433 epoch_top-5-accuracy: 0.928588
+2025-09-06 19:20:12,022 [INFO] Epoch summary loss: 0.862946 accuracy: 0.768261 top-5-accuracy: 0.928588
+2025-09-06 19:20:14,063 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:20:14,063 [INFO] epoch_accuracy: 0.726000 epoch_top-5-accuracy: 0.930000 epoch_loss: 1.017004
+2025-09-06 19:20:14,063 [INFO] Current lr: 7.69449752767131e-05
+2025-09-06 19:20:14,063 [INFO] Last best score 0.9450247585773468 - 1 steps ago
+2025-09-06 19:20:38,287 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:20:38,287 [INFO] loss: 0.829088 accuracy: 0.772656 top-5-accuracy: 0.929844
+2025-09-06 19:21:01,629 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:21:01,629 [INFO] loss: 0.852130 accuracy: 0.765469 top-5-accuracy: 0.927344
+2025-09-06 19:21:04,255 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:21:04,255 [INFO] loss: 0.984303 epoch_loss: 0.848987 accuracy: 0.723678 epoch_accuracy: 0.766816 top-5-accuracy: 0.902043 epoch_top-5-accuracy: 0.927278
+2025-09-06 19:21:04,256 [INFO] Epoch summary loss: 0.848987 accuracy: 0.766816 top-5-accuracy: 0.927278
+2025-09-06 19:21:06,386 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:21:06,387 [INFO] epoch_accuracy: 0.706000 epoch_top-5-accuracy: 0.910000 epoch_loss: 1.066473
+2025-09-06 19:21:06,387 [INFO] Current lr: 7.309772651287744e-05
+2025-09-06 19:21:06,387 [INFO] Last best score 0.9450247585773468 - 2 steps ago
+2025-09-06 19:21:30,742 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:21:30,742 [INFO] loss: 0.857486 accuracy: 0.770625 top-5-accuracy: 0.924219
+2025-09-06 19:21:54,051 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:21:54,051 [INFO] loss: 0.839030 accuracy: 0.765156 top-5-accuracy: 0.930781
+2025-09-06 19:21:56,675 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:21:56,675 [INFO] loss: 0.827412 epoch_loss: 0.847063 accuracy: 0.777885 epoch_accuracy: 0.768414 top-5-accuracy: 0.922115 epoch_top-5-accuracy: 0.927267
+2025-09-06 19:21:56,676 [INFO] Epoch summary loss: 0.847063 accuracy: 0.768414 top-5-accuracy: 0.927267
+2025-09-06 19:21:58,789 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:21:58,789 [INFO] epoch_accuracy: 0.672000 epoch_top-5-accuracy: 0.914000 epoch_loss: 1.199093
+2025-09-06 19:21:58,789 [INFO] Current lr: 6.944284018723356e-05
+2025-09-06 19:21:58,790 [INFO] Last best score 0.9450247585773468 - 3 steps ago
+2025-09-06 19:22:23,149 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:22:23,149 [INFO] loss: 0.826394 accuracy: 0.771250 top-5-accuracy: 0.931250
+2025-09-06 19:22:46,473 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:22:46,473 [INFO] loss: 0.833896 accuracy: 0.767500 top-5-accuracy: 0.929531
+2025-09-06 19:22:49,096 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:22:49,096 [INFO] loss: 0.924130 epoch_loss: 0.833613 accuracy: 0.750240 epoch_accuracy: 0.768806 top-5-accuracy: 0.916827 epoch_top-5-accuracy: 0.929744
+2025-09-06 19:22:49,096 [INFO] Epoch summary loss: 0.833613 accuracy: 0.768806 top-5-accuracy: 0.929744
+2025-09-06 19:22:51,171 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:22:51,171 [INFO] epoch_accuracy: 0.704000 epoch_top-5-accuracy: 0.906000 epoch_loss: 1.095609
+2025-09-06 19:22:51,171 [INFO] Current lr: 6.597069817787189e-05
+2025-09-06 19:22:51,171 [INFO] Last best score 0.9450247585773468 - 4 steps ago
+2025-09-06 19:23:15,611 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:23:15,611 [INFO] loss: 0.824854 accuracy: 0.772031 top-5-accuracy: 0.931562
+2025-09-06 19:23:38,969 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:23:38,970 [INFO] loss: 0.836465 accuracy: 0.774219 top-5-accuracy: 0.929219
+2025-09-06 19:23:41,599 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:23:41,600 [INFO] loss: 0.760895 epoch_loss: 0.825789 accuracy: 0.798438 epoch_accuracy: 0.774690 top-5-accuracy: 0.921514 epoch_top-5-accuracy: 0.930260
+2025-09-06 19:23:41,600 [INFO] Epoch summary loss: 0.825789 accuracy: 0.774690 top-5-accuracy: 0.930260
+2025-09-06 19:23:43,599 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:23:43,599 [INFO] epoch_accuracy: 0.714000 epoch_top-5-accuracy: 0.924000 epoch_loss: 1.095882
+2025-09-06 19:23:43,599 [INFO] Current lr: 6.267216326897829e-05
+2025-09-06 19:23:43,599 [INFO] Last best score 0.9450247585773468 - 5 steps ago
+2025-09-06 19:24:07,811 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:24:07,811 [INFO] loss: 0.806427 accuracy: 0.780312 top-5-accuracy: 0.936406
+2025-09-06 19:24:31,113 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:24:31,113 [INFO] loss: 0.841629 accuracy: 0.765469 top-5-accuracy: 0.928281
+2025-09-06 19:24:33,722 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:24:33,722 [INFO] loss: 0.828999 epoch_loss: 0.825211 accuracy: 0.749279 epoch_accuracy: 0.771487 top-5-accuracy: 0.947716 epoch_top-5-accuracy: 0.932896
+2025-09-06 19:24:33,723 [INFO] Epoch summary loss: 0.825211 accuracy: 0.771487 top-5-accuracy: 0.932896
+2025-09-06 19:24:35,734 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:24:35,734 [INFO] epoch_accuracy: 0.736000 epoch_top-5-accuracy: 0.918000 epoch_loss: 1.042486
+2025-09-06 19:24:35,735 [INFO] Current lr: 5.953855510552937e-05
+2025-09-06 19:24:35,735 [INFO] Last best score 0.9450247585773468 - 6 steps ago
+2025-09-06 19:25:00,188 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:25:00,188 [INFO] loss: 0.817532 accuracy: 0.772344 top-5-accuracy: 0.931875
+2025-09-06 19:25:23,556 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:25:23,557 [INFO] loss: 0.823416 accuracy: 0.772188 top-5-accuracy: 0.933438
+2025-09-06 19:25:26,183 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:25:26,183 [INFO] loss: 0.820074 epoch_loss: 0.820637 accuracy: 0.773197 epoch_accuracy: 0.772247 top-5-accuracy: 0.938462 epoch_top-5-accuracy: 0.933123
+2025-09-06 19:25:26,184 [INFO] Epoch summary loss: 0.820637 accuracy: 0.772247 top-5-accuracy: 0.933123
+2025-09-06 19:25:28,247 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:25:28,247 [INFO] epoch_accuracy: 0.714000 epoch_top-5-accuracy: 0.932000 epoch_loss: 1.069624
+2025-09-06 19:25:28,247 [INFO] Current lr: 5.65616273502529e-05
+2025-09-06 19:25:28,248 [INFO] Last best score 0.9450247585773468 - 7 steps ago
+2025-09-06 19:25:52,560 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:25:52,560 [INFO] loss: 0.817330 accuracy: 0.770781 top-5-accuracy: 0.932656
+2025-09-06 19:26:15,899 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:26:15,900 [INFO] loss: 0.790481 accuracy: 0.780156 top-5-accuracy: 0.935000
+2025-09-06 19:26:18,522 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:26:18,522 [INFO] loss: 0.764486 epoch_loss: 0.801012 accuracy: 0.779808 epoch_accuracy: 0.775802 top-5-accuracy: 0.943990 epoch_top-5-accuracy: 0.934490
+2025-09-06 19:26:18,523 [INFO] Epoch summary loss: 0.801012 accuracy: 0.775802 top-5-accuracy: 0.934490
+2025-09-06 19:26:20,600 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:26:20,600 [INFO] epoch_accuracy: 0.742000 epoch_top-5-accuracy: 0.922000 epoch_loss: 0.997018
+2025-09-06 19:26:20,600 [INFO] Current lr: 5.373354598274025e-05
+2025-09-06 19:26:20,600 [INFO] Last best score 0.9450247585773468 - 8 steps ago
+2025-09-06 19:26:44,978 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:26:44,978 [INFO] loss: 0.803230 accuracy: 0.781094 top-5-accuracy: 0.929844
+2025-09-06 19:27:08,383 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:27:08,383 [INFO] loss: 0.821707 accuracy: 0.770469 top-5-accuracy: 0.929688
+2025-09-06 19:27:11,019 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:27:11,019 [INFO] loss: 0.693928 epoch_loss: 0.808978 accuracy: 0.793510 epoch_accuracy: 0.776227 top-5-accuracy: 0.957091 epoch_top-5-accuracy: 0.930833
+2025-09-06 19:27:11,019 [INFO] Epoch summary loss: 0.808978 accuracy: 0.776227 top-5-accuracy: 0.930833
+2025-09-06 19:27:13,098 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:27:13,098 [INFO] epoch_accuracy: 0.718000 epoch_top-5-accuracy: 0.920000 epoch_loss: 1.037409
+2025-09-06 19:27:13,098 [INFO] Current lr: 5.104686868360323e-05
+2025-09-06 19:27:13,098 [INFO] Last best score 0.9450247585773468 - 9 steps ago
+2025-09-06 19:27:37,385 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:27:37,385 [INFO] loss: 0.787806 accuracy: 0.784375 top-5-accuracy: 0.936406
+2025-09-06 19:28:00,686 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:28:00,687 [INFO] loss: 0.793371 accuracy: 0.776250 top-5-accuracy: 0.937500
+2025-09-06 19:28:03,315 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:28:03,315 [INFO] loss: 0.813675 epoch_loss: 0.790533 accuracy: 0.780409 epoch_accuracy: 0.780547 top-5-accuracy: 0.948558 epoch_top-5-accuracy: 0.937727
+2025-09-06 19:28:03,315 [INFO] Epoch summary loss: 0.790533 accuracy: 0.780547 top-5-accuracy: 0.937727
+2025-09-06 19:28:05,414 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:28:05,414 [INFO] epoch_accuracy: 0.750000 epoch_top-5-accuracy: 0.936000 epoch_loss: 0.906278
+2025-09-06 19:28:05,414 [INFO] Current lr: 4.849452524942307e-05
+2025-09-06 19:28:05,414 [INFO] Last best score 0.906277984380722 - 0 steps ago
+2025-09-06 19:28:05,792 [INFO] Model saved. New best value 0.906278
+2025-09-06 19:28:30,187 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:28:30,188 [INFO] loss: 0.790997 accuracy: 0.778594 top-5-accuracy: 0.932969
+2025-09-06 19:28:53,569 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:28:53,570 [INFO] loss: 0.801088 accuracy: 0.782344 top-5-accuracy: 0.932031
+2025-09-06 19:28:56,203 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:28:56,203 [INFO] loss: 0.866732 epoch_loss: 0.800389 accuracy: 0.746274 epoch_accuracy: 0.778347 top-5-accuracy: 0.920553 epoch_top-5-accuracy: 0.931836
+2025-09-06 19:28:56,203 [INFO] Epoch summary loss: 0.800389 accuracy: 0.778347 top-5-accuracy: 0.931836
+2025-09-06 19:28:58,331 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:28:58,331 [INFO] epoch_accuracy: 0.718000 epoch_top-5-accuracy: 0.914000 epoch_loss: 1.029112
+2025-09-06 19:28:58,331 [INFO] Current lr: 4.606979898695191e-05
+2025-09-06 19:28:58,331 [INFO] Last best score 0.906277984380722 - 1 steps ago
+2025-09-06 19:29:22,779 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:29:22,779 [INFO] loss: 0.782076 accuracy: 0.783125 top-5-accuracy: 0.936875
+2025-09-06 19:29:46,146 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:29:46,146 [INFO] loss: 0.766786 accuracy: 0.793281 top-5-accuracy: 0.937187
+2025-09-06 19:29:48,785 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:29:48,785 [INFO] loss: 0.844612 epoch_loss: 0.779632 accuracy: 0.781731 epoch_accuracy: 0.787537 top-5-accuracy: 0.925120 epoch_top-5-accuracy: 0.936253
+2025-09-06 19:29:48,785 [INFO] Epoch summary loss: 0.779632 accuracy: 0.787537 top-5-accuracy: 0.936253
+2025-09-06 19:29:50,826 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:29:50,826 [INFO] epoch_accuracy: 0.704000 epoch_top-5-accuracy: 0.912000 epoch_loss: 1.154464
+2025-09-06 19:29:50,827 [INFO] Current lr: 4.376630903760431e-05
+2025-09-06 19:29:50,827 [INFO] Last best score 0.906277984380722 - 2 steps ago
+2025-09-06 19:30:15,347 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:30:15,348 [INFO] loss: 0.784770 accuracy: 0.784844 top-5-accuracy: 0.938281
+2025-09-06 19:30:38,744 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:30:38,744 [INFO] loss: 0.764820 accuracy: 0.785469 top-5-accuracy: 0.937969
+2025-09-06 19:30:41,376 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:30:41,376 [INFO] loss: 0.771308 epoch_loss: 0.774506 accuracy: 0.799038 epoch_accuracy: 0.785774 top-5-accuracy: 0.924519 epoch_top-5-accuracy: 0.937551
+2025-09-06 19:30:41,376 [INFO] Epoch summary loss: 0.774506 accuracy: 0.785774 top-5-accuracy: 0.937551
+2025-09-06 19:30:43,458 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:30:43,458 [INFO] epoch_accuracy: 0.734000 epoch_top-5-accuracy: 0.916000 epoch_loss: 0.958285
+2025-09-06 19:30:43,458 [INFO] Current lr: 4.157799358572409e-05
+2025-09-06 19:30:43,458 [INFO] Last best score 0.906277984380722 - 3 steps ago
+2025-09-06 19:31:07,852 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:31:07,853 [INFO] loss: 0.746576 accuracy: 0.794375 top-5-accuracy: 0.937813
+2025-09-06 19:31:31,269 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:31:31,269 [INFO] loss: 0.750313 accuracy: 0.789375 top-5-accuracy: 0.939063
+2025-09-06 19:31:33,864 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:31:33,864 [INFO] loss: 0.824697 epoch_loss: 0.753126 accuracy: 0.767067 epoch_accuracy: 0.790531 top-5-accuracy: 0.928365 epoch_top-5-accuracy: 0.938101
+2025-09-06 19:31:33,864 [INFO] Epoch summary loss: 0.753126 accuracy: 0.790531 top-5-accuracy: 0.938101
+2025-09-06 19:31:35,887 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:31:35,887 [INFO] epoch_accuracy: 0.728000 epoch_top-5-accuracy: 0.920000 epoch_loss: 0.987564
+2025-09-06 19:31:35,888 [INFO] Current lr: 3.9499093906437885e-05
+2025-09-06 19:31:35,888 [INFO] Last best score 0.906277984380722 - 4 steps ago
+2025-09-06 19:32:00,339 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:32:00,340 [INFO] loss: 0.761830 accuracy: 0.787656 top-5-accuracy: 0.941250
+2025-09-06 19:32:23,896 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:32:23,896 [INFO] loss: 0.761746 accuracy: 0.785312 top-5-accuracy: 0.939375
+2025-09-06 19:32:26,522 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:32:26,523 [INFO] loss: 0.776544 epoch_loss: 0.761865 accuracy: 0.787861 epoch_accuracy: 0.786795 top-5-accuracy: 0.936779 epoch_top-5-accuracy: 0.940119
+2025-09-06 19:32:26,523 [INFO] Epoch summary loss: 0.761865 accuracy: 0.786795 top-5-accuracy: 0.940119
+2025-09-06 19:32:28,619 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:32:28,620 [INFO] epoch_accuracy: 0.744000 epoch_top-5-accuracy: 0.934000 epoch_loss: 0.990730
+2025-09-06 19:32:28,620 [INFO] Current lr: 3.752413921111599e-05
+2025-09-06 19:32:28,620 [INFO] Last best score 0.906277984380722 - 5 steps ago
+2025-09-06 19:32:53,098 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:32:53,098 [INFO] loss: 0.767839 accuracy: 0.785781 top-5-accuracy: 0.938438
+2025-09-06 19:33:16,497 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:33:16,497 [INFO] loss: 0.739197 accuracy: 0.796250 top-5-accuracy: 0.938906
+2025-09-06 19:33:19,131 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:33:19,131 [INFO] loss: 0.679622 epoch_loss: 0.749500 accuracy: 0.801322 epoch_accuracy: 0.791704 top-5-accuracy: 0.946995 epoch_top-5-accuracy: 0.939053
+2025-09-06 19:33:19,131 [INFO] Epoch summary loss: 0.749500 accuracy: 0.791704 top-5-accuracy: 0.939053
+2025-09-06 19:33:21,198 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:33:21,199 [INFO] epoch_accuracy: 0.722000 epoch_top-5-accuracy: 0.916000 epoch_loss: 0.987584
+2025-09-06 19:33:21,199 [INFO] Current lr: 3.564793225056019e-05
+2025-09-06 19:33:21,199 [INFO] Last best score 0.906277984380722 - 6 steps ago
+2025-09-06 19:33:45,547 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:33:45,547 [INFO] loss: 0.773827 accuracy: 0.788281 top-5-accuracy: 0.935625
+2025-09-06 19:34:08,875 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:34:08,876 [INFO] loss: 0.775526 accuracy: 0.786094 top-5-accuracy: 0.936250
+2025-09-06 19:34:11,507 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:34:11,508 [INFO] loss: 0.680154 epoch_loss: 0.767863 accuracy: 0.803966 epoch_accuracy: 0.788439 top-5-accuracy: 0.947115 epoch_top-5-accuracy: 0.936922
+2025-09-06 19:34:11,508 [INFO] Epoch summary loss: 0.767863 accuracy: 0.788439 top-5-accuracy: 0.936922
+2025-09-06 19:34:13,516 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:34:13,516 [INFO] epoch_accuracy: 0.724000 epoch_top-5-accuracy: 0.928000 epoch_loss: 1.038474
+2025-09-06 19:34:13,516 [INFO] Current lr: 3.3865535638032174e-05
+2025-09-06 19:34:13,516 [INFO] Last best score 0.906277984380722 - 7 steps ago
+2025-09-06 19:34:37,855 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:34:37,855 [INFO] loss: 0.739080 accuracy: 0.793438 top-5-accuracy: 0.943750
+2025-09-06 19:35:01,243 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:35:01,243 [INFO] loss: 0.754216 accuracy: 0.791094 top-5-accuracy: 0.939063
+2025-09-06 19:35:03,887 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:35:03,888 [INFO] loss: 0.845196 epoch_loss: 0.750960 accuracy: 0.781971 epoch_accuracy: 0.791824 top-5-accuracy: 0.919952 epoch_top-5-accuracy: 0.940284
+2025-09-06 19:35:03,888 [INFO] Epoch summary loss: 0.750960 accuracy: 0.791824 top-5-accuracy: 0.940284
+2025-09-06 19:35:05,938 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:35:05,938 [INFO] epoch_accuracy: 0.720000 epoch_top-5-accuracy: 0.902000 epoch_loss: 1.074913
+2025-09-06 19:35:05,938 [INFO] Current lr: 3.2172258856130564e-05
+2025-09-06 19:35:05,938 [INFO] Last best score 0.906277984380722 - 8 steps ago
+2025-09-06 19:35:30,166 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:35:30,166 [INFO] loss: 0.736781 accuracy: 0.794844 top-5-accuracy: 0.939531
+2025-09-06 19:35:53,469 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:35:53,469 [INFO] loss: 0.731927 accuracy: 0.795625 top-5-accuracy: 0.942031
+2025-09-06 19:35:56,097 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:35:56,098 [INFO] loss: 0.651563 epoch_loss: 0.729539 accuracy: 0.817548 epoch_accuracy: 0.796081 top-5-accuracy: 0.950841 epoch_top-5-accuracy: 0.941446
+2025-09-06 19:35:56,098 [INFO] Epoch summary loss: 0.729539 accuracy: 0.796081 top-5-accuracy: 0.941446
+2025-09-06 19:35:58,058 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:35:58,058 [INFO] epoch_accuracy: 0.748000 epoch_top-5-accuracy: 0.918000 epoch_loss: 0.971387
+2025-09-06 19:35:58,058 [INFO] Current lr: 3.056364591332403e-05
+2025-09-06 19:35:58,058 [INFO] Last best score 0.906277984380722 - 9 steps ago
+2025-09-06 19:36:22,484 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:36:22,484 [INFO] loss: 0.703850 accuracy: 0.799687 top-5-accuracy: 0.943125
+2025-09-06 19:36:45,890 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:36:45,890 [INFO] loss: 0.721656 accuracy: 0.804531 top-5-accuracy: 0.944375
+2025-09-06 19:36:48,529 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:36:48,529 [INFO] loss: 0.844638 epoch_loss: 0.718536 accuracy: 0.756250 epoch_accuracy: 0.799971 top-5-accuracy: 0.918149 epoch_top-5-accuracy: 0.942410
+2025-09-06 19:36:48,530 [INFO] Epoch summary loss: 0.718536 accuracy: 0.799971 top-5-accuracy: 0.942410
+2025-09-06 19:36:50,574 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:36:50,574 [INFO] epoch_accuracy: 0.744000 epoch_top-5-accuracy: 0.958000 epoch_loss: 0.858221
+2025-09-06 19:36:50,574 [INFO] Current lr: 2.903546361765783e-05
+2025-09-06 19:36:50,574 [INFO] Last best score 0.8582213819026947 - 0 steps ago
+2025-09-06 19:36:50,963 [INFO] Model saved. New best value 0.858221
+2025-09-06 19:37:15,377 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:37:15,377 [INFO] loss: 0.733183 accuracy: 0.796094 top-5-accuracy: 0.939688
+2025-09-06 19:37:38,787 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:37:38,787 [INFO] loss: 0.734064 accuracy: 0.798438 top-5-accuracy: 0.941250
+2025-09-06 19:37:41,429 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:37:41,429 [INFO] loss: 0.821559 epoch_loss: 0.737059 accuracy: 0.760216 epoch_accuracy: 0.795662 top-5-accuracy: 0.937861 epoch_top-5-accuracy: 0.940465
+2025-09-06 19:37:41,429 [INFO] Epoch summary loss: 0.737059 accuracy: 0.795662 top-5-accuracy: 0.940465
+2025-09-06 19:37:43,502 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:37:43,502 [INFO] epoch_accuracy: 0.708000 epoch_top-5-accuracy: 0.912000 epoch_loss: 1.069335
+2025-09-06 19:37:43,503 [INFO] Current lr: 2.758369043677494e-05
+2025-09-06 19:37:43,503 [INFO] Last best score 0.8582213819026947 - 1 steps ago
+2025-09-06 19:38:07,921 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:38:07,921 [INFO] loss: 0.741040 accuracy: 0.794375 top-5-accuracy: 0.941094
+2025-09-06 19:38:31,313 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:38:31,313 [INFO] loss: 0.746261 accuracy: 0.796875 top-5-accuracy: 0.938281
+2025-09-06 19:38:33,950 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:38:33,950 [INFO] loss: 0.636830 epoch_loss: 0.740130 accuracy: 0.809856 epoch_accuracy: 0.795940 top-5-accuracy: 0.959375 epoch_top-5-accuracy: 0.940374
+2025-09-06 19:38:33,951 [INFO] Epoch summary loss: 0.740130 accuracy: 0.795940 top-5-accuracy: 0.940374
+2025-09-06 19:38:36,034 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:38:36,034 [INFO] epoch_accuracy: 0.708000 epoch_top-5-accuracy: 0.912000 epoch_loss: 1.056712
+2025-09-06 19:38:36,035 [INFO] Current lr: 2.620450591493619e-05
+2025-09-06 19:38:36,035 [INFO] Last best score 0.8582213819026947 - 2 steps ago
+2025-09-06 19:39:00,325 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:39:00,325 [INFO] loss: 0.737901 accuracy: 0.796875 top-5-accuracy: 0.940781
+2025-09-06 19:39:23,662 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:39:23,663 [INFO] loss: 0.732510 accuracy: 0.796094 top-5-accuracy: 0.940469
+2025-09-06 19:39:26,299 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:39:26,299 [INFO] loss: 0.753060 epoch_loss: 0.736296 accuracy: 0.786779 epoch_accuracy: 0.795957 top-5-accuracy: 0.948678 epoch_top-5-accuracy: 0.940902
+2025-09-06 19:39:26,299 [INFO] Epoch summary loss: 0.736296 accuracy: 0.795957 top-5-accuracy: 0.940902
+2025-09-06 19:39:28,306 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:39:28,306 [INFO] epoch_accuracy: 0.746000 epoch_top-5-accuracy: 0.932000 epoch_loss: 0.989475
+2025-09-06 19:39:28,306 [INFO] Current lr: 2.489428061918938e-05
+2025-09-06 19:39:28,307 [INFO] Last best score 0.8582213819026947 - 3 steps ago
+2025-09-06 19:39:52,816 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:39:52,816 [INFO] loss: 0.721955 accuracy: 0.798438 top-5-accuracy: 0.939531
+2025-09-06 19:40:16,210 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:40:16,210 [INFO] loss: 0.687058 accuracy: 0.803750 top-5-accuracy: 0.943594
+2025-09-06 19:40:18,843 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:40:18,843 [INFO] loss: 0.677591 epoch_loss: 0.701772 accuracy: 0.809856 epoch_accuracy: 0.801909 top-5-accuracy: 0.940024 epoch_top-5-accuracy: 0.941673
+2025-09-06 19:40:18,843 [INFO] Epoch summary loss: 0.701772 accuracy: 0.801909 top-5-accuracy: 0.941673
+2025-09-06 19:40:20,949 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:40:20,949 [INFO] epoch_accuracy: 0.742000 epoch_top-5-accuracy: 0.922000 epoch_loss: 1.000856
+2025-09-06 19:40:20,949 [INFO] Current lr: 2.364956658822991e-05
+2025-09-06 19:40:20,949 [INFO] Last best score 0.8582213819026947 - 4 steps ago
+2025-09-06 19:40:45,342 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:40:45,342 [INFO] loss: 0.753563 accuracy: 0.785312 top-5-accuracy: 0.936719
+2025-09-06 19:41:08,740 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:41:08,741 [INFO] loss: 0.695255 accuracy: 0.803594 top-5-accuracy: 0.947031
+2025-09-06 19:41:11,378 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:41:11,378 [INFO] loss: 0.650344 epoch_loss: 0.721448 accuracy: 0.812861 epoch_accuracy: 0.795123 top-5-accuracy: 0.944712 epoch_top-5-accuracy: 0.941894
+2025-09-06 19:41:11,379 [INFO] Epoch summary loss: 0.721448 accuracy: 0.795123 top-5-accuracy: 0.941894
+2025-09-06 19:41:13,433 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:41:13,433 [INFO] epoch_accuracy: 0.738000 epoch_top-5-accuracy: 0.948000 epoch_loss: 0.947439
+2025-09-06 19:41:13,433 [INFO] Current lr: 2.2467088258818413e-05
+2025-09-06 19:41:13,433 [INFO] Last best score 0.8582213819026947 - 5 steps ago
+2025-09-06 19:41:37,839 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:41:37,839 [INFO] loss: 0.719862 accuracy: 0.802188 top-5-accuracy: 0.939219
+2025-09-06 19:42:01,220 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:42:01,220 [INFO] loss: 0.714304 accuracy: 0.802656 top-5-accuracy: 0.943438
+2025-09-06 19:42:03,860 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:42:03,861 [INFO] loss: 0.739912 epoch_loss: 0.717752 accuracy: 0.787500 epoch_accuracy: 0.801445 top-5-accuracy: 0.936178 epoch_top-5-accuracy: 0.941344
+2025-09-06 19:42:03,861 [INFO] Epoch summary loss: 0.717752 accuracy: 0.801445 top-5-accuracy: 0.941344
+2025-09-06 19:42:05,957 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:42:05,957 [INFO] epoch_accuracy: 0.736000 epoch_top-5-accuracy: 0.932000 epoch_loss: 1.036549
+2025-09-06 19:42:05,957 [INFO] Current lr: 2.134373384587749e-05
+2025-09-06 19:42:05,957 [INFO] Last best score 0.8582213819026947 - 6 steps ago
+2025-09-06 19:42:30,371 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:42:30,372 [INFO] loss: 0.694315 accuracy: 0.802344 top-5-accuracy: 0.945000
+2025-09-06 19:42:53,753 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:42:53,753 [INFO] loss: 0.710225 accuracy: 0.800156 top-5-accuracy: 0.939063
+2025-09-06 19:42:56,396 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:42:56,397 [INFO] loss: 0.686095 epoch_loss: 0.700912 accuracy: 0.814423 epoch_accuracy: 0.801904 top-5-accuracy: 0.945433 epoch_top-5-accuracy: 0.942296
+2025-09-06 19:42:56,397 [INFO] Epoch summary loss: 0.700912 accuracy: 0.801904 top-5-accuracy: 0.942296
+2025-09-06 19:42:58,436 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:42:58,436 [INFO] epoch_accuracy: 0.720000 epoch_top-5-accuracy: 0.924000 epoch_loss: 1.013370
+2025-09-06 19:42:58,436 [INFO] Current lr: 2.0276547153583614e-05
+2025-09-06 19:42:58,436 [INFO] Last best score 0.8582213819026947 - 7 steps ago
+2025-09-06 19:43:22,736 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:43:22,736 [INFO] loss: 0.703383 accuracy: 0.803594 top-5-accuracy: 0.943125
+2025-09-06 19:43:46,073 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:43:46,074 [INFO] loss: 0.687173 accuracy: 0.806406 top-5-accuracy: 0.947812
+2025-09-06 19:43:48,704 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:43:48,705 [INFO] loss: 0.608671 epoch_loss: 0.689573 accuracy: 0.838822 epoch_accuracy: 0.807035 top-5-accuracy: 0.957933 epoch_top-5-accuracy: 0.946276
+2025-09-06 19:43:48,705 [INFO] Epoch summary loss: 0.689573 accuracy: 0.807035 top-5-accuracy: 0.946276
+2025-09-06 19:43:50,794 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:43:50,794 [INFO] epoch_accuracy: 0.700000 epoch_top-5-accuracy: 0.914000 epoch_loss: 1.093371
+2025-09-06 19:43:50,794 [INFO] Current lr: 1.9262719795904432e-05
+2025-09-06 19:43:50,794 [INFO] Last best score 0.8582213819026947 - 8 steps ago
+2025-09-06 19:44:15,262 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:44:15,262 [INFO] loss: 0.716752 accuracy: 0.798906 top-5-accuracy: 0.943438
+2025-09-06 19:44:38,671 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:44:38,671 [INFO] loss: 0.722707 accuracy: 0.805156 top-5-accuracy: 0.941094
+2025-09-06 19:44:41,315 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:44:41,315 [INFO] loss: 0.735044 epoch_loss: 0.719721 accuracy: 0.800841 epoch_accuracy: 0.801705 top-5-accuracy: 0.931731 epoch_top-5-accuracy: 0.942019
+2025-09-06 19:44:41,315 [INFO] Epoch summary loss: 0.719721 accuracy: 0.801705 top-5-accuracy: 0.942019
+2025-09-06 19:44:43,398 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:44:43,398 [INFO] epoch_accuracy: 0.718000 epoch_top-5-accuracy: 0.926000 epoch_loss: 1.028710
+2025-09-06 19:44:43,398 [INFO] Current lr: 1.829958380610921e-05
+2025-09-06 19:44:43,398 [INFO] Last best score 0.8582213819026947 - 9 steps ago
+2025-09-06 19:45:07,800 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:45:07,800 [INFO] loss: 0.721881 accuracy: 0.796875 top-5-accuracy: 0.942031
+2025-09-06 19:45:31,217 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:45:31,217 [INFO] loss: 0.722942 accuracy: 0.794375 top-5-accuracy: 0.941562
+2025-09-06 19:45:33,855 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:45:33,855 [INFO] loss: 0.733148 epoch_loss: 0.721344 accuracy: 0.777284 epoch_accuracy: 0.795509 top-5-accuracy: 0.931370 epoch_top-5-accuracy: 0.941559
+2025-09-06 19:45:33,855 [INFO] Epoch summary loss: 0.721344 accuracy: 0.795509 top-5-accuracy: 0.941559
+2025-09-06 19:45:35,954 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:45:35,954 [INFO] epoch_accuracy: 0.744000 epoch_top-5-accuracy: 0.928000 epoch_loss: 1.027862
+2025-09-06 19:45:35,955 [INFO] Current lr: 1.738460461580375e-05
+2025-09-06 19:45:35,955 [INFO] Last best score 0.8582213819026947 - 10 steps ago
+2025-09-06 19:46:00,309 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:46:00,309 [INFO] loss: 0.688172 accuracy: 0.809844 top-5-accuracy: 0.948438
+2025-09-06 19:46:23,725 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:46:23,725 [INFO] loss: 0.717325 accuracy: 0.796562 top-5-accuracy: 0.943125
+2025-09-06 19:46:26,363 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:46:26,363 [INFO] loss: 0.779891 epoch_loss: 0.705774 accuracy: 0.776683 epoch_accuracy: 0.801819 top-5-accuracy: 0.939183 epoch_top-5-accuracy: 0.945318
+2025-09-06 19:46:26,363 [INFO] Epoch summary loss: 0.705774 accuracy: 0.801819 top-5-accuracy: 0.945318
+2025-09-06 19:46:28,511 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:46:28,511 [INFO] epoch_accuracy: 0.728000 epoch_top-5-accuracy: 0.908000 epoch_loss: 1.096808
+2025-09-06 19:46:28,511 [INFO] Current lr: 1.6515374385013564e-05
+2025-09-06 19:46:28,511 [INFO] Last best score 0.8582213819026947 - 11 steps ago
+2025-09-06 19:46:52,909 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:46:52,909 [INFO] loss: 0.695062 accuracy: 0.804531 top-5-accuracy: 0.947500
+2025-09-06 19:47:16,305 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:47:16,306 [INFO] loss: 0.717212 accuracy: 0.801250 top-5-accuracy: 0.941250
+2025-09-06 19:47:18,946 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:47:18,946 [INFO] loss: 0.567357 epoch_loss: 0.698815 accuracy: 0.831851 epoch_accuracy: 0.804568 top-5-accuracy: 0.965745 epoch_top-5-accuracy: 0.945318
+2025-09-06 19:47:18,946 [INFO] Epoch summary loss: 0.698815 accuracy: 0.804568 top-5-accuracy: 0.945318
+2025-09-06 19:47:21,040 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:47:21,040 [INFO] epoch_accuracy: 0.748000 epoch_top-5-accuracy: 0.944000 epoch_loss: 0.935178
+2025-09-06 19:47:21,040 [INFO] Current lr: 1.5689605665762886e-05
+2025-09-06 19:47:21,040 [INFO] Last best score 0.8582213819026947 - 12 steps ago
+2025-09-06 19:47:45,482 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:47:45,482 [INFO] loss: 0.701627 accuracy: 0.801250 top-5-accuracy: 0.944219
+2025-09-06 19:48:08,913 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:48:08,913 [INFO] loss: 0.709500 accuracy: 0.799219 top-5-accuracy: 0.946875
+2025-09-06 19:48:11,556 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:48:11,557 [INFO] loss: 0.682596 epoch_loss: 0.703904 accuracy: 0.802764 epoch_accuracy: 0.800543 top-5-accuracy: 0.949279 epoch_top-5-accuracy: 0.945721
+2025-09-06 19:48:11,557 [INFO] Epoch summary loss: 0.703904 accuracy: 0.800543 top-5-accuracy: 0.945721
+2025-09-06 19:48:13,612 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:48:13,613 [INFO] epoch_accuracy: 0.740000 epoch_top-5-accuracy: 0.950000 epoch_loss: 0.937577
+2025-09-06 19:48:13,613 [INFO] Current lr: 1.490512538247474e-05
+2025-09-06 19:48:13,613 [INFO] Last best score 0.8582213819026947 - 13 steps ago
+2025-09-06 19:48:38,034 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:48:38,034 [INFO] loss: 0.700014 accuracy: 0.803594 top-5-accuracy: 0.950156
+2025-09-06 19:49:01,407 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:49:01,407 [INFO] loss: 0.697677 accuracy: 0.807187 top-5-accuracy: 0.943750
+2025-09-06 19:49:04,038 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:49:04,038 [INFO] loss: 0.755127 epoch_loss: 0.702865 accuracy: 0.794591 epoch_accuracy: 0.804580 top-5-accuracy: 0.919952 epoch_top-5-accuracy: 0.945517
+2025-09-06 19:49:04,038 [INFO] Epoch summary loss: 0.702865 accuracy: 0.804580 top-5-accuracy: 0.945517
+2025-09-06 19:49:06,062 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:49:06,062 [INFO] epoch_accuracy: 0.748000 epoch_top-5-accuracy: 0.924000 epoch_loss: 0.977652
+2025-09-06 19:49:06,063 [INFO] Current lr: 1.4159869113351003e-05
+2025-09-06 19:49:06,063 [INFO] Last best score 0.8582213819026947 - 14 steps ago
+2025-09-06 19:49:30,521 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:49:30,521 [INFO] loss: 0.704219 accuracy: 0.806719 top-5-accuracy: 0.945937
+2025-09-06 19:49:53,932 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:49:53,932 [INFO] loss: 0.687541 accuracy: 0.806250 top-5-accuracy: 0.945000
+2025-09-06 19:49:56,571 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:49:56,571 [INFO] loss: 0.644018 epoch_loss: 0.693224 accuracy: 0.823197 epoch_accuracy: 0.807329 top-5-accuracy: 0.953245 epoch_top-5-accuracy: 0.945539
+2025-09-06 19:49:56,571 [INFO] Epoch summary loss: 0.693224 accuracy: 0.807329 top-5-accuracy: 0.945539
+2025-09-06 19:49:58,710 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:49:58,710 [INFO] epoch_accuracy: 0.726000 epoch_top-5-accuracy: 0.920000 epoch_loss: 1.062831
+2025-09-06 19:49:58,710 [INFO] Current lr: 1.3451875657683452e-05
+2025-09-06 19:49:58,710 [INFO] Last best score 0.8582213819026947 - 15 steps ago
+2025-09-06 19:50:23,097 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:50:23,098 [INFO] loss: 0.666666 accuracy: 0.812187 top-5-accuracy: 0.949844
+2025-09-06 19:50:46,497 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:50:46,497 [INFO] loss: 0.689633 accuracy: 0.806250 top-5-accuracy: 0.942187
+2025-09-06 19:50:49,138 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:50:49,139 [INFO] loss: 0.617558 epoch_loss: 0.676901 accuracy: 0.823197 epoch_accuracy: 0.809541 top-5-accuracy: 0.943990 epoch_top-5-accuracy: 0.945913
+2025-09-06 19:50:49,139 [INFO] Epoch summary loss: 0.676901 accuracy: 0.809541 top-5-accuracy: 0.945913
+2025-09-06 19:50:51,202 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:50:51,203 [INFO] epoch_accuracy: 0.750000 epoch_top-5-accuracy: 0.932000 epoch_loss: 0.983348
+2025-09-06 19:50:51,203 [INFO] Current lr: 1.277928187479928e-05
+2025-09-06 19:50:51,203 [INFO] Last best score 0.8582213819026947 - 16 steps ago
+2025-09-06 19:51:15,552 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:51:15,552 [INFO] loss: 0.698656 accuracy: 0.800781 top-5-accuracy: 0.945469
+2025-09-06 19:51:38,899 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:51:38,899 [INFO] loss: 0.678946 accuracy: 0.816875 top-5-accuracy: 0.944219
+2025-09-06 19:51:41,543 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:51:41,543 [INFO] loss: 0.662773 epoch_loss: 0.687762 accuracy: 0.802885 epoch_accuracy: 0.808509 top-5-accuracy: 0.947716 epoch_top-5-accuracy: 0.944763
+2025-09-06 19:51:41,544 [INFO] Epoch summary loss: 0.687762 accuracy: 0.808509 top-5-accuracy: 0.944763
+2025-09-06 19:51:43,661 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:51:43,661 [INFO] epoch_accuracy: 0.710000 epoch_top-5-accuracy: 0.926000 epoch_loss: 1.021953
+2025-09-06 19:51:43,661 [INFO] Current lr: 1.2140317781059316e-05
+2025-09-06 19:51:43,661 [INFO] Last best score 0.8582213819026947 - 17 steps ago
+2025-09-06 19:52:07,918 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:52:07,918 [INFO] loss: 0.670967 accuracy: 0.812344 top-5-accuracy: 0.949063
+2025-09-06 19:52:31,192 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:52:31,192 [INFO] loss: 0.685987 accuracy: 0.809219 top-5-accuracy: 0.944375
+2025-09-06 19:52:33,816 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:52:33,817 [INFO] loss: 0.669835 epoch_loss: 0.678218 accuracy: 0.813101 epoch_accuracy: 0.810538 top-5-accuracy: 0.954808 epoch_top-5-accuracy: 0.947161
+2025-09-06 19:52:33,817 [INFO] Epoch summary loss: 0.678218 accuracy: 0.810538 top-5-accuracy: 0.947161
+2025-09-06 19:52:35,902 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:52:35,902 [INFO] epoch_accuracy: 0.724000 epoch_top-5-accuracy: 0.930000 epoch_loss: 1.034384
+2025-09-06 19:52:35,903 [INFO] Current lr: 1.153330189200635e-05
+2025-09-06 19:52:35,903 [INFO] Last best score 0.8582213819026947 - 18 steps ago
+2025-09-06 19:53:00,139 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:53:00,139 [INFO] loss: 0.702278 accuracy: 0.804375 top-5-accuracy: 0.943906
+2025-09-06 19:53:23,422 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:53:23,423 [INFO] loss: 0.701967 accuracy: 0.809531 top-5-accuracy: 0.940937
+2025-09-06 19:53:26,045 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:53:26,046 [INFO] loss: 0.722509 epoch_loss: 0.702962 accuracy: 0.797716 epoch_accuracy: 0.806570 top-5-accuracy: 0.945553 epoch_top-5-accuracy: 0.942597
+2025-09-06 19:53:26,046 [INFO] Epoch summary loss: 0.702962 accuracy: 0.806570 top-5-accuracy: 0.942597
+2025-09-06 19:53:28,181 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:53:28,182 [INFO] epoch_accuracy: 0.702000 epoch_top-5-accuracy: 0.908000 epoch_loss: 1.178140
+2025-09-06 19:53:28,182 [INFO] Current lr: 1.0956636797406032e-05
+2025-09-06 19:53:28,182 [INFO] Last best score 0.8582213819026947 - 19 steps ago
+2025-09-06 19:53:52,567 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:53:52,567 [INFO] loss: 0.673017 accuracy: 0.815312 top-5-accuracy: 0.944063
+2025-09-06 19:54:15,937 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:54:15,937 [INFO] loss: 0.680147 accuracy: 0.808750 top-5-accuracy: 0.945781
+2025-09-06 19:54:18,575 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:54:18,575 [INFO] loss: 0.610272 epoch_loss: 0.674173 accuracy: 0.813822 epoch_accuracy: 0.812194 top-5-accuracy: 0.958654 epoch_top-5-accuracy: 0.945352
+2025-09-06 19:54:18,575 [INFO] Epoch summary loss: 0.674173 accuracy: 0.812194 top-5-accuracy: 0.945352
+2025-09-06 19:54:20,641 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:54:20,641 [INFO] epoch_accuracy: 0.742000 epoch_top-5-accuracy: 0.920000 epoch_loss: 0.942903
+2025-09-06 19:54:20,641 [INFO] Current lr: 1.0408804957535729e-05
+2025-09-06 19:54:20,641 [INFO] Last best score 0.8582213819026947 - 20 steps ago
+2025-09-06 19:54:44,956 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:54:44,956 [INFO] loss: 0.684347 accuracy: 0.804844 top-5-accuracy: 0.946562
+2025-09-06 19:55:08,222 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:55:08,222 [INFO] loss: 0.686725 accuracy: 0.808906 top-5-accuracy: 0.945156
+2025-09-06 19:55:10,850 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:55:10,850 [INFO] loss: 0.613817 epoch_loss: 0.681807 accuracy: 0.812861 epoch_accuracy: 0.807210 top-5-accuracy: 0.961058 epoch_top-5-accuracy: 0.946792
+2025-09-06 19:55:10,850 [INFO] Epoch summary loss: 0.681807 accuracy: 0.807210 top-5-accuracy: 0.946792
+2025-09-06 19:55:12,990 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:55:12,990 [INFO] epoch_accuracy: 0.732000 epoch_top-5-accuracy: 0.906000 epoch_loss: 1.052801
+2025-09-06 19:55:12,990 [INFO] Current lr: 9.888364709658941e-06
+2025-09-06 19:55:12,990 [INFO] Last best score 0.8582213819026947 - 21 steps ago
+2025-09-06 19:55:37,349 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:55:37,349 [INFO] loss: 0.688683 accuracy: 0.808281 top-5-accuracy: 0.941094
+2025-09-06 19:56:00,698 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:56:00,698 [INFO] loss: 0.659175 accuracy: 0.815937 top-5-accuracy: 0.944063
+2025-09-06 19:56:03,333 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:56:03,333 [INFO] loss: 0.802191 epoch_loss: 0.679539 accuracy: 0.762500 epoch_accuracy: 0.809404 top-5-accuracy: 0.940745 epoch_top-5-accuracy: 0.942739
+2025-09-06 19:56:03,333 [INFO] Epoch summary loss: 0.679539 accuracy: 0.809404 top-5-accuracy: 0.942739
+2025-09-06 19:56:05,419 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:56:05,419 [INFO] epoch_accuracy: 0.748000 epoch_top-5-accuracy: 0.936000 epoch_loss: 1.004834
+2025-09-06 19:56:05,419 [INFO] Current lr: 9.393946474175994e-06
+2025-09-06 19:56:05,419 [INFO] Last best score 0.8582213819026947 - 22 steps ago
+2025-09-06 19:56:29,656 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:56:29,656 [INFO] loss: 0.678356 accuracy: 0.807656 top-5-accuracy: 0.947500
+2025-09-06 19:56:52,979 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:56:52,979 [INFO] loss: 0.673732 accuracy: 0.810781 top-5-accuracy: 0.949063
+2025-09-06 19:56:55,615 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:56:55,615 [INFO] loss: 0.514741 epoch_loss: 0.669577 accuracy: 0.853486 epoch_accuracy: 0.810969 top-5-accuracy: 0.958654 epoch_top-5-accuracy: 0.948669
+2025-09-06 19:56:55,616 [INFO] Epoch summary loss: 0.669577 accuracy: 0.810969 top-5-accuracy: 0.948669
+2025-09-06 19:56:57,643 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:56:57,643 [INFO] epoch_accuracy: 0.716000 epoch_top-5-accuracy: 0.922000 epoch_loss: 1.080782
+2025-09-06 19:56:57,643 [INFO] Current lr: 8.924249150467194e-06
+2025-09-06 19:56:57,643 [INFO] Last best score 0.8582213819026947 - 23 steps ago
+2025-09-06 19:57:22,128 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:57:22,128 [INFO] loss: 0.676719 accuracy: 0.807344 top-5-accuracy: 0.944844
+2025-09-06 19:57:45,457 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:57:45,457 [INFO] loss: 0.691212 accuracy: 0.805625 top-5-accuracy: 0.947187
+2025-09-06 19:57:48,102 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:57:48,102 [INFO] loss: 0.690589 epoch_loss: 0.684845 accuracy: 0.792067 epoch_accuracy: 0.805640 top-5-accuracy: 0.948678 epoch_top-5-accuracy: 0.945987
+2025-09-06 19:57:48,103 [INFO] Epoch summary loss: 0.684845 accuracy: 0.805640 top-5-accuracy: 0.945987
+2025-09-06 19:57:50,167 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:57:50,167 [INFO] epoch_accuracy: 0.748000 epoch_top-5-accuracy: 0.916000 epoch_loss: 0.963897
+2025-09-06 19:57:50,168 [INFO] Current lr: 8.478036692943835e-06
+2025-09-06 19:57:50,168 [INFO] Last best score 0.8582213819026947 - 24 steps ago
+2025-09-06 19:58:14,624 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:58:14,624 [INFO] loss: 0.675565 accuracy: 0.814844 top-5-accuracy: 0.950313
+2025-09-06 19:58:38,020 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:58:38,020 [INFO] loss: 0.673837 accuracy: 0.808281 top-5-accuracy: 0.946719
+2025-09-06 19:58:40,655 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:58:40,656 [INFO] loss: 0.488217 epoch_loss: 0.666278 accuracy: 0.845072 epoch_accuracy: 0.813226 top-5-accuracy: 0.978125 epoch_top-5-accuracy: 0.949735
+2025-09-06 19:58:40,656 [INFO] Epoch summary loss: 0.666278 accuracy: 0.813226 top-5-accuracy: 0.949735
+2025-09-06 19:58:42,718 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:58:42,718 [INFO] epoch_accuracy: 0.730000 epoch_top-5-accuracy: 0.930000 epoch_loss: 1.005532
+2025-09-06 19:58:42,718 [INFO] Current lr: 8.054134858296643e-06
+2025-09-06 19:58:42,718 [INFO] Last best score 0.8582213819026947 - 25 steps ago
+2025-09-06 19:59:07,002 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:59:07,003 [INFO] loss: 0.661701 accuracy: 0.812187 top-5-accuracy: 0.950937
+2025-09-06 19:59:30,335 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:59:30,335 [INFO] loss: 0.668731 accuracy: 0.816875 top-5-accuracy: 0.947031
+2025-09-06 19:59:32,971 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:59:32,972 [INFO] loss: 0.686441 epoch_loss: 0.667093 accuracy: 0.809014 epoch_accuracy: 0.813883 top-5-accuracy: 0.936899 epoch_top-5-accuracy: 0.948232
+2025-09-06 19:59:32,972 [INFO] Epoch summary loss: 0.667093 accuracy: 0.813883 top-5-accuracy: 0.948232
+2025-09-06 19:59:35,061 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 19:59:35,061 [INFO] epoch_accuracy: 0.734000 epoch_top-5-accuracy: 0.904000 epoch_loss: 1.078076
+2025-09-06 19:59:35,061 [INFO] Current lr: 7.65142811538181e-06
+2025-09-06 19:59:35,061 [INFO] Last best score 0.8582213819026947 - 26 steps ago
+2025-09-06 19:59:59,418 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 19:59:59,418 [INFO] loss: 0.666935 accuracy: 0.810781 top-5-accuracy: 0.948906
+2025-09-06 20:00:22,785 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 20:00:22,785 [INFO] loss: 0.665202 accuracy: 0.811875 top-5-accuracy: 0.946094
+2025-09-06 20:00:25,429 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 20:00:25,429 [INFO] loss: 0.797631 epoch_loss: 0.672675 accuracy: 0.782692 epoch_accuracy: 0.809620 top-5-accuracy: 0.929928 epoch_top-5-accuracy: 0.946650
+2025-09-06 20:00:25,429 [INFO] Epoch summary loss: 0.672675 accuracy: 0.809620 top-5-accuracy: 0.946650
+2025-09-06 20:00:27,481 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 20:00:27,482 [INFO] epoch_accuracy: 0.730000 epoch_top-5-accuracy: 0.934000 epoch_loss: 0.994483
+2025-09-06 20:00:27,482 [INFO] Current lr: 7.26885670961272e-06
+2025-09-06 20:00:27,482 [INFO] Last best score 0.8582213819026947 - 27 steps ago
+2025-09-06 20:00:51,877 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 20:00:51,878 [INFO] loss: 0.637686 accuracy: 0.821719 top-5-accuracy: 0.953594
+2025-09-06 20:01:15,258 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 20:01:15,258 [INFO] loss: 0.669574 accuracy: 0.812969 top-5-accuracy: 0.947187
+2025-09-06 20:01:17,907 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 20:01:17,907 [INFO] loss: 0.671621 epoch_loss: 0.655045 accuracy: 0.816947 epoch_accuracy: 0.817058 top-5-accuracy: 0.936899 epoch_top-5-accuracy: 0.949780
+2025-09-06 20:01:17,907 [INFO] Epoch summary loss: 0.655045 accuracy: 0.817058 top-5-accuracy: 0.949780
+2025-09-06 20:01:19,950 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 20:01:19,951 [INFO] epoch_accuracy: 0.746000 epoch_top-5-accuracy: 0.916000 epoch_loss: 0.980632
+2025-09-06 20:01:19,951 [INFO] Current lr: 6.905413874132084e-06
+2025-09-06 20:01:19,951 [INFO] Last best score 0.8582213819026947 - 28 steps ago
+2025-09-06 20:01:44,346 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 20:01:44,346 [INFO] loss: 0.689734 accuracy: 0.812031 top-5-accuracy: 0.946562
+2025-09-06 20:02:07,742 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 20:02:07,742 [INFO] loss: 0.687041 accuracy: 0.811406 top-5-accuracy: 0.945625
+2025-09-06 20:02:10,393 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 20:02:10,393 [INFO] loss: 0.660230 epoch_loss: 0.687502 accuracy: 0.800481 epoch_accuracy: 0.811122 top-5-accuracy: 0.961779 epoch_top-5-accuracy: 0.946900
+2025-09-06 20:02:10,394 [INFO] Epoch summary loss: 0.687502 accuracy: 0.811122 top-5-accuracy: 0.946900
+2025-09-06 20:02:12,452 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 20:02:12,452 [INFO] epoch_accuracy: 0.772000 epoch_top-5-accuracy: 0.942000 epoch_loss: 0.923297
+2025-09-06 20:02:12,453 [INFO] Current lr: 6.5601431804254795e-06
+2025-09-06 20:02:12,453 [INFO] Last best score 0.8582213819026947 - 29 steps ago
+2025-09-06 20:02:36,944 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 20:02:36,945 [INFO] loss: 0.676042 accuracy: 0.807813 top-5-accuracy: 0.945937
+2025-09-06 20:03:00,384 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 20:03:00,384 [INFO] loss: 0.680322 accuracy: 0.805000 top-5-accuracy: 0.948906
+2025-09-06 20:03:03,045 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/train/metrics.json
+2025-09-06 20:03:03,046 [INFO] loss: 0.619788 epoch_loss: 0.675053 accuracy: 0.817067 epoch_accuracy: 0.806967 top-5-accuracy: 0.948558 epoch_top-5-accuracy: 0.947456
+2025-09-06 20:03:03,046 [INFO] Epoch summary loss: 0.675053 accuracy: 0.806967 top-5-accuracy: 0.947456
+2025-09-06 20:03:05,173 [INFO] New metrics saved to logs/sports_cv_project_classification/vgg11-paper-pretrained-w-augmenations-exponential_lr/val/metrics.json
+2025-09-06 20:03:05,174 [INFO] epoch_accuracy: 0.722000 epoch_top-5-accuracy: 0.932000 epoch_loss: 1.029757
+2025-09-06 20:03:05,174 [INFO] Current lr: 6.232136021404205e-06
+2025-09-06 20:03:05,174 [INFO] Last best score 0.8582213819026947 - 30 steps ago
+2025-09-06 20:03:05,174 [INFO] Early stopping triggered at epoch 98
+2025-09-06 20:03:05,183 [INFO] Found credentials in environment variables.

@@ -45,7 +45,7 @@ dataset:
     random_resized_crop: true
     grayscale: true
     gaussian_blur: true
-  batch_size: 64
+  batch_size: 128
   shuffle: true
   num_workers: 6
   seed: 42
@@ -64,13 +64,15 @@ training:
     type: cosine_annealing_warm_restarts
     T_0: 25
     T_mult: 2
-    eta_min: 1.0e-07
+    eta_min: 1.0e-08
   loss:
     type: cross_entropy
     bbox_loss: smooth_l1
     obj_loss: binary_cross_entropy
   early_stopping:
     patience: 30
+    reset_after: 25
+    T_mult: 2
     threshold: 0.0001
   num_epochs: 1000
   save_best_only: true

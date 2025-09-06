@@ -25,8 +25,12 @@ augmentations:
   random_resized_crop: true
   grayscale: true
   gaussian_blur: true
+  perspective: true
+  affine: true
+  erasing: true
+  adjust_sharpness: true
 
-batch_size: 64
+batch_size: 128
 shuffle: true
 num_workers: 6
 seed: 42
