@@ -1,6 +1,7 @@
 import os
 import pandas as pd
-from typing import Tuple, Any, cast
+from PIL import Image
+from typing import Tuple, Any, cast, Optional
 import torch as T
 from torch.utils.data import DataLoader, Dataset
 from torchvision.io import decode_image
@@ -54,6 +55,7 @@ class DatasetHandler:
         
         self._load_df()
         self._create_target_encoders(self.df_dict["train"])
+        self.transforms = None
 
     def _load_df(self):
         root_dir = str(self.config["root_dir"])
@@ -75,13 +77,18 @@ class DatasetHandler:
         self.id_to_label = dict(zip(unique_df["class_id"], unique_df["label"]))
         self.label_to_id = dict(zip(unique_df["label"], unique_df["class_id"]))
 
-    def _create_transforms(self, use_augmentations: bool = True) -> v2.Compose:
+    def _create_transforms(self, use_augmentations: bool = True, size: Optional[Tuple[int, int]] = None) -> v2.Compose:
         augmentations = self.config.get("augmentations", {}) if use_augmentations else None
         normalize_mean = self.config.get("normalize_mean", None)
         normalize_std = self.config.get("normalize_std", None)
         
         transforms_list: list[v2.Transform] = []
         random_apply_list: list[v2.Transform] = []
+
+        transforms_list.append(v2.ToImage())
+        if size:
+            transforms_list.append(v2.Resize(size=size))
+
         if augmentations:
             for key, value in augmentations.items():
                 if key in AUGMENTATIONS_DICT and value:
@@ -106,6 +113,13 @@ class DatasetHandler:
 
         transforms = v2.Compose(transforms_list)
         return transforms
+
+    def preprocess_single_image(self, image: Image.Image | T.Tensor, size: Optional[Tuple[int, int]] = None) -> T.Tensor:
+        if not self.transforms:
+            self.transforms = self._create_transforms(use_augmentations=False, size=size)
+
+        image_tensor = self.transforms(image)
+        return image_tensor
 
     def _create_image_dataset(
         self,

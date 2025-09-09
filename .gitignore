@@ -1,9 +1,10 @@
-**/data/**
-**/__pycache__/**
-**/.vscode/**
-**/checkpoints/**
-**/.ipynb_checkpoints/**
-**/.env
+data
+__pycache__
+.vscode
+checkpoints
+.ipynb_checkpoints
+.env
 **/*.egg-info/**
-**/build/**
+build
 .venv
+.temp

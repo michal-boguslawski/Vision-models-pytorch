@@ -5,6 +5,7 @@ from typing import Literal, Any
 import torch as T
 from torch import nn
 from utils.aws_handler import AWSHandler
+from utils.helpers import filter_kwargs
 
 
 class ModelHandler:
@@ -21,6 +22,7 @@ class ModelHandler:
         model_part: Literal["all", "backbone", "detection_head"] = "all",
         checkpoint_dir: str | None = None,
         project_name: str | None = None,
+        device: str = "cpu",
         num_layers: int = 0,
         **kwargs: dict[str, Any]
     ):
@@ -29,7 +31,7 @@ class ModelHandler:
             return
         fn_name = self.LOAD_SOURCE_DICT[source]
         fn = getattr(self, fn_name)
-        state_dict = fn(version_name=version_name, checkpoint_dir=checkpoint_dir, project_name=project_name, **kwargs)
+        state_dict = fn(version_name=version_name, checkpoint_dir=checkpoint_dir, project_name=project_name, device=device, **filter_kwargs(fn, kwargs))
         self._load_weights(model=model, state_dict=state_dict, model_part=model_part)
         
     
@@ -52,6 +54,7 @@ class ModelHandler:
         project_name: str,
         version_type: str = "latest",
         version_name: str = "",
+        device: str = "cpu"
     ) -> OrderedDict[str, T.Tensor] | None:
         files = glob.glob(os.path.join(checkpoint_dir, project_name, f"*{version_name}*", "*.pth"))
         
@@ -64,7 +67,7 @@ class ModelHandler:
             newest_state_dict = max(files, key=os.path.getctime)
 
         # load selected state_dict
-        loaded_state_dict = T.load(newest_state_dict)
+        loaded_state_dict = T.load(newest_state_dict, map_location=T.device(device))
         print(f"State dict loaded from {newest_state_dict}")
         return loaded_state_dict
 
@@ -92,12 +95,13 @@ class ModelHandler:
         version_name: str,
         checkpoint_dir: str,
         project_name: str,
+        device: str = "cpu",
     ) -> OrderedDict[str, T.Tensor]:
         s3_path = os.path.join(checkpoint_dir, project_name, version_name)
         aws_handler = AWSHandler(s3_bucket_name=s3_bucket_name)
         temp_path = ".temp/state_dict.pth"
         os.makedirs(os.path.dirname(temp_path), exist_ok=True)
         aws_handler.download_file(from_path=s3_path, local_path=temp_path)
-        state_dict = T.load(temp_path)
+        state_dict = T.load(temp_path, map_location=T.device(device))
         os.remove(temp_path)
         return state_dict

@@ -10,6 +10,7 @@ from evaluation.metrics import setup_metric
 from models.model_factory import BuildModel
 from models.utils import ModelHandler
 from utils.config_parser import ConfigParser
+from utils.filesystem import extract_file_paths
 from utils.helpers import filter_kwargs
 from torcheval.metrics import Metric
 
@@ -65,11 +66,7 @@ class EvaluateProjectModels:
         self.logs_dir = os.path.join("logs", project_name)
         self.checkpoints_dir = os.path.join("checkpoints", project_name)
         self.model_handler = ModelHandler()
-
-    def _extract_configs(self):
-        for path, _, file in os.walk(self.logs_dir):
-            if "config.yaml" in file:
-                self.configs_list.append(os.path.join(path, "config.yaml"))
+        self.configs_list = extract_file_paths(self.logs_dir, "config.yaml")
 
     def _evaluate_single_model(self, config: ConfigParser):
         experiment_name = config["experiment_name"]
@@ -110,7 +107,6 @@ class EvaluateProjectModels:
         return metrics
 
     def evaluate(self):
-        self._extract_configs()
 
         for config in self.configs_list:
             config_parser = ConfigParser(config)

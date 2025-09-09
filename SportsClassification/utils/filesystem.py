@@ -50,3 +50,10 @@ def make_dirs(*args: list[str]):
         else:
             cache_message(msg)
     return list_
+
+def extract_file_paths(directory: str, file_name: str) -> list[str]:
+    list_: list[str] = []
+    for path, _, file in os.walk(directory):
+        if file_name in file:
+            list_.append(os.path.join(path, file_name))
+    return list_

@@ -1,11 +1,12 @@
 import os
-from typing import Dict, Any
+from typing import Dict, Any, cast
+from yaml import SafeLoader, ScalarNode
 import yaml
 from utils.filesystem import cache_message
 
 
-def yaml_include(loader, node):
-    filename = os.path.join(os.path.dirname(loader.name), node.value)
+def yaml_include(loader: SafeLoader, node: ScalarNode) -> Dict[str, Any]:
+    filename = os.path.join(os.path.dirname(str(loader.name)), node.value)
     with open(filename, 'r') as f:
         return yaml.safe_load(f)
 
@@ -32,27 +33,27 @@ class ConfigParser:
         value = self.config.pop(key)
         return value
 
-    def merge(self, other_config: dict):
+    def merge(self, other_config: dict[str, Any]):
         """Merge another config dictionary into current config (override defaults)."""
         self._deep_update(self.config, other_config)
 
     @staticmethod
-    def _deep_update(d: dict, u: dict):
+    def _deep_update(d: dict[str, Any], u: dict[str, Any]):
         """Recursively update dict d with values from u."""
         for k, v in u.items():
             if isinstance(v, dict):
-                d[k] = ConfigParser._deep_update(d.get(k, {}), v)
+                d[k] = ConfigParser._deep_update(d.get(k, {}), cast(dict[str, Any], v))
             else:
                 d[k] = v
         return d
 
-    def __getitem__(self, key):
+    def __getitem__(self, key: str):
         return self.config[key]
 
     def __repr__(self):
         return yaml.dump(self.config, sort_keys=False)
 
-    def _sanitize(self, d: Dict[str, Any]) -> Dict[str, Any]:
+    def _sanitize(self, d: Dict[str, Any] | list[Any] | str | float | int | None) -> Any:
         """Recursively convert scientific string numbers like '1e-4' to floats."""
         if isinstance(d, dict):
             return {k: self._sanitize(v) for k, v in d.items()}
