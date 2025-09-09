@@ -1,7 +1,7 @@
 from collections import OrderedDict
 import glob
 import os
-from typing import Literal
+from typing import Literal, Any
 import torch as T
 from torch import nn
 from utils.aws_handler import AWSHandler
@@ -19,21 +19,22 @@ class ModelHandler:
         source: Literal["local", "hugging_face", "s3"] | None = None,
         version_name: str = "",
         model_part: Literal["all", "backbone", "detection_head"] = "all",
+        checkpoint_dir: str | None = None,
+        project_name: str | None = None,
         num_layers: int = 0,
-        *args,
-        **kwargs
+        **kwargs: dict[str, Any]
     ):
         if source is None:
             print("Loading weights criteria are not defined.")
             return
         fn_name = self.LOAD_SOURCE_DICT[source]
         fn = getattr(self, fn_name)
-        state_dict = fn(version_name=version_name, **kwargs)
+        state_dict = fn(version_name=version_name, checkpoint_dir=checkpoint_dir, project_name=project_name, **kwargs)
         self._load_weights(model=model, state_dict=state_dict, model_part=model_part)
         
     
     @staticmethod
-    def freeze_weights(model: nn.Module, state_dict: OrderedDict | dict):
+    def freeze_weights(model: nn.Module, state_dict: OrderedDict[str, T.Tensor] | dict[str, T.Tensor]):
         for name, param in model.named_parameters():
             if name in state_dict:
                 param.requires_grad = False
@@ -51,9 +52,7 @@ class ModelHandler:
         project_name: str,
         version_type: str = "latest",
         version_name: str = "",
-        *args,
-        **kwargs
-    ) -> OrderedDict | None:
+    ) -> OrderedDict[str, T.Tensor] | None:
         files = glob.glob(os.path.join(checkpoint_dir, project_name, f"*{version_name}*", "*.pth"))
         
         # Make sure the directory is not empty
@@ -72,7 +71,7 @@ class ModelHandler:
     def _load_weights(
         self,
         model: nn.Module,
-        state_dict: OrderedDict | None,
+        state_dict: OrderedDict[str, T.Tensor] | None,
         model_part: Literal["all", "backbone", "detection_head"],
         if_freeze: bool = True
     ):
@@ -93,9 +92,7 @@ class ModelHandler:
         version_name: str,
         checkpoint_dir: str,
         project_name: str,
-        *args,
-        **kwargs
-    ) -> OrderedDict:
+    ) -> OrderedDict[str, T.Tensor]:
         s3_path = os.path.join(checkpoint_dir, project_name, version_name)
         aws_handler = AWSHandler(s3_bucket_name=s3_bucket_name)
         temp_path = ".temp/state_dict.pth"

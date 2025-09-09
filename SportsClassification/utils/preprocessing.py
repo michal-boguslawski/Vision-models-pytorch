@@ -1,7 +1,9 @@
+import numpy as np
 import os
 from PIL import Image, UnidentifiedImageError
 import pandas as pd
 from tqdm import tqdm
+from typing import Any, cast
 from datasets.dataset_utils import ImageDataset
 from utils.filesystem import remove_dir_with_content, make_dirs
 from utils.data_utils import compute_mean_std
@@ -28,9 +30,7 @@ class DataPreprocessor:
         annotations_file: str = "sports.csv",
         use_existing_train_test_split: bool = True,
         input_size: tuple[int, int] = (224, 224),
-        annotations_config: dict = default_annotation_dict,
-        *args,
-        **kwargs
+        annotations_config: dict[str, Any] = default_annotation_dict,
     ):
         self.root_dir = root_dir
         self.raw_subdir = raw_subdir
@@ -56,15 +56,16 @@ class DataPreprocessor:
         remove_dir_with_content(self.processed_dir)
         remove_dir_with_content(self.annotations_dir)
 
-    def _make_dirs(self, labels: list[str]):
+    def _make_dirs(self, labels: list[str] | np.ndarray):
         # make directories for each train, test, val datasets
-        make_dirs([self.processed_dir], self.split_subdirs, labels)
+        labels_list = labels.tolist() if isinstance(labels, np.ndarray) else labels
+        make_dirs([self.processed_dir], self.split_subdirs, labels_list)
         # make directory for annotations
         make_dirs([self.annotations_dir])
 
     def _preprocessing_loop(self, df: pd.DataFrame, data_set: str):
         print("Start loop")
-        temp_annotations_list = []
+        temp_annotations_list: list[tuple[int, str, str]] = []
         
         for _, row in tqdm(df.iterrows(), desc=data_set, total=len(df)):
             image_path = os.path.join(self.root_dir, self.raw_subdir, str(row[self.annotations_config["filepaths"]]))
@@ -77,9 +78,9 @@ class DataPreprocessor:
                     im = im.convert("RGB")
                     im = im.resize(size=self.input_size)
                     im.save(processed_image_path)
-
+                class_id: int = row[str(self.annotations_config["class_id"])]
                 annotation_row = (
-                    row[self.annotations_config["class_id"]],
+                    class_id,
                     label,
                     os.path.join(data_set, label, image_name)
                 )
@@ -101,10 +102,11 @@ class DataPreprocessor:
 
     def _run_preprocessing(self, df: pd.DataFrame) -> None:
         print("Use existing split")
-        processed_data_set_name = ""
-        data_sets = df[self.annotations_config["train_test_split"]].unique()
+        processed_data_set_name: str = ""
+        split_column: str = str(self.annotations_config["train_test_split"])
+        data_sets: np.ndarray = df[split_column].unique()
         for data_set in data_sets:
-            data_set_df = df[df[self.annotations_config["train_test_split"]] == data_set]
+            data_set_df = cast(pd.DataFrame, df[df[split_column] == data_set])
             
             check_ = False
             for processed_data_set_name in self.split_subdirs:
@@ -117,9 +119,14 @@ class DataPreprocessor:
         print("Data preprocessed")
 
     def _compute_mean_and_std(self):
+        file_path: str = os.path.join(self.annotations_dir, "train.csv")
+        train_df: pd.DataFrame = pd.read_csv( # type: ignore
+            file_path,
+            dtype={"class_id": int, "label": str, "filepath": str},
+        )
         print("Compute mean and std")
         dt = ImageDataset(
-            annotations_file_path=os.path.join(self.annotations_dir, "train.csv"),
+            df=train_df,
             root_dir=self.root_dir,
             processed_subdir=self.processed_subdir,
             transform=None,
@@ -129,11 +136,10 @@ class DataPreprocessor:
 
     def run(self) -> None:
         print("Start preprocessing")
-        annotations_df = pd.read_csv(self.annotations_file_path)
-        labels = annotations_df[self.annotations_config["labels"]].unique()
+        annotations_df: pd.DataFrame = pd.read_csv(self.annotations_file_path)  # type: ignore
+        labels = annotations_df[str(self.annotations_config["labels"])].unique()
         self._clean_folders()
         self._make_dirs(labels=labels)
-        print(self.use_existing_train_test_split)
         
         if self.use_existing_train_test_split:
             self._run_preprocessing(annotations_df)

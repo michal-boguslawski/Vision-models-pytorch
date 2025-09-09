@@ -1,6 +1,8 @@
 import kagglehub
 import os
 import shutil
+from typing import Tuple
+import torch as T
 from torch.utils.data import Dataset, DataLoader
 from utils.filesystem import remove_dir_with_content, check_data_exists
 
@@ -9,8 +11,6 @@ def _download_data_kaggle(
     kaggle_dataset_name: str,
     root_dir: str = "data",
     raw_subdir: str = "raw",
-    *args,
-    **kwargs
 ):
     path = os.path.join(root_dir, raw_subdir)
     dataset_path = kagglehub.dataset_download(kaggle_dataset_name, force_download=True)
@@ -29,8 +29,6 @@ def download_data(
     root_dir: str = "data",
     raw_subdir: str = "raw",
     force_download: bool = False,
-    *args,
-    **kwargs
 ):
     if source == "kaggle":
         if (
@@ -41,14 +39,12 @@ def download_data(
                 kaggle_dataset_name=kaggle_dataset_name,
                 root_dir=root_dir,
                 raw_subdir=raw_subdir,
-                *args,
-                **kwargs
             )
         else:
             print("Dataset already exists in location {root_dir}")
 
-def compute_mean_std(dt: Dataset):
-    loader = DataLoader(dt, batch_size=64, shuffle=False, num_workers=4)
+def compute_mean_std(dt: Dataset[Tuple[T.Tensor, int]]) -> Tuple[float, float]:
+    loader = DataLoader(dt, batch_size=64, shuffle=False, num_workers=0)
     mean = 0.0
     std = 0.0
     total_samples = 0

@@ -2,7 +2,6 @@ import itertools
 import logging
 import os
 import shutil
-from typing import Optional
 
 
 _message_cache: list[str] = []
@@ -22,7 +21,7 @@ def flush_cache():
     _message_cache.clear()
 
 
-def check_data_exists(root_dir: str = "data", subdir: str = "raw", *args, **kwargs):
+def check_data_exists(root_dir: str = "data", subdir: str = "raw"):
     path = os.path.join(root_dir, subdir)
     return os.path.exists(path) and len(os.listdir(path)) > 0
 
@@ -39,7 +38,7 @@ def remove_dir_with_content(path: str):
             cache_message(msg)
 
 
-def make_dirs(*args, **kwargs):
+def make_dirs(*args: list[str]):
     logger = logging.getLogger()
     list_ = itertools.product(*args)
     for path_list in list_:

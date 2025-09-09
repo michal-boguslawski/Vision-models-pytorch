@@ -1,8 +1,8 @@
 from torchvision.transforms import v2
-import torch
+from typing import Any
 
 
-AUGMENTATIONS_DICT = {
+AUGMENTATIONS_DICT: dict[str, tuple[str, Any]] = {
     "horizontal_flip": ("compose", v2.RandomHorizontalFlip(p=0.5)),
     "rotation": ("compose", v2.RandomRotation(degrees=(-45, 45))),
     "random_crop": ("compose", v2.RandomCrop(size=(224, 224))),

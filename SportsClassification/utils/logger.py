@@ -5,7 +5,6 @@ import os
 import sys
 import torch as T
 from torch import nn
-import boto3
 from utils.config_parser import ConfigParser
 from utils.filesystem import make_dirs, remove_dir_with_content, flush_cache
 from utils.helpers import load_dict_and_append
@@ -21,9 +20,7 @@ class Logger:
         save_best_only: bool = True,
         save_checkpoint: bool = True,
         log_dir: str = "logs",
-        log_subdirs: dict | None = None,
-        *args,
-        **kwargs,
+        log_subdirs: dict[str, str] | None = None,
     ):
         self.project_name = project_name
         self.experiment_name = experiment_name
@@ -31,7 +28,7 @@ class Logger:
         self.save_best_only = save_best_only
         self.save_checkpoint = save_checkpoint
         self.log_dir = log_dir
-        self.log_subdirs = log_subdirs or {}
+        self.log_subdirs: dict[str, str] = log_subdirs or {}
 
         self.best_val_loss = None
         self.experiment_log_dir = ""
@@ -56,7 +53,7 @@ class Logger:
         # create directories for logs
         self.experiment_log_dir = os.path.join(self.log_dir, self.project_name, self.experiment_name)
         remove_dir_with_content(self.experiment_log_dir)
-        make_dirs([self.experiment_log_dir], self.log_subdirs)
+        make_dirs([self.experiment_log_dir])
         
         # create directories for checkpoints
         if self.save_checkpoint:
@@ -68,8 +65,9 @@ class Logger:
         config_path = os.path.join(self.experiment_log_dir, "config.yaml")
         config.save(config_path)
 
-    def log_metrics(self, new_metrics: dict, sub_dataset: str = "train"):
-        metrics_path = os.path.join(self.experiment_log_dir, self.log_subdirs[sub_dataset], "metrics.json")
+    def log_metrics(self, new_metrics: dict[str, list[float] | float ], sub_dataset: str = "train"):
+        log_subdirs: str = self.log_subdirs[sub_dataset]
+        metrics_path = os.path.join(self.experiment_log_dir, log_subdirs, "metrics.json")
         metrics = load_dict_and_append(metrics_path, new_metrics)
         
         with open(metrics_path, "w") as f:
@@ -80,9 +78,9 @@ class Logger:
     def log_info(self, message: str):
         logging.info(message)
 
-    def log_artifact(self, target: str = "s3", *args, **kwargs):
-        if target == "s3":
-            self._save_weights_to_s3(s3_bucket_name=kwargs["s3_bucket_name"])
+    def log_artifact(self, target: str = "s3", s3_bucket_name: str | None = None):
+        if target == "s3" and s3_bucket_name:
+            self._save_weights_to_s3(s3_bucket_name=s3_bucket_name)
 
     def _save_weights(self, model: nn.Module, path: str):
         T.save(model.state_dict(), path)        

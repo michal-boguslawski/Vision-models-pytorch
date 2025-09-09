@@ -1,7 +1,6 @@
 import numpy as np
-import os
 from tqdm import tqdm
-from typing import Dict
+from typing import Dict, Any, Tuple, cast
 import torch as T
 from torch.utils.data import DataLoader
 
@@ -15,6 +14,7 @@ from training.schedulers import setup_scheduler
 from utils.config_parser import ConfigParser
 from utils.logger import Logger
 from utils.helpers import filter_kwargs, append_dict_to_dict
+from typing import Mapping
 
 
 class Trainer:
@@ -66,7 +66,7 @@ class Trainer:
         self.project_name = self.config.get("project_name")
         self.experiment_name = self.config.get("experiment_name")
         self.device = self.config["misc"].get("device")
-        self.s3_bucket_name = self.config.get("s3_bucket_name")
+        self.s3_bucket_name: str | None = self.config.get("s3_bucket_name")
 
         self.evaluator = Evaluator(device=self.device, **filter_kwargs(Evaluator, self.config.get("evaluation")))
         self.logger = Logger(**filter_kwargs(Logger, self.config.config))
@@ -110,13 +110,13 @@ class Trainer:
         model = BuildModel(**filter_kwargs(BuildModel, model_config)).to(self.device)
 
         # load pretrained weights
-        pretrained = (model_config.get("pretrained") or {})
+        pretrained: dict[str, dict[str, Any]] = (model_config.get("pretrained") or {})
 
         self.model_handler.load_weights(
             model=model,
             checkpoint_dir = self.checkpoint_dir,
             project_name = self.config["project_name"],
-            **pretrained
+            **filter_kwargs(self.model_handler.load_weights, pretrained)
         )
 
         self.model = model
@@ -133,7 +133,7 @@ class Trainer:
 
         self.num_epochs = training_config["num_epochs"]
         self.log_interval = training_config.get("log_interval")
-        self.freeze_time = pretrained.get("freeze_time", self.num_epochs)
+        self.freeze_time = cast(int, pretrained.get("freeze_time", self.num_epochs))
 
     def _setup_directories(self):
         """
@@ -148,11 +148,11 @@ class Trainer:
             - The directory paths are retrieved from `self.config`.
             - This method does not create the directories on the filesystem; it only sets the paths.
         """
-        self.checkpoint_dir = str(self.config.get("checkpoint_dir", ""))
+        self.checkpoint_dir: str = str(self.config.get("checkpoint_dir", ""))
         self.log_dir = str(self.config.get("log_dir", ""))
         self.log_subdirs = str(self.config.get("log_subdirs", ""))
 
-    def train_one_epoch(self, epoch: int, train_dataloader: DataLoader) -> None:
+    def train_one_epoch(self, epoch: int, train_dataloader: DataLoader[Tuple[T.Tensor, int]]) -> None:
         """
         Train the model for one epoch on the provided training DataLoader.
 
@@ -175,7 +175,7 @@ class Trainer:
             - Metrics are calculated using `self.evaluator.calc_metrics`.
         """
         self.model.train()
-        total_metrics = {
+        total_metrics: dict[str, list[float]] = {
             "loss": []
         }
         batch_idx = -1
@@ -194,7 +194,7 @@ class Trainer:
                 loss /= accumulate_steps
 
             # Backward with scaled loss
-            self.scaler.scale(loss).backward()
+            self.scaler.scale(loss).backward()  # type: ignore
 
             if (batch_idx + 1) % accumulate_steps == 0:
                 self.scaler.unscale_(self.optimizer)
@@ -207,14 +207,15 @@ class Trainer:
             metrics = self.evaluator.calc_metrics(outputs=outputs, labels=labels)
             total_metrics = append_dict_to_dict(total_metrics, metrics)
 
-            pbar.set_postfix({key: np.mean(value) for key, value in total_metrics.items()})
+            stats: Mapping[str, Any] = {key: np.mean(value) for key, value in total_metrics.items()}
+            pbar.set_postfix(ordered_dict=stats)  # type: ignore
             if self.log_interval and ( (batch_idx - self.log_interval + 1) % self.log_interval == 0 ):
                 self.logger.log_metrics({key: value[-self.log_interval:] for key, value in total_metrics.items()}, "train")
         
         log_interval = self.log_interval or len(train_dataloader)
         last_idx = batch_idx % log_interval
 
-        log_dict = {}
+        log_dict: dict[str, Any] = {}
         for key, value in total_metrics.items():
             log_dict[key] = value[-last_idx:]
             log_dict[f"epoch_{key}"] = np.mean(value)
@@ -236,7 +237,7 @@ class Trainer:
         """
         if self.scheduler:
             if isinstance(self.scheduler, T.optim.lr_scheduler.ReduceLROnPlateau):
-                self.scheduler.step(metrics=metric)
+                self.scheduler.step(metrics=metric)  # type: ignore
             else:
                 self.scheduler.step()
             self.logger.log_info(f"Current lr: {self.scheduler.get_last_lr()[0]}")
@@ -264,8 +265,8 @@ class Trainer:
 
     def fit(
         self,
-        train_dataloader: DataLoader,
-        val_dataloader: DataLoader | None = None
+        train_dataloader: DataLoader[Tuple[T.Tensor, int]],
+        val_dataloader: DataLoader[Tuple[T.Tensor, int]] | None = None
     ):
         """
         High-level method to train the model for multiple epochs.
@@ -317,7 +318,7 @@ class Trainer:
 
         self.logger.log_artifact(target="s3", s3_bucket_name=self.s3_bucket_name)
 
-    def validate(self, dl: DataLoader) -> Dict[str, float]:
+    def validate(self, dl: DataLoader[Tuple[T.Tensor, int]]) -> Dict[str, float]:
         """
         Evaluate the model on a validation dataset.
 

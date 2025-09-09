@@ -1,28 +1,30 @@
 import os
 import pandas as pd
 from tqdm import tqdm
+from typing import Any, Tuple
 import torch as T
 from torch import nn
 from torch.utils.data import DataLoader
-from datasets.dataset_utils import create_dataloader
+from datasets.dataset_utils import DatasetHandler
 from evaluation.metrics import setup_metric
 from models.model_factory import BuildModel
 from models.utils import ModelHandler
 from utils.config_parser import ConfigParser
 from utils.helpers import filter_kwargs
+from torcheval.metrics import Metric
 
 
 class Evaluator:
     def __init__(self, metrics: list[str], device: str | None = None):
         self.metrics = metrics
-        self.metrics_fn = {k: setup_metric(k) for k in metrics}
+        self.metrics_fn: dict[str, Metric[Any]] = {k: setup_metric(k) for k in metrics}
         self.device = device or "cpu"
 
     def _reset_metrics(self):
         for values in self.metrics_fn.values():
             values.reset()
 
-    def evaluate(self, model: nn.Module, dl: DataLoader, loss_fn: nn.modules.loss._Loss | None = None):
+    def evaluate(self, model: nn.Module, dl: DataLoader[Tuple[T.Tensor, int]], loss_fn: nn.Module | None = None) -> dict[str, Any]:
         model.eval()
         self._reset_metrics()
         loss = 0
@@ -44,10 +46,10 @@ class Evaluator:
         for metric_fn in self.metrics_fn.values():
             metric_fn.update(outputs, labels)
 
-    def _compute_metrics(self):
+    def _compute_metrics(self) -> dict[str, float]:
         return {key: value.compute().item() for key, value in self.metrics_fn.items()}
 
-    def calc_metrics(self, outputs: T.Tensor, labels: T.Tensor):
+    def calc_metrics(self, outputs: T.Tensor, labels: T.Tensor) -> dict[str, float]:
         self._reset_metrics()
         self._calc_one_step(outputs=outputs, labels=labels)
         metrics = self._compute_metrics()
@@ -58,8 +60,8 @@ class EvaluateProjectModels:
     def __init__(self, project_name: str):
         self.project_name = project_name
 
-        self.df_list = []
-        self.configs_list = []
+        self.df_list: list[dict[str, float]] = []
+        self.configs_list: list[str] = []
         self.logs_dir = os.path.join("logs", project_name)
         self.checkpoints_dir = os.path.join("checkpoints", project_name)
         self.model_handler = ModelHandler()
@@ -98,13 +100,9 @@ class EvaluateProjectModels:
             self.df_list.append(metrics)
 
     @staticmethod
-    def _evaluate_dataset(model: nn.Module, evaluator: Evaluator, dataset_config: dict, sub_dataset: str, experiment_name: str) -> dict:
-        dataloader = create_dataloader(
-            config=dataset_config,
-            sub_dataset=sub_dataset,
-            use_augmentations=False,
-            shuffle=False
-        )
+    def _evaluate_dataset(model: nn.Module, evaluator: Evaluator, dataset_config: dict[str, Any], sub_dataset: str, experiment_name: str) -> dict[str, float]:
+        dataset_handler = DatasetHandler(dataset_config)
+        dataloader = dataset_handler.create_dataloader(sub_dataset=sub_dataset, use_augmentations=False, shuffle=False)
 
         metrics = evaluator.evaluate(model=model, dl=dataloader)
         metrics["sub_dataset"] = sub_dataset

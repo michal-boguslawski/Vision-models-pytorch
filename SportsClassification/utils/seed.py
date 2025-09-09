@@ -11,7 +11,7 @@ def set_seed(seed: int = 42, deterministic: bool = True):
     np.random.seed(seed)
 
     # PyTorch
-    T.manual_seed(seed)
+    T.manual_seed(seed)  # type: ignore
     T.cuda.manual_seed(seed)
     T.cuda.manual_seed_all(seed)  # if using multi-GPU
 
@@ -21,7 +21,7 @@ def set_seed(seed: int = 42, deterministic: bool = True):
 
     cache_message(f"Global seed set to {seed}")
 
-def seed_worker(worker_id):
+def seed_worker(worker_id: int):
     worker_seed = T.initial_seed() % 2**32
     np.random.seed(worker_seed)
     random.seed(worker_seed)
