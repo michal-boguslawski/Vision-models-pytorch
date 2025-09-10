@@ -11,13 +11,6 @@ from utils.seed import seed_worker
 from datasets.augmentations import AUGMENTATIONS_DICT
 
 
-def create_target_encoders(df: pd.DataFrame) -> Tuple[dict[int, str], dict[str, int]]:
-    unique_df = df[["class_id", "label"]].drop_duplicates()
-    id_to_label = dict(zip(unique_df["class_id"], unique_df["label"]))
-    label_to_id = dict(zip(unique_df["label"], unique_df["class_id"]))
-    return id_to_label, label_to_id
-
-
 class ImageDataset(Dataset[Tuple[T.Tensor, int]]):
     def __init__(
         self,
@@ -53,11 +46,14 @@ class DatasetHandler:
     ):
         self.config = config
         
-        self._load_df()
-        self._create_target_encoders(self.df_dict["train"])
+        self.df_dict = {}
+        self.id_to_label = {}
+        self.label_to_id = {}
         self.transforms = None
 
     def _load_df(self):
+        if self.df_dict:
+            return
         root_dir = str(self.config["root_dir"])
         annotations_subdir = str(self.config.get("annotations_subdir", "annotations"))
 
@@ -73,6 +69,8 @@ class DatasetHandler:
         self.df_dict = df_dict
 
     def _create_target_encoders(self, df: pd.DataFrame):
+        if self.id_to_label:
+            return
         unique_df = df[["class_id", "label"]].drop_duplicates()
         self.id_to_label = dict(zip(unique_df["class_id"], unique_df["label"]))
         self.label_to_id = dict(zip(unique_df["label"], unique_df["class_id"]))
@@ -142,6 +140,8 @@ class DatasetHandler:
         use_augmentations: bool = True,
         shuffle: bool = True,
     ) -> DataLoader[Tuple[T.Tensor, int]]:
+        self._load_df()
+        self._create_target_encoders(self.df_dict["train"])
         num_workers: int = cast(int, self.config.get("num_workers", 1))
 
         dl = DataLoader(

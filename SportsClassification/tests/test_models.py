@@ -11,5 +11,5 @@ class TestModelsBackbone:
         with T.no_grad():
             output = alexnet_backbone(sample_image)
         
-        assert output.shape == (1, 1000)
-        
+        assert output.shape == (1, 256, 5, 5)
+ 

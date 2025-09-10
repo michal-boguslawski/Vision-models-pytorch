@@ -70,7 +70,7 @@ class EvaluateProjectModels:
 
     def _evaluate_single_model(self, config: ConfigParser):
         experiment_name = config["experiment_name"]
-        device = config["misc"].get("device", "cpu")
+        device = config["misc"].get("device", "cpu") if T.cuda.is_available() else "cpu"
         evaluator = Evaluator(**filter_kwargs(Evaluator, config["evaluation"]), device=device)
 
         # build model

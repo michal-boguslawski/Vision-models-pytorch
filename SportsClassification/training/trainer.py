@@ -1,9 +1,11 @@
+from copy import deepcopy
 import numpy as np
 from tqdm import tqdm
 from typing import Dict, Any, Tuple, cast
 import torch as T
 from torch.utils.data import DataLoader
 
+from datasets.dataset_utils import DatasetHandler
 from evaluation.evaluate import Evaluator
 from models.model_factory import BuildModel
 from models.utils import ModelHandler
@@ -60,12 +62,15 @@ class Trainer:
     """
     def __init__(
         self,
-        config: ConfigParser
+        config: ConfigParser,
+        dataset_handler: DatasetHandler
     ):
         self.config = config
+        self.dataset_handler = dataset_handler
+
         self.project_name = self.config.get("project_name")
         self.experiment_name = self.config.get("experiment_name")
-        self.device = self.config["misc"].get("device")
+        self.device = self.config["misc"].get("device") if T.cuda.is_available() else "cpu"
         self.s3_bucket_name: str | None = self.config.get("s3_bucket_name")
 
         self.evaluator = Evaluator(device=self.device, **filter_kwargs(Evaluator, self.config.get("evaluation")))
@@ -263,9 +268,28 @@ class Trainer:
             return self.early_stopper.should_stop
         return False
 
+    def _on_fit_start(self):
+        """
+        Actions to perform at the start of the training process.
+
+        Logs the configuration at the start of training.
+        """
+        self.logger.log_config(self.config)
+        self.logger.log_info("Training started...")
+        self.logger.log_info(self.model.__str__())
+
+        config_to_dynamodb = deepcopy(self.config.config)
+        config_to_dynamodb["label_to_id"] = self.dataset_handler.label_to_id
+        self.logger.log_artifact(
+            target="dynamodb",
+            artifact_type="config",
+            dynamodb_config_table=self.config["dynamodb_config_table"],
+            item=config_to_dynamodb
+        )
+
     def fit(
         self,
-        train_dataloader: DataLoader[Tuple[T.Tensor, int]],
+        train_dataloader: DataLoader[Tuple[T.Tensor, int]] | None = None,
         val_dataloader: DataLoader[Tuple[T.Tensor, int]] | None = None
     ):
         """
@@ -289,9 +313,20 @@ class Trainer:
             - Logs epoch metrics, including training and validation metrics.
             - Stops training early if early stopping is triggered.
         """
-        self.logger.log_config(self.config)
-        self.logger.log_info("Training started...")
-        self.logger.log_info(self.model.__str__())
+        if not train_dataloader:
+            train_dataloader = self.dataset_handler.create_dataloader(
+                sub_dataset="train",
+                use_augmentations=True,
+                shuffle=True
+            )
+        if not val_dataloader:
+            val_dataloader = self.dataset_handler.create_dataloader(
+                sub_dataset="val",
+                use_augmentations=False,
+                shuffle=False
+            )
+
+        self._on_fit_start()
         for epoch in range(self.num_epochs):
             if epoch == self.freeze_time:
                 self.model_handler.unfreeze_weights(self.model)

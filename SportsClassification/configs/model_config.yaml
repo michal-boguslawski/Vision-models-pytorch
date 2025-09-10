@@ -1,12 +1,12 @@
 # model_config.yaml
-model_name: VGG13
+model_name: AlexNet
 # backbone_name: VGG13
 # detection_head_name: GAP
-pretrained: 
-  source: local
-  model_part: backbone
-  version_name: vgg13-gap-pretrained-w-augmenations
-  freeze_time: 10
+# pretrained: 
+#   source: local
+#   model_part: backbone
+#   version_name: vgg13-gap-pretrained-w-augmenations
+#   freeze_time: 10
 
 num_classes: 100
 num_anchors: 3

@@ -5,6 +5,7 @@ import os
 import sys
 import torch as T
 from torch import nn
+from typing import Any
 from utils.config_parser import ConfigParser
 from utils.filesystem import make_dirs, remove_dir_with_content, flush_cache
 from utils.helpers import load_dict_and_append
@@ -53,7 +54,7 @@ class Logger:
         # create directories for logs
         self.experiment_log_dir = os.path.join(self.log_dir, self.project_name, self.experiment_name)
         remove_dir_with_content(self.experiment_log_dir)
-        make_dirs([self.experiment_log_dir])
+        make_dirs([self.experiment_log_dir], list(self.log_subdirs.values()))
         
         # create directories for checkpoints
         if self.save_checkpoint:
@@ -78,9 +79,18 @@ class Logger:
     def log_info(self, message: str):
         logging.info(message)
 
-    def log_artifact(self, target: str = "s3", s3_bucket_name: str | None = None):
-        if target == "s3" and s3_bucket_name:
-            self._save_weights_to_s3(s3_bucket_name=s3_bucket_name)
+    def log_artifact(
+        self,
+        target: str = "s3",
+        artifact_type: str = "weights",
+        s3_bucket_name: str | None = None,
+        dynamodb_config_table: str | None = None,
+        item: dict[str, Any] | None = None
+    ):
+        if target == "s3" and artifact_type == "weights" and s3_bucket_name:
+            self._save_to_s3(s3_bucket_name=s3_bucket_name, path=self.experiment_checkpoint_dir)
+        elif target == "dynamodb" and artifact_type == "config" and dynamodb_config_table and item:
+            self._put_to_dynamodb(dynamodb_config_table=dynamodb_config_table, item=item)
 
     def _save_weights(self, model: nn.Module, path: str):
         T.save(model.state_dict(), path)        
@@ -101,11 +111,20 @@ class Logger:
             self._save_weights(model=model, path=checkpoint_path)
             self.log_info(f"Model saved for epoch {epoch}.")
 
-    def _save_weights_to_s3(self, s3_bucket_name: str):
+    def _save_to_s3(self, s3_bucket_name: str, path: str):
         aws_handler = AWSHandler(s3_bucket_name=s3_bucket_name)
-        for root, _, files in os.walk(self.experiment_checkpoint_dir):
+        aws_handler.create_s3_bucket_if_not_exists()
+        for root, _, files in os.walk(path):
             for filename in files:
-                local_path = os.path.join(root, filename)
-                s3_path = local_path.replace("\\", "/")
-                
-                aws_handler.upload_file(local_path=local_path, to_path=s3_path)
+                if filename:
+                    local_path = os.path.join(root, filename)
+                    s3_path = local_path.replace("\\", "/")
+                    
+                    aws_handler.upload_file_to_s3(local_path=local_path, s3_path=s3_path)
+
+    def _put_to_dynamodb(self, dynamodb_config_table: str, item: dict[str, Any]):
+        aws_handler = AWSHandler(dynamodb_config_table=dynamodb_config_table)
+        aws_handler.create_dynamodb_table_if_not_exists()
+        assert "project_name" in item, "project_name must be in item"
+        assert "experiment_name" in item, "experiment_name must be in item"
+        aws_handler.put_item_to_dynamodb(item=item)

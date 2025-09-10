@@ -1,7 +1,10 @@
+from collections.abc import Callable
+from decimal import Decimal
 import inspect
 import json
 import os
-from collections.abc import Callable
+import secrets
+import string
 from typing import Dict, Any, Optional, Mapping
 
 
@@ -39,3 +42,25 @@ def load_dict_and_append(path: str, new_dict_: dict[str, list[float] | float]):
     dict_ = append_dict_to_dict(dict_, new_dict_=new_dict_)
 
     return dict_
+
+def generate_random_name(length: int = 12) -> str:
+    # Define allowed characters
+    alphabet = string.ascii_lowercase + string.digits
+    
+    # Ensure password has at least one of each type (optional, but good practice)
+    while True:
+        random_name = ''.join(secrets.choice(alphabet) for _ in range(length))
+        if (any(c.islower() for c in random_name)
+            and any(c.isdigit() for c in random_name)):
+            return random_name
+
+def convert_floats_to_decimal(d):
+    """Recursively convert all floats in dict/list to Decimal."""
+    if isinstance(d, dict):
+        return {k: convert_floats_to_decimal(v) for k, v in d.items()}
+    elif isinstance(d, list):
+        return [convert_floats_to_decimal(v) for v in d]
+    elif isinstance(d, float):
+        return Decimal(str(d))  # use str to preserve precision
+    else:
+        return d

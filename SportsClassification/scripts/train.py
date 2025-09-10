@@ -1,7 +1,8 @@
 import os
-from utils.config_parser import ConfigParser
-from datasets.dataset_utils import create_dataloader
+from datasets.dataset_utils import DatasetHandler
 from training.trainer import Trainer
+from utils.aws_handler import AWSHandler
+from utils.config_parser import ConfigParser
 from utils.seed import set_seed
 
 
@@ -11,19 +12,7 @@ if __name__ == "__main__":
     
     misc_config = config["misc"]
     set_seed(misc_config["seed"], misc_config["deterministic"])
-    
-    train_dl = create_dataloader(
-        config=config["dataset"],
-        sub_dataset="train",
-        use_augmentations=True,
-        shuffle=True
-    )
-    val_dl = create_dataloader(
-        config=config["dataset"],
-        sub_dataset="val",
-        use_augmentations=True,
-        shuffle=False
-    )
+    dataset_handler = DatasetHandler(config=config["dataset"])
 
-    trainer = Trainer(config=config)
-    trainer.fit(train_dataloader=train_dl, val_dataloader=val_dl)
+    trainer = Trainer(config=config, dataset_handler=dataset_handler)
+    trainer.fit()

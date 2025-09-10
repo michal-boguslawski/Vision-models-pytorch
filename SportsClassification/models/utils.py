@@ -101,7 +101,7 @@ class ModelHandler:
         aws_handler = AWSHandler(s3_bucket_name=s3_bucket_name)
         temp_path = ".temp/state_dict.pth"
         os.makedirs(os.path.dirname(temp_path), exist_ok=True)
-        aws_handler.download_file(from_path=s3_path, local_path=temp_path)
+        aws_handler.download_file_from_s3(s3_path=s3_path, local_path=temp_path)
         state_dict = T.load(temp_path, map_location=T.device(device))
         os.remove(temp_path)
         return state_dict
