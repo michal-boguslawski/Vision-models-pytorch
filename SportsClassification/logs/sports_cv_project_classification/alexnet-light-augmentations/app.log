@@ -1,0 +1,312 @@
+2025-09-10 17:19:56,234 | INFO | Start preprocessing
+2025-09-10 17:19:56,580 | INFO | Folder data/processed was removed with its entire content
+2025-09-10 17:19:56,580 | INFO | Folder data/annotations was removed with its entire content
+2025-09-10 17:19:56,580 | INFO | Path data/processed/train/air hockey created or existed
+2025-09-10 17:19:56,580 | INFO | Path data/processed/train/ampute football created or existed
+2025-09-10 17:19:56,580 | INFO | Path data/processed/train/archery created or existed
+2025-09-10 17:19:56,580 | INFO | Path data/processed/train/arm wrestling created or existed
+2025-09-10 17:19:56,580 | INFO | Path data/processed/train/axe throwing created or existed
+2025-09-10 17:19:56,580 | INFO | Path data/processed/train/balance beam created or existed
+2025-09-10 17:19:56,580 | INFO | Path data/processed/train/barell racing created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/baseball created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/basketball created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/baton twirling created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/bike polo created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/billiards created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/bmx created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/bobsled created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/bowling created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/boxing created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/bull riding created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/bungee jumping created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/canoe slamon created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/cheerleading created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/chuckwagon racing created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/cricket created or existed
+2025-09-10 17:19:56,581 | INFO | Path data/processed/train/croquet created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/curling created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/disc golf created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/fencing created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/field hockey created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/figure skating men created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/figure skating pairs created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/figure skating women created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/fly fishing created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/football created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/formula 1 racing created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/frisbee created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/gaga created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/giant slalom created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/golf created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/hammer throw created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/hang gliding created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/harness racing created or existed
+2025-09-10 17:19:56,582 | INFO | Path data/processed/train/high jump created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/hockey created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/horse jumping created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/horse racing created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/horseshoe pitching created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/hurdles created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/hydroplane racing created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/ice climbing created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/ice yachting created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/jai alai created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/javelin created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/jousting created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/judo created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/lacrosse created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/log rolling created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/luge created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/motorcycle racing created or existed
+2025-09-10 17:19:56,583 | INFO | Path data/processed/train/mushing created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/nascar racing created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/olympic wrestling created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/parallel bar created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/pole climbing created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/pole dancing created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/pole vault created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/polo created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/pommel horse created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/rings created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/rock climbing created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/roller derby created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/rollerblade racing created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/rowing created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/rugby created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/sailboat racing created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/shot put created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/shuffleboard created or existed
+2025-09-10 17:19:56,584 | INFO | Path data/processed/train/sidecar racing created or existed
+2025-09-10 17:19:56,585 | INFO | Path data/processed/train/ski jumping created or existed
+2025-09-10 17:19:56,585 | INFO | Path data/processed/train/sky surfing created or existed
+2025-09-10 17:19:56,585 | INFO | Path data/processed/train/skydiving created or existed
+2025-09-10 17:19:56,585 | INFO | Path data/processed/train/snow boarding created or existed
+2025-09-10 17:19:56,585 | INFO | Path data/processed/train/snowmobile racing created or existed
+2025-09-10 17:19:56,585 | INFO | Path data/processed/train/speed skating created or existed
+2025-09-10 17:19:56,585 | INFO | Path data/processed/train/steer wrestling created or existed
+2025-09-10 17:19:56,585 | INFO | Path data/processed/train/sumo wrestling created or existed
+2025-09-10 17:19:56,586 | INFO | Path data/processed/train/surfing created or existed
+2025-09-10 17:19:56,586 | INFO | Path data/processed/train/swimming created or existed
+2025-09-10 17:19:56,586 | INFO | Path data/processed/train/table tennis created or existed
+2025-09-10 17:19:56,586 | INFO | Path data/processed/train/tennis created or existed
+2025-09-10 17:19:56,586 | INFO | Path data/processed/train/track bicycle created or existed
+2025-09-10 17:19:56,586 | INFO | Path data/processed/train/trapeze created or existed
+2025-09-10 17:19:56,586 | INFO | Path data/processed/train/tug of war created or existed
+2025-09-10 17:19:56,586 | INFO | Path data/processed/train/ultimate created or existed
+2025-09-10 17:19:56,586 | INFO | Path data/processed/train/uneven bars created or existed
+2025-09-10 17:19:56,586 | INFO | Path data/processed/train/volleyball created or existed
+2025-09-10 17:19:56,586 | INFO | Path data/processed/train/water cycling created or existed
+2025-09-10 17:19:56,586 | INFO | Path data/processed/train/water polo created or existed
+2025-09-10 17:19:56,586 | INFO | Path data/processed/train/weightlifting created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/train/wheelchair basketball created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/train/wheelchair racing created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/train/wingsuit flying created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/val/air hockey created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/val/ampute football created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/val/archery created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/val/arm wrestling created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/val/axe throwing created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/val/balance beam created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/val/barell racing created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/val/baseball created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/val/basketball created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/val/baton twirling created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/val/bike polo created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/val/billiards created or existed
+2025-09-10 17:19:56,587 | INFO | Path data/processed/val/bmx created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/bobsled created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/bowling created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/boxing created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/bull riding created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/bungee jumping created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/canoe slamon created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/cheerleading created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/chuckwagon racing created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/cricket created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/croquet created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/curling created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/disc golf created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/fencing created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/field hockey created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/figure skating men created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/figure skating pairs created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/figure skating women created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/fly fishing created or existed
+2025-09-10 17:19:56,588 | INFO | Path data/processed/val/football created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/formula 1 racing created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/frisbee created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/gaga created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/giant slalom created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/golf created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/hammer throw created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/hang gliding created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/harness racing created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/high jump created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/hockey created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/horse jumping created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/horse racing created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/horseshoe pitching created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/hurdles created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/hydroplane racing created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/ice climbing created or existed
+2025-09-10 17:19:56,589 | INFO | Path data/processed/val/ice yachting created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/jai alai created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/javelin created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/jousting created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/judo created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/lacrosse created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/log rolling created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/luge created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/motorcycle racing created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/mushing created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/nascar racing created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/olympic wrestling created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/parallel bar created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/pole climbing created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/pole dancing created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/pole vault created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/polo created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/pommel horse created or existed
+2025-09-10 17:19:56,590 | INFO | Path data/processed/val/rings created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/rock climbing created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/roller derby created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/rollerblade racing created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/rowing created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/rugby created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/sailboat racing created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/shot put created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/shuffleboard created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/sidecar racing created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/ski jumping created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/sky surfing created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/skydiving created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/snow boarding created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/snowmobile racing created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/speed skating created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/steer wrestling created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/sumo wrestling created or existed
+2025-09-10 17:19:56,591 | INFO | Path data/processed/val/surfing created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/val/swimming created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/val/table tennis created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/val/tennis created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/val/track bicycle created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/val/trapeze created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/val/tug of war created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/val/ultimate created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/val/uneven bars created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/val/volleyball created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/val/water cycling created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/val/water polo created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/val/weightlifting created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/val/wheelchair basketball created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/val/wheelchair racing created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/val/wingsuit flying created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/test/air hockey created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/test/ampute football created or existed
+2025-09-10 17:19:56,592 | INFO | Path data/processed/test/archery created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/arm wrestling created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/axe throwing created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/balance beam created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/barell racing created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/baseball created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/basketball created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/baton twirling created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/bike polo created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/billiards created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/bmx created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/bobsled created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/bowling created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/boxing created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/bull riding created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/bungee jumping created or existed
+2025-09-10 17:19:56,593 | INFO | Path data/processed/test/canoe slamon created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/cheerleading created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/chuckwagon racing created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/cricket created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/croquet created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/curling created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/disc golf created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/fencing created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/field hockey created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/figure skating men created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/figure skating pairs created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/figure skating women created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/fly fishing created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/football created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/formula 1 racing created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/frisbee created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/gaga created or existed
+2025-09-10 17:19:56,594 | INFO | Path data/processed/test/giant slalom created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/golf created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/hammer throw created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/hang gliding created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/harness racing created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/high jump created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/hockey created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/horse jumping created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/horse racing created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/horseshoe pitching created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/hurdles created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/hydroplane racing created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/ice climbing created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/ice yachting created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/jai alai created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/javelin created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/jousting created or existed
+2025-09-10 17:19:56,595 | INFO | Path data/processed/test/judo created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/lacrosse created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/log rolling created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/luge created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/motorcycle racing created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/mushing created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/nascar racing created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/olympic wrestling created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/parallel bar created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/pole climbing created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/pole dancing created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/pole vault created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/polo created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/pommel horse created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/rings created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/rock climbing created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/roller derby created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/rollerblade racing created or existed
+2025-09-10 17:19:56,596 | INFO | Path data/processed/test/rowing created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/rugby created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/sailboat racing created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/shot put created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/shuffleboard created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/sidecar racing created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/ski jumping created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/sky surfing created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/skydiving created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/snow boarding created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/snowmobile racing created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/speed skating created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/steer wrestling created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/sumo wrestling created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/surfing created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/swimming created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/table tennis created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/tennis created or existed
+2025-09-10 17:19:56,597 | INFO | Path data/processed/test/track bicycle created or existed
+2025-09-10 17:19:56,598 | INFO | Path data/processed/test/trapeze created or existed
+2025-09-10 17:19:56,598 | INFO | Path data/processed/test/tug of war created or existed
+2025-09-10 17:19:56,598 | INFO | Path data/processed/test/ultimate created or existed
+2025-09-10 17:19:56,598 | INFO | Path data/processed/test/uneven bars created or existed
+2025-09-10 17:19:56,598 | INFO | Path data/processed/test/volleyball created or existed
+2025-09-10 17:19:56,598 | INFO | Path data/processed/test/water cycling created or existed
+2025-09-10 17:19:56,598 | INFO | Path data/processed/test/water polo created or existed
+2025-09-10 17:19:56,598 | INFO | Path data/processed/test/weightlifting created or existed
+2025-09-10 17:19:56,598 | INFO | Path data/processed/test/wheelchair basketball created or existed
+2025-09-10 17:19:56,598 | INFO | Path data/processed/test/wheelchair racing created or existed
+2025-09-10 17:19:56,598 | INFO | Path data/processed/test/wingsuit flying created or existed
+2025-09-10 17:19:56,598 | INFO | Path data/annotations created or existed
+2025-09-10 17:19:56,598 | INFO | Use existing split
+2025-09-10 17:19:56,600 | INFO | Start loop for train part
+2025-09-10 17:20:01,632 | INFO | Skipped non-image file data/raw/train/high jump/159.lnk
+2025-09-10 17:20:09,147 | INFO | Start loop for test part
+2025-09-10 17:20:09,592 | INFO | Start loop for val part
+2025-09-10 17:20:10,042 | INFO | Data preprocessed
+2025-09-10 17:20:10,051 | INFO | Compute mean and std
+2025-09-10 17:20:47,528 | INFO | Mean: tensor([0.4714, 0.4699, 0.4551]), Std: tensor([0.2391, 0.2302, 0.2320])

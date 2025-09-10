@@ -2,7 +2,10 @@ import os
 from typing import Dict, Any, cast
 from yaml import SafeLoader, ScalarNode
 import yaml
-from utils.filesystem import cache_message
+from utils.logger import SingletonLogger
+
+
+logger_instance = SingletonLogger()
 
 
 def yaml_include(loader: SafeLoader, node: ScalarNode) -> Dict[str, Any]:
@@ -69,4 +72,4 @@ class ConfigParser:
     def save(self, path: str):
         with open(path, "w") as f:
             yaml.dump(self.config, f, sort_keys=False, default_flow_style=False)
-        cache_message(f"Config saved to {path}")
+        logger_instance.logger.info(f"Saved config to {path}")

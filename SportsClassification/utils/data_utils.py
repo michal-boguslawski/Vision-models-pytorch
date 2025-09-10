@@ -5,6 +5,10 @@ from typing import Tuple
 import torch as T
 from torch.utils.data import Dataset, DataLoader
 from utils.filesystem import remove_dir_with_content, check_data_exists
+from utils.logger import SingletonLogger
+
+
+logger_instance = SingletonLogger()
 
 
 def _download_data_kaggle(
@@ -12,15 +16,16 @@ def _download_data_kaggle(
     root_dir: str = "data",
     raw_subdir: str = "raw",
 ):
+    logger_instance.logger.info("Downloading dataset from kaggle...")
     path = os.path.join(root_dir, raw_subdir)
     dataset_path = kagglehub.dataset_download(kaggle_dataset_name, force_download=True)
 
     remove_dir_with_content(path)
 
-    print(f"Path to dataset files: {dataset_path}")
+    logger_instance.logger.info(f"Dataset downloaded. Path to dataset files: {dataset_path}")
 
     shutil.move(dataset_path, path)
-    print(f"Folder moved from {dataset_path} to {path}")
+    logger_instance.logger.info(f"Folder moved from {dataset_path} to {path}")
 
 
 def download_data(
@@ -41,7 +46,7 @@ def download_data(
                 raw_subdir=raw_subdir,
             )
         else:
-            print("Dataset already exists in location {root_dir}")
+            logger_instance.logger.info("Dataset already exists in location {root_dir}")
 
 def compute_mean_std(dt: Dataset[Tuple[T.Tensor, int]]) -> Tuple[float, float]:
     loader = DataLoader(dt, batch_size=64, shuffle=False, num_workers=0)

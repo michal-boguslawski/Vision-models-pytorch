@@ -1,9 +1,20 @@
 from utils.config_parser import ConfigParser
 from utils.data_utils import download_data
 from utils.helpers import filter_kwargs
+from utils.logger import SingletonLogger
 
 
 if __name__ == "__main__":
-    config = ConfigParser(config_path="configs/dataset_config.yaml")
+    config = ConfigParser(config_path="configs/default.yaml")
+    logger_instance = SingletonLogger()
+    logger_instance.initialize(
+        project_name=config.get("project_name"),
+        experiment_name=config.get("experiment_name"),
+        checkpoints_dir=config.get("checkpoints_dir"),
+        logs_dir=config.get("logs_dir")
+    )
+    logger = logger_instance.get_logger()
+    logger.info(config)
     
-    download_data(**filter_kwargs(download_data, config.config))
+    logger.info("Downloading data...")
+    download_data(**filter_kwargs(download_data, config["dataset"]))

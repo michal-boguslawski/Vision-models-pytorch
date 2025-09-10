@@ -1,19 +1,14 @@
 # default.yaml
 project_name: sports_cv_project_classification
-experiment_name: alexnet
+experiment_name: alexnet-light-augmentations
 
 # Include model and dataset configs
 model: !include model_config.yaml
 dataset: !include dataset_config.yaml
 
 # Paths for outputs
-checkpoint_dir: checkpoints/
-log_dir: logs/
-# Subfolders for clarity
-log_subdirs:
-  train: train
-  val: val
-  test: test
+checkpoints_dir: checkpoints/
+logs_dir: logs/
 
 # Training settings
 training:

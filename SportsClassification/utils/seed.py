@@ -1,7 +1,12 @@
 import random
 import numpy as np
 import torch as T
-from utils.filesystem import cache_message
+
+from utils.logger import SingletonLogger
+
+
+logger_instance = SingletonLogger()
+
 
 def set_seed(seed: int = 42, deterministic: bool = True):
     # Python random module
@@ -19,7 +24,7 @@ def set_seed(seed: int = 42, deterministic: bool = True):
     T.backends.cudnn.deterministic = deterministic
     T.backends.cudnn.benchmark = False
 
-    cache_message(f"Global seed set to {seed}")
+    logger_instance.logger.info(f"Global seed set to {seed}")
 
 def seed_worker(worker_id: int):
     worker_seed = T.initial_seed() % 2**32

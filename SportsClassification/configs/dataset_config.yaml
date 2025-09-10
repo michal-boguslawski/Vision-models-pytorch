@@ -21,14 +21,14 @@ augmentations:
   horizontal_flip: true
   rotation: true
   random_crop: false
-  color_jitter: true
+  color_jitter: false
   random_resized_crop: true
-  grayscale: true
-  gaussian_blur: true
-  perspective: true
-  affine: true
-  erasing: true
-  adjust_sharpness: true
+  grayscale: false
+  gaussian_blur: false
+  perspective: false
+  affine: false
+  erasing: false
+  adjust_sharpness: false
 
 batch_size: 64
 shuffle: true

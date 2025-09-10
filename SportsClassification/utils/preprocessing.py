@@ -5,8 +5,13 @@ import pandas as pd
 from tqdm import tqdm
 from typing import Any, cast
 from datasets.dataset_utils import ImageDataset
-from utils.filesystem import remove_dir_with_content, make_dirs
+
 from utils.data_utils import compute_mean_std
+from utils.filesystem import remove_dir_with_content, make_dirs
+from utils.logger import SingletonLogger
+
+
+logger_instance = SingletonLogger()
 
 
 default_annotation_dict = {
@@ -64,7 +69,7 @@ class DataPreprocessor:
         make_dirs([self.annotations_dir])
 
     def _preprocessing_loop(self, df: pd.DataFrame, data_set: str):
-        print("Start loop")
+        logger_instance.logger.info(f"Start loop for {data_set} part")
         temp_annotations_list: list[tuple[int, str, str]] = []
         
         for _, row in tqdm(df.iterrows(), desc=data_set, total=len(df)):
@@ -86,7 +91,7 @@ class DataPreprocessor:
                 )
                 temp_annotations_list.append(annotation_row)
             except UnidentifiedImageError:
-                print(f"Skipped non-image file {image_path}")
+                logger_instance.logger.info(f"Skipped non-image file {image_path}")
             except Exception as e:
                 raise e
 
@@ -101,7 +106,7 @@ class DataPreprocessor:
         )
 
     def _run_preprocessing(self, df: pd.DataFrame) -> None:
-        print("Use existing split")
+        logger_instance.logger.info("Use existing split")
         processed_data_set_name: str = ""
         split_column: str = str(self.annotations_config["train_test_split"])
         data_sets: np.ndarray = df[split_column].unique()
@@ -116,7 +121,7 @@ class DataPreprocessor:
             
             if check_:
                 self._preprocessing_loop(df=data_set_df, data_set=processed_data_set_name)
-        print("Data preprocessed")
+        logger_instance.logger.info("Data preprocessed")
 
     def _compute_mean_and_std(self):
         file_path: str = os.path.join(self.annotations_dir, "train.csv")
@@ -124,7 +129,7 @@ class DataPreprocessor:
             file_path,
             dtype={"class_id": int, "label": str, "filepath": str},
         )
-        print("Compute mean and std")
+        logger_instance.logger.info("Compute mean and std")
         dt = ImageDataset(
             df=train_df,
             root_dir=self.root_dir,
@@ -132,10 +137,10 @@ class DataPreprocessor:
             transform=None,
         )
         mean, std = compute_mean_std(dt)
-        print(f"Mean: {mean}, Std: {std}")
+        logger_instance.logger.info(f"Mean: {mean}, Std: {std}")
 
     def run(self) -> None:
-        print("Start preprocessing")
+        logger_instance.logger.info("Start preprocessing")
         annotations_df: pd.DataFrame = pd.read_csv(self.annotations_file_path)  # type: ignore
         labels = annotations_df[str(self.annotations_config["labels"])].unique()
         self._clean_folders()
