@@ -1,5 +1,5 @@
-from copy import deepcopy
 import numpy as np
+import os
 from tqdm import tqdm
 from typing import Dict, Any, Tuple, cast
 import torch as T
@@ -294,6 +294,7 @@ class Trainer:
         """
         logger_instance.logger.info("Training finished...")
         logger_instance.log_artifact("best_model.pth", "s3")
+        
 
     def _on_epoch_end(self, val_metrics: dict[str, float]):
         """
@@ -301,10 +302,11 @@ class Trainer:
 
         Logs the epoch metrics, saves the model weights, and updates the best value
         """
-        val_loss = val_metrics.get("loss", 0.0)
+        logger_instance.logger.info(val_metrics)
+        val_loss = val_metrics.get("epoch_loss", 0.0)
         if self.best_value is None or val_loss < self.best_value:
             self.best_value = val_loss
-            logger_instance.save_weights(self.model, f"best_model.pth")
+            logger_instance.log_artifact(filename="best_model.pth", target="local", artifact=self.model)
             logger_instance.logger.info("Best model saved")
 
     def fit(
@@ -344,8 +346,7 @@ class Trainer:
             val_metrics = {}
             if val_dataloader:
                 val_metrics = self.validate(dl=val_dataloader, epoch=epoch)
-
-            val_loss = val_metrics.get("loss", 0.0)
+            val_loss = val_metrics.get("epoch_loss", 0.0)
             self._scheduler_step(val_loss)
             
             if self._early_stopping_step(val_loss):

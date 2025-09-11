@@ -2,8 +2,14 @@ import json
 import logging
 import os
 import torch as T
+from torch import nn
+from typing import Any
 from utils.aws_handler import AWSHandler
+from utils.filesystem import remove_dir_with_content
 from utils.metaclass import SingletonMeta
+
+
+aws_handler = AWSHandler()
 
 
 class SingletonLogger(metaclass=SingletonMeta):
@@ -24,6 +30,9 @@ class SingletonLogger(metaclass=SingletonMeta):
         self.checkpoints_dir = os.path.join(checkpoints_dir, project_name, experiment_name)
         log_file = os.path.join(logs_dir, project_name, experiment_name, "app.log")
         metrics_file = os.path.join(logs_dir, project_name, experiment_name, "metrics.json")
+        
+        remove_dir_with_content(self.checkpoints_dir)
+        remove_dir_with_content(os.path.join(logs_dir, project_name, experiment_name))
 
         # create directories
         for path in [os.path.dirname(log_file), os.path.dirname(metrics_file), self.checkpoints_dir]:
@@ -63,6 +72,7 @@ class SingletonLogger(metaclass=SingletonMeta):
 
         # Avoid duplicate handlers
         if not self.metrics_logger.handlers:
+            
             metrics_handler = logging.FileHandler(metrics_file)
             metrics_handler.setLevel(logging.INFO)
             # Simple formatter: just the message (JSON)
@@ -85,16 +95,13 @@ class SingletonLogger(metaclass=SingletonMeta):
         """Write metrics only to metrics file."""
         self.metrics_logger.info(json.dumps(metrics))
 
-    def save_weights(self, model, filename: str):  # to powinno wylądować w model_handler
-        """Save model weights and log the action to main logger."""
-        save_path = os.path.join(self.checkpoints_dir, filename)
-        T.save(model.state_dict(), save_path)
-        self.logger.info(f"Saved model weights to {save_path}")
-
-    def log_artifact(self, filename: str, target: str):
-        aws_handler = AWSHandler()
+    def log_artifact(self, filename: str, target: str, artifact: Any = None):
         if target == "s3":
             local_path = os.path.join(self.checkpoints_dir, filename)
             self.logger.info(f"Uploading {local_path} to S3")
-            aws_handler.upload_file_to_s3(local_path)
+            aws_handler.upload_file_to_s3(local_path=local_path)
+        elif target == "local" and isinstance(artifact, nn.Module):
+            from models.utils import ModelHandler
+            model_handler = ModelHandler()
+            model_handler.save_weights(model=artifact, filename=filename)
         

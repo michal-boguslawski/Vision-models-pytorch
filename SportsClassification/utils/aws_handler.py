@@ -1,15 +1,15 @@
 from botocore.exceptions import ClientError
 import boto3
 from boto3.dynamodb.conditions import Key
+import logging
 from mypy_boto3_s3.type_defs import BucketLocationConstraintType  # type: ignore
 import os
 from typing import Any, cast
 from utils.helpers import convert_floats_to_decimal
-from utils.logger import SingletonLogger
 from utils.metaclass import SingletonMeta
 
 
-logger_instance = SingletonLogger()
+logger = logging.getLogger("AppLogger")
 
 
 class AWSHandler(metaclass=SingletonMeta):
@@ -34,11 +34,11 @@ class AWSHandler(metaclass=SingletonMeta):
 #########################S3##################################
     def _bucket_exists(self) -> bool:
         if not self.s3_bucket_name:
-            logger_instance.logger.error("S3 bucket name is not set.")
+            logger.error("S3 bucket name is not set.")
             return False
         try:
             self.s3_resource.meta.client.head_bucket(Bucket=self.s3_bucket_name)
-            logger_instance.logger.info(f"S3 bucket {self.s3_bucket_name} exists.")
+            logger.info(f"S3 bucket {self.s3_bucket_name} exists.")
             return True
         except ClientError as e:
             error_code = int(e.response.get("Error", {}).get("Code", 0))
@@ -57,7 +57,7 @@ class AWSHandler(metaclass=SingletonMeta):
                     'LocationConstraint': self.region
                 }
             )
-            logger_instance.logger.info(f"Created S3 bucket: {self.s3_bucket_name}")
+            logger.info(f"Created S3 bucket: {self.s3_bucket_name}")
 
     def delete_s3_bucket(self) -> bool:
         if self._bucket_exists() and self.s3_bucket_name:
@@ -65,25 +65,25 @@ class AWSHandler(metaclass=SingletonMeta):
             self.s3_bucket.objects.all().delete()
             self.s3_bucket.delete()
             self.s3_bucket = None
-            logger_instance.logger.info(f"Deleted S3 bucket: {self.s3_bucket_name}")
+            logger.info(f"Deleted S3 bucket: {self.s3_bucket_name}")
             return True
-        logger_instance.logger.error("S3 bucket is not set.")
+        logger.error("S3 bucket is not set.")
         return False
 
     def upload_file_to_s3(self, local_path: str, s3_path: str | None = None) -> bool:
         if self.s3_bucket:
             self.s3_bucket.upload_file(local_path, s3_path or local_path)
-            logger_instance.logger.info(f"Uploaded {local_path} to s3://{self.s3_bucket_name}/{s3_path or local_path}")
+            logger.info(f"Uploaded {local_path} to s3://{self.s3_bucket_name}/{s3_path or local_path}")
             return True
-        logger_instance.logger.error("S3 bucket is not set.")
+        logger.error("S3 bucket is not set.")
         return False
 
     def download_file_from_s3(self, s3_path: str, local_path: str | None = None) -> bool:
         if self.s3_bucket:
             self.s3_bucket.download_file(s3_path, local_path or s3_path)
-            logger_instance.logger.info(f"Downloaded s3://{self.s3_bucket_name}/{s3_path} to {local_path or s3_path}")
+            logger.info(f"Downloaded s3://{self.s3_bucket_name}/{s3_path} to {local_path or s3_path}")
             return True
-        logger_instance.logger.error("S3 bucket is not set.")
+        logger.error("S3 bucket is not set.")
         return False
 
     def check_if_object_exists_in_s3(self, s3_path: str) -> bool:
@@ -100,18 +100,18 @@ class AWSHandler(metaclass=SingletonMeta):
     def delete_file_from_s3(self, s3_path: str) -> bool:
         if self.s3_bucket:
             self.s3_bucket.Object(s3_path).delete()
-            logger_instance.logger.info(f"Deleted s3://{self.s3_bucket_name}/{s3_path}")
+            logger.info(f"Deleted s3://{self.s3_bucket_name}/{s3_path}")
             return True
         return False
 
 ########################DynamoDB#############################
     def _dynamodb_table_exists(self) -> bool:
         if not self.dynamodb_config_table_name:
-            logger_instance.logger.error("DynamoDB table name is not set.")
+            logger.error("DynamoDB table name is not set.")
             return False
         try:
             self.dynamodb_resource.meta.client.describe_table(TableName=self.dynamodb_config_table_name)
-            logger_instance.logger.info(f"DynamoDB table {self.dynamodb_config_table_name} exists.")
+            logger.info(f"DynamoDB table {self.dynamodb_config_table_name} exists.")
             return True
         except ClientError as e:
             error_code = int(e.response.get("Error", {}).get("Code", 0))
@@ -136,37 +136,37 @@ class AWSHandler(metaclass=SingletonMeta):
                 BillingMode="PAY_PER_REQUEST"  # On-demand capacity mode
             )
             self.dynamodb_config_table.wait_until_exists()
-            logger_instance.logger.info(f"Created DynamoDB table: {self.dynamodb_config_table}")
+            logger.info(f"Created DynamoDB table: {self.dynamodb_config_table}")
 
     def delete_dynamodb_table(self) -> bool:
         if self._dynamodb_table_exists() and self.dynamodb_config_table_name:
             self.dynamodb_config_table = self.dynamodb_resource.Table(self.dynamodb_config_table_name)
             self.dynamodb_config_table.delete()
             self.dynamodb_config_table = None
-            logger_instance.logger.info(f"Deleted DynamoDB table: {self.dynamodb_config_table_name}")
+            logger.info(f"Deleted DynamoDB table: {self.dynamodb_config_table_name}")
             return True
-        logger_instance.logger.error("DynamoDB table name is not set.")
+        logger.error("DynamoDB table name is not set.")
         return False
 
     def put_item_to_dynamodb(self, item: dict[str, Any]) -> bool:
         if self.dynamodb_config_table:
             self.dynamodb_config_table.put_item(Item=convert_floats_to_decimal(item))
-            logger_instance.logger.info(f"Added item to DynamoDB table: {self.dynamodb_config_table}")
+            logger.info(f"Added item to DynamoDB table: {self.dynamodb_config_table}")
             return True
-        logger_instance.logger.error("DynamoDB table is not set.")
+        logger.error("DynamoDB table is not set.")
         return False
 
     def get_item_from_dynamodb(self, key: dict[str, Any]) -> dict[str, Any] | None:
         if self.dynamodb_config_table:
             return self.dynamodb_config_table.get_item(Key=key).get("Item")
-        logger_instance.logger.error("DynamoDB table is not set.")
+        logger.error("DynamoDB table is not set.")
 
     def delete_item_from_dynamodb(self, key: dict[str, Any]) -> bool:
         if self.dynamodb_config_table:
             self.dynamodb_config_table.delete_item(Key=key)
-            logger_instance.logger.info(f"Deleted item from DynamoDB table: {self.dynamodb_config_table}")
+            logger.info(f"Deleted item from DynamoDB table: {self.dynamodb_config_table}")
             return True
-        logger_instance.logger.error("DynamoDB table is not set.")
+        logger.error("DynamoDB table is not set.")
         return False
 
     def query_dynamodb_table(self, project_name: str | None, experiment_name: str | None = None):

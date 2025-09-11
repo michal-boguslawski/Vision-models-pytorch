@@ -1,6 +1,7 @@
 from copy import deepcopy
 import os
 from datasets.dataset_utils import DatasetHandler
+from models.utils import ModelHandler
 from training.trainer import Trainer
 from utils.aws_handler import AWSHandler
 from utils.config_parser import ConfigParser
@@ -11,6 +12,7 @@ from utils.seed import set_seed
 if __name__ == "__main__":
     logger_instance = SingletonLogger()
     aws_handler = AWSHandler()
+    model_handler = ModelHandler()
     
     os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
     config = ConfigParser("configs/default.yaml")
@@ -22,6 +24,11 @@ if __name__ == "__main__":
         logs_dir=config.get("logs_dir")
     )
     aws_handler.initialize()
+    model_handler.initialize(
+        project_name=config.get("project_name"),
+        experiment_name=config.get("experiment_name"),
+        checkpoints_dir=config.get("checkpoints_dir")
+    )
     
     misc_config = config["misc"]
     set_seed(misc_config["seed"], misc_config["deterministic"])

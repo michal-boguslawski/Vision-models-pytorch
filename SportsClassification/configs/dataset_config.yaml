@@ -21,16 +21,16 @@ augmentations:
   horizontal_flip: true
   rotation: true
   random_crop: false
-  color_jitter: false
+  color_jitter: true
   random_resized_crop: true
-  grayscale: false
-  gaussian_blur: false
-  perspective: false
-  affine: false
-  erasing: false
-  adjust_sharpness: false
+  grayscale: true
+  gaussian_blur: true
+  perspective: true
+  affine: true
+  erasing: true
+  adjust_sharpness: true
 
 batch_size: 128
 shuffle: true
-num_workers: 6
+num_workers: 16
 seed: 42

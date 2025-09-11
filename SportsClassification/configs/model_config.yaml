@@ -1,7 +1,7 @@
 # model_config.yaml
-model_name: AlexNet
-# backbone_name: VGG13
-# detection_head_name: GAP
+# model_name: AlexNet
+backbone_name: VGG11
+detection_head_name: GAP
 # pretrained: 
 #   source: local
 #   model_part: backbone
