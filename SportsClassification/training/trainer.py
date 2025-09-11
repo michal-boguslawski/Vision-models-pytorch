@@ -5,7 +5,6 @@ from typing import Dict, Any, Tuple, cast
 import torch as T
 from torch.utils.data import DataLoader
 
-from datasets.dataset_utils import DatasetHandler
 from evaluation.evaluate import Evaluator
 from models.model_factory import BuildModel
 from models.utils import ModelHandler
@@ -13,10 +12,16 @@ from training.early_stopping import EarlyStopping
 from training.optimizers import setup_optimizer
 from training.losses import setup_loss
 from training.schedulers import setup_scheduler
+from utils.aws_handler import AWSHandler
 from utils.config_parser import ConfigParser
-from utils.logger import Logger
+from utils.logger import SingletonLogger
 from utils.helpers import filter_kwargs, append_dict_to_dict
 from typing import Mapping
+
+
+logger_instance = SingletonLogger()
+aws_handler = AWSHandler()
+model_handler = ModelHandler()
 
 
 class Trainer:
@@ -63,10 +68,8 @@ class Trainer:
     def __init__(
         self,
         config: ConfigParser,
-        dataset_handler: DatasetHandler
     ):
         self.config = config
-        self.dataset_handler = dataset_handler
 
         self.project_name = self.config.get("project_name")
         self.experiment_name = self.config.get("experiment_name")
@@ -74,10 +77,8 @@ class Trainer:
         self.s3_bucket_name: str | None = self.config.get("s3_bucket_name")
 
         self.evaluator = Evaluator(device=self.device, **filter_kwargs(Evaluator, self.config.get("evaluation")))
-        self.logger = Logger(**filter_kwargs(Logger, self.config.config))
 
         self.scaler = T.GradScaler(self.device)
-        self.model_handler = ModelHandler()
 
         self._setup()
 
@@ -117,11 +118,11 @@ class Trainer:
         # load pretrained weights
         pretrained: dict[str, dict[str, Any]] = (model_config.get("pretrained") or {})
 
-        self.model_handler.load_weights(
+        model_handler.load_weights(
             model=model,
             checkpoint_dir = self.checkpoint_dir,
             project_name = self.config["project_name"],
-            **filter_kwargs(self.model_handler.load_weights, pretrained)
+            **filter_kwargs(model_handler.load_weights, pretrained)
         )
 
         self.model = model
@@ -154,8 +155,8 @@ class Trainer:
             - This method does not create the directories on the filesystem; it only sets the paths.
         """
         self.checkpoint_dir: str = str(self.config.get("checkpoint_dir", ""))
-        self.log_dir = str(self.config.get("log_dir", ""))
-        self.log_subdirs = str(self.config.get("log_subdirs", ""))
+        self.log_dir: str = str(self.config.get("log_dir", ""))
+        self.log_subdirs: str = str(self.config.get("log_subdirs", ""))
 
     def train_one_epoch(self, epoch: int, train_dataloader: DataLoader[Tuple[T.Tensor, int]]) -> None:
         """
@@ -215,7 +216,11 @@ class Trainer:
             stats: Mapping[str, Any] = {key: np.mean(value) for key, value in total_metrics.items()}
             pbar.set_postfix(ordered_dict=stats)  # type: ignore
             if self.log_interval and ( (batch_idx - self.log_interval + 1) % self.log_interval == 0 ):
-                self.logger.log_metrics({key: value[-self.log_interval:] for key, value in total_metrics.items()}, "train")
+                metrics: dict[str, Any] = {key: value[-self.log_interval:] for key, value in total_metrics.items()}
+                metrics["epoch"] = epoch
+                metrics["batch_idx"] = batch_idx
+                metrics["dataset"] = "train"
+                logger_instance.log_metrics(metrics)
         
         log_interval = self.log_interval or len(train_dataloader)
         last_idx = batch_idx % log_interval
@@ -224,9 +229,12 @@ class Trainer:
         for key, value in total_metrics.items():
             log_dict[key] = value[-last_idx:]
             log_dict[f"epoch_{key}"] = np.mean(value)
+            log_dict["epoch"] = epoch
+            log_dict["batch_idx"] = batch_idx
+            log_dict["dataset"] = "train"
 
-        self.logger.log_metrics(log_dict, "train")
-        self.logger.log_info("Epoch summary " + " ".join([f"{key}: {np.mean(value):.6f}" for key, value in total_metrics.items()]))
+        logger_instance.log_metrics(log_dict)
+        logger_instance.logger.info("Epoch summary " + " ".join([f"{key}: {np.mean(value):.6f}" for key, value in total_metrics.items()]))
         
     def _scheduler_step(self, metric: float) -> None:
         """
@@ -245,7 +253,7 @@ class Trainer:
                 self.scheduler.step(metrics=metric)  # type: ignore
             else:
                 self.scheduler.step()
-            self.logger.log_info(f"Current lr: {self.scheduler.get_last_lr()[0]}")
+            logger_instance.logger.info(f"Current lr: {self.scheduler.get_last_lr()[0]}")
 
     def _early_stopping_step(self, metric: float) -> bool:
         """
@@ -264,7 +272,7 @@ class Trainer:
         """
         if self.early_stopper:
             self.early_stopper(metric)
-            self.logger.log_info(f"Last best score {self.early_stopper.best_score} - {self.early_stopper.counter} steps ago")
+            logger_instance.logger.info(f"Last best score {self.early_stopper.best_score} - {self.early_stopper.counter} steps ago")
             return self.early_stopper.should_stop
         return False
 
@@ -274,22 +282,34 @@ class Trainer:
 
         Logs the configuration at the start of training.
         """
-        self.logger.log_config(self.config)
-        self.logger.log_info("Training started...")
-        self.logger.log_info(self.model.__str__())
+        self.best_value = None
+        logger_instance.logger.info("Training started...")
+        logger_instance.logger.info(self.model.__str__())
 
-        config_to_dynamodb = deepcopy(self.config.config)
-        config_to_dynamodb["label_to_id"] = self.dataset_handler.label_to_id
-        self.logger.log_artifact(
-            target="dynamodb",
-            artifact_type="config",
-            dynamodb_config_table=self.config["dynamodb_config_table"],
-            item=config_to_dynamodb
-        )
+    def _on_fit_end(self):
+        """
+        Actions to perform at the end of the training process.
+
+        Logs the training completion and saves the final model weights.
+        """
+        logger_instance.logger.info("Training finished...")
+        logger_instance.log_artifact("best_model.pth", "s3")
+
+    def _on_epoch_end(self, val_metrics: dict[str, float]):
+        """
+        Actions to perform at the end of each epoch.
+
+        Logs the epoch metrics, saves the model weights, and updates the best value
+        """
+        val_loss = val_metrics.get("loss", 0.0)
+        if self.best_value is None or val_loss < self.best_value:
+            self.best_value = val_loss
+            logger_instance.save_weights(self.model, f"best_model.pth")
+            logger_instance.logger.info("Best model saved")
 
     def fit(
         self,
-        train_dataloader: DataLoader[Tuple[T.Tensor, int]] | None = None,
+        train_dataloader: DataLoader[Tuple[T.Tensor, int]],
         val_dataloader: DataLoader[Tuple[T.Tensor, int]] | None = None
     ):
         """
@@ -313,47 +333,30 @@ class Trainer:
             - Logs epoch metrics, including training and validation metrics.
             - Stops training early if early stopping is triggered.
         """
-        if not train_dataloader:
-            train_dataloader = self.dataset_handler.create_dataloader(
-                sub_dataset="train",
-                use_augmentations=True,
-                shuffle=True
-            )
-        if not val_dataloader:
-            val_dataloader = self.dataset_handler.create_dataloader(
-                sub_dataset="val",
-                use_augmentations=False,
-                shuffle=False
-            )
 
         self._on_fit_start()
         for epoch in range(self.num_epochs):
             if epoch == self.freeze_time:
-                self.model_handler.unfreeze_weights(self.model)
+                model_handler.unfreeze_weights(self.model)
 
             self.train_one_epoch(epoch, train_dataloader)
             
             val_metrics = {}
             if val_dataloader:
-                val_metrics = self.validate(val_dataloader)
+                val_metrics = self.validate(dl=val_dataloader, epoch=epoch)
 
             val_loss = val_metrics.get("loss", 0.0)
             self._scheduler_step(val_loss)
             
             if self._early_stopping_step(val_loss):
-                self.logger.log_info(f"Early stopping triggered at epoch {epoch}")
+                logger_instance.logger.info(f"Early stopping triggered at epoch {epoch}")
                 break
 
-            self.logger.on_epoch_end_log(
-                model=self.model,
-                val_loss=val_metrics.get("loss"),
-                epoch=epoch,
-                end=(epoch == (self.num_epochs - 1))
-            )
+            self._on_epoch_end(val_metrics)
 
-        self.logger.log_artifact(target="s3", s3_bucket_name=self.s3_bucket_name)
+        self._on_fit_end()
 
-    def validate(self, dl: DataLoader[Tuple[T.Tensor, int]]) -> Dict[str, float]:
+    def validate(self, dl: DataLoader[Tuple[T.Tensor, int]], epoch: int) -> Dict[str, float]:
         """
         Evaluate the model on a validation dataset.
 
@@ -367,5 +370,8 @@ class Trainer:
             Dict[str, float]: Dictionary of computed metrics (e.g., loss, accuracy).
         """
         metrics = self.evaluator.evaluate(self.model, dl, self.loss_fn)
-        self.logger.log_metrics({f"epoch_{k}": v for k, v in metrics.items()}, "val")
+        metrics = {f"epoch_{k}": v for k, v in metrics.items()}
+        metrics["epoch"] = epoch
+        metrics["dataset"] = "val"
+        logger_instance.log_metrics(metrics)
         return metrics

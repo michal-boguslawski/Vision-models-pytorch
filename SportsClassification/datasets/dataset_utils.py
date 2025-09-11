@@ -141,7 +141,8 @@ class DatasetHandler:
         shuffle: bool = True,
     ) -> DataLoader[Tuple[T.Tensor, int]]:
         self._load_df()
-        self._create_target_encoders(self.df_dict["train"])
+        if sub_dataset == "train":
+            self._create_target_encoders(self.df_dict["train"])
         num_workers: int = cast(int, self.config.get("num_workers", 1))
 
         dl = DataLoader(

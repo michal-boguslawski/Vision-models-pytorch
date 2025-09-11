@@ -6,6 +6,10 @@ import torch as T
 from torch import nn
 from utils.aws_handler import AWSHandler
 from utils.helpers import filter_kwargs
+from utils.logger import SingletonLogger
+
+
+logger_instance = SingletonLogger()
 
 
 class ModelHandler:
@@ -40,13 +44,13 @@ class ModelHandler:
         for name, param in model.named_parameters():
             if name in state_dict:
                 param.requires_grad = False
-        print("Loaded weights were frozen")
+        logger_instance.logger.info("Loaded weights were frozen")
 
     @staticmethod
     def unfreeze_weights(model: nn.Module):
         for param in model.parameters():
             param.requires_grad = True
-        print("Weights were unfrozen")
+        logger_instance.logger.info("Weights were unfrozen")
 
     @staticmethod
     def _load_state_dict_from_local(
@@ -60,7 +64,7 @@ class ModelHandler:
         
         # Make sure the directory is not empty
         if not files:
-            print("No files found")
+            logger_instance.logger.info("State dict not found")
             return None
         else:
             # Get the newest file
@@ -68,7 +72,7 @@ class ModelHandler:
 
         # load selected state_dict
         loaded_state_dict = T.load(newest_state_dict, map_location=T.device(device))
-        print(f"State dict loaded from {newest_state_dict}")
+        logger_instance.logger.info(f"State dict loaded from {newest_state_dict}")
         return loaded_state_dict
 
     def _load_weights(
@@ -79,12 +83,12 @@ class ModelHandler:
         if_freeze: bool = True
     ):
         if state_dict is None:
-            print("No weights available")
+            logger_instance.logger.info("No weights available")
             return
 
         new_state_dict = {k: v for k, v in state_dict.items() if ( model_part in k or model_part == "all")}
         model.load_state_dict(new_state_dict, strict=False)
-        print("Weights loaded")
+        logger_instance.logger.info("Weights loaded")
 
         if if_freeze:
             self.freeze_weights(model=model, state_dict=new_state_dict)
@@ -97,11 +101,4 @@ class ModelHandler:
         project_name: str,
         device: str = "cpu",
     ) -> OrderedDict[str, T.Tensor]:
-        s3_path = os.path.join(checkpoint_dir, project_name, version_name)
-        aws_handler = AWSHandler(s3_bucket_name=s3_bucket_name)
-        temp_path = ".temp/state_dict.pth"
-        os.makedirs(os.path.dirname(temp_path), exist_ok=True)
-        aws_handler.download_file_from_s3(s3_path=s3_path, local_path=temp_path)
-        state_dict = T.load(temp_path, map_location=T.device(device))
-        os.remove(temp_path)
-        return state_dict
+        pass

@@ -45,5 +45,5 @@ misc:
   deterministic: true
 
 # AWS object names
-s3_bucket_name: computer-vision-models-pytorch-bucket
+s3_bucket: computer-vision-models-pytorch-bucket
 dynamodb_config_table: computer-vision-models-config-table

@@ -1,120 +1,130 @@
-from botocore.client import BaseClient
 from botocore.exceptions import ClientError
 import boto3
 from boto3.dynamodb.conditions import Key
-import time
-from typing import Any
+from mypy_boto3_s3.type_defs import BucketLocationConstraintType  # type: ignore
+import os
+from typing import Any, cast
 from utils.helpers import convert_floats_to_decimal
+from utils.logger import SingletonLogger
+from utils.metaclass import SingletonMeta
 
 
-class AWSHandler:
-    def __init__(
-        self,
-        s3_bucket_name: str | None = None,
-        dynamodb_config_table: str | None = None,
-        region: str = "eu-north-1",
-    ):
-        self.s3_bucket_name = s3_bucket_name
-        self.dynamodb_config_table = dynamodb_config_table
-        self.region = region
+logger_instance = SingletonLogger()
+
+
+class AWSHandler(metaclass=SingletonMeta):
+    def __init__(self):
+        self.s3_bucket_name = os.getenv("S3_BUCKET")
+        self.dynamodb_config_table_name = os.getenv("DYNAMODB_CONFIG_TABLE")
+        self.region: BucketLocationConstraintType = cast(BucketLocationConstraintType, os.getenv("AWS_REGION", "eu-north-1"))
+        
+        self.s3_resource = boto3.resource('s3', region_name=self.region)
+        self.dynamodb_resource = boto3.resource('dynamodb', region_name=self.region)
+        
+        self.s3_bucket = None
+        self.dynamodb_config_table = None
+        
+        self._initialized = False
+
+    def initialize(self):
+        self.create_s3_bucket_if_not_exists()
+        self.create_dynamodb_config_table_if_not_exists()
+        self._initialized = True
 
 #########################S3##################################
-    def create_s3_bucket_if_not_exists(self) -> dict[str, Any]:
-        s3 = boto3.client('s3', region_name=self.region)
+    def _bucket_exists(self) -> bool:
+        if not self.s3_bucket_name:
+            logger_instance.logger.error("S3 bucket name is not set.")
+            return False
         try:
-            return s3.head_bucket(Bucket=self.s3_bucket_name)
-        except ClientError as e:
-            if e.response['Error']['Code'] == "404":
-                create_params = {
-                    "Bucket": self.s3_bucket_name,
-                    "CreateBucketConfiguration": {"LocationConstraint": self.region}
-                }
-                response = s3.create_bucket(**create_params)
-                print(f"Created S3 bucket: {self.s3_bucket_name}")
-                return response
-            else:
-                raise e
-
-    def delete_s3_bucket(self) -> dict[str, Any]:
-        s3 = boto3.client('s3', region_name=self.region)
-        try:
-            response = s3.delete_bucket(Bucket=self.s3_bucket_name)
-            print(f"Deleted S3 bucket: {self.s3_bucket_name}")
-            return response
-        except ClientError as e:
-            if e.response['Error']['Code'] == "404":
-                print(f"The bucket {self.s3_bucket_name} does not exist.")
-                return e.response
-            else:
-                raise e
-
-    def upload_file_to_s3(self, local_path: str, s3_path: str | None = None) -> None:
-        s3 = boto3.client('s3', region_name=self.region)
-        s3_path = s3_path or local_path.replace("\\", "/")
-        
-        s3.upload_file(local_path, self.s3_bucket_name, s3_path)
-        print(f"Uploaded {local_path} to s3://{self.s3_bucket_name}/{s3_path}")
-
-    def download_file_from_s3(self, s3_path: str, local_path: str | None = None) -> None:
-        s3 = boto3.client('s3', region_name=self.region)
-        local_path = local_path or s3_path
-        try:
-            s3.download_file(self.s3_bucket_name, s3_path, local_path)
-            print(f"Downloaded s3://{self.s3_bucket_name}/{s3_path} to {local_path}")
-
-        except ClientError as e:
-            if e.response['Error']['Code'] == "404":
-                print(f"The object s3://{self.s3_bucket_name}/{s3_path} does not exist.")
-                return e.response
-            else:
-                raise e
-
-    def check_if_file_exists_in_s3(self, s3_path: str) -> bool:
-        s3 = boto3.client('s3', region_name=self.region)
-        try:
-            s3.head_object(Bucket=self.s3_bucket_name, Key=s3_path)
+            self.s3_resource.meta.client.head_bucket(Bucket=self.s3_bucket_name)
+            logger_instance.logger.info(f"S3 bucket {self.s3_bucket_name} exists.")
             return True
         except ClientError as e:
-            if e.response['Error']['Code'] == "404":
+            error_code = int(e.response.get("Error", {}).get("Code", 0))
+            if error_code == 404:
                 return False
-            else:
-                raise e
+            raise e
 
-    def delete_file_from_s3(self, s3_path: str) -> dict[str, Any]:
-        s3 = boto3.client('s3', region_name=self.region)
-        response = s3.delete_object(Bucket=self.s3_bucket_name, Key=s3_path)
-        print(f"Deleted s3://{self.s3_bucket_name}/{s3_path}")
-        return response
+    def create_s3_bucket_if_not_exists(self) -> None:
+        if self._bucket_exists() and self.s3_bucket_name:
+            self.s3_bucket = self.s3_resource.Bucket(self.s3_bucket_name)
+            return
+        elif self.s3_bucket_name:
+            self.s3_bucket = self.s3_resource.create_bucket(
+                Bucket=self.s3_bucket_name,
+                CreateBucketConfiguration={
+                    'LocationConstraint': self.region
+                }
+            )
+            logger_instance.logger.info(f"Created S3 bucket: {self.s3_bucket_name}")
+
+    def delete_s3_bucket(self) -> bool:
+        if self._bucket_exists() and self.s3_bucket_name:
+            self.s3_bucket = self.s3_resource.Bucket(self.s3_bucket_name)
+            self.s3_bucket.objects.all().delete()
+            self.s3_bucket.delete()
+            self.s3_bucket = None
+            logger_instance.logger.info(f"Deleted S3 bucket: {self.s3_bucket_name}")
+            return True
+        logger_instance.logger.error("S3 bucket is not set.")
+        return False
+
+    def upload_file_to_s3(self, local_path: str, s3_path: str | None = None) -> bool:
+        if self.s3_bucket:
+            self.s3_bucket.upload_file(local_path, s3_path or local_path)
+            logger_instance.logger.info(f"Uploaded {local_path} to s3://{self.s3_bucket_name}/{s3_path or local_path}")
+            return True
+        logger_instance.logger.error("S3 bucket is not set.")
+        return False
+
+    def download_file_from_s3(self, s3_path: str, local_path: str | None = None) -> bool:
+        if self.s3_bucket:
+            self.s3_bucket.download_file(s3_path, local_path or s3_path)
+            logger_instance.logger.info(f"Downloaded s3://{self.s3_bucket_name}/{s3_path} to {local_path or s3_path}")
+            return True
+        logger_instance.logger.error("S3 bucket is not set.")
+        return False
+
+    def check_if_object_exists_in_s3(self, s3_path: str) -> bool:
+        if self.s3_bucket:
+            try:
+                self.s3_bucket.Object(s3_path).load()
+            except ClientError as e:
+                if int(e.response.get("Error", {}).get("Code", 0)) == 404:
+                    return False
+                raise e
+            return True
+        return False
+
+    def delete_file_from_s3(self, s3_path: str) -> bool:
+        if self.s3_bucket:
+            self.s3_bucket.Object(s3_path).delete()
+            logger_instance.logger.info(f"Deleted s3://{self.s3_bucket_name}/{s3_path}")
+            return True
+        return False
 
 ########################DynamoDB#############################
-
-    def _wait_for_table_active(self, dynamodb_client: BaseClient, timeout=60, interval=2):
-        """
-        Wait until DynamoDB table is ACTIVE, or raise TimeoutError.
-        
-        :param dynamodb_client: boto3 DynamoDB client
-        :param table_name: Name of the table to wait for
-        :param timeout: Max seconds to wait
-        :param interval: Seconds between retries
-        """
-        start_time = time.time()
-        while True:
-            response = dynamodb_client.describe_table(TableName=self.dynamodb_config_table)
-            status = response["Table"]["TableStatus"]
-            if status == "ACTIVE":
-                return response
-            if time.time() - start_time > timeout:
-                raise TimeoutError(f"Table {self.dynamodb_config_table} did not become ACTIVE within {timeout} seconds")
-            time.sleep(interval)
-
-    def create_dynamodb_table_if_not_exists(self) -> dict[str, Any]:
-        dynamodb = boto3.client('dynamodb', region_name=self.region)
+    def _dynamodb_table_exists(self) -> bool:
+        if not self.dynamodb_config_table_name:
+            logger_instance.logger.error("DynamoDB table name is not set.")
+            return False
         try:
-            response = dynamodb.describe_table(TableName=self.dynamodb_config_table)
-            return response
-        except dynamodb.exceptions.ResourceNotFoundException:
-            response = dynamodb.create_table(
-                TableName=self.dynamodb_config_table,
+            self.dynamodb_resource.meta.client.describe_table(TableName=self.dynamodb_config_table_name)
+            logger_instance.logger.info(f"DynamoDB table {self.dynamodb_config_table_name} exists.")
+            return True
+        except ClientError as e:
+            error_code = int(e.response.get("Error", {}).get("Code", 0))
+            if error_code == 400:
+                return False
+            raise e
+
+    def create_dynamodb_config_table_if_not_exists(self) -> None:
+        if self._dynamodb_table_exists() and self.dynamodb_config_table_name:
+            self.dynamodb_config_table = self.dynamodb_resource.Table(self.dynamodb_config_table_name)
+        elif self.dynamodb_config_table_name:
+            self.dynamodb_config_table = self.dynamodb_resource.create_table(
+                TableName=self.dynamodb_config_table_name,
                 KeySchema=[
                     {"AttributeName": "project_name", "KeyType": "HASH"},  # Partition key
                     {"AttributeName": "experiment_name", "KeyType": "RANGE"}  # Sort key
@@ -125,45 +135,39 @@ class AWSHandler:
                 ],
                 BillingMode="PAY_PER_REQUEST"  # On-demand capacity mode
             )
-            response = self._wait_for_table_active(dynamodb)
-            print(f"Created DynamoDB table: {self.dynamodb_config_table}")
-            return response
-        except Exception as e:
-            raise e
+            self.dynamodb_config_table.wait_until_exists()
+            logger_instance.logger.info(f"Created DynamoDB table: {self.dynamodb_config_table}")
 
-    def put_item_to_dynamodb(self, item: dict[str, Any]) -> dict[str, Any]:
-        dynamodb = boto3.resource('dynamodb', region_name=self.region)
-        table = dynamodb.Table(self.dynamodb_config_table)  # type: ignore
-        response = table.put_item(Item=convert_floats_to_decimal(item))
-        print(f"Added item to DynamoDB table: {self.dynamodb_config_table}")
-        return response
+    def delete_dynamodb_table(self) -> bool:
+        if self._dynamodb_table_exists() and self.dynamodb_config_table_name:
+            self.dynamodb_config_table = self.dynamodb_resource.Table(self.dynamodb_config_table_name)
+            self.dynamodb_config_table.delete()
+            self.dynamodb_config_table = None
+            logger_instance.logger.info(f"Deleted DynamoDB table: {self.dynamodb_config_table_name}")
+            return True
+        logger_instance.logger.error("DynamoDB table name is not set.")
+        return False
 
-    def get_item_from_dynamodb(self, key: dict[str, Any]) -> dict[str, Any]:
-        dynamodb = boto3.resource('dynamodb', region_name=self.region)
-        table = dynamodb.Table(self.dynamodb_config_table)  # type: ignore
-        response = table.get_item(TableName=self.dynamodb_config_table, Key=key)
-        print(f"Retrieved item from DynamoDB table: {self.dynamodb_config_table}")
-        return response
+    def put_item_to_dynamodb(self, item: dict[str, Any]) -> bool:
+        if self.dynamodb_config_table:
+            self.dynamodb_config_table.put_item(Item=convert_floats_to_decimal(item))
+            logger_instance.logger.info(f"Added item to DynamoDB table: {self.dynamodb_config_table}")
+            return True
+        logger_instance.logger.error("DynamoDB table is not set.")
+        return False
 
-    def delete_item_from_dynamodb(self, key: dict[str, Any]) -> dict[str, Any]:
-        dynamodb = boto3.resource('dynamodb', region_name=self.region)
-        table = dynamodb.Table(self.dynamodb_config_table)  # type: ignore
-        response = table.delete_item(TableName=self.dynamodb_config_table, Key=key)
-        print(f"Deleted item from DynamoDB table: {self.dynamodb_config_table}")
-        return response
+    def get_item_from_dynamodb(self, key: dict[str, Any]) -> dict[str, Any] | None:
+        if self.dynamodb_config_table:
+            return self.dynamodb_config_table.get_item(Key=key).get("Item")
+        logger_instance.logger.error("DynamoDB table is not set.")
 
-    def delete_dynamodb_table(self) -> dict[str, Any]:
-        dynamodb = boto3.client('dynamodb', region_name=self.region)
-        response = dynamodb.delete_table(TableName=self.dynamodb_config_table)
-        print(f"Deleted DynamoDB table: {self.dynamodb_config_table}")
-        return response
+    def delete_item_from_dynamodb(self, key: dict[str, Any]) -> bool:
+        if self.dynamodb_config_table:
+            self.dynamodb_config_table.delete_item(Key=key)
+            logger_instance.logger.info(f"Deleted item from DynamoDB table: {self.dynamodb_config_table}")
+            return True
+        logger_instance.logger.error("DynamoDB table is not set.")
+        return False
 
-    def query_dynamodb_table(self, project_name: str | None, experiment_name: str | None = None) -> dict[str, Any]:
-        dynamodb = boto3.resource('dynamodb', region_name=self.region)
-        key_condition_expression = None
-        if project_name:
-            key_condition_expression = Key("project_name").eq(project_name)
-        table = dynamodb.Table(self.dynamodb_config_table)  # type: ignore
-        response = table.query(KeyConditionExpression=key_condition_expression)
-        print(f"Queried DynamoDB table: {self.dynamodb_config_table}")
-        return response
+    def query_dynamodb_table(self, project_name: str | None, experiment_name: str | None = None):
+        pass

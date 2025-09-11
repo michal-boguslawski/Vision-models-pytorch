@@ -2,17 +2,14 @@ import json
 import logging
 import os
 import torch as T
+from utils.aws_handler import AWSHandler
+from utils.metaclass import SingletonMeta
 
 
-class SingletonLogger:
-    _instance = None
-    checkpoints_dir: str = "checkpoints"
-
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-            cls._instance._initialized = False
-        return cls._instance
+class SingletonLogger(metaclass=SingletonMeta):
+    def __init__(self):
+        self._initialized = False
+        self.checkpoints_dir: str = "checkpoints"
 
     def initialize(
         self,
@@ -88,8 +85,16 @@ class SingletonLogger:
         """Write metrics only to metrics file."""
         self.metrics_logger.info(json.dumps(metrics))
 
-    def save_weights(self, model, filename: str):
+    def save_weights(self, model, filename: str):  # to powinno wylądować w model_handler
         """Save model weights and log the action to main logger."""
         save_path = os.path.join(self.checkpoints_dir, filename)
         T.save(model.state_dict(), save_path)
         self.logger.info(f"Saved model weights to {save_path}")
+
+    def log_artifact(self, filename: str, target: str):
+        aws_handler = AWSHandler()
+        if target == "s3":
+            local_path = os.path.join(self.checkpoints_dir, filename)
+            self.logger.info(f"Uploading {local_path} to S3")
+            aws_handler.upload_file_to_s3(local_path)
+        

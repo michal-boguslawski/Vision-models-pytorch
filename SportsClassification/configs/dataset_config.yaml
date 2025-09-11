@@ -30,7 +30,7 @@ augmentations:
   erasing: false
   adjust_sharpness: false
 
-batch_size: 64
+batch_size: 128
 shuffle: true
 num_workers: 6
 seed: 42
