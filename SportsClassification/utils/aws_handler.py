@@ -3,6 +3,7 @@ import boto3
 from boto3.dynamodb.conditions import Key
 import logging
 from mypy_boto3_s3.type_defs import BucketLocationConstraintType  # type: ignore
+from mypy_boto3_s3.service_resource import ObjectSummary
 import os
 from typing import Any, cast
 from utils.helpers import convert_floats_to_decimal
@@ -103,6 +104,11 @@ class AWSHandler(metaclass=SingletonMeta):
             logger.info(f"Deleted s3://{self.s3_bucket_name}/{s3_path}")
             return True
         return False
+
+    def list_files_in_s3(self, prefix: str = "") -> list[ObjectSummary]:
+        if self.s3_bucket:
+            return list(self.s3_bucket.objects.filter(Prefix=prefix))
+        return []
 
 ########################DynamoDB#############################
     def _dynamodb_table_exists(self) -> bool:
