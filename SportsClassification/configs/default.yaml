@@ -29,11 +29,11 @@ training:
     type: cross_entropy
     bbox_loss: smooth_l1
     obj_loss: binary_cross_entropy
-  early_stopping:
-    patience: 0
+  # early_stopping:
+    # patience: 0
     # reset_after: 25
     # T_mult: 2
-    threshold: 0.0001
+    # threshold: 0.0001
   num_epochs: 1000
   save_best_only: true
   save_checkpoint: true
