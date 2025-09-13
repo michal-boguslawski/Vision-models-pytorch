@@ -35,7 +35,7 @@ class AbstractModelHandler(ABC):
         if source is None or source == self._place:
             result = self._load_state_dict(project_name=project_name, experiment_name=experiment_name, save_locally=save_locally)
         if result is None and self._next:
-            return self._next._load_state_dict(project_name=project_name, experiment_name=experiment_name, save_locally=save_locally)
+            return self._next.load_state_dict(project_name=project_name, experiment_name=experiment_name, source=source, save_locally=save_locally)
         if result is None:
             self.logger_instance.logger.info(f"[{self._place}] No model weights found.")
         return result
@@ -50,7 +50,7 @@ class AbstractModelHandler(ABC):
         if target is None or target == self._place:
             success = self._save_state_dict(state_dict=state_dict, filename=filename)
         if not success and self._next:
-            return self._next._save_state_dict(state_dict=state_dict, filename=filename)
+            return self._next.save_state_dict(state_dict=state_dict, filename=filename, target=target)
         if not success:
             self.logger_instance.logger.info(f"Model weights were not saved")
         return success
@@ -88,7 +88,7 @@ class LocalModelHandler(AbstractModelHandler):
         **kwargs
     ) -> OrderedDict[str, T.Tensor] | None:
         project_name = project_name or self.project_name
-        experiment_name = experiment_name or experiment_name
+        experiment_name = experiment_name or self.experiment_name
         if self.checkpoints_dir and project_name and experiment_name:
             dir_path = os.path.join(self.checkpoints_dir, project_name, experiment_name)
             checkpoints = glob.glob(os.path.join(dir_path, "*.pth"))
@@ -127,7 +127,7 @@ class S3ModelHandler(AbstractModelHandler):
     ) -> OrderedDict[str, T.Tensor] | None:
         """Tu powinno coś iść do AWSHandler""" #########################################
         project_name = project_name or self.project_name
-        experiment_name = experiment_name or experiment_name
+        experiment_name = experiment_name or self.experiment_name
         if project_name and experiment_name:
             dir_path = os.path.join(self.checkpoints_dir, project_name, experiment_name)
             objects_summary = self.aws_handler.list_files_in_s3(dir_path)

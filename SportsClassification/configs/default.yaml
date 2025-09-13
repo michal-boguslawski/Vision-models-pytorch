@@ -24,7 +24,7 @@ training:
     T_0: 25
     T_mult: 2
     eta_min: 0.
-    gamma: 0.8
+    gamma: 0.5
   loss:
     type: cross_entropy
     bbox_loss: smooth_l1
@@ -34,7 +34,7 @@ training:
     reset_after: 25
     T_mult: 2
     threshold: 0.0001
-  num_epochs: 100
+  num_epochs: 1000
   save_best_only: true
   save_checkpoint: true
   log_interval: 50

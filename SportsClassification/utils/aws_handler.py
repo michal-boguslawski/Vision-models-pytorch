@@ -81,6 +81,7 @@ class AWSHandler(metaclass=SingletonMeta):
 
     def download_file_from_s3(self, s3_path: str, local_path: str | None = None) -> bool:
         if self.s3_bucket:
+            os.makedirs(os.path.dirname(local_path or s3_path), exist_ok=True)
             self.s3_bucket.download_file(s3_path, local_path or s3_path)
             logger.info(f"Downloaded s3://{self.s3_bucket_name}/{s3_path} to {local_path or s3_path}")
             return True

@@ -29,11 +29,12 @@ class CosineAnnealingWarmRestartsDecay(LRScheduler):
         self.T_0 = T_0
         self.T_mult = T_mult
         self.eta_min = eta_min
-        self.T_cur = last_epoch
+        self.T_cur = 0
         self.cycle_length = T_0
         self.restart_count = 0
         self.gamma = gamma
         self.base_max_lrs = [group['lr'] for group in optimizer.param_groups]  # starting max LRs
+        self.last_epoch = last_epoch
         super().__init__(optimizer, last_epoch)
 
     def get_last_lr(self) -> list[float]:
