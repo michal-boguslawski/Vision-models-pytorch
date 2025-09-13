@@ -120,11 +120,9 @@ class Trainer:
 
         model_handler.load_weights(
             model=model,
-            checkpoint_dir = self.checkpoint_dir,
             project_name = self.config["project_name"],
             **filter_kwargs(model_handler.load_weights, pretrained)
         )
-
         self.model = model
 
         # setup training related objects
@@ -135,7 +133,9 @@ class Trainer:
 
         self.scheduler = setup_scheduler(self.optimizer, training_config.get("scheduler"))
         
-        self.early_stopper = EarlyStopping(**filter_kwargs(EarlyStopping, training_config.get("early_stopping")))  # should be assigned as a function
+        self.early_stopper = \
+            EarlyStopping(**filter_kwargs(EarlyStopping, training_config.get("early_stopping"))) \
+                if training_config.get("early_stopping") else None  # should be assigned as a function
 
         self.num_epochs = training_config["num_epochs"]
         self.log_interval = training_config.get("log_interval")
@@ -293,7 +293,7 @@ class Trainer:
         Logs the training completion and saves the final model weights.
         """
         logger_instance.logger.info("Training finished...")
-        logger_instance.log_artifact("best_model.pth", "s3")
+        logger_instance.log_artifact(filename="best_model", target="s3")
         
 
     def _on_epoch_end(self, val_metrics: dict[str, float]):
@@ -306,7 +306,7 @@ class Trainer:
         val_loss = val_metrics.get("epoch_loss", 0.0)
         if self.best_value is None or val_loss < self.best_value:
             self.best_value = val_loss
-            logger_instance.log_artifact(filename="best_model.pth", target="local", artifact=self.model)
+            logger_instance.log_artifact(filename="best_model", target="local", artifact=self.model)
             logger_instance.logger.info("Best model saved")
 
     def fit(

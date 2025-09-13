@@ -29,7 +29,8 @@ if __name__ == "__main__":
         experiment_name=config.get("experiment_name"),
         checkpoints_dir=config.get("checkpoints_dir")
     )
-    
+
+    logger_instance.logger.info(f"Config: {config}")
     misc_config = config["misc"]
     set_seed(misc_config["seed"], misc_config["deterministic"])
 
