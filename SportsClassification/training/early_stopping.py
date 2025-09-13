@@ -1,3 +1,9 @@
+from utils.logger import SingletonLogger
+
+
+logger_instance = SingletonLogger()
+
+
 class EarlyStopping:
     def __init__(
         self,
@@ -43,7 +49,7 @@ class EarlyStopping:
             self.counter = 0
             self.best_score = None
             self.reset_after = max(self.reset_after, int(self.reset_after * self.T_mult))
-            print("Resetting patience")
+            logger_instance.logger.info("Resetting patience")
             return
 
         # Determine effective threshold

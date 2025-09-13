@@ -96,12 +96,6 @@ class SingletonLogger(metaclass=SingletonMeta):
         self.metrics_logger.info(json.dumps(metrics))
 
     def log_artifact(self, filename: str, target: str, artifact: Any = None):
-        if target == "s3":
-            local_path = os.path.join(self.checkpoints_dir, filename)
-            self.logger.info(f"Uploading {local_path} to S3")
-            aws_handler.upload_file_to_s3(local_path=local_path)
-        elif target == "local" and isinstance(artifact, nn.Module):
-            from models.utils import ModelHandler
-            model_handler = ModelHandler()
-            model_handler.save_weights(model=artifact, filename=filename)
-        
+        from models.utils import ModelHandler
+        model_handler = ModelHandler()
+        model_handler.save_weights(model=artifact, filename=filename, target=target)
