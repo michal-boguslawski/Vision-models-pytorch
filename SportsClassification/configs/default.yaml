@@ -1,6 +1,6 @@
 # default.yaml
 project_name: sports_cv_project_classification
-experiment_name: vgg11-paper-heavy-augmentations-cosine_anealing_with_decay
+experiment_name: vgg13-gap-heavy-augmentations
 
 # Include model and dataset configs
 model: !include model_config.yaml
@@ -14,25 +14,25 @@ logs_dir: logs/
 training:
   optimizer:
     type: adam
-    lr: 0.001
+    lr: 0.0005
     weight_decay: 5e-4
   scheduler:
-    type: cosine_annealing_warm_restarts_with_decay
-    # total_steps: 100
-    # pct_start: 0.25
-    # max_lr: 0.001
-    T_0: 25
-    T_mult: 2
-    eta_min: 0.
-    gamma: 0.5
+    type: one_cycle_lr
+    total_steps: 300
+    pct_start: 0.25
+    max_lr: 0.001
+    # T_0: 25
+    # T_mult: 2
+    # eta_min: 0.
+    # gamma: 0.5
   loss:
     type: cross_entropy
     bbox_loss: smooth_l1
     obj_loss: binary_cross_entropy
   early_stopping:
-    patience: 30
-    reset_after: 25
-    T_mult: 2
+    patience: 0
+    # reset_after: 25
+    # T_mult: 2
     threshold: 0.0001
   num_epochs: 1000
   save_best_only: true
