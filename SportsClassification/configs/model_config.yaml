@@ -1,10 +1,10 @@
 # model_config.yaml
-# model_name: VGG11
-backbone_name: VGG13
-detection_head_name: GAP
+model_name: VGG13
+# backbone_name: VGG13
+# detection_head_name: GAP
 pretrained:
   model_part: backbone
-  experiment_name: vgg11-gap-heavy-augmentations
+  experiment_name: vgg13-gap-heavy-augmentations
   save_locally: true
   freeze_time: 10
 
