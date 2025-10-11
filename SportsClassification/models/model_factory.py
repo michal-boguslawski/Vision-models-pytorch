@@ -24,6 +24,21 @@ PREDEFINED_CONFIGS = {
         "num_layers_list": [2, 2, 4, 4, 4],
         "hidden_dims_list": [64, 128, 256, 512, 512],
     },
+    "ResNet18": {
+        "channels": [64, 128, 256, 512],
+        "num_layers": [2, 2, 2, 2],
+        "bottleneck": False,
+    },
+    "ResNet34": {
+        "channels": [64, 128, 256, 512],
+        "num_layers": [3, 4, 6, 3],
+        "bottleneck": False,
+    },
+    "ResNet50": {
+        "channels": [64, 128, 256, 512],
+        "num_layers": [3, 4, 6, 3],
+        "bottleneck": True,
+    }
 }
 
 
@@ -36,6 +51,9 @@ CONFIG_TO_GENERAL = {
     "VGG13": "VGG",
     "VGG16": "VGG",
     "VGG19": "VGG",
+    "ResNet18": "ResNet",
+    "ResNet34": "ResNet",
+    "ResNet50": "ResNet",
 }
 
 
@@ -45,6 +63,7 @@ CONFIG_TO_GENERAL = {
 BACKBONES_DICT = {
     "AlexNet": backbone.AlexNet,
     "VGG": backbone.VGG,  # generic VGG builder
+    "ResNet": backbone.ResNet
 }
 
 
@@ -56,6 +75,7 @@ DETECTION_HEADS_DICT = {
     "AlexNet": detection_head.DoubleLinearHead,
     "VGG": detection_head.DoubleLinearHead,
     "GAP": detection_head.GAPDoubleLinearHead,
+    "ResNet": detection_head.GAPDoubleLinearHead,
 }
 
 

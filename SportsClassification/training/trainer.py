@@ -114,6 +114,8 @@ class Trainer:
         # setup model
         model_config = self.config["model"]
         model = BuildModel(**filter_kwargs(BuildModel, model_config)).to(self.device)
+        total_params = sum(p.numel() for p in model.parameters())
+        logger_instance.logger.info(f"Total number of parameters: {total_params}")
 
         # load pretrained weights
         pretrained: dict[str, dict[str, Any]] = (model_config.get("pretrained") or {})

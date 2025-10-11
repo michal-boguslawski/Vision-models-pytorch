@@ -14,7 +14,6 @@ class AlexNet(nn.Module):
         activation_fn: Type[nn.Module] = nn.ReLU,
         pool_type: Type[nn.Module] = nn.MaxPool2d,
         dropout: float = 0.5,
-        if_flatten: bool = True,
         *args,
         **kwargs
     ):
@@ -123,4 +122,96 @@ class VGG(nn.Module):
     def forward(self, image: T.Tensor) -> T.Tensor:
         assert image.shape[-3:] == (3, 224, 224)
         x = self.features(image)
+        return x
+
+
+class ResNetBlock(nn.Module):
+    def __init__(
+        self,
+        in_channels: int,
+        out_channels: int,
+        stride: int,
+        bottleneck: bool = False,
+    ):
+        super().__init__()
+        kernel_size = 1 if bottleneck else 3
+        padding = 0 if bottleneck else 1
+        self.act_fn = nn.ReLU(inplace=True)
+        layers = [
+            nn.Conv2d(in_channels, out_channels, kernel_size=kernel_size, stride=stride, padding=padding, bias=False),
+            nn.BatchNorm2d(out_channels),
+            self.act_fn,
+            nn.Conv2d(out_channels, out_channels, kernel_size=3, stride=1, padding=1, bias=False),
+            nn.BatchNorm2d(out_channels),
+        ]
+        if bottleneck:
+            layers.append(self.act_fn)
+            layers.append(nn.Conv2d(out_channels, 4 * out_channels, kernel_size=1, stride=1, padding=0))
+            layers.append(nn.BatchNorm2d(4 * out_channels))
+        self.block_layers = nn.Sequential(*layers)
+        
+        self.shortcut = (
+            nn.Sequential(
+                nn.Conv2d(in_channels, out_channels * (1 + 3 * bottleneck), kernel_size=1, stride=stride, padding=0, bias=False),
+                nn.BatchNorm2d(out_channels * (1 + 3 * bottleneck))
+            )
+            if in_channels != out_channels * (1 + 3 * bottleneck)
+            else nn.Identity()
+        )
+        
+    def forward(self, image: T.Tensor) -> T.Tensor:
+        x = self.block_layers(image)
+        output = x + self.shortcut(image)
+        output = self.act_fn(output)
+        return output
+    
+
+class ResNet(nn.Module):
+    """
+    https://arxiv.org/pdf/1512.03385
+    """
+    def __init__(
+        self,
+        in_channels: int = 3,
+        channels: list[int] = [64, 128, 256, 512],
+        num_layers: list[int] = [2, 2, 2, 2],
+        bottleneck: bool = False,
+    ):
+        super().__init__()
+        self.out_features = (channels[-1] * (1 + 3 * bottleneck), 7, 7)
+
+        self.initial_layers = nn.Sequential(
+            nn.Conv2d(in_channels, channels[0], kernel_size=7, stride=2, padding=3, bias=False),
+            nn.BatchNorm2d(channels[0]),
+            nn.ReLU(inplace=True),
+            nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
+        )
+        resnet_blocks = [
+            self._make_block(
+                in_channels=channels[0] if i==0 else channels[i-1] * (1 + 3 * bottleneck),
+                out_channels=channels[i],
+                num_layers=n_layers,
+                stride=2 if i>0 else 1,
+                bottleneck=bottleneck,
+            )
+            for i, n_layers in enumerate(num_layers)
+        ]
+        self.resnet_layers = nn.Sequential(*resnet_blocks)
+
+    @staticmethod
+    def _make_block(in_channels, out_channels, num_layers, stride=1, bottleneck: bool = False) -> nn.Module:
+        layers_list = [
+            ResNetBlock(
+                in_channels=in_channels if i==0 else out_channels * (1 + 3 * bottleneck),
+                out_channels=out_channels,
+                stride=stride if i==0 else 1,
+                bottleneck=bottleneck
+            )
+            for i in range(num_layers)
+        ]
+        return nn.Sequential(*layers_list)
+        
+    def forward(self, image: T.Tensor) -> T.Tensor:
+        x = self.initial_layers(image)
+        x = self.resnet_layers(x)
         return x

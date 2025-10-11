@@ -10,10 +10,12 @@
 |----------|----------|----------|----------|
 |AlexNet|0.665283|0.586|0.594|
 |VGG11|0.999259|0.884|0.88|
-|VGG13|0.858657|0.752|0.768|
+|VGG13|0.893855|0.894|0.768|
 |VGG16|xxx|xxx|xxx|
 |Vision Transformer|xxx|xxx|xxx|
-|ResNet-18|xxx|xxx|xxx|
+|ResNet18|0.792967|0.862|xxx|
+|ResNet34|xxx|xxx|xxx|
+|ResNet50|xxx|xxx|xxx|
 |EfficientNet|xxx|xxx|xxx|
 |Inception|xxx|xxx|xxx|
 
