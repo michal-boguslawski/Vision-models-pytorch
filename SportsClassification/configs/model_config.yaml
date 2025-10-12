@@ -1,5 +1,5 @@
 # model_config.yaml
-model_name: ResNet18
+model_name: ResNet34
 # backbone_name: VGG13
 # detection_head_name: GAP
 # pretrained:

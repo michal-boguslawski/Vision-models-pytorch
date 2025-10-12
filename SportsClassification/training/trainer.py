@@ -76,7 +76,15 @@ class Trainer:
         self.device = self.config["misc"].get("device") if T.cuda.is_available() else "cpu"
         self.s3_bucket_name: str | None = self.config.get("s3_bucket_name")
 
-        self.evaluator = Evaluator(device=self.device, **filter_kwargs(Evaluator, self.config.get("evaluation")))
+        training_cfg = self.config.get("training", {})
+        loss_cfg = training_cfg.get("loss", {}) if isinstance(training_cfg, dict) else {}
+        loss_fn_name = loss_cfg.get("type", "")
+        self.evaluator = Evaluator(
+            device=self.device,
+            # Robust nested config access for loss_fn_name
+            loss_fn_name=loss_fn_name,
+            **filter_kwargs(Evaluator, self.config.get("evaluation"))
+        )
 
         self.scaler = T.GradScaler(self.device)
 
@@ -113,18 +121,16 @@ class Trainer:
 
         # setup model
         model_config = self.config["model"]
+        pretrained = model_config.get("pretrained")
         model = BuildModel(**filter_kwargs(BuildModel, model_config)).to(self.device)
         total_params = sum(p.numel() for p in model.parameters())
         logger_instance.logger.info(f"Total number of parameters: {total_params}")
-
-        # load pretrained weights
-        pretrained: dict[str, dict[str, Any]] = (model_config.get("pretrained") or {})
-
-        model_handler.load_weights(
-            model=model,
-            project_name = self.config["project_name"],
-            **filter_kwargs(model_handler.load_weights, pretrained)
-        )
+        if pretrained and isinstance(pretrained, dict) and any(pretrained.values()):
+            model_handler.load_weights(
+                model=model,
+                project_name = self.config["project_name"],
+                **filter_kwargs(model_handler.load_weights, pretrained)
+            )
         self.model = model
 
         # setup training related objects
@@ -372,7 +378,7 @@ class Trainer:
         Returns:
             Dict[str, float]: Dictionary of computed metrics (e.g., loss, accuracy).
         """
-        metrics = self.evaluator.evaluate(self.model, dl, self.loss_fn)
+        metrics = self.evaluator.evaluate(self.model, dl)
         metrics = {f"epoch_{k}": v for k, v in metrics.items()}
         metrics["epoch"] = epoch
         metrics["dataset"] = "val"

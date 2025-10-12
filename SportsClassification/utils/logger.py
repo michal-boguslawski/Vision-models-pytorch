@@ -49,7 +49,7 @@ class SingletonLogger(metaclass=SingletonMeta):
         self._logger = logging.getLogger("AppLogger")
         self._logger.setLevel(logging.DEBUG)
 
-        if not self.logger.handlers:
+        if not self._logger.handlers:
             # console handler
             console_handler = logging.StreamHandler()
             console_formatter = logging.Formatter(
@@ -81,7 +81,7 @@ class SingletonLogger(metaclass=SingletonMeta):
             self.metrics_logger.addHandler(metrics_handler)
 
     def get_logger(self) -> logging.Logger:
-        if not hasattr(self, "logger"):
+        if not hasattr(self, "_logger"):
             raise RuntimeError("Logger not initialized. Call .initialize() first.")
         return self._logger
 

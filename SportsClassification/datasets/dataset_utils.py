@@ -3,6 +3,7 @@ import pandas as pd
 from PIL import Image
 from typing import Tuple, Any, cast, Optional
 import torch as T
+from torch import nn
 from torch.utils.data import DataLoader, Dataset
 from torchvision.io import decode_image
 from torchvision.transforms import v2
@@ -80,8 +81,7 @@ class DatasetHandler:
         normalize_mean = self.config.get("normalize_mean", None)
         normalize_std = self.config.get("normalize_std", None)
         
-        transforms_list: list[v2.Transform] = []
-        random_apply_list: list[v2.Transform] = []
+        transforms_list: list[Any] = []
 
         transforms_list.append(v2.ToImage())
         if size:
@@ -90,14 +90,8 @@ class DatasetHandler:
         if augmentations:
             for key, value in augmentations.items():
                 if key in AUGMENTATIONS_DICT and value:
-                    apply_type, transform = AUGMENTATIONS_DICT[key]
-                    if apply_type == "compose":
-                        transforms_list.append(transform)
-                    elif apply_type == "random":
-                        random_apply_list.append(transform)
-
-        if random_apply_list:
-            transforms_list.append(v2.RandomApply(random_apply_list))
+                    transform = AUGMENTATIONS_DICT[key]
+                    transforms_list.append(transform)
 
         transforms_list.append(v2.ToDtype(T.float32, scale=True))
 

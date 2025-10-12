@@ -1,10 +1,11 @@
+from torch import nn
 from torcheval.metrics import MulticlassAccuracy, Metric
 from typing import Any
 
 
 EVALUATION_METRICS_DICT: dict[str, Metric[Any]] = {
     "accuracy": MulticlassAccuracy(k=1),
-    "top-5-accuracy": MulticlassAccuracy(k=5)
+    "top-5-accuracy": MulticlassAccuracy(k=5),
 }
 
 
