@@ -125,12 +125,15 @@ class Trainer:
         model = BuildModel(**filter_kwargs(BuildModel, model_config)).to(self.device)
         total_params = sum(p.numel() for p in model.parameters())
         logger_instance.logger.info(f"Total number of parameters: {total_params}")
+        
+        self.freeze_time = None
         if pretrained and isinstance(pretrained, dict) and any(pretrained.values()):
             model_handler.load_weights(
                 model=model,
                 project_name = self.config["project_name"],
                 **filter_kwargs(model_handler.load_weights, pretrained)
             )
+            self.freeze_time = cast(int, pretrained.get("freeze_time", self.num_epochs))
         self.model = model
 
         # setup training related objects
@@ -147,7 +150,7 @@ class Trainer:
 
         self.num_epochs = training_config["num_epochs"]
         self.log_interval = training_config.get("log_interval")
-        self.freeze_time = cast(int, pretrained.get("freeze_time", self.num_epochs))
+        
 
     def _setup_directories(self):
         """
@@ -346,7 +349,7 @@ class Trainer:
 
         self._on_fit_start()
         for epoch in range(self.num_epochs):
-            if epoch == self.freeze_time:
+            if self.freeze_time and epoch == self.freeze_time:
                 model_handler.unfreeze_weights(self.model)
 
             self.train_one_epoch(epoch, train_dataloader)

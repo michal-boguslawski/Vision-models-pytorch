@@ -17,14 +17,14 @@ training:
     lr: 0.0002
     weight_decay: 1e-3
   scheduler:
-    type: cosine_annealing_warm_restarts
+    type: cosine_annealing_warm_restarts_with_decay
     # total_steps: 200
     # pct_start: 0.25
     # max_lr: 0.002
-    T_0: 100
-    # T_mult: 2
+    T_0: 50
+    T_mult: 2
     # eta_min: 0.
-    # gamma: 0.95
+    gamma: 0.5
     # patience: 10
   loss:
     type: cross_entropy
