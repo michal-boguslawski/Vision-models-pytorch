@@ -57,7 +57,7 @@ class CosineAnnealingWarmRestartsDecay(LRScheduler):
         self.last_epoch = epoch
         self.T_cur += 1
 
-        if self.T_cur >= self.cycle_length:
+        if self.T_cur > self.cycle_length:
             # Restart
             self.restart_count += 1
             self.T_cur = 0

@@ -17,14 +17,14 @@ training:
     lr: 0.0002
     weight_decay: 1e-3
   scheduler:
-    type: cosine_annealing_warm_restarts_with_decay
+    type: cosine_annealing_warm_restarts
     # total_steps: 200
     # pct_start: 0.25
     # max_lr: 0.002
     T_0: 50
     T_mult: 2
     # eta_min: 0.
-    gamma: 0.5
+    # gamma: 0.5
     # patience: 10
   loss:
     type: cross_entropy
@@ -33,8 +33,8 @@ training:
     obj_loss: binary_cross_entropy
   early_stopping:
     patience: 30
-    reset_after: 100
-    # T_mult: 2
+    reset_after: 50
+    T_mult: 2
     threshold: 0.0001
   num_epochs: 1000
   save_best_only: true

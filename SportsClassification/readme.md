@@ -14,7 +14,7 @@
 |VGG16|xxx|xxx|xxx|
 |Vision Transformer|xxx|xxx|xxx|
 |ResNet18|0.9942|0.87|xxx|
-|ResNet34|0.9910|0.898|xxx|
+|ResNet34|0.9901|0.922|xxx|
 |ResNet50|xxx|xxx|xxx|
 |EfficientNet|xxx|xxx|xxx|
 |Inception|xxx|xxx|xxx|

@@ -8,7 +8,7 @@ from torch.utils.data import DataLoader, Dataset
 from torchvision.io import decode_image
 from torchvision.transforms import v2
 from utils.config_parser import ConfigParser
-from utils.seed import seed_worker
+from utils.seed import seed_worker, seed_generator
 from datasets.augmentations import AUGMENTATIONS_DICT
 
 
@@ -138,7 +138,6 @@ class DatasetHandler:
         if sub_dataset == "train":
             self._create_target_encoders(self.df_dict["train"])
         num_workers: int = cast(int, self.config.get("num_workers", 1))
-
         dl = DataLoader(
             dataset=self._create_image_dataset(sub_dataset, use_augmentations),
             batch_size=self.config["batch_size"],
@@ -146,5 +145,6 @@ class DatasetHandler:
             num_workers=num_workers,
             pin_memory=True,
             worker_init_fn=seed_worker,
+            generator=seed_generator()
         )
         return dl
