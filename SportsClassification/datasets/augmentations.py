@@ -1,22 +1,43 @@
 from torchvision.transforms import v2
-from typing import Any
+from torchvision.transforms import RandomApply
 
+AUGMENTATIONS_DICT = {
+    # Geometric / spatial transforms
+    "horizontal_flip": v2.RandomHorizontalFlip(p=0.5),
+    "rotation": v2.RandomRotation(degrees=(-15, 15)),  # reduced rotation
+    "random_crop": v2.RandomCrop(size=(224, 224)),
+    "random_resized_crop": v2.RandomResizedCrop(size=(224, 224), scale=(0.6, 1.1)),
+    "affine": RandomApply([v2.RandomAffine(
+        degrees=(-15, 15),
+        translate=(0.05, 0.05),
+        scale=(0.9, 1.1),
+        shear=(-5, 5)
+    )], p=0.5),
+    "perspective": RandomApply([v2.RandomPerspective(distortion_scale=0.2, p=1)], p=0.5),
 
-AUGMENTATIONS_DICT: dict[str, tuple[str, Any]] = {
-    "horizontal_flip": ("compose", v2.RandomHorizontalFlip(p=0.5)),
-    "rotation": ("compose", v2.RandomRotation(degrees=(-45, 45))),
-    "random_crop": ("compose", v2.RandomCrop(size=(224, 224))),
-    "color_jitter": ("random", v2.ColorJitter(brightness=0.3, contrast=0.3, saturation=0.3, hue=0.3)),
-    "random_resized_crop": ("compose", v2.RandomResizedCrop(size=(224, 224), scale=(0.8, 1.1))),
-    "grayscale": ("random", v2.RandomGrayscale(0.3)),
-    "gaussian_blur": ("random", v2.GaussianBlur(5)),
-    "perspective": ("random", v2.RandomPerspective()),
-    "affine": ("random", v2.RandomAffine(degrees=(-45, 45), translate=(0.1, 0.1), scale=(0.8, 1.1), shear=(-10, 10))),
-    "erasing": ("random", v2.RandomErasing(p=0.5, scale=(0.02, 0.1), ratio=(0.3, 3.3), value=0)),
-    "invert": ("random", v2.RandomInvert()),
-    "posterize": ("random", v2.RandomPosterize(bits=2)),
-    "solarize": ("random", v2.RandomSolarize(threshold=192.0)),
-    "adjust_sharpness": ("random", v2.RandomAdjustSharpness(sharpness_factor=2)),
-    "autocontrast": ("random", v2.RandomAutocontrast()),
-    "equalize": ("random", v2.RandomEqualize()),
+    # Color / brightness / contrast transforms
+    "color_jitter": RandomApply([v2.ColorJitter(
+        brightness=0.2,
+        contrast=0.2,
+        saturation=0.2,
+        hue=0.1
+    )], p=0.5),
+    "grayscale": v2.RandomGrayscale(p=0.5),
+
+    # Other image transforms
+    "gaussian_blur": RandomApply([v2.GaussianBlur(kernel_size=5)], p=0.5),
+    "erasing": v2.RandomErasing(
+        p=0.5,
+        scale=(0.02, 0.15),
+        ratio=(0.3, 3.3),
+        value=0
+    ),
+
+    # Extreme color transforms (less frequent)
+    "invert": v2.RandomInvert(p=0.2),
+    "posterize": v2.RandomPosterize(bits=2, p=0.2),
+    "solarize": v2.RandomSolarize(threshold=192.0, p=0.2),
+    "adjust_sharpness": v2.RandomAdjustSharpness(sharpness_factor=2, p=0.3),
+    "autocontrast": v2.RandomAutocontrast(p=0.3),
+    "equalize": v2.RandomEqualize(p=0.3),
 }

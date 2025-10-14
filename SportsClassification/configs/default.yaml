@@ -1,6 +1,6 @@
 # default.yaml
 project_name: sports_cv_project_classification
-experiment_name: vgg13-paper-heavy-augmentations-exponential_lr
+experiment_name: resnet34-paper-heavy-augmentations-cosine_annealing_warm_restarts
 
 # Include model and dataset configs
 model: !include model_config.yaml
@@ -14,25 +14,27 @@ logs_dir: logs/
 training:
   optimizer:
     type: adam
-    lr: 0.0005
-    weight_decay: 5e-4
+    lr: 0.0002
+    weight_decay: 1e-3
   scheduler:
-    type: exponential_lr
-    # total_steps: 100
+    type: cosine_annealing_warm_restarts
+    # total_steps: 200
     # pct_start: 0.25
-    # max_lr: 0.0005
-    # T_0: 25
-    # T_mult: 2
+    # max_lr: 0.002
+    T_0: 50
+    T_mult: 2
     # eta_min: 0.
-    gamma: 0.95
+    # gamma: 0.5
+    # patience: 10
   loss:
     type: cross_entropy
+    label_smoothing: 0.05
     bbox_loss: smooth_l1
     obj_loss: binary_cross_entropy
   early_stopping:
-    patience: 50
-    # reset_after: 25
-    # T_mult: 2
+    patience: 30
+    reset_after: 50
+    T_mult: 2
     threshold: 0.0001
   num_epochs: 1000
   save_best_only: true

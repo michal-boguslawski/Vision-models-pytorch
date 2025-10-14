@@ -12,20 +12,21 @@ from models.utils import ModelHandler
 from utils.config_parser import ConfigParser
 from utils.filesystem import extract_file_paths
 from utils.helpers import filter_kwargs
-from torcheval.metrics import Metric
+from training.losses import setup_loss
 
 
 class Evaluator:
-    def __init__(self, metrics: list[str], device: str | None = None):
+    def __init__(self, metrics: list[str], loss_fn_name: str | None = None, device: str | None = None):
         self.metrics = metrics
-        self.metrics_fn: dict[str, Metric[Any]] = {k: setup_metric(k) for k in metrics}
+        self.metrics_fn = {k: setup_metric(k) for k in metrics}
         self.device = device or "cpu"
+        self.loss_fn = setup_loss({"type": loss_fn_name}) if loss_fn_name is not None else None
 
     def _reset_metrics(self):
         for values in self.metrics_fn.values():
             values.reset()
 
-    def evaluate(self, model: nn.Module, dl: DataLoader[Tuple[T.Tensor, int]], loss_fn: nn.Module | None = None) -> dict[str, Any]:
+    def evaluate(self, model: nn.Module, dl: DataLoader[Tuple[T.Tensor, int]]) -> dict[str, Any]:
         model.eval()
         self._reset_metrics()
         loss = 0
@@ -36,10 +37,10 @@ class Evaluator:
                 outputs = model(input_)
             
             self._calc_one_step(outputs=outputs, labels=labels)
-            if loss_fn:
-                loss += loss_fn(outputs, labels).item()
+            if self.loss_fn is not None:
+                loss += self.loss_fn(outputs, labels).item()
         metrics = self._compute_metrics()
-        if loss_fn:
+        if self.loss_fn:
             metrics["loss"] = loss / len(dl)
         return metrics
 

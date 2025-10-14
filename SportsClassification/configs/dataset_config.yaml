@@ -18,19 +18,20 @@ input_size: [224, 224]
 normalize_mean: [0.4714, 0.4699, 0.4551]
 normalize_std: [0.2391, 0.2302, 0.2320]
 augmentations:
-  horizontal_flip: true
-  rotation: true
-  random_crop: false
-  color_jitter: true
-  random_resized_crop: true
-  grayscale: true
-  gaussian_blur: true
-  perspective: true
-  affine: true
-  erasing: true
-  adjust_sharpness: true
+  horizontal_flip: true           # good for left/right invariance
+  rotation: true                  # small rotations
+  random_crop: false              # use either RandomCrop or RandomResizedCrop, not both
+  random_resized_crop: true       # better than random_crop for generalization
+  color_jitter: true              # slight brightness/contrast/saturation adjustments
+  grayscale: true                 # occasional grayscale
+  gaussian_blur: true             # light blurring
+  perspective: false              # removed: heavy geometric distortion hurts validation
+  affine: true                    # small affine transforms (translation, scale, shear)
+  erasing: true                   # random erasing for regularization
+  adjust_sharpness: false         # removed: extreme effect rarely helps generalization
 
-batch_size: 64
+
+batch_size: 128
 shuffle: true
-num_workers: 16
+num_workers: 24
 seed: 42

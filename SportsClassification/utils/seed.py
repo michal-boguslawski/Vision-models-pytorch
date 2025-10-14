@@ -30,3 +30,8 @@ def seed_worker(worker_id: int):
     worker_seed = T.initial_seed() % 2**32
     np.random.seed(worker_seed)
     random.seed(worker_seed)
+
+def seed_generator(seed: int = 42):
+    g = T.Generator()
+    g.manual_seed(42)
+    return g

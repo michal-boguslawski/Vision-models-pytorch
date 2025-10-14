@@ -1,0 +1,1005 @@
+2025-10-11 16:38:58,330 | INFO | S3 bucket computer-vision-models-pytorch-bucket exists.
+2025-10-11 16:38:58,408 | INFO | DynamoDB table computer-vision-models-config-table exists.
+2025-10-11 16:38:58,412 | INFO | Config: project_name: sports_cv_project_classification
+experiment_name: resnet50-paper-heavy-augmentations-exponential_lr
+model:
+  model_name: ResNet50
+  num_classes: 100
+  num_anchors: 3
+  dropout_rate: 0.5
+  hidden_dim: 4096
+dataset:
+  name: sports_images
+  source: kaggle
+  kaggle_dataset_name: gpiosenka/sports-classification
+  force_download: false
+  root_dir: data
+  raw_subdir: raw
+  processed_subdir: processed
+  annotations_subdir: annotations
+  annotations_file: sports.csv
+  use_existing_train_test_split: true
+  train_subdir: train
+  val_subdir: val
+  test_subdir: test
+  input_size:
+  - 224
+  - 224
+  normalize_mean:
+  - 0.4714
+  - 0.4699
+  - 0.4551
+  normalize_std:
+  - 0.2391
+  - 0.2302
+  - 0.232
+  augmentations:
+    horizontal_flip: true
+    rotation: true
+    random_crop: false
+    color_jitter: true
+    random_resized_crop: true
+    grayscale: true
+    gaussian_blur: true
+    perspective: true
+    affine: true
+    erasing: true
+    adjust_sharpness: true
+  batch_size: 64
+  shuffle: true
+  num_workers: 16
+  seed: 42
+checkpoints_dir: checkpoints/
+logs_dir: logs/
+training:
+  optimizer:
+    type: adam
+    lr: 0.002
+    weight_decay: 0.0005
+  scheduler:
+    type: exponential_lr
+    max_lr: 0.002
+    gamma: 0.99
+  loss:
+    type: cross_entropy
+    bbox_loss: smooth_l1
+    obj_loss: binary_cross_entropy
+  early_stopping:
+    patience: 50
+    threshold: 0.0001
+  num_epochs: 1000
+  save_best_only: true
+  save_checkpoint: true
+  log_interval: 50
+evaluation:
+  metrics:
+  - accuracy
+  - top-5-accuracy
+  iou_threshold: 0.5
+  conf_threshold: 0.3
+misc:
+  device: cuda
+  seed: 42
+  deterministic: true
+s3_bucket: computer-vision-models-pytorch-bucket
+dynamodb_config_table: computer-vision-models-config-table
+
+2025-10-11 16:38:58,414 | INFO | Global seed set to 42
+2025-10-11 16:38:58,452 | INFO | Added item to DynamoDB table: dynamodb.Table(name='computer-vision-models-config-table')
+2025-10-11 16:38:59,434 | INFO | [s3] No model weights found.
+2025-10-11 16:38:59,436 | INFO | Training started...
+2025-10-11 16:38:59,437 | INFO | BuildModel(
+  (backbone): ResNet(
+    (initial_layers): Sequential(
+      (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+      (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    )
+    (resnet_layers): Sequential(
+      (0): Sequential(
+        (0): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Sequential(
+            (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (1): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Identity()
+        )
+        (2): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Identity()
+        )
+      )
+      (1): Sequential(
+        (0): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(256, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Sequential(
+            (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (1): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Identity()
+        )
+        (2): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Identity()
+        )
+        (3): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Identity()
+        )
+      )
+      (2): Sequential(
+        (0): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(512, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Sequential(
+            (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (1): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Identity()
+        )
+        (2): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Identity()
+        )
+        (3): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Identity()
+        )
+        (4): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Identity()
+        )
+        (5): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Identity()
+        )
+      )
+      (3): Sequential(
+        (0): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(1024, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Sequential(
+            (0): Conv2d(1024, 2048, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (1): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Identity()
+        )
+        (2): ResNetBlock(
+          (act_fn): ReLU(inplace=True)
+          (block_layers): Sequential(
+            (0): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU(inplace=True)
+            (3): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (4): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (5): ReLU(inplace=True)
+            (6): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1))
+            (7): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (shortcut): Identity()
+        )
+      )
+    )
+  )
+  (detecton_head): GAPDoubleLinearHead(
+    (classifier): Sequential(
+      (0): AvgPool2d(kernel_size=(7, 7), stride=(7, 7), padding=0)
+      (1): Flatten(start_dim=1, end_dim=-1)
+      (2): Linear(in_features=2048, out_features=4096, bias=True)
+      (3): ReLU(inplace=True)
+      (4): Dropout(p=0.5, inplace=False)
+      (5): Linear(in_features=4096, out_features=4096, bias=True)
+      (6): ReLU(inplace=True)
+      (7): Dropout(p=0.5, inplace=False)
+      (8): Linear(in_features=4096, out_features=100, bias=True)
+    )
+  )
+)
+2025-10-11 16:39:40,181 | INFO | Epoch summary loss: 4.971272 accuracy: 0.011256 top-5-accuracy: 0.058074
+2025-10-11 16:39:41,536 | INFO | Current lr: 0.00198
+2025-10-11 16:39:41,536 | INFO | Last best score 6.849313199520111 - 0 steps ago
+2025-10-11 16:39:41,537 | INFO | {'epoch_accuracy': 0.009999999776482582, 'epoch_top-5-accuracy': 0.05000000074505806, 'epoch_loss': 6.849313199520111, 'epoch': 0, 'dataset': 'val'}
+2025-10-11 16:39:41,677 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:39:41,678 | INFO | Best model saved
+2025-10-11 16:40:21,069 | INFO | Epoch summary loss: 4.528635 accuracy: 0.018103 top-5-accuracy: 0.087780
+2025-10-11 16:40:22,434 | INFO | Current lr: 0.0019602
+2025-10-11 16:40:22,434 | INFO | Last best score 4.636396825313568 - 0 steps ago
+2025-10-11 16:40:22,434 | INFO | {'epoch_accuracy': 0.014000000432133675, 'epoch_top-5-accuracy': 0.07000000029802322, 'epoch_loss': 4.636396825313568, 'epoch': 1, 'dataset': 'val'}
+2025-10-11 16:40:22,612 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:40:22,613 | INFO | Best model saved
+2025-10-11 16:41:01,815 | INFO | Epoch summary loss: 4.419249 accuracy: 0.020473 top-5-accuracy: 0.108139
+2025-10-11 16:41:03,124 | INFO | Current lr: 0.001940598
+2025-10-11 16:41:03,124 | INFO | Last best score 4.299385130405426 - 0 steps ago
+2025-10-11 16:41:03,124 | INFO | {'epoch_accuracy': 0.01600000075995922, 'epoch_top-5-accuracy': 0.11800000071525574, 'epoch_loss': 4.299385130405426, 'epoch': 2, 'dataset': 'val'}
+2025-10-11 16:41:03,306 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:41:03,307 | INFO | Best model saved
+2025-10-11 16:41:42,604 | INFO | Epoch summary loss: 4.372996 accuracy: 0.024659 top-5-accuracy: 0.117128
+2025-10-11 16:41:43,985 | INFO | Current lr: 0.0019211920199999999
+2025-10-11 16:41:43,985 | INFO | Last best score 4.299385130405426 - 1 steps ago
+2025-10-11 16:41:43,985 | INFO | {'epoch_accuracy': 0.026000000536441803, 'epoch_top-5-accuracy': 0.13600000739097595, 'epoch_loss': 4.610168933868408, 'epoch': 3, 'dataset': 'val'}
+2025-10-11 16:42:23,202 | INFO | Epoch summary loss: 4.310716 accuracy: 0.032805 top-5-accuracy: 0.138392
+2025-10-11 16:42:24,529 | INFO | Current lr: 0.0019019800997999998
+2025-10-11 16:42:24,529 | INFO | Last best score 4.228915989398956 - 0 steps ago
+2025-10-11 16:42:24,529 | INFO | {'epoch_accuracy': 0.02199999988079071, 'epoch_top-5-accuracy': 0.13199999928474426, 'epoch_loss': 4.228915989398956, 'epoch': 4, 'dataset': 'val'}
+2025-10-11 16:42:24,721 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:42:24,722 | INFO | Best model saved
+2025-10-11 16:43:04,304 | INFO | Epoch summary loss: 4.272932 accuracy: 0.033284 top-5-accuracy: 0.154091
+2025-10-11 16:43:05,622 | INFO | Current lr: 0.0018829602988019998
+2025-10-11 16:43:05,622 | INFO | Last best score 4.228915989398956 - 1 steps ago
+2025-10-11 16:43:05,622 | INFO | {'epoch_accuracy': 0.026000000536441803, 'epoch_top-5-accuracy': 0.11800000071525574, 'epoch_loss': 4.292596638202667, 'epoch': 5, 'dataset': 'val'}
+2025-10-11 16:43:45,028 | INFO | Epoch summary loss: 4.232361 accuracy: 0.036690 top-5-accuracy: 0.162100
+2025-10-11 16:43:46,355 | INFO | Current lr: 0.0018641306958139799
+2025-10-11 16:43:46,355 | INFO | Last best score 4.093516826629639 - 0 steps ago
+2025-10-11 16:43:46,355 | INFO | {'epoch_accuracy': 0.04800000041723251, 'epoch_top-5-accuracy': 0.20399999618530273, 'epoch_loss': 4.093516826629639, 'epoch': 6, 'dataset': 'val'}
+2025-10-11 16:43:46,538 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:43:46,539 | INFO | Best model saved
+2025-10-11 16:44:26,019 | INFO | Epoch summary loss: 4.166358 accuracy: 0.043115 top-5-accuracy: 0.188343
+2025-10-11 16:44:27,349 | INFO | Current lr: 0.00184548938885584
+2025-10-11 16:44:27,349 | INFO | Last best score 3.991700917482376 - 0 steps ago
+2025-10-11 16:44:27,349 | INFO | {'epoch_accuracy': 0.052000001072883606, 'epoch_top-5-accuracy': 0.22200000286102295, 'epoch_loss': 3.991700917482376, 'epoch': 7, 'dataset': 'val'}
+2025-10-11 16:44:27,520 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:44:27,520 | INFO | Best model saved
+2025-10-11 16:45:07,064 | INFO | Epoch summary loss: 4.123861 accuracy: 0.050965 top-5-accuracy: 0.204720
+2025-10-11 16:45:08,454 | INFO | Current lr: 0.0018270344949672815
+2025-10-11 16:45:08,454 | INFO | Last best score 3.925839453935623 - 0 steps ago
+2025-10-11 16:45:08,454 | INFO | {'epoch_accuracy': 0.07400000095367432, 'epoch_top-5-accuracy': 0.2800000011920929, 'epoch_loss': 3.925839453935623, 'epoch': 8, 'dataset': 'val'}
+2025-10-11 16:45:08,627 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:45:08,628 | INFO | Best model saved
+2025-10-11 16:45:47,890 | INFO | Epoch summary loss: 4.073287 accuracy: 0.059606 top-5-accuracy: 0.221268
+2025-10-11 16:45:49,210 | INFO | Current lr: 0.0018087641500176086
+2025-10-11 16:45:49,211 | INFO | Last best score 3.771396726369858 - 0 steps ago
+2025-10-11 16:45:49,211 | INFO | {'epoch_accuracy': 0.07400000095367432, 'epoch_top-5-accuracy': 0.2919999957084656, 'epoch_loss': 3.771396726369858, 'epoch': 9, 'dataset': 'val'}
+2025-10-11 16:45:49,387 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:45:49,387 | INFO | Best model saved
+2025-10-11 16:46:28,721 | INFO | Epoch summary loss: 4.033038 accuracy: 0.059333 top-5-accuracy: 0.236317
+2025-10-11 16:46:30,015 | INFO | Current lr: 0.0017906765085174325
+2025-10-11 16:46:30,015 | INFO | Last best score 3.771396726369858 - 1 steps ago
+2025-10-11 16:46:30,015 | INFO | {'epoch_accuracy': 0.09000000357627869, 'epoch_top-5-accuracy': 0.30000001192092896, 'epoch_loss': 3.785689055919647, 'epoch': 10, 'dataset': 'val'}
+2025-10-11 16:47:09,383 | INFO | Epoch summary loss: 3.989416 accuracy: 0.067142 top-5-accuracy: 0.249869
+2025-10-11 16:47:10,681 | INFO | Current lr: 0.0017727697434322582
+2025-10-11 16:47:10,681 | INFO | Last best score 3.7241190373897552 - 0 steps ago
+2025-10-11 16:47:10,681 | INFO | {'epoch_accuracy': 0.09799999743700027, 'epoch_top-5-accuracy': 0.3319999873638153, 'epoch_loss': 3.7241190373897552, 'epoch': 11, 'dataset': 'val'}
+2025-10-11 16:47:10,880 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:47:10,880 | INFO | Best model saved
+2025-10-11 16:47:50,354 | INFO | Epoch summary loss: 3.969308 accuracy: 0.063901 top-5-accuracy: 0.251208
+2025-10-11 16:47:51,719 | INFO | Current lr: 0.0017550420459979356
+2025-10-11 16:47:51,719 | INFO | Last best score 3.632414221763611 - 0 steps ago
+2025-10-11 16:47:51,719 | INFO | {'epoch_accuracy': 0.09799999743700027, 'epoch_top-5-accuracy': 0.3479999899864197, 'epoch_loss': 3.632414221763611, 'epoch': 12, 'dataset': 'val'}
+2025-10-11 16:47:51,898 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:47:51,899 | INFO | Best model saved
+2025-10-11 16:48:31,401 | INFO | Epoch summary loss: 3.919106 accuracy: 0.070327 top-5-accuracy: 0.266685
+2025-10-11 16:48:32,742 | INFO | Current lr: 0.0017374916255379561
+2025-10-11 16:48:32,742 | INFO | Last best score 3.632414221763611 - 1 steps ago
+2025-10-11 16:48:32,743 | INFO | {'epoch_accuracy': 0.10199999809265137, 'epoch_top-5-accuracy': 0.31200000643730164, 'epoch_loss': 3.672401547431946, 'epoch': 13, 'dataset': 'val'}
+2025-10-11 16:49:11,860 | INFO | Epoch summary loss: 3.892215 accuracy: 0.073306 top-5-accuracy: 0.273435
+2025-10-11 16:49:13,246 | INFO | Current lr: 0.0017201167092825765
+2025-10-11 16:49:13,246 | INFO | Last best score 3.447872906923294 - 0 steps ago
+2025-10-11 16:49:13,246 | INFO | {'epoch_accuracy': 0.10999999940395355, 'epoch_top-5-accuracy': 0.38999998569488525, 'epoch_loss': 3.447872906923294, 'epoch': 14, 'dataset': 'val'}
+2025-10-11 16:49:13,428 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:49:13,428 | INFO | Best model saved
+2025-10-11 16:49:52,744 | INFO | Epoch summary loss: 3.864874 accuracy: 0.078643 top-5-accuracy: 0.286268
+2025-10-11 16:49:54,041 | INFO | Current lr: 0.0017029155421897507
+2025-10-11 16:49:54,041 | INFO | Last best score 3.447872906923294 - 1 steps ago
+2025-10-11 16:49:54,041 | INFO | {'epoch_accuracy': 0.10000000149011612, 'epoch_top-5-accuracy': 0.29600000381469727, 'epoch_loss': 3.7572459280490875, 'epoch': 15, 'dataset': 'val'}
+2025-10-11 16:50:33,437 | INFO | Epoch summary loss: 3.853852 accuracy: 0.077766 top-5-accuracy: 0.288855
+2025-10-11 16:50:34,804 | INFO | Current lr: 0.0016858863867678531
+2025-10-11 16:50:34,805 | INFO | Last best score 3.4344418048858643 - 0 steps ago
+2025-10-11 16:50:34,805 | INFO | {'epoch_accuracy': 0.1599999964237213, 'epoch_top-5-accuracy': 0.37599998712539673, 'epoch_loss': 3.4344418048858643, 'epoch': 16, 'dataset': 'val'}
+2025-10-11 16:50:34,984 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:50:34,985 | INFO | Best model saved
+2025-10-11 16:51:14,543 | INFO | Epoch summary loss: 3.835306 accuracy: 0.085468 top-5-accuracy: 0.294819
+2025-10-11 16:51:15,921 | INFO | Current lr: 0.0016690275229001746
+2025-10-11 16:51:15,921 | INFO | Last best score 3.4344418048858643 - 1 steps ago
+2025-10-11 16:51:15,921 | INFO | {'epoch_accuracy': 0.11800000071525574, 'epoch_top-5-accuracy': 0.37599998712539673, 'epoch_loss': 3.4807249009609222, 'epoch': 17, 'dataset': 'val'}
+2025-10-11 16:51:55,391 | INFO | Epoch summary loss: 3.814156 accuracy: 0.084579 top-5-accuracy: 0.303921
+2025-10-11 16:51:56,727 | INFO | Current lr: 0.0016523372476711729
+2025-10-11 16:51:56,727 | INFO | Last best score 3.4344418048858643 - 2 steps ago
+2025-10-11 16:51:56,727 | INFO | {'epoch_accuracy': 0.10400000214576721, 'epoch_top-5-accuracy': 0.35199999809265137, 'epoch_loss': 3.614520311355591, 'epoch': 18, 'dataset': 'val'}
+2025-10-11 16:52:36,051 | INFO | Epoch summary loss: 3.788890 accuracy: 0.089785 top-5-accuracy: 0.306821
+2025-10-11 16:52:37,440 | INFO | Current lr: 0.0016358138751944612
+2025-10-11 16:52:37,440 | INFO | Last best score 3.4344418048858643 - 3 steps ago
+2025-10-11 16:52:37,440 | INFO | {'epoch_accuracy': 0.12200000137090683, 'epoch_top-5-accuracy': 0.36800000071525574, 'epoch_loss': 3.519398868083954, 'epoch': 19, 'dataset': 'val'}
+2025-10-11 16:53:16,731 | INFO | Epoch summary loss: 3.761695 accuracy: 0.090173 top-5-accuracy: 0.321551
+2025-10-11 16:53:18,115 | INFO | Current lr: 0.0016194557364425167
+2025-10-11 16:53:18,115 | INFO | Last best score 3.2969014644622803 - 0 steps ago
+2025-10-11 16:53:18,115 | INFO | {'epoch_accuracy': 0.1459999978542328, 'epoch_top-5-accuracy': 0.4560000002384186, 'epoch_loss': 3.2969014644622803, 'epoch': 20, 'dataset': 'val'}
+2025-10-11 16:53:18,298 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:53:18,299 | INFO | Best model saved
+2025-10-11 16:53:57,798 | INFO | Epoch summary loss: 3.743554 accuracy: 0.094462 top-5-accuracy: 0.324160
+2025-10-11 16:53:59,155 | INFO | Current lr: 0.0016032611790780915
+2025-10-11 16:53:59,155 | INFO | Last best score 3.2969014644622803 - 1 steps ago
+2025-10-11 16:53:59,155 | INFO | {'epoch_accuracy': 0.12999999523162842, 'epoch_top-5-accuracy': 0.40400001406669617, 'epoch_loss': 3.4413786232471466, 'epoch': 21, 'dataset': 'val'}
+2025-10-11 16:54:38,407 | INFO | Epoch summary loss: 3.742976 accuracy: 0.098017 top-5-accuracy: 0.326359
+2025-10-11 16:54:39,736 | INFO | Current lr: 0.0015872285672873106
+2025-10-11 16:54:39,736 | INFO | Last best score 3.2969014644622803 - 2 steps ago
+2025-10-11 16:54:39,736 | INFO | {'epoch_accuracy': 0.12999999523162842, 'epoch_top-5-accuracy': 0.4399999976158142, 'epoch_loss': 3.3575094640254974, 'epoch': 22, 'dataset': 'val'}
+2025-10-11 16:55:19,519 | INFO | Epoch summary loss: 3.701428 accuracy: 0.102015 top-5-accuracy: 0.338760
+2025-10-11 16:55:20,865 | INFO | Current lr: 0.0015713562816144376
+2025-10-11 16:55:20,865 | INFO | Last best score 3.2969014644622803 - 3 steps ago
+2025-10-11 16:55:20,865 | INFO | {'epoch_accuracy': 0.10599999874830246, 'epoch_top-5-accuracy': 0.3720000088214874, 'epoch_loss': 3.555750399827957, 'epoch': 23, 'dataset': 'val'}
+2025-10-11 16:56:00,377 | INFO | Epoch summary loss: 3.673902 accuracy: 0.105422 top-5-accuracy: 0.350534
+2025-10-11 16:56:01,751 | INFO | Current lr: 0.0015556427187982931
+2025-10-11 16:56:01,752 | INFO | Last best score 3.228300839662552 - 0 steps ago
+2025-10-11 16:56:01,752 | INFO | {'epoch_accuracy': 0.164000004529953, 'epoch_top-5-accuracy': 0.4699999988079071, 'epoch_loss': 3.228300839662552, 'epoch': 24, 'dataset': 'val'}
+2025-10-11 16:56:01,928 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:56:01,929 | INFO | Best model saved
+2025-10-11 16:56:41,038 | INFO | Epoch summary loss: 3.654112 accuracy: 0.111528 top-5-accuracy: 0.350785
+2025-10-11 16:56:42,430 | INFO | Current lr: 0.00154008629161031
+2025-10-11 16:56:42,430 | INFO | Last best score 3.1682707369327545 - 0 steps ago
+2025-10-11 16:56:42,430 | INFO | {'epoch_accuracy': 0.1860000044107437, 'epoch_top-5-accuracy': 0.47200000286102295, 'epoch_loss': 3.1682707369327545, 'epoch': 25, 'dataset': 'val'}
+2025-10-11 16:56:42,607 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:56:42,608 | INFO | Best model saved
+2025-10-11 16:57:22,042 | INFO | Epoch summary loss: 3.640917 accuracy: 0.106607 top-5-accuracy: 0.363140
+2025-10-11 16:57:23,377 | INFO | Current lr: 0.0015246854286942069
+2025-10-11 16:57:23,378 | INFO | Last best score 3.1682707369327545 - 1 steps ago
+2025-10-11 16:57:23,378 | INFO | {'epoch_accuracy': 0.17000000178813934, 'epoch_top-5-accuracy': 0.44999998807907104, 'epoch_loss': 3.2211417257785797, 'epoch': 26, 'dataset': 'val'}
+2025-10-11 16:58:02,903 | INFO | Epoch summary loss: 3.619691 accuracy: 0.118159 top-5-accuracy: 0.363676
+2025-10-11 16:58:04,246 | INFO | Current lr: 0.001509438574407265
+2025-10-11 16:58:04,246 | INFO | Last best score 3.138790726661682 - 0 steps ago
+2025-10-11 16:58:04,246 | INFO | {'epoch_accuracy': 0.1940000057220459, 'epoch_top-5-accuracy': 0.4860000014305115, 'epoch_loss': 3.138790726661682, 'epoch': 27, 'dataset': 'val'}
+2025-10-11 16:58:04,423 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:58:04,424 | INFO | Best model saved
+2025-10-11 16:58:43,712 | INFO | Epoch summary loss: 3.594002 accuracy: 0.121030 top-5-accuracy: 0.378993
+2025-10-11 16:58:44,988 | INFO | Current lr: 0.0014943441886631922
+2025-10-11 16:58:44,988 | INFO | Last best score 3.138790726661682 - 1 steps ago
+2025-10-11 16:58:44,988 | INFO | {'epoch_accuracy': 0.164000004529953, 'epoch_top-5-accuracy': 0.47200000286102295, 'epoch_loss': 3.2395864129066467, 'epoch': 28, 'dataset': 'val'}
+2025-10-11 16:59:24,267 | INFO | Epoch summary loss: 3.581730 accuracy: 0.120249 top-5-accuracy: 0.384781
+2025-10-11 16:59:25,592 | INFO | Current lr: 0.0014794007467765602
+2025-10-11 16:59:25,592 | INFO | Last best score 3.087948590517044 - 0 steps ago
+2025-10-11 16:59:25,592 | INFO | {'epoch_accuracy': 0.2199999988079071, 'epoch_top-5-accuracy': 0.5059999823570251, 'epoch_loss': 3.087948590517044, 'epoch': 29, 'dataset': 'val'}
+2025-10-11 16:59:25,759 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 16:59:25,759 | INFO | Best model saved
+2025-10-11 17:00:05,378 | INFO | Epoch summary loss: 3.552581 accuracy: 0.125416 top-5-accuracy: 0.389007
+2025-10-11 17:00:06,772 | INFO | Current lr: 0.0014646067393087945
+2025-10-11 17:00:06,772 | INFO | Last best score 3.0481458008289337 - 0 steps ago
+2025-10-11 17:00:06,772 | INFO | {'epoch_accuracy': 0.21199999749660492, 'epoch_top-5-accuracy': 0.5040000081062317, 'epoch_loss': 3.0481458008289337, 'epoch': 30, 'dataset': 'val'}
+2025-10-11 17:00:06,957 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:00:06,958 | INFO | Best model saved
+2025-10-11 17:00:46,432 | INFO | Epoch summary loss: 3.532906 accuracy: 0.127119 top-5-accuracy: 0.395336
+2025-10-11 17:00:47,816 | INFO | Current lr: 0.0014499606719157066
+2025-10-11 17:00:47,817 | INFO | Last best score 3.0481458008289337 - 1 steps ago
+2025-10-11 17:00:47,817 | INFO | {'epoch_accuracy': 0.20999999344348907, 'epoch_top-5-accuracy': 0.5260000228881836, 'epoch_loss': 3.060606896877289, 'epoch': 31, 'dataset': 'val'}
+2025-10-11 17:01:27,105 | INFO | Epoch summary loss: 3.512993 accuracy: 0.129511 top-5-accuracy: 0.403544
+2025-10-11 17:01:28,489 | INFO | Current lr: 0.0014354610651965494
+2025-10-11 17:01:28,489 | INFO | Last best score 3.0481458008289337 - 2 steps ago
+2025-10-11 17:01:28,489 | INFO | {'epoch_accuracy': 0.17399999499320984, 'epoch_top-5-accuracy': 0.515999972820282, 'epoch_loss': 3.064776837825775, 'epoch': 32, 'dataset': 'val'}
+2025-10-11 17:02:07,688 | INFO | Epoch summary loss: 3.502645 accuracy: 0.133670 top-5-accuracy: 0.406660
+2025-10-11 17:02:09,109 | INFO | Current lr: 0.001421106454544584
+2025-10-11 17:02:09,109 | INFO | Last best score 3.0092566311359406 - 0 steps ago
+2025-10-11 17:02:09,109 | INFO | {'epoch_accuracy': 0.22599999606609344, 'epoch_top-5-accuracy': 0.5339999794960022, 'epoch_loss': 3.0092566311359406, 'epoch': 33, 'dataset': 'val'}
+2025-10-11 17:02:09,285 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:02:09,286 | INFO | Best model saved
+2025-10-11 17:02:49,117 | INFO | Epoch summary loss: 3.484622 accuracy: 0.132280 top-5-accuracy: 0.407332
+2025-10-11 17:02:50,591 | INFO | Current lr: 0.001406895389999138
+2025-10-11 17:02:50,591 | INFO | Last best score 3.0092566311359406 - 1 steps ago
+2025-10-11 17:02:50,591 | INFO | {'epoch_accuracy': 0.1720000058412552, 'epoch_top-5-accuracy': 0.4860000014305115, 'epoch_loss': 3.195897549390793, 'epoch': 34, 'dataset': 'val'}
+2025-10-11 17:03:30,498 | INFO | Epoch summary loss: 3.455804 accuracy: 0.140249 top-5-accuracy: 0.417050
+2025-10-11 17:03:31,973 | INFO | Current lr: 0.0013928264360991466
+2025-10-11 17:03:31,973 | INFO | Last best score 3.0092566311359406 - 2 steps ago
+2025-10-11 17:03:31,973 | INFO | {'epoch_accuracy': 0.1899999976158142, 'epoch_top-5-accuracy': 0.5419999957084656, 'epoch_loss': 3.018027514219284, 'epoch': 35, 'dataset': 'val'}
+2025-10-11 17:04:11,654 | INFO | Epoch summary loss: 3.441667 accuracy: 0.141633 top-5-accuracy: 0.424045
+2025-10-11 17:04:13,037 | INFO | Current lr: 0.001378898171738155
+2025-10-11 17:04:13,037 | INFO | Last best score 2.9308773279190063 - 0 steps ago
+2025-10-11 17:04:13,038 | INFO | {'epoch_accuracy': 0.23600000143051147, 'epoch_top-5-accuracy': 0.5740000009536743, 'epoch_loss': 2.9308773279190063, 'epoch': 36, 'dataset': 'val'}
+2025-10-11 17:04:13,233 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:04:13,233 | INFO | Best model saved
+2025-10-11 17:04:52,812 | INFO | Epoch summary loss: 3.432411 accuracy: 0.143268 top-5-accuracy: 0.428739
+2025-10-11 17:04:54,295 | INFO | Current lr: 0.0013651091900207736
+2025-10-11 17:04:54,295 | INFO | Last best score 2.88389652967453 - 0 steps ago
+2025-10-11 17:04:54,295 | INFO | {'epoch_accuracy': 0.24199999868869781, 'epoch_top-5-accuracy': 0.5899999737739563, 'epoch_loss': 2.88389652967453, 'epoch': 37, 'dataset': 'val'}
+2025-10-11 17:04:54,462 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:04:54,462 | INFO | Best model saved
+2025-10-11 17:05:34,335 | INFO | Epoch summary loss: 3.420978 accuracy: 0.143707 top-5-accuracy: 0.432869
+2025-10-11 17:05:35,762 | INFO | Current lr: 0.001351458098120566
+2025-10-11 17:05:35,762 | INFO | Last best score 2.88389652967453 - 1 steps ago
+2025-10-11 17:05:35,762 | INFO | {'epoch_accuracy': 0.25200000405311584, 'epoch_top-5-accuracy': 0.5759999752044678, 'epoch_loss': 2.930029571056366, 'epoch': 38, 'dataset': 'val'}
+2025-10-11 17:06:15,551 | INFO | Epoch summary loss: 3.403086 accuracy: 0.151454 top-5-accuracy: 0.436987
+2025-10-11 17:06:17,009 | INFO | Current lr: 0.0013379435171393603
+2025-10-11 17:06:17,009 | INFO | Last best score 2.872313439846039 - 0 steps ago
+2025-10-11 17:06:17,009 | INFO | {'epoch_accuracy': 0.22599999606609344, 'epoch_top-5-accuracy': 0.550000011920929, 'epoch_loss': 2.872313439846039, 'epoch': 39, 'dataset': 'val'}
+2025-10-11 17:06:17,193 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:06:17,194 | INFO | Best model saved
+2025-10-11 17:06:57,119 | INFO | Epoch summary loss: 3.393489 accuracy: 0.149409 top-5-accuracy: 0.437557
+2025-10-11 17:06:58,540 | INFO | Current lr: 0.0013245640819679666
+2025-10-11 17:06:58,540 | INFO | Last best score 2.8277578353881836 - 0 steps ago
+2025-10-11 17:06:58,540 | INFO | {'epoch_accuracy': 0.25200000405311584, 'epoch_top-5-accuracy': 0.5699999928474426, 'epoch_loss': 2.8277578353881836, 'epoch': 40, 'dataset': 'val'}
+2025-10-11 17:06:58,733 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:06:58,733 | INFO | Best model saved
+2025-10-11 17:07:38,608 | INFO | Epoch summary loss: 3.372645 accuracy: 0.153698 top-5-accuracy: 0.444205
+2025-10-11 17:07:39,972 | INFO | Current lr: 0.0013113184411482869
+2025-10-11 17:07:39,973 | INFO | Last best score 2.8277578353881836 - 1 steps ago
+2025-10-11 17:07:39,973 | INFO | {'epoch_accuracy': 0.23199999332427979, 'epoch_top-5-accuracy': 0.5839999914169312, 'epoch_loss': 2.8781075477600098, 'epoch': 41, 'dataset': 'val'}
+2025-10-11 17:08:19,784 | INFO | Epoch summary loss: 3.367734 accuracy: 0.154450 top-5-accuracy: 0.450095
+2025-10-11 17:08:21,208 | INFO | Current lr: 0.0012982052567368039
+2025-10-11 17:08:21,208 | INFO | Last best score 2.7945248782634735 - 0 steps ago
+2025-10-11 17:08:21,208 | INFO | {'epoch_accuracy': 0.2619999945163727, 'epoch_top-5-accuracy': 0.593999981880188, 'epoch_loss': 2.7945248782634735, 'epoch': 42, 'dataset': 'val'}
+2025-10-11 17:08:21,391 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:08:21,392 | INFO | Best model saved
+2025-10-11 17:09:01,267 | INFO | Epoch summary loss: 3.347463 accuracy: 0.159326 top-5-accuracy: 0.459140
+2025-10-11 17:09:02,686 | INFO | Current lr: 0.0012852232041694357
+2025-10-11 17:09:02,686 | INFO | Last best score 2.7945248782634735 - 1 steps ago
+2025-10-11 17:09:02,686 | INFO | {'epoch_accuracy': 0.20399999618530273, 'epoch_top-5-accuracy': 0.5600000023841858, 'epoch_loss': 2.9711694419384003, 'epoch': 43, 'dataset': 'val'}
+2025-10-11 17:09:42,462 | INFO | Epoch summary loss: 3.326713 accuracy: 0.161166 top-5-accuracy: 0.463601
+2025-10-11 17:09:43,957 | INFO | Current lr: 0.0012723709721277415
+2025-10-11 17:09:43,957 | INFO | Last best score 2.743456095457077 - 0 steps ago
+2025-10-11 17:09:43,957 | INFO | {'epoch_accuracy': 0.2879999876022339, 'epoch_top-5-accuracy': 0.6039999723434448, 'epoch_loss': 2.743456095457077, 'epoch': 44, 'dataset': 'val'}
+2025-10-11 17:09:44,145 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:09:44,146 | INFO | Best model saved
+2025-10-11 17:10:23,866 | INFO | Epoch summary loss: 3.315815 accuracy: 0.160471 top-5-accuracy: 0.462883
+2025-10-11 17:10:25,284 | INFO | Current lr: 0.001259647262406464
+2025-10-11 17:10:25,284 | INFO | Last best score 2.743456095457077 - 1 steps ago
+2025-10-11 17:10:25,284 | INFO | {'epoch_accuracy': 0.25, 'epoch_top-5-accuracy': 0.6039999723434448, 'epoch_loss': 2.821021020412445, 'epoch': 45, 'dataset': 'val'}
+2025-10-11 17:11:05,029 | INFO | Epoch summary loss: 3.324789 accuracy: 0.162898 top-5-accuracy: 0.463646
+2025-10-11 17:11:06,393 | INFO | Current lr: 0.0012470507897823994
+2025-10-11 17:11:06,393 | INFO | Last best score 2.743456095457077 - 2 steps ago
+2025-10-11 17:11:06,393 | INFO | {'epoch_accuracy': 0.2619999945163727, 'epoch_top-5-accuracy': 0.5920000076293945, 'epoch_loss': 2.821019619703293, 'epoch': 46, 'dataset': 'val'}
+2025-10-11 17:11:46,141 | INFO | Epoch summary loss: 3.291155 accuracy: 0.166988 top-5-accuracy: 0.469827
+2025-10-11 17:11:47,590 | INFO | Current lr: 0.0012345802818845755
+2025-10-11 17:11:47,590 | INFO | Last best score 2.6871199309825897 - 0 steps ago
+2025-10-11 17:11:47,590 | INFO | {'epoch_accuracy': 0.2939999997615814, 'epoch_top-5-accuracy': 0.6079999804496765, 'epoch_loss': 2.6871199309825897, 'epoch': 47, 'dataset': 'val'}
+2025-10-11 17:11:47,770 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:11:47,770 | INFO | Best model saved
+2025-10-11 17:12:27,589 | INFO | Epoch summary loss: 3.273325 accuracy: 0.168605 top-5-accuracy: 0.468311
+2025-10-11 17:12:29,051 | INFO | Current lr: 0.0012222344790657298
+2025-10-11 17:12:29,051 | INFO | Last best score 2.6871199309825897 - 1 steps ago
+2025-10-11 17:12:29,051 | INFO | {'epoch_accuracy': 0.23000000417232513, 'epoch_top-5-accuracy': 0.5820000171661377, 'epoch_loss': 2.830722987651825, 'epoch': 48, 'dataset': 'val'}
+2025-10-11 17:13:08,717 | INFO | Epoch summary loss: 3.275434 accuracy: 0.170343 top-5-accuracy: 0.479562
+2025-10-11 17:13:10,097 | INFO | Current lr: 0.0012100121342750725
+2025-10-11 17:13:10,097 | INFO | Last best score 2.6871199309825897 - 2 steps ago
+2025-10-11 17:13:10,097 | INFO | {'epoch_accuracy': 0.257999986410141, 'epoch_top-5-accuracy': 0.578000009059906, 'epoch_loss': 2.8383723497390747, 'epoch': 49, 'dataset': 'val'}
+2025-10-11 17:13:49,811 | INFO | Epoch summary loss: 3.269701 accuracy: 0.171311 top-5-accuracy: 0.475324
+2025-10-11 17:13:51,305 | INFO | Current lr: 0.0011979120129323219
+2025-10-11 17:13:51,305 | INFO | Last best score 2.6871199309825897 - 3 steps ago
+2025-10-11 17:13:51,305 | INFO | {'epoch_accuracy': 0.257999986410141, 'epoch_top-5-accuracy': 0.5920000076293945, 'epoch_loss': 2.7653729617595673, 'epoch': 50, 'dataset': 'val'}
+2025-10-11 17:14:31,352 | INFO | Epoch summary loss: 3.263552 accuracy: 0.171277 top-5-accuracy: 0.476873
+2025-10-11 17:14:32,756 | INFO | Current lr: 0.0011859328928029986
+2025-10-11 17:14:32,756 | INFO | Last best score 2.6871199309825897 - 4 steps ago
+2025-10-11 17:14:32,756 | INFO | {'epoch_accuracy': 0.2879999876022339, 'epoch_top-5-accuracy': 0.6039999723434448, 'epoch_loss': 2.7610708475112915, 'epoch': 51, 'dataset': 'val'}
+2025-10-11 17:15:12,547 | INFO | Epoch summary loss: 3.244915 accuracy: 0.173846 top-5-accuracy: 0.486796
+2025-10-11 17:15:13,928 | INFO | Current lr: 0.0011740735638749687
+2025-10-11 17:15:13,928 | INFO | Last best score 2.6871199309825897 - 5 steps ago
+2025-10-11 17:15:13,928 | INFO | {'epoch_accuracy': 0.24199999868869781, 'epoch_top-5-accuracy': 0.6100000143051147, 'epoch_loss': 2.869953751564026, 'epoch': 52, 'dataset': 'val'}
+2025-10-11 17:15:53,770 | INFO | Epoch summary loss: 3.226206 accuracy: 0.181040 top-5-accuracy: 0.496440
+2025-10-11 17:15:55,173 | INFO | Current lr: 0.001162332828236219
+2025-10-11 17:15:55,173 | INFO | Last best score 2.6504424810409546 - 0 steps ago
+2025-10-11 17:15:55,173 | INFO | {'epoch_accuracy': 0.2939999997615814, 'epoch_top-5-accuracy': 0.6340000033378601, 'epoch_loss': 2.6504424810409546, 'epoch': 53, 'dataset': 'val'}
+2025-10-11 17:15:55,355 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:15:55,356 | INFO | Best model saved
+2025-10-11 17:16:35,302 | INFO | Epoch summary loss: 3.226667 accuracy: 0.178602 top-5-accuracy: 0.489445
+2025-10-11 17:16:36,728 | INFO | Current lr: 0.001150709499953857
+2025-10-11 17:16:36,729 | INFO | Last best score 2.5909350216388702 - 0 steps ago
+2025-10-11 17:16:36,729 | INFO | {'epoch_accuracy': 0.29600000381469727, 'epoch_top-5-accuracy': 0.6359999775886536, 'epoch_loss': 2.5909350216388702, 'epoch': 54, 'dataset': 'val'}
+2025-10-11 17:16:36,927 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:16:36,927 | INFO | Best model saved
+2025-10-11 17:17:16,903 | INFO | Epoch summary loss: 3.209790 accuracy: 0.186344 top-5-accuracy: 0.494452
+2025-10-11 17:17:18,333 | INFO | Current lr: 0.0011392024049543183
+2025-10-11 17:17:18,333 | INFO | Last best score 2.5909350216388702 - 1 steps ago
+2025-10-11 17:17:18,333 | INFO | {'epoch_accuracy': 0.2980000078678131, 'epoch_top-5-accuracy': 0.656000018119812, 'epoch_loss': 2.6219680309295654, 'epoch': 55, 'dataset': 'val'}
+2025-10-11 17:17:57,982 | INFO | Epoch summary loss: 3.198968 accuracy: 0.189505 top-5-accuracy: 0.494549
+2025-10-11 17:17:59,366 | INFO | Current lr: 0.001127810380904775
+2025-10-11 17:17:59,366 | INFO | Last best score 2.5909350216388702 - 2 steps ago
+2025-10-11 17:17:59,366 | INFO | {'epoch_accuracy': 0.2840000092983246, 'epoch_top-5-accuracy': 0.6159999966621399, 'epoch_loss': 2.70009508728981, 'epoch': 56, 'dataset': 'val'}
+2025-10-11 17:18:39,206 | INFO | Epoch summary loss: 3.209382 accuracy: 0.185096 top-5-accuracy: 0.495694
+2025-10-11 17:18:40,570 | INFO | Current lr: 0.0011165322770957274
+2025-10-11 17:18:40,570 | INFO | Last best score 2.581788957118988 - 0 steps ago
+2025-10-11 17:18:40,570 | INFO | {'epoch_accuracy': 0.3160000145435333, 'epoch_top-5-accuracy': 0.6359999775886536, 'epoch_loss': 2.581788957118988, 'epoch': 57, 'dataset': 'val'}
+2025-10-11 17:18:40,774 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:18:40,774 | INFO | Best model saved
+2025-10-11 17:19:20,457 | INFO | Epoch summary loss: 3.173761 accuracy: 0.189516 top-5-accuracy: 0.506887
+2025-10-11 17:19:21,889 | INFO | Current lr: 0.00110536695432477
+2025-10-11 17:19:21,889 | INFO | Last best score 2.581788957118988 - 1 steps ago
+2025-10-11 17:19:21,889 | INFO | {'epoch_accuracy': 0.25200000405311584, 'epoch_top-5-accuracy': 0.6100000143051147, 'epoch_loss': 2.7366965413093567, 'epoch': 58, 'dataset': 'val'}
+2025-10-11 17:20:01,602 | INFO | Epoch summary loss: 3.173559 accuracy: 0.188132 top-5-accuracy: 0.505537
+2025-10-11 17:20:03,014 | INFO | Current lr: 0.0010943132847815223
+2025-10-11 17:20:03,014 | INFO | Last best score 2.581788957118988 - 2 steps ago
+2025-10-11 17:20:03,014 | INFO | {'epoch_accuracy': 0.30399999022483826, 'epoch_top-5-accuracy': 0.6460000276565552, 'epoch_loss': 2.5919846892356873, 'epoch': 59, 'dataset': 'val'}
+2025-10-11 17:20:42,890 | INFO | Epoch summary loss: 3.189151 accuracy: 0.189744 top-5-accuracy: 0.496873
+2025-10-11 17:20:44,287 | INFO | Current lr: 0.001083370151933707
+2025-10-11 17:20:44,287 | INFO | Last best score 2.581788957118988 - 3 steps ago
+2025-10-11 17:20:44,287 | INFO | {'epoch_accuracy': 0.3059999942779541, 'epoch_top-5-accuracy': 0.6259999871253967, 'epoch_loss': 2.651503622531891, 'epoch': 60, 'dataset': 'val'}
+2025-10-11 17:21:24,258 | INFO | Epoch summary loss: 3.171559 accuracy: 0.190667 top-5-accuracy: 0.504039
+2025-10-11 17:21:25,623 | INFO | Current lr: 0.00107253645041437
+2025-10-11 17:21:25,623 | INFO | Last best score 2.581788957118988 - 4 steps ago
+2025-10-11 17:21:25,623 | INFO | {'epoch_accuracy': 0.3140000104904175, 'epoch_top-5-accuracy': 0.628000020980835, 'epoch_loss': 2.619092583656311, 'epoch': 61, 'dataset': 'val'}
+2025-10-11 17:22:05,321 | INFO | Epoch summary loss: 3.147480 accuracy: 0.194928 top-5-accuracy: 0.510179
+2025-10-11 17:22:06,718 | INFO | Current lr: 0.0010618110859102264
+2025-10-11 17:22:06,718 | INFO | Last best score 2.5758884847164154 - 0 steps ago
+2025-10-11 17:22:06,718 | INFO | {'epoch_accuracy': 0.3199999928474426, 'epoch_top-5-accuracy': 0.656000018119812, 'epoch_loss': 2.5758884847164154, 'epoch': 62, 'dataset': 'val'}
+2025-10-11 17:22:06,891 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:22:06,892 | INFO | Best model saved
+2025-10-11 17:22:46,999 | INFO | Epoch summary loss: 3.135161 accuracy: 0.193561 top-5-accuracy: 0.520188
+2025-10-11 17:22:48,512 | INFO | Current lr: 0.001051192975051124
+2025-10-11 17:22:48,513 | INFO | Last best score 2.5239747166633606 - 0 steps ago
+2025-10-11 17:22:48,513 | INFO | {'epoch_accuracy': 0.3240000009536743, 'epoch_top-5-accuracy': 0.6579999923706055, 'epoch_loss': 2.5239747166633606, 'epoch': 63, 'dataset': 'val'}
+2025-10-11 17:22:48,695 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:22:48,695 | INFO | Best model saved
+2025-10-11 17:23:28,463 | INFO | Epoch summary loss: 3.134717 accuracy: 0.202664 top-5-accuracy: 0.516457
+2025-10-11 17:23:29,854 | INFO | Current lr: 0.0010406810453006128
+2025-10-11 17:23:29,854 | INFO | Last best score 2.5239747166633606 - 1 steps ago
+2025-10-11 17:23:29,855 | INFO | {'epoch_accuracy': 0.335999995470047, 'epoch_top-5-accuracy': 0.6679999828338623, 'epoch_loss': 2.5388253331184387, 'epoch': 64, 'dataset': 'val'}
+2025-10-11 17:24:09,503 | INFO | Epoch summary loss: 3.137672 accuracy: 0.198989 top-5-accuracy: 0.510607
+2025-10-11 17:24:10,882 | INFO | Current lr: 0.0010302742348476067
+2025-10-11 17:24:10,882 | INFO | Last best score 2.5130876004695892 - 0 steps ago
+2025-10-11 17:24:10,882 | INFO | {'epoch_accuracy': 0.28600001335144043, 'epoch_top-5-accuracy': 0.6959999799728394, 'epoch_loss': 2.5130876004695892, 'epoch': 65, 'dataset': 'val'}
+2025-10-11 17:24:11,072 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:24:11,072 | INFO | Best model saved
+2025-10-11 17:24:50,831 | INFO | Epoch summary loss: 3.103224 accuracy: 0.207426 top-5-accuracy: 0.523212
+2025-10-11 17:24:52,256 | INFO | Current lr: 0.0010199714924991306
+2025-10-11 17:24:52,256 | INFO | Last best score 2.4873026311397552 - 0 steps ago
+2025-10-11 17:24:52,256 | INFO | {'epoch_accuracy': 0.32199999690055847, 'epoch_top-5-accuracy': 0.6759999990463257, 'epoch_loss': 2.4873026311397552, 'epoch': 66, 'dataset': 'val'}
+2025-10-11 17:24:52,447 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:24:52,447 | INFO | Best model saved
+2025-10-11 17:25:32,386 | INFO | Epoch summary loss: 3.103657 accuracy: 0.203176 top-5-accuracy: 0.522728
+2025-10-11 17:25:33,821 | INFO | Current lr: 0.0010097717775741392
+2025-10-11 17:25:33,821 | INFO | Last best score 2.4873026311397552 - 1 steps ago
+2025-10-11 17:25:33,821 | INFO | {'epoch_accuracy': 0.29600000381469727, 'epoch_top-5-accuracy': 0.6700000166893005, 'epoch_loss': 2.516341418027878, 'epoch': 67, 'dataset': 'val'}
+2025-10-11 17:26:13,153 | INFO | Epoch summary loss: 3.108015 accuracy: 0.210086 top-5-accuracy: 0.520273
+2025-10-11 17:26:14,543 | INFO | Current lr: 0.0009996740597983979
+2025-10-11 17:26:14,543 | INFO | Last best score 2.4873026311397552 - 2 steps ago
+2025-10-11 17:26:14,543 | INFO | {'epoch_accuracy': 0.28600001335144043, 'epoch_top-5-accuracy': 0.6420000195503235, 'epoch_loss': 2.586910605430603, 'epoch': 68, 'dataset': 'val'}
+2025-10-11 17:26:54,069 | INFO | Epoch summary loss: 3.100149 accuracy: 0.208537 top-5-accuracy: 0.522768
+2025-10-11 17:26:55,480 | INFO | Current lr: 0.000989677319200414
+2025-10-11 17:26:55,481 | INFO | Last best score 2.4873026311397552 - 3 steps ago
+2025-10-11 17:26:55,481 | INFO | {'epoch_accuracy': 0.3179999887943268, 'epoch_top-5-accuracy': 0.6819999814033508, 'epoch_loss': 2.496095061302185, 'epoch': 69, 'dataset': 'val'}
+2025-10-11 17:27:35,175 | INFO | Epoch summary loss: 3.086638 accuracy: 0.206400 top-5-accuracy: 0.526750
+2025-10-11 17:27:36,545 | INFO | Current lr: 0.0009797805460084097
+2025-10-11 17:27:36,545 | INFO | Last best score 2.4873026311397552 - 4 steps ago
+2025-10-11 17:27:36,546 | INFO | {'epoch_accuracy': 0.3160000145435333, 'epoch_top-5-accuracy': 0.6539999842643738, 'epoch_loss': 2.551781117916107, 'epoch': 70, 'dataset': 'val'}
+2025-10-11 17:28:15,903 | INFO | Epoch summary loss: 3.083950 accuracy: 0.209345 top-5-accuracy: 0.534320
+2025-10-11 17:28:17,329 | INFO | Current lr: 0.0009699827405483256
+2025-10-11 17:28:17,329 | INFO | Last best score 2.4873026311397552 - 5 steps ago
+2025-10-11 17:28:17,329 | INFO | {'epoch_accuracy': 0.3240000009536743, 'epoch_top-5-accuracy': 0.6520000100135803, 'epoch_loss': 2.51707261800766, 'epoch': 71, 'dataset': 'val'}
+2025-10-11 17:28:56,757 | INFO | Epoch summary loss: 3.080579 accuracy: 0.210405 top-5-accuracy: 0.527348
+2025-10-11 17:28:58,115 | INFO | Current lr: 0.0009602829131428423
+2025-10-11 17:28:58,116 | INFO | Last best score 2.45904877781868 - 0 steps ago
+2025-10-11 17:28:58,116 | INFO | {'epoch_accuracy': 0.335999995470047, 'epoch_top-5-accuracy': 0.6819999814033508, 'epoch_loss': 2.45904877781868, 'epoch': 72, 'dataset': 'val'}
+2025-10-11 17:28:58,291 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:28:58,291 | INFO | Best model saved
+2025-10-11 17:29:37,926 | INFO | Epoch summary loss: 3.064454 accuracy: 0.209642 top-5-accuracy: 0.533118
+2025-10-11 17:29:39,350 | INFO | Current lr: 0.0009506800840114139
+2025-10-11 17:29:39,350 | INFO | Last best score 2.45904877781868 - 1 steps ago
+2025-10-11 17:29:39,350 | INFO | {'epoch_accuracy': 0.34200000762939453, 'epoch_top-5-accuracy': 0.671999990940094, 'epoch_loss': 2.459881156682968, 'epoch': 73, 'dataset': 'val'}
+2025-10-11 17:30:18,987 | INFO | Epoch summary loss: 3.078910 accuracy: 0.217554 top-5-accuracy: 0.533050
+2025-10-11 17:30:20,371 | INFO | Current lr: 0.0009411732831712998
+2025-10-11 17:30:20,371 | INFO | Last best score 2.3957993388175964 - 0 steps ago
+2025-10-11 17:30:20,371 | INFO | {'epoch_accuracy': 0.3659999966621399, 'epoch_top-5-accuracy': 0.6919999718666077, 'epoch_loss': 2.3957993388175964, 'epoch': 74, 'dataset': 'val'}
+2025-10-11 17:30:20,550 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:30:20,551 | INFO | Best model saved
+2025-10-11 17:31:00,377 | INFO | Epoch summary loss: 3.052619 accuracy: 0.210872 top-5-accuracy: 0.536160
+2025-10-11 17:31:01,848 | INFO | Current lr: 0.0009317615503395868
+2025-10-11 17:31:01,848 | INFO | Last best score 2.3957993388175964 - 1 steps ago
+2025-10-11 17:31:01,848 | INFO | {'epoch_accuracy': 0.33799999952316284, 'epoch_top-5-accuracy': 0.6700000166893005, 'epoch_loss': 2.476750522851944, 'epoch': 75, 'dataset': 'val'}
+2025-10-11 17:31:41,464 | INFO | Epoch summary loss: 3.062740 accuracy: 0.213418 top-5-accuracy: 0.534451
+2025-10-11 17:31:42,884 | INFO | Current lr: 0.0009224439348361909
+2025-10-11 17:31:42,884 | INFO | Last best score 2.3550040274858475 - 0 steps ago
+2025-10-11 17:31:42,884 | INFO | {'epoch_accuracy': 0.37599998712539673, 'epoch_top-5-accuracy': 0.6819999814033508, 'epoch_loss': 2.3550040274858475, 'epoch': 76, 'dataset': 'val'}
+2025-10-11 17:31:43,058 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:31:43,059 | INFO | Best model saved
+2025-10-11 17:32:22,786 | INFO | Epoch summary loss: 3.046239 accuracy: 0.216608 top-5-accuracy: 0.537806
+2025-10-11 17:32:24,149 | INFO | Current lr: 0.000913219495487829
+2025-10-11 17:32:24,149 | INFO | Last best score 2.3550040274858475 - 1 steps ago
+2025-10-11 17:32:24,149 | INFO | {'epoch_accuracy': 0.3319999873638153, 'epoch_top-5-accuracy': 0.6899999976158142, 'epoch_loss': 2.4127272963523865, 'epoch': 77, 'dataset': 'val'}
+2025-10-11 17:33:03,895 | INFO | Epoch summary loss: 3.042231 accuracy: 0.215178 top-5-accuracy: 0.543902
+2025-10-11 17:33:05,280 | INFO | Current lr: 0.0009040873005329507
+2025-10-11 17:33:05,281 | INFO | Last best score 2.3550040274858475 - 2 steps ago
+2025-10-11 17:33:05,281 | INFO | {'epoch_accuracy': 0.3700000047683716, 'epoch_top-5-accuracy': 0.6859999895095825, 'epoch_loss': 2.390985757112503, 'epoch': 78, 'dataset': 'val'}
+2025-10-11 17:33:44,661 | INFO | Epoch summary loss: 3.019631 accuracy: 0.218744 top-5-accuracy: 0.547889
+2025-10-11 17:33:46,030 | INFO | Current lr: 0.0008950464275276212
+2025-10-11 17:33:46,030 | INFO | Last best score 2.3550040274858475 - 3 steps ago
+2025-10-11 17:33:46,030 | INFO | {'epoch_accuracy': 0.3319999873638153, 'epoch_top-5-accuracy': 0.6840000152587891, 'epoch_loss': 2.4247504472732544, 'epoch': 79, 'dataset': 'val'}
+2025-10-11 17:34:25,369 | INFO | Epoch summary loss: 3.033220 accuracy: 0.221291 top-5-accuracy: 0.540911
+2025-10-11 17:34:26,665 | INFO | Current lr: 0.000886095963252345
+2025-10-11 17:34:26,665 | INFO | Last best score 2.3550040274858475 - 4 steps ago
+2025-10-11 17:34:26,665 | INFO | {'epoch_accuracy': 0.3240000009536743, 'epoch_top-5-accuracy': 0.7080000042915344, 'epoch_loss': 2.424954652786255, 'epoch': 80, 'dataset': 'val'}
+2025-10-11 17:35:05,756 | INFO | Epoch summary loss: 3.020278 accuracy: 0.219462 top-5-accuracy: 0.545730
+2025-10-11 17:35:07,061 | INFO | Current lr: 0.0008772350036198215
+2025-10-11 17:35:07,061 | INFO | Last best score 2.3550040274858475 - 5 steps ago
+2025-10-11 17:35:07,061 | INFO | {'epoch_accuracy': 0.34200000762939453, 'epoch_top-5-accuracy': 0.6959999799728394, 'epoch_loss': 2.393509790301323, 'epoch': 81, 'dataset': 'val'}
+2025-10-11 17:35:46,494 | INFO | Epoch summary loss: 3.030962 accuracy: 0.223467 top-5-accuracy: 0.546254
+2025-10-11 17:35:47,875 | INFO | Current lr: 0.0008684626535836233
+2025-10-11 17:35:47,875 | INFO | Last best score 2.3550040274858475 - 6 steps ago
+2025-10-11 17:35:47,875 | INFO | {'epoch_accuracy': 0.3540000021457672, 'epoch_top-5-accuracy': 0.699999988079071, 'epoch_loss': 2.3580288887023926, 'epoch': 82, 'dataset': 'val'}
+2025-10-11 17:36:27,210 | INFO | Epoch summary loss: 3.011193 accuracy: 0.221530 top-5-accuracy: 0.545240
+2025-10-11 17:36:28,570 | INFO | Current lr: 0.000859778027047787
+2025-10-11 17:36:28,570 | INFO | Last best score 2.3550040274858475 - 7 steps ago
+2025-10-11 17:36:28,570 | INFO | {'epoch_accuracy': 0.31200000643730164, 'epoch_top-5-accuracy': 0.6700000166893005, 'epoch_loss': 2.5158301293849945, 'epoch': 83, 'dataset': 'val'}
+2025-10-11 17:37:07,776 | INFO | Epoch summary loss: 3.005764 accuracy: 0.225660 top-5-accuracy: 0.553226
+2025-10-11 17:37:09,147 | INFO | Current lr: 0.0008511802467773092
+2025-10-11 17:37:09,147 | INFO | Last best score 2.3550040274858475 - 8 steps ago
+2025-10-11 17:37:09,147 | INFO | {'epoch_accuracy': 0.37400001287460327, 'epoch_top-5-accuracy': 0.6980000138282776, 'epoch_loss': 2.3699901700019836, 'epoch': 84, 'dataset': 'val'}
+2025-10-11 17:37:48,546 | INFO | Epoch summary loss: 2.986430 accuracy: 0.228360 top-5-accuracy: 0.552275
+2025-10-11 17:37:49,936 | INFO | Current lr: 0.0008426684443095361
+2025-10-11 17:37:49,936 | INFO | Last best score 2.3550040274858475 - 9 steps ago
+2025-10-11 17:37:49,936 | INFO | {'epoch_accuracy': 0.3720000088214874, 'epoch_top-5-accuracy': 0.7080000042915344, 'epoch_loss': 2.3640797436237335, 'epoch': 85, 'dataset': 'val'}
+2025-10-11 17:38:29,591 | INFO | Epoch summary loss: 2.996915 accuracy: 0.230815 top-5-accuracy: 0.552480
+2025-10-11 17:38:30,887 | INFO | Current lr: 0.0008342417598664407
+2025-10-11 17:38:30,887 | INFO | Last best score 2.3365438580513 - 0 steps ago
+2025-10-11 17:38:30,888 | INFO | {'epoch_accuracy': 0.3619999885559082, 'epoch_top-5-accuracy': 0.6819999814033508, 'epoch_loss': 2.3365438580513, 'epoch': 86, 'dataset': 'val'}
+2025-10-11 17:38:31,079 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:38:31,080 | INFO | Best model saved
+2025-10-11 17:39:10,521 | INFO | Epoch summary loss: 2.977664 accuracy: 0.235890 top-5-accuracy: 0.561822
+2025-10-11 17:39:11,879 | INFO | Current lr: 0.0008258993422677762
+2025-10-11 17:39:11,880 | INFO | Last best score 2.3365438580513 - 1 steps ago
+2025-10-11 17:39:11,880 | INFO | {'epoch_accuracy': 0.3700000047683716, 'epoch_top-5-accuracy': 0.6959999799728394, 'epoch_loss': 2.371493309736252, 'epoch': 87, 'dataset': 'val'}
+2025-10-11 17:39:51,300 | INFO | Epoch summary loss: 2.990092 accuracy: 0.230086 top-5-accuracy: 0.557071
+2025-10-11 17:39:52,608 | INFO | Current lr: 0.0008176403488450984
+2025-10-11 17:39:52,608 | INFO | Last best score 2.3255015313625336 - 0 steps ago
+2025-10-11 17:39:52,608 | INFO | {'epoch_accuracy': 0.3919999897480011, 'epoch_top-5-accuracy': 0.722000002861023, 'epoch_loss': 2.3255015313625336, 'epoch': 88, 'dataset': 'val'}
+2025-10-11 17:39:52,794 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:39:52,795 | INFO | Best model saved
+2025-10-11 17:40:32,138 | INFO | Epoch summary loss: 2.981469 accuracy: 0.230541 top-5-accuracy: 0.558439
+2025-10-11 17:40:33,466 | INFO | Current lr: 0.0008094639453566474
+2025-10-11 17:40:33,466 | INFO | Last best score 2.2827979624271393 - 0 steps ago
+2025-10-11 17:40:33,467 | INFO | {'epoch_accuracy': 0.3720000088214874, 'epoch_top-5-accuracy': 0.7080000042915344, 'epoch_loss': 2.2827979624271393, 'epoch': 89, 'dataset': 'val'}
+2025-10-11 17:40:33,654 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:40:33,655 | INFO | Best model saved
+2025-10-11 17:41:13,144 | INFO | Epoch summary loss: 2.967864 accuracy: 0.234512 top-5-accuracy: 0.564796
+2025-10-11 17:41:14,550 | INFO | Current lr: 0.0008013693059030809
+2025-10-11 17:41:14,550 | INFO | Last best score 2.2827979624271393 - 1 steps ago
+2025-10-11 17:41:14,551 | INFO | {'epoch_accuracy': 0.3580000102519989, 'epoch_top-5-accuracy': 0.6840000152587891, 'epoch_loss': 2.4061664789915085, 'epoch': 90, 'dataset': 'val'}
+2025-10-11 17:41:54,098 | INFO | Epoch summary loss: 2.966253 accuracy: 0.234102 top-5-accuracy: 0.564254
+2025-10-11 17:41:55,506 | INFO | Current lr: 0.0007933556128440501
+2025-10-11 17:41:55,506 | INFO | Last best score 2.2827979624271393 - 2 steps ago
+2025-10-11 17:41:55,506 | INFO | {'epoch_accuracy': 0.36800000071525574, 'epoch_top-5-accuracy': 0.699999988079071, 'epoch_loss': 2.299245834350586, 'epoch': 91, 'dataset': 'val'}
+2025-10-11 17:42:35,259 | INFO | Epoch summary loss: 2.942750 accuracy: 0.240407 top-5-accuracy: 0.571158
+2025-10-11 17:42:36,717 | INFO | Current lr: 0.0007854220567156096
+2025-10-11 17:42:36,717 | INFO | Last best score 2.2555403411388397 - 0 steps ago
+2025-10-11 17:42:36,717 | INFO | {'epoch_accuracy': 0.39800000190734863, 'epoch_top-5-accuracy': 0.7239999771118164, 'epoch_loss': 2.2555403411388397, 'epoch': 92, 'dataset': 'val'}
+2025-10-11 17:42:36,913 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:42:36,914 | INFO | Best model saved
+2025-10-11 17:43:16,289 | INFO | Epoch summary loss: 2.971826 accuracy: 0.234933 top-5-accuracy: 0.562506
+2025-10-11 17:43:17,696 | INFO | Current lr: 0.0007775678361484535
+2025-10-11 17:43:17,696 | INFO | Last best score 2.2555403411388397 - 1 steps ago
+2025-10-11 17:43:17,696 | INFO | {'epoch_accuracy': 0.39399999380111694, 'epoch_top-5-accuracy': 0.7120000123977661, 'epoch_loss': 2.2996659129858017, 'epoch': 93, 'dataset': 'val'}
+2025-10-11 17:43:57,112 | INFO | Epoch summary loss: 2.964467 accuracy: 0.233196 top-5-accuracy: 0.562010
+2025-10-11 17:43:58,489 | INFO | Current lr: 0.000769792157786969
+2025-10-11 17:43:58,490 | INFO | Last best score 2.2555403411388397 - 2 steps ago
+2025-10-11 17:43:58,490 | INFO | {'epoch_accuracy': 0.3959999978542328, 'epoch_top-5-accuracy': 0.7239999771118164, 'epoch_loss': 2.263063073158264, 'epoch': 94, 'dataset': 'val'}
+2025-10-11 17:44:38,113 | INFO | Epoch summary loss: 2.964604 accuracy: 0.241837 top-5-accuracy: 0.558450
+2025-10-11 17:44:39,435 | INFO | Current lr: 0.0007620942362090993
+2025-10-11 17:44:39,435 | INFO | Last best score 2.2555403411388397 - 3 steps ago
+2025-10-11 17:44:39,435 | INFO | {'epoch_accuracy': 0.3580000102519989, 'epoch_top-5-accuracy': 0.7020000219345093, 'epoch_loss': 2.3117388784885406, 'epoch': 95, 'dataset': 'val'}
+2025-10-11 17:45:18,889 | INFO | Epoch summary loss: 2.940275 accuracy: 0.238192 top-5-accuracy: 0.570219
+2025-10-11 17:45:20,249 | INFO | Current lr: 0.0007544732938470083
+2025-10-11 17:45:20,249 | INFO | Last best score 2.1840409636497498 - 0 steps ago
+2025-10-11 17:45:20,249 | INFO | {'epoch_accuracy': 0.40799999237060547, 'epoch_top-5-accuracy': 0.7559999823570251, 'epoch_loss': 2.1840409636497498, 'epoch': 96, 'dataset': 'val'}
+2025-10-11 17:45:20,428 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:45:20,428 | INFO | Best model saved
+2025-10-11 17:45:59,754 | INFO | Epoch summary loss: 2.944818 accuracy: 0.237616 top-5-accuracy: 0.573050
+2025-10-11 17:46:01,175 | INFO | Current lr: 0.0007469285609085383
+2025-10-11 17:46:01,175 | INFO | Last best score 2.1840409636497498 - 1 steps ago
+2025-10-11 17:46:01,175 | INFO | {'epoch_accuracy': 0.38199999928474426, 'epoch_top-5-accuracy': 0.7120000123977661, 'epoch_loss': 2.3003717958927155, 'epoch': 97, 'dataset': 'val'}
+2025-10-11 17:46:40,258 | INFO | Epoch summary loss: 2.931396 accuracy: 0.242578 top-5-accuracy: 0.573010
+2025-10-11 17:46:41,671 | INFO | Current lr: 0.0007394592752994529
+2025-10-11 17:46:41,671 | INFO | Last best score 2.1840409636497498 - 2 steps ago
+2025-10-11 17:46:41,671 | INFO | {'epoch_accuracy': 0.3840000033378601, 'epoch_top-5-accuracy': 0.7459999918937683, 'epoch_loss': 2.2376020699739456, 'epoch': 98, 'dataset': 'val'}
+2025-10-11 17:47:21,030 | INFO | Epoch summary loss: 2.932442 accuracy: 0.239188 top-5-accuracy: 0.570287
+2025-10-11 17:47:22,382 | INFO | Current lr: 0.0007320646825464583
+2025-10-11 17:47:22,382 | INFO | Last best score 2.1840409636497498 - 3 steps ago
+2025-10-11 17:47:22,382 | INFO | {'epoch_accuracy': 0.40400001406669617, 'epoch_top-5-accuracy': 0.7360000014305115, 'epoch_loss': 2.2084887623786926, 'epoch': 99, 'dataset': 'val'}
+2025-10-11 17:48:01,808 | INFO | Epoch summary loss: 2.914296 accuracy: 0.248496 top-5-accuracy: 0.572617
+2025-10-11 17:48:03,145 | INFO | Current lr: 0.0007247440357209937
+2025-10-11 17:48:03,145 | INFO | Last best score 2.1840409636497498 - 4 steps ago
+2025-10-11 17:48:03,145 | INFO | {'epoch_accuracy': 0.37599998712539673, 'epoch_top-5-accuracy': 0.7160000205039978, 'epoch_loss': 2.2284806072711945, 'epoch': 100, 'dataset': 'val'}
+2025-10-11 17:48:42,242 | INFO | Epoch summary loss: 2.909829 accuracy: 0.244076 top-5-accuracy: 0.581469
+2025-10-11 17:48:43,628 | INFO | Current lr: 0.0007174965953637837
+2025-10-11 17:48:43,628 | INFO | Last best score 2.1840409636497498 - 5 steps ago
+2025-10-11 17:48:43,628 | INFO | {'epoch_accuracy': 0.38199999928474426, 'epoch_top-5-accuracy': 0.7099999785423279, 'epoch_loss': 2.2876601219177246, 'epoch': 101, 'dataset': 'val'}
+2025-10-11 17:49:22,880 | INFO | Epoch summary loss: 2.922598 accuracy: 0.241689 top-5-accuracy: 0.569131
+2025-10-11 17:49:24,288 | INFO | Current lr: 0.0007103216294101459
+2025-10-11 17:49:24,288 | INFO | Last best score 2.1840409636497498 - 6 steps ago
+2025-10-11 17:49:24,288 | INFO | {'epoch_accuracy': 0.39399999380111694, 'epoch_top-5-accuracy': 0.7400000095367432, 'epoch_loss': 2.189860478043556, 'epoch': 102, 'dataset': 'val'}
+2025-10-11 17:50:03,760 | INFO | Epoch summary loss: 2.913380 accuracy: 0.245244 top-5-accuracy: 0.579931
+2025-10-11 17:50:05,094 | INFO | Current lr: 0.0007032184131160444
+2025-10-11 17:50:05,094 | INFO | Last best score 2.1840409636497498 - 7 steps ago
+2025-10-11 17:50:05,094 | INFO | {'epoch_accuracy': 0.4020000100135803, 'epoch_top-5-accuracy': 0.722000002861023, 'epoch_loss': 2.1986693143844604, 'epoch': 103, 'dataset': 'val'}
+2025-10-11 17:50:44,558 | INFO | Epoch summary loss: 2.912353 accuracy: 0.244110 top-5-accuracy: 0.573858
+2025-10-11 17:50:45,938 | INFO | Current lr: 0.000696186228984884
+2025-10-11 17:50:45,938 | INFO | Last best score 2.1639025062322617 - 0 steps ago
+2025-10-11 17:50:45,938 | INFO | {'epoch_accuracy': 0.4180000126361847, 'epoch_top-5-accuracy': 0.7519999742507935, 'epoch_loss': 2.1639025062322617, 'epoch': 104, 'dataset': 'val'}
+2025-10-11 17:50:46,104 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:50:46,105 | INFO | Best model saved
+2025-10-11 17:51:25,483 | INFO | Epoch summary loss: 2.895857 accuracy: 0.250775 top-5-accuracy: 0.583816
+2025-10-11 17:51:26,902 | INFO | Current lr: 0.0006892243666950351
+2025-10-11 17:51:26,902 | INFO | Last best score 2.1639025062322617 - 1 steps ago
+2025-10-11 17:51:26,902 | INFO | {'epoch_accuracy': 0.414000004529953, 'epoch_top-5-accuracy': 0.7160000205039978, 'epoch_loss': 2.2145475894212723, 'epoch': 105, 'dataset': 'val'}
+2025-10-11 17:52:06,154 | INFO | Epoch summary loss: 2.875580 accuracy: 0.252683 top-5-accuracy: 0.585656
+2025-10-11 17:52:07,487 | INFO | Current lr: 0.0006823321230280848
+2025-10-11 17:52:07,488 | INFO | Last best score 2.1639025062322617 - 2 steps ago
+2025-10-11 17:52:07,488 | INFO | {'epoch_accuracy': 0.4020000100135803, 'epoch_top-5-accuracy': 0.734000027179718, 'epoch_loss': 2.1992367058992386, 'epoch': 106, 'dataset': 'val'}
+2025-10-11 17:52:46,972 | INFO | Epoch summary loss: 2.877992 accuracy: 0.253367 top-5-accuracy: 0.584471
+2025-10-11 17:52:48,272 | INFO | Current lr: 0.0006755088017978039
+2025-10-11 17:52:48,272 | INFO | Last best score 2.1639025062322617 - 3 steps ago
+2025-10-11 17:52:48,272 | INFO | {'epoch_accuracy': 0.41200000047683716, 'epoch_top-5-accuracy': 0.7480000257492065, 'epoch_loss': 2.209815725684166, 'epoch': 107, 'dataset': 'val'}
+2025-10-11 17:53:27,710 | INFO | Epoch summary loss: 2.886198 accuracy: 0.248257 top-5-accuracy: 0.584539
+2025-10-11 17:53:29,005 | INFO | Current lr: 0.000668753713779826
+2025-10-11 17:53:29,005 | INFO | Last best score 2.1639025062322617 - 4 steps ago
+2025-10-11 17:53:29,005 | INFO | {'epoch_accuracy': 0.414000004529953, 'epoch_top-5-accuracy': 0.7440000176429749, 'epoch_loss': 2.1771972626447678, 'epoch': 108, 'dataset': 'val'}
+2025-10-11 17:54:08,329 | INFO | Epoch summary loss: 2.889242 accuracy: 0.245631 top-5-accuracy: 0.583804
+2025-10-11 17:54:09,743 | INFO | Current lr: 0.0006620661766420277
+2025-10-11 17:54:09,743 | INFO | Last best score 2.147548496723175 - 0 steps ago
+2025-10-11 17:54:09,743 | INFO | {'epoch_accuracy': 0.42800000309944153, 'epoch_top-5-accuracy': 0.7540000081062317, 'epoch_loss': 2.147548496723175, 'epoch': 109, 'dataset': 'val'}
+2025-10-11 17:54:09,918 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:54:09,918 | INFO | Best model saved
+2025-10-11 17:54:49,345 | INFO | Epoch summary loss: 2.848684 accuracy: 0.258732 top-5-accuracy: 0.595408
+2025-10-11 17:54:50,642 | INFO | Current lr: 0.0006554455148756075
+2025-10-11 17:54:50,642 | INFO | Last best score 2.131190925836563 - 0 steps ago
+2025-10-11 17:54:50,642 | INFO | {'epoch_accuracy': 0.4180000126361847, 'epoch_top-5-accuracy': 0.7459999918937683, 'epoch_loss': 2.131190925836563, 'epoch': 110, 'dataset': 'val'}
+2025-10-11 17:54:50,816 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:54:50,816 | INFO | Best model saved
+2025-10-11 17:55:30,248 | INFO | Epoch summary loss: 2.863132 accuracy: 0.254614 top-5-accuracy: 0.588994
+2025-10-11 17:55:31,736 | INFO | Current lr: 0.0006488910597268514
+2025-10-11 17:55:31,737 | INFO | Last best score 2.077689528465271 - 0 steps ago
+2025-10-11 17:55:31,737 | INFO | {'epoch_accuracy': 0.41999998688697815, 'epoch_top-5-accuracy': 0.7580000162124634, 'epoch_loss': 2.077689528465271, 'epoch': 111, 'dataset': 'val'}
+2025-10-11 17:55:31,918 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 17:55:31,919 | INFO | Best model saved
+2025-10-11 17:56:11,106 | INFO | Epoch summary loss: 2.863311 accuracy: 0.260020 top-5-accuracy: 0.588789
+2025-10-11 17:56:12,506 | INFO | Current lr: 0.0006424021491295828
+2025-10-11 17:56:12,506 | INFO | Last best score 2.077689528465271 - 1 steps ago
+2025-10-11 17:56:12,506 | INFO | {'epoch_accuracy': 0.41600000858306885, 'epoch_top-5-accuracy': 0.7599999904632568, 'epoch_loss': 2.1001040190458298, 'epoch': 112, 'dataset': 'val'}
+2025-10-11 17:56:51,974 | INFO | Epoch summary loss: 2.859385 accuracy: 0.251965 top-5-accuracy: 0.589899
+2025-10-11 17:56:53,325 | INFO | Current lr: 0.000635978127638287
+2025-10-11 17:56:53,326 | INFO | Last best score 2.077689528465271 - 2 steps ago
+2025-10-11 17:56:53,326 | INFO | {'epoch_accuracy': 0.3799999952316284, 'epoch_top-5-accuracy': 0.7440000176429749, 'epoch_loss': 2.231059640645981, 'epoch': 113, 'dataset': 'val'}
+2025-10-11 17:57:32,539 | INFO | Epoch summary loss: 2.859071 accuracy: 0.256989 top-5-accuracy: 0.589540
+2025-10-11 17:57:33,893 | INFO | Current lr: 0.0006296183463619042
+2025-10-11 17:57:33,893 | INFO | Last best score 2.077689528465271 - 3 steps ago
+2025-10-11 17:57:33,893 | INFO | {'epoch_accuracy': 0.4300000071525574, 'epoch_top-5-accuracy': 0.7480000257492065, 'epoch_loss': 2.1067096441984177, 'epoch': 114, 'dataset': 'val'}
+2025-10-11 17:58:13,301 | INFO | Epoch summary loss: 2.848405 accuracy: 0.262446 top-5-accuracy: 0.593989
+2025-10-11 17:58:14,667 | INFO | Current lr: 0.0006233221628982852
+2025-10-11 17:58:14,667 | INFO | Last best score 2.077689528465271 - 4 steps ago
+2025-10-11 17:58:14,667 | INFO | {'epoch_accuracy': 0.4180000126361847, 'epoch_top-5-accuracy': 0.7440000176429749, 'epoch_loss': 2.1517769396305084, 'epoch': 115, 'dataset': 'val'}
+2025-10-11 17:58:54,276 | INFO | Epoch summary loss: 2.854037 accuracy: 0.259769 top-5-accuracy: 0.589968
+2025-10-11 17:58:55,677 | INFO | Current lr: 0.0006170889412693023
+2025-10-11 17:58:55,677 | INFO | Last best score 2.077689528465271 - 5 steps ago
+2025-10-11 17:58:55,677 | INFO | {'epoch_accuracy': 0.41600000858306885, 'epoch_top-5-accuracy': 0.7319999933242798, 'epoch_loss': 2.2246330976486206, 'epoch': 116, 'dataset': 'val'}
+2025-10-11 17:59:35,299 | INFO | Epoch summary loss: 2.850193 accuracy: 0.258453 top-5-accuracy: 0.592765
+2025-10-11 17:59:36,673 | INFO | Current lr: 0.0006109180518566093
+2025-10-11 17:59:36,673 | INFO | Last best score 2.077689528465271 - 6 steps ago
+2025-10-11 17:59:36,673 | INFO | {'epoch_accuracy': 0.44200000166893005, 'epoch_top-5-accuracy': 0.7680000066757202, 'epoch_loss': 2.10619880259037, 'epoch': 117, 'dataset': 'val'}
+2025-10-11 18:00:16,554 | INFO | Epoch summary loss: 2.841159 accuracy: 0.259746 top-5-accuracy: 0.588726
+2025-10-11 18:00:18,000 | INFO | Current lr: 0.0006048088713380431
+2025-10-11 18:00:18,000 | INFO | Last best score 2.077689528465271 - 7 steps ago
+2025-10-11 18:00:18,000 | INFO | {'epoch_accuracy': 0.4259999990463257, 'epoch_top-5-accuracy': 0.75, 'epoch_loss': 2.128719612956047, 'epoch': 118, 'dataset': 'val'}
+2025-10-11 18:00:57,720 | INFO | Epoch summary loss: 2.837044 accuracy: 0.259786 top-5-accuracy: 0.596974
+2025-10-11 18:00:59,211 | INFO | Current lr: 0.0005987607826246627
+2025-10-11 18:00:59,211 | INFO | Last best score 2.077689528465271 - 8 steps ago
+2025-10-11 18:00:59,211 | INFO | {'epoch_accuracy': 0.4180000126361847, 'epoch_top-5-accuracy': 0.7639999985694885, 'epoch_loss': 2.118697375059128, 'epoch': 119, 'dataset': 'val'}
+2025-10-11 18:01:39,085 | INFO | Epoch summary loss: 2.835882 accuracy: 0.265767 top-5-accuracy: 0.593693
+2025-10-11 18:01:40,541 | INFO | Current lr: 0.0005927731747984161
+2025-10-11 18:01:40,541 | INFO | Last best score 2.077689528465271 - 9 steps ago
+2025-10-11 18:01:40,541 | INFO | {'epoch_accuracy': 0.40400001406669617, 'epoch_top-5-accuracy': 0.734000027179718, 'epoch_loss': 2.209993362426758, 'epoch': 120, 'dataset': 'val'}
+2025-10-11 18:02:20,431 | INFO | Epoch summary loss: 2.825437 accuracy: 0.259570 top-5-accuracy: 0.601121
+2025-10-11 18:02:21,786 | INFO | Current lr: 0.000586845443050432
+2025-10-11 18:02:21,787 | INFO | Last best score 2.077689528465271 - 10 steps ago
+2025-10-11 18:02:21,787 | INFO | {'epoch_accuracy': 0.42800000309944153, 'epoch_top-5-accuracy': 0.7599999904632568, 'epoch_loss': 2.09882615506649, 'epoch': 121, 'dataset': 'val'}
+2025-10-11 18:03:01,529 | INFO | Epoch summary loss: 2.830036 accuracy: 0.268923 top-5-accuracy: 0.601856
+2025-10-11 18:03:02,930 | INFO | Current lr: 0.0005809769886199277
+2025-10-11 18:03:02,930 | INFO | Last best score 2.077689528465271 - 11 steps ago
+2025-10-11 18:03:02,931 | INFO | {'epoch_accuracy': 0.4000000059604645, 'epoch_top-5-accuracy': 0.7480000257492065, 'epoch_loss': 2.180250957608223, 'epoch': 122, 'dataset': 'val'}
+2025-10-11 18:03:42,535 | INFO | Epoch summary loss: 2.838177 accuracy: 0.263899 top-5-accuracy: 0.597196
+2025-10-11 18:03:43,923 | INFO | Current lr: 0.0005751672187337284
+2025-10-11 18:03:43,923 | INFO | Last best score 2.050296202301979 - 0 steps ago
+2025-10-11 18:03:43,923 | INFO | {'epoch_accuracy': 0.4580000042915344, 'epoch_top-5-accuracy': 0.7639999985694885, 'epoch_loss': 2.050296202301979, 'epoch': 123, 'dataset': 'val'}
+2025-10-11 18:03:44,122 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 18:03:44,123 | INFO | Best model saved
+2025-10-11 18:04:23,830 | INFO | Epoch summary loss: 2.808072 accuracy: 0.271452 top-5-accuracy: 0.599036
+2025-10-11 18:04:25,281 | INFO | Current lr: 0.0005694155465463911
+2025-10-11 18:04:25,281 | INFO | Last best score 2.050296202301979 - 1 steps ago
+2025-10-11 18:04:25,281 | INFO | {'epoch_accuracy': 0.4359999895095825, 'epoch_top-5-accuracy': 0.765999972820282, 'epoch_loss': 2.0873227566480637, 'epoch': 124, 'dataset': 'val'}
+2025-10-11 18:05:05,087 | INFO | Epoch summary loss: 2.819063 accuracy: 0.266645 top-5-accuracy: 0.600802
+2025-10-11 18:05:06,545 | INFO | Current lr: 0.0005637213910809272
+2025-10-11 18:05:06,545 | INFO | Last best score 2.050296202301979 - 2 steps ago
+2025-10-11 18:05:06,545 | INFO | {'epoch_accuracy': 0.44999998807907104, 'epoch_top-5-accuracy': 0.7599999904632568, 'epoch_loss': 2.057971179485321, 'epoch': 125, 'dataset': 'val'}
+2025-10-11 18:05:46,436 | INFO | Epoch summary loss: 2.815930 accuracy: 0.264150 top-5-accuracy: 0.599298
+2025-10-11 18:05:47,836 | INFO | Current lr: 0.0005580841771701179
+2025-10-11 18:05:47,837 | INFO | Last best score 2.050296202301979 - 3 steps ago
+2025-10-11 18:05:47,837 | INFO | {'epoch_accuracy': 0.4480000138282776, 'epoch_top-5-accuracy': 0.7639999985694885, 'epoch_loss': 2.052913099527359, 'epoch': 126, 'dataset': 'val'}
+2025-10-11 18:06:27,739 | INFO | Epoch summary loss: 2.795864 accuracy: 0.271407 top-5-accuracy: 0.601537
+2025-10-11 18:06:29,187 | INFO | Current lr: 0.0005525033353984167
+2025-10-11 18:06:29,187 | INFO | Last best score 2.050296202301979 - 4 steps ago
+2025-10-11 18:06:29,187 | INFO | {'epoch_accuracy': 0.41200000047683716, 'epoch_top-5-accuracy': 0.7599999904632568, 'epoch_loss': 2.0824628323316574, 'epoch': 127, 'dataset': 'val'}
+2025-10-11 18:07:08,930 | INFO | Epoch summary loss: 2.800239 accuracy: 0.273269 top-5-accuracy: 0.603627
+2025-10-11 18:07:10,292 | INFO | Current lr: 0.0005469783020444325
+2025-10-11 18:07:10,292 | INFO | Last best score 2.0459264665842056 - 0 steps ago
+2025-10-11 18:07:10,292 | INFO | {'epoch_accuracy': 0.44600000977516174, 'epoch_top-5-accuracy': 0.7820000052452087, 'epoch_loss': 2.0459264665842056, 'epoch': 128, 'dataset': 'val'}
+2025-10-11 18:07:10,479 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 18:07:10,479 | INFO | Best model saved
+2025-10-11 18:07:50,214 | INFO | Epoch summary loss: 2.810096 accuracy: 0.266582 top-5-accuracy: 0.602289
+2025-10-11 18:07:51,660 | INFO | Current lr: 0.0005415085190239882
+2025-10-11 18:07:51,660 | INFO | Last best score 2.010085418820381 - 0 steps ago
+2025-10-11 18:07:51,660 | INFO | {'epoch_accuracy': 0.4620000123977661, 'epoch_top-5-accuracy': 0.7820000052452087, 'epoch_loss': 2.010085418820381, 'epoch': 129, 'dataset': 'val'}
+2025-10-11 18:07:51,842 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 18:07:51,842 | INFO | Best model saved
+2025-10-11 18:08:31,526 | INFO | Epoch summary loss: 2.798391 accuracy: 0.270643 top-5-accuracy: 0.601241
+2025-10-11 18:08:32,966 | INFO | Current lr: 0.0005360934338337483
+2025-10-11 18:08:32,966 | INFO | Last best score 2.010085418820381 - 1 steps ago
+2025-10-11 18:08:32,967 | INFO | {'epoch_accuracy': 0.38999998569488525, 'epoch_top-5-accuracy': 0.7160000205039978, 'epoch_loss': 2.173492416739464, 'epoch': 130, 'dataset': 'val'}
+2025-10-11 18:09:12,678 | INFO | Epoch summary loss: 2.810524 accuracy: 0.266912 top-5-accuracy: 0.604493
+2025-10-11 18:09:14,035 | INFO | Current lr: 0.0005307324994954108
+2025-10-11 18:09:14,035 | INFO | Last best score 2.010085418820381 - 2 steps ago
+2025-10-11 18:09:14,035 | INFO | {'epoch_accuracy': 0.45399999618530273, 'epoch_top-5-accuracy': 0.7639999985694885, 'epoch_loss': 2.0504607558250427, 'epoch': 131, 'dataset': 'val'}
+2025-10-11 18:09:53,714 | INFO | Epoch summary loss: 2.784293 accuracy: 0.267938 top-5-accuracy: 0.610850
+2025-10-11 18:09:55,138 | INFO | Current lr: 0.0005254251745004567
+2025-10-11 18:09:55,139 | INFO | Last best score 1.9801075011491776 - 0 steps ago
+2025-10-11 18:09:55,139 | INFO | {'epoch_accuracy': 0.47600001096725464, 'epoch_top-5-accuracy': 0.7739999890327454, 'epoch_loss': 1.9801075011491776, 'epoch': 132, 'dataset': 'val'}
+2025-10-11 18:09:55,322 | INFO | [Local] Saved model weights to checkpoints/sports_cv_project_classification/resnet50-paper-heavy-augmentations-exponential_lr/best_model.pth
+2025-10-11 18:09:55,322 | INFO | Best model saved
+2025-10-11 18:10:35,013 | INFO | Epoch summary loss: 2.807816 accuracy: 0.269664 top-5-accuracy: 0.604009
+2025-10-11 18:10:36,363 | INFO | Current lr: 0.000520170922755452
+2025-10-11 18:10:36,363 | INFO | Last best score 1.9801075011491776 - 1 steps ago
+2025-10-11 18:10:36,363 | INFO | {'epoch_accuracy': 0.44999998807907104, 'epoch_top-5-accuracy': 0.7720000147819519, 'epoch_loss': 2.0373130291700363, 'epoch': 133, 'dataset': 'val'}
+2025-10-11 18:11:16,052 | INFO | Epoch summary loss: 2.787807 accuracy: 0.271692 top-5-accuracy: 0.610936
+2025-10-11 18:11:17,512 | INFO | Current lr: 0.0005149692135278975
+2025-10-11 18:11:17,513 | INFO | Last best score 1.9801075011491776 - 2 steps ago
+2025-10-11 18:11:17,513 | INFO | {'epoch_accuracy': 0.4320000112056732, 'epoch_top-5-accuracy': 0.7979999780654907, 'epoch_loss': 2.053591012954712, 'epoch': 134, 'dataset': 'val'}
+2025-10-11 18:11:57,231 | INFO | Epoch summary loss: 2.777411 accuracy: 0.272301 top-5-accuracy: 0.603308
+2025-10-11 18:11:58,706 | INFO | Current lr: 0.0005098195213926185
+2025-10-11 18:11:58,707 | INFO | Last best score 1.9801075011491776 - 3 steps ago
+2025-10-11 18:11:58,707 | INFO | {'epoch_accuracy': 0.44200000166893005, 'epoch_top-5-accuracy': 0.7760000228881836, 'epoch_loss': 2.0194911509752274, 'epoch': 135, 'dataset': 'val'}
+2025-10-11 18:12:38,467 | INFO | Epoch summary loss: 2.774050 accuracy: 0.270695 top-5-accuracy: 0.608281
+2025-10-11 18:12:39,912 | INFO | Current lr: 0.0005047213261786923
+2025-10-11 18:12:39,912 | INFO | Last best score 1.9801075011491776 - 4 steps ago
+2025-10-11 18:12:39,912 | INFO | {'epoch_accuracy': 0.42399999499320984, 'epoch_top-5-accuracy': 0.7559999823570251, 'epoch_loss': 2.079782724380493, 'epoch': 136, 'dataset': 'val'}

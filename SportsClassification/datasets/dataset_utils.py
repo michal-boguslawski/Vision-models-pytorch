@@ -3,11 +3,12 @@ import pandas as pd
 from PIL import Image
 from typing import Tuple, Any, cast, Optional
 import torch as T
+from torch import nn
 from torch.utils.data import DataLoader, Dataset
 from torchvision.io import decode_image
 from torchvision.transforms import v2
 from utils.config_parser import ConfigParser
-from utils.seed import seed_worker
+from utils.seed import seed_worker, seed_generator
 from datasets.augmentations import AUGMENTATIONS_DICT
 
 
@@ -80,8 +81,7 @@ class DatasetHandler:
         normalize_mean = self.config.get("normalize_mean", None)
         normalize_std = self.config.get("normalize_std", None)
         
-        transforms_list: list[v2.Transform] = []
-        random_apply_list: list[v2.Transform] = []
+        transforms_list: list[Any] = []
 
         transforms_list.append(v2.ToImage())
         if size:
@@ -90,14 +90,8 @@ class DatasetHandler:
         if augmentations:
             for key, value in augmentations.items():
                 if key in AUGMENTATIONS_DICT and value:
-                    apply_type, transform = AUGMENTATIONS_DICT[key]
-                    if apply_type == "compose":
-                        transforms_list.append(transform)
-                    elif apply_type == "random":
-                        random_apply_list.append(transform)
-
-        if random_apply_list:
-            transforms_list.append(v2.RandomApply(random_apply_list))
+                    transform = AUGMENTATIONS_DICT[key]
+                    transforms_list.append(transform)
 
         transforms_list.append(v2.ToDtype(T.float32, scale=True))
 
@@ -144,7 +138,6 @@ class DatasetHandler:
         if sub_dataset == "train":
             self._create_target_encoders(self.df_dict["train"])
         num_workers: int = cast(int, self.config.get("num_workers", 1))
-
         dl = DataLoader(
             dataset=self._create_image_dataset(sub_dataset, use_augmentations),
             batch_size=self.config["batch_size"],
@@ -152,5 +145,6 @@ class DatasetHandler:
             num_workers=num_workers,
             pin_memory=True,
             worker_init_fn=seed_worker,
+            generator=seed_generator()
         )
         return dl

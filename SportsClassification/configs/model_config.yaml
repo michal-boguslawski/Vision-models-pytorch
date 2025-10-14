@@ -1,12 +1,12 @@
 # model_config.yaml
-model_name: VGG13
+model_name: ResNet34
 # backbone_name: VGG13
 # detection_head_name: GAP
-pretrained:
-  model_part: backbone
-  experiment_name: vgg13-gap-heavy-augmentations
-  save_locally: true
-  freeze_time: 10
+# pretrained:
+#   model_part: backbone
+#   experiment_name: ResNet18
+#   save_locally: true
+#   freeze_time: 10
 
 num_classes: 100
 num_anchors: 3
